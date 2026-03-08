@@ -328,8 +328,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* TESTIMONIALS - Trustpilot style */}
-      <section className="bg-background section-padding">
+      {/* TESTIMONIALS */}
+      <section className="section-padding" style={{ background: "hsl(30 15% 94%)" }}>
         <div className="max-w-[900px] mx-auto">
           <FadeIn>
             <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-8 text-center">Opinie klientów</p>
@@ -337,7 +337,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
               <FadeIn key={i} delay={i * 100}>
-                <div className="bg-secondary rounded-xl p-6 flex flex-col h-full">
+                <div className="bg-background rounded-xl p-6 flex flex-col h-full">
                   <div className="flex gap-0.5 mb-4">
                     {Array.from({ length: t.rating }).map((_, j) => (
                       <Star key={j} size={16} className="text-accent fill-accent" />
@@ -362,8 +362,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA with gradient into footer */}
-      <section className="section-padding" style={{ background: "linear-gradient(to bottom, hsl(var(--background)), hsl(var(--primary)))" }}>
+      {/* CTA */}
+      <section className="section-padding" style={{ background: "linear-gradient(to bottom, hsl(30 12% 88%), hsl(var(--primary)))" }}>
         <div className="max-w-[800px] mx-auto text-center">
           <FadeIn>
             <h2 className="font-heading text-2xl md:text-3xl text-primary-foreground mb-4">Planujesz remont lub urządzanie wnętrza?</h2>
