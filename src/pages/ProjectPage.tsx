@@ -135,6 +135,7 @@ const ProjectPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = slug ? projectsData[slug] : null;
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const [selectedImg, setSelectedImg] = useState(0);
 
   useEffect(() => {
     if (lightbox === null) return;
@@ -229,21 +230,31 @@ const ProjectPage = () => {
         </div>
       </section>
 
-      {/* Gallery - clickable for lightbox */}
+      {/* Gallery - large single image with thumbnails */}
       <section className="bg-background px-6 md:px-12 lg:px-20 pb-20">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-          {project.images.map((img, i) => (
-            <FadeIn key={i} delay={i * 80} className={i === 0 ? "md:col-span-2" : ""}>
-              <button onClick={() => setLightbox(i)} className="w-full group cursor-pointer">
-                <img
-                  src={img}
-                  alt={`${project.title} wizualizacja ${i + 1}`}
-                  className={`w-full ${i === 0 ? "aspect-[16/9]" : "aspect-[4/3]"} object-cover rounded-lg transition-transform duration-500 group-hover:scale-[1.02]`}
-                  loading="lazy"
-                />
-              </button>
-            </FadeIn>
-          ))}
+        <div className="max-w-[1200px] mx-auto">
+          <FadeIn>
+            {/* Main large image */}
+            <button onClick={() => setLightbox(selectedImg)} className="w-full group cursor-pointer mb-4">
+              <img
+                src={project.images[selectedImg]}
+                alt={`${project.title} wizualizacja ${selectedImg + 1}`}
+                className="w-full aspect-[16/9] object-cover rounded-lg transition-transform duration-500 group-hover:scale-[1.01]"
+              />
+            </button>
+            {/* Thumbnail strip */}
+            <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2">
+              {project.images.map((img, i) => (
+                <button
+                  key={i}
+                  onClick={() => setSelectedImg(i)}
+                  className={`flex-shrink-0 rounded-lg overflow-hidden transition-all duration-300 ${i === selectedImg ? "ring-2 ring-accent opacity-100" : "opacity-60 hover:opacity-90"}`}
+                >
+                  <img src={img} alt={`Miniatura ${i + 1}`} className="h-20 md:h-24 w-32 md:w-40 object-cover" loading="lazy" />
+                </button>
+              ))}
+            </div>
+          </FadeIn>
         </div>
       </section>
 
