@@ -139,7 +139,7 @@ const Chatbot = () => {
             <img src={annaPortrait} alt="Anna Nowak" className="w-full h-full object-cover object-top" />
             {/* Unread badge */}
             {hasUnread && (
-              <span className="absolute -top-0.5 -right-0.5 w-5 h-5 bg-accent rounded-full border-2 border-background flex items-center justify-center">
+              <span className="absolute -top-0.5 -right-0.5 z-10 w-5 h-5 bg-accent rounded-full border-2 border-background flex items-center justify-center">
                 <span className="text-accent-foreground text-[10px] font-body font-semibold">1</span>
               </span>
             )}

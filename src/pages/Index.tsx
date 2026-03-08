@@ -148,11 +148,13 @@ const Index = () => {
         </div>
       </section>
 
-      {/* GALLERY STRIP - more images */}
-      <section className="bg-secondary py-4">
-        <div className="flex gap-4 overflow-hidden">
+      {/* GALLERY STRIP - scrollable with hover */}
+      <section className="bg-secondary py-6">
+        <div className="flex gap-4 overflow-x-auto px-6 pb-2 scrollbar-hide cursor-grab">
           {[vizDiningFireplace, vizBedroomDark, vizBathroomMarble, vizKitchenRattan, vizLivingBeige, vizBedroomMural].map((img, i) => (
-            <img key={i} src={img} alt={`Wizualizacja ${i + 1}`} className="h-32 md:h-48 w-auto object-cover flex-shrink-0" loading="lazy" />
+            <Link key={i} to="/realizacje" className="flex-shrink-0 group">
+              <img src={img} alt={`Wizualizacja ${i + 1}`} className="h-36 md:h-52 w-auto object-cover rounded-xl transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+            </Link>
           ))}
         </div>
       </section>
@@ -163,15 +165,17 @@ const Index = () => {
           <FadeIn>
             <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-12 text-center">Na czym opiera się moja praca?</h2>
           </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             {pillars.map((p, i) => (
               <FadeIn key={p.title} delay={i * 100}>
-                <div className="group text-center md:text-left">
-                  <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center mx-auto md:mx-0 mb-4 group-hover:bg-accent/20 transition-colors duration-300">
+                <div className="group flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-full bg-accent/10 flex items-center justify-center shrink-0 group-hover:bg-accent/20 transition-colors duration-300 mt-0.5">
                     <p.icon size={18} className="text-accent" />
                   </div>
-                  <h3 className="font-heading text-xl text-foreground mb-3">{p.title}</h3>
-                  <p className="text-muted-foreground font-body text-base leading-relaxed">{p.desc}</p>
+                  <div>
+                    <h3 className="font-heading text-lg text-foreground mb-2">{p.title}</h3>
+                    <p className="text-muted-foreground font-body text-sm leading-relaxed">{p.desc}</p>
+                  </div>
                 </div>
               </FadeIn>
             ))}
@@ -296,6 +300,26 @@ const Index = () => {
               <p className="text-muted-foreground font-body text-base leading-relaxed mb-6">
                 Moja droga do projektowania wnętrz zaczęła się od budowy własnego domu. Dziś pomagam moim klientom przejść przez ten proces spokojniej i bardziej świadomie.
               </p>
+
+              {/* Signature */}
+              <p className="font-heading italic text-2xl text-accent mb-8" style={{ fontFamily: "'Playfair Display', serif" }}>Anna Nowak</p>
+
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-6 mb-8">
+                <div>
+                  <p className="font-heading text-3xl md:text-4xl text-foreground">50+</p>
+                  <p className="font-body text-xs text-muted-foreground mt-1">Zrealizowanych projektów</p>
+                </div>
+                <div>
+                  <p className="font-heading text-3xl md:text-4xl text-foreground">8</p>
+                  <p className="font-body text-xs text-muted-foreground mt-1">Lat doświadczenia</p>
+                </div>
+                <div>
+                  <p className="font-heading text-3xl md:text-4xl text-foreground">100%</p>
+                  <p className="font-body text-xs text-muted-foreground mt-1">Zadowolonych klientów</p>
+                </div>
+              </div>
+
               <Link to="/o-mnie" className="inline-flex items-center gap-2 text-sm font-body tracking-[0.05em] uppercase text-foreground border-b border-foreground/30 pb-0.5 hover:border-accent hover:text-accent transition-colors">
                 Poznaj mnie lepiej <ArrowRight size={14} />
               </Link>
@@ -304,8 +328,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* TESTIMONIALS - Trustpilot style */}
-      <section className="bg-background section-padding">
+      {/* TESTIMONIALS */}
+      <section className="section-padding" style={{ background: "hsl(30 15% 94%)" }}>
         <div className="max-w-[900px] mx-auto">
           <FadeIn>
             <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-8 text-center">Opinie klientów</p>
@@ -313,7 +337,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
               <FadeIn key={i} delay={i * 100}>
-                <div className="bg-secondary rounded-xl p-6 flex flex-col h-full">
+                <div className="bg-background rounded-xl p-6 flex flex-col h-full">
                   <div className="flex gap-0.5 mb-4">
                     {Array.from({ length: t.rating }).map((_, j) => (
                       <Star key={j} size={16} className="text-accent fill-accent" />
@@ -338,8 +362,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA with gradient into footer */}
-      <section className="section-padding" style={{ background: "linear-gradient(to bottom, hsl(var(--background)), hsl(var(--primary)))" }}>
+      {/* CTA */}
+      <section className="section-padding" style={{ background: "linear-gradient(to bottom, hsl(30 12% 88%), hsl(var(--primary)))" }}>
         <div className="max-w-[800px] mx-auto text-center">
           <FadeIn>
             <h2 className="font-heading text-2xl md:text-3xl text-primary-foreground mb-4">Planujesz remont lub urządzanie wnętrza?</h2>
