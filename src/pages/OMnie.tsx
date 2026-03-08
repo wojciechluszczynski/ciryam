@@ -13,6 +13,13 @@ const PinterestIcon = () => (
   </svg>
 );
 
+const stats = [
+  { number: "50+", label: "Zrealizowanych projektów" },
+  { number: "4", label: "Lata doświadczenia" },
+  { number: "100%", label: "Zadowolonych klientów" },
+  { number: "2", label: "Regiony działania" },
+];
+
 const values = [
   { title: "Estetyka z funkcją", desc: "Projektuję tak, żeby było pięknie i praktycznie, w równym stopniu." },
   { title: "Bliskość i komunikacja", desc: "Pracuję bezpośrednio z klientem, bez pośredników. Słucham, pytam, proponuję." },
@@ -31,14 +38,26 @@ const OMnie = () => {
 
   return (
     <main>
-      {/* Hero with full-width portrait */}
-      <section className="relative h-[70vh] min-h-[450px] overflow-hidden">
-        <img src={annaPortrait} alt="Anna Nowak, projektantka wnętrz AN Projekt" className="w-full h-full object-cover object-top" />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/20 to-transparent" />
-        <div className="absolute bottom-12 md:bottom-16 left-6 md:left-16 lg:left-24 z-10">
-          <p className="font-body text-xs tracking-[0.2em] uppercase text-dark-foreground/70 mb-3">O mnie</p>
-          <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl text-dark-foreground">Anna Nowak</h1>
-          <p className="font-body text-base text-dark-foreground/80 mt-2 max-w-md">Projektantka wnętrz, założycielka pracowni AN Projekt</p>
+      {/* Hero - name first, then portrait */}
+      <section className="relative overflow-hidden">
+        <div className="bg-background pt-28 md:pt-32 pb-8 md:pb-0 px-6 md:px-12 lg:px-20">
+          <div className="max-w-[1200px] mx-auto">
+            {/* Mobile: name first */}
+            <div className="md:hidden text-center mb-8">
+              <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-3">O mnie</p>
+              <h1 className="font-heading text-3xl text-foreground mb-2">Anna Nowak</h1>
+              <p className="font-body text-sm text-muted-foreground">Projektantka wnętrz, założycielka AN Projekt</p>
+            </div>
+          </div>
+        </div>
+        <div className="relative h-[50vh] md:h-[70vh] min-h-[350px] overflow-hidden">
+          <img src={annaPortrait} alt="Anna Nowak, projektantka wnętrz AN Projekt" className="w-full h-full object-cover object-top" />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/20 to-transparent" />
+          <div className="absolute bottom-12 md:bottom-16 left-6 md:left-16 lg:left-24 z-10 hidden md:block">
+            <p className="font-body text-xs tracking-[0.2em] uppercase text-dark-foreground/70 mb-3">O mnie</p>
+            <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl text-dark-foreground">Anna Nowak</h1>
+            <p className="font-body text-base text-dark-foreground/80 mt-2 max-w-md">Projektantka wnętrz, założycielka pracowni AN Projekt</p>
+          </div>
         </div>
       </section>
 
@@ -56,9 +75,11 @@ const OMnie = () => {
               <p className="text-muted-foreground font-body text-base leading-relaxed mb-5">
                 Moja droga do projektowania wnętrz zaczęła się od budowy własnego domu. To właśnie wtedy zobaczyłam, jak wiele decyzji trzeba podjąć w trakcie projektowania i realizacji wnętrza, i jak łatwo w tym procesie o chaos, stres czy kosztowne pomyłki.
               </p>
-              <p className="text-foreground font-body text-base leading-relaxed font-medium">
+              <p className="text-foreground font-body text-base leading-relaxed font-medium mb-6">
                 Dziś pomagam moim klientom przejść przez ten proces spokojniej i bardziej świadomie.
               </p>
+              {/* Handwritten signature */}
+              <p className="font-heading italic text-2xl md:text-3xl text-accent/80 tracking-wide">Anna Nowak</p>
             </div>
           </FadeIn>
           <FadeIn delay={150}>
@@ -67,8 +88,24 @@ const OMnie = () => {
         </div>
       </section>
 
+      {/* Stats / Achievements */}
+      <section className="bg-secondary section-padding-sm">
+        <div className="max-w-[1000px] mx-auto">
+          <FadeIn>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+              {stats.map((stat, i) => (
+                <div key={i} className="text-center">
+                  <p className="font-heading text-4xl md:text-5xl text-accent mb-2">{stat.number}</p>
+                  <p className="font-body text-sm text-muted-foreground">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* Extended story + realization photo */}
-      <section className="bg-secondary section-padding">
+      <section className="bg-background section-padding">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           <FadeIn delay={100}>
             <img src={vizBathroomMarble} alt="Wizualizacja łazienki, projekt AN Projekt" className="w-full aspect-[4/3] object-cover rounded-lg" loading="lazy" />
@@ -91,7 +128,7 @@ const OMnie = () => {
       </section>
 
       {/* Horizontal Process */}
-      <section className="bg-background section-padding-sm">
+      <section className="bg-secondary section-padding-sm">
         <div className="max-w-[800px] mx-auto">
           <FadeIn>
             <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-10 text-center">Jak wygląda współpraca?</h2>
@@ -116,8 +153,8 @@ const OMnie = () => {
         </div>
       </section>
 
-      {/* Video placeholder - looks like a video */}
-      <section className="bg-secondary section-padding-sm">
+      {/* Video placeholder */}
+      <section className="bg-background section-padding-sm">
         <div className="max-w-[800px] mx-auto text-center">
           <FadeIn>
             <div className="relative aspect-video overflow-hidden rounded-lg group cursor-pointer">
@@ -138,7 +175,7 @@ const OMnie = () => {
       </section>
 
       {/* Values */}
-      <section className="bg-background section-padding">
+      <section className="bg-secondary section-padding">
         <div className="max-w-[1000px] mx-auto">
           <FadeIn>
             <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-12 text-center">Co jest dla mnie ważne?</h2>
@@ -158,7 +195,7 @@ const OMnie = () => {
       </section>
 
       {/* Contact info */}
-      <section className="bg-secondary section-padding-sm">
+      <section className="bg-background section-padding-sm">
         <div className="max-w-[800px] mx-auto text-center">
           <FadeIn>
             <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-4">Kontakt</h2>

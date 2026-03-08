@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { X, Send } from "lucide-react";
 import annaPortrait from "@/assets/anna-portrait.jpg";
 
@@ -7,7 +7,7 @@ const quickTopics = [
   { label: "Jakie są opcje współpracy?", answer: "Oferuję 4 formy: Konsultację (jednorazowe spotkanie), Opcję Koncepcyjną (układ + wizualizacje), Opcję Komfortową (pełny projekt z dokumentacją) i Opcję Kompleks (projekt + nadzór na budowie). Szczegóły znajdziesz na stronie Oferta." },
   { label: "Ile kosztuje projekt?", answer: "Wycena zależy od metrażu i zakresu prac. Po pierwszej rozmowie przygotuję indywidualną ofertę dopasowaną do Twoich potrzeb. Pierwsza rozmowa jest bezpłatna, napisz lub zadzwoń." },
   { label: "Gdzie działasz?", answer: "Pracuję głównie na Podkarpaciu (okolice Krosna, Rzeszowa) i w Małopolsce (okolice Nowego Sącza). Wiele elementów projektów realizuję również zdalnie." },
-  { label: "Jak się skontaktować?", answer: "Napisz na anprojekt.com@gmail.com lub zadzwoń: +48 730 359 642. Możesz też wypełnić formularz na stronie Kontakt. Odezwę się w ciągu 1\u20132 dni roboczych." },
+  { label: "Jak się skontaktować?", answer: "Napisz na anprojekt.com@gmail.com lub zadzwoń: +48 730 359 642. Możesz też wypełnić formularz na stronie Kontakt. Odezwę się najszybciej jak to możliwe." },
 ];
 
 const siteLinks = [
@@ -25,18 +25,44 @@ interface ChatMessage {
 const Chatbot = () => {
   const [open, setOpen] = useState(false);
   const [showGreeting, setShowGreeting] = useState(false);
+  const [greetingDismissed, setGreetingDismissed] = useState(false);
+  const [hasUnread, setHasUnread] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: "bot", content: "Cześć! Mogę pomóc Ci znaleźć informacje o ofercie, procesie współpracy lub skontaktować się z Anią. O co chcesz zapytać?" },
+    { role: "bot", content: "Cześć! Jestem Anna. Mogę pomóc Ci znaleźć informacje o ofercie, procesie współpracy lub umówić rozmowę. O co chcesz zapytać?" },
   ]);
   const [input, setInput] = useState("");
   const [showTopics, setShowTopics] = useState(true);
+  const greetingTimer = useRef<ReturnType<typeof setTimeout>>();
+  const hideTimer = useRef<ReturnType<typeof setTimeout>>();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!open) setShowGreeting(true);
+    greetingTimer.current = setTimeout(() => {
+      if (!open && !greetingDismissed) setShowGreeting(true);
     }, 3000);
-    return () => clearTimeout(timer);
+    return () => clearTimeout(greetingTimer.current);
   }, []);
+
+  // Auto-hide greeting after 6 seconds, show badge
+  useEffect(() => {
+    if (showGreeting && !open) {
+      hideTimer.current = setTimeout(() => {
+        setShowGreeting(false);
+        setHasUnread(true);
+      }, 6000);
+      return () => clearTimeout(hideTimer.current);
+    }
+  }, [showGreeting, open]);
+
+  const handleOpen = () => {
+    setOpen(true);
+    setShowGreeting(false);
+    setGreetingDismissed(true);
+    setHasUnread(false);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleTopic = (topic: typeof quickTopics[0]) => {
     setMessages((prev) => [
@@ -54,7 +80,7 @@ const Chatbot = () => {
     setShowTopics(false);
 
     const lower = userMsg.toLowerCase();
-    let botResponse = "Dziękuję za pytanie! Aby uzyskać szczegółową odpowiedź, najlepiej skontaktuj się bezpośrednio z Anią: anprojekt.com@gmail.com lub +48 730 359 642.";
+    let botResponse = "Dziękuję za pytanie! Aby uzyskać szczegółową odpowiedź, napisz do mnie bezpośrednio: anprojekt.com@gmail.com lub zadzwoń +48 730 359 642.";
 
     if (lower.includes("cen") || lower.includes("koszt") || lower.includes("ile")) {
       botResponse = quickTopics[2].answer;
@@ -77,20 +103,27 @@ const Chatbot = () => {
 
   return (
     <>
-      {/* Greeting bubble */}
+      {/* Greeting bubble - hidden on mobile */}
       {showGreeting && !open && (
         <div
-          className="fixed bottom-24 right-6 z-50 bg-background rounded-2xl shadow-lg border border-border px-4 py-3 max-w-[220px] animate-fade-in-up cursor-pointer"
-          onClick={() => { setOpen(true); setShowGreeting(false); }}
+          className="fixed bottom-24 right-6 z-50 bg-background rounded-2xl shadow-lg border border-border px-4 py-3 max-w-[220px] animate-fade-in-up cursor-pointer hidden md:block"
+          onClick={handleOpen}
         >
+          <button
+            onClick={(e) => { e.stopPropagation(); setShowGreeting(false); setGreetingDismissed(true); setHasUnread(true); }}
+            className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+            aria-label="Zamknij"
+          >
+            <X size={10} />
+          </button>
           <p className="font-body text-sm text-foreground">Cześć, porozmawiajmy o Twoim projekcie?</p>
           <div className="absolute -bottom-2 right-6 w-4 h-4 bg-background border-r border-b border-border rotate-45" />
         </div>
       )}
 
-      {/* Chat bubble with warm brown glow */}
+      {/* Chat trigger button */}
       <button
-        onClick={() => { setOpen(!open); setShowGreeting(false); }}
+        onClick={() => open ? handleClose() : handleOpen()}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center overflow-hidden group"
         aria-label="Otwórz czat"
         style={{
@@ -104,7 +137,15 @@ const Chatbot = () => {
         ) : (
           <div className="relative w-full h-full">
             <img src={annaPortrait} alt="Anna Nowak" className="w-full h-full object-cover object-top" />
-            <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-background animate-pulse" />
+            {/* Unread badge */}
+            {hasUnread && (
+              <span className="absolute -top-0.5 -right-0.5 w-5 h-5 bg-accent rounded-full border-2 border-background flex items-center justify-center">
+                <span className="text-accent-foreground text-[10px] font-body font-semibold">1</span>
+              </span>
+            )}
+            {!hasUnread && (
+              <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-background animate-pulse" />
+            )}
           </div>
         )}
       </button>
@@ -114,10 +155,13 @@ const Chatbot = () => {
         <div className="fixed bottom-24 right-6 z-50 w-[340px] max-h-[480px] bg-background rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden animate-fade-in-up">
           <div className="bg-primary px-4 py-3 flex items-center gap-3">
             <img src={annaPortrait} alt="Anna Nowak" className="w-9 h-9 rounded-full object-cover object-top" />
-            <div>
-              <p className="text-primary-foreground font-body text-sm font-medium">AN Projekt</p>
-              <p className="text-primary-foreground/60 font-body text-xs">Zwykle odpowiadam w ciągu 1\u20132 dni</p>
+            <div className="flex-1">
+              <p className="text-primary-foreground font-body text-sm font-medium">Anna Nowak</p>
+              <p className="text-primary-foreground/60 font-body text-xs">Odpowiadam najszybciej jak mogę</p>
             </div>
+            <button onClick={handleClose} className="text-primary-foreground/60 hover:text-primary-foreground transition-colors" aria-label="Zamknij czat">
+              <X size={18} />
+            </button>
           </div>
 
           <div className="flex-1 overflow-y-auto p-4 space-y-3 max-h-[280px]">

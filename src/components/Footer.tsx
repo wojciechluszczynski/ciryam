@@ -9,7 +9,7 @@ const PinterestIcon = () => (
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="text-primary-foreground" style={{ background: "linear-gradient(to bottom, hsl(var(--primary) / 0.85), hsl(var(--primary)))" }}>
       <div className="max-w-[1200px] mx-auto section-padding">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-14">
           {/* Col 1 - Brand */}
@@ -43,6 +43,7 @@ const Footer = () => {
                   { href: "/realizacje", label: "Realizacje" },
                   { href: "/oferta", label: "Oferta" },
                   { href: "/o-mnie", label: "O mnie" },
+                  { href: "/blog", label: "Blog" },
                   { href: "/kontakt", label: "Kontakt" },
                 ].map((link) => (
                   <Link key={link.href} to={link.href} className="text-primary-foreground/60 hover:text-accent transition-colors font-body text-sm">

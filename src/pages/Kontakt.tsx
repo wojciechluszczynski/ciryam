@@ -34,7 +34,7 @@ const Kontakt = () => {
     await new Promise((r) => setTimeout(r, 800));
     setSending(false);
     setSubmitted(true);
-    toast.success("Dziękuję! Odezwę się w ciągu 1\u20132 dni roboczych.");
+    toast.success("Dziękuję! Odezwę się najszybciej jak to możliwe.");
   };
 
   const inputClass = "w-full bg-transparent border-b border-primary-foreground/20 text-primary-foreground font-body text-sm py-3 px-0 placeholder:text-primary-foreground/30 focus:outline-none focus:border-accent transition-colors";
@@ -43,10 +43,11 @@ const Kontakt = () => {
   return (
     <main className="bg-primary min-h-screen pt-28 md:pt-32">
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 pb-12 md:pb-20">
+        {/* Mobile: form first */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-20">
-          {/* Left */}
+          {/* Left - Contact info (desktop) / appears second on mobile */}
           <FadeIn>
-            <div>
+            <div className="order-2 md:order-1">
               <h1 className="font-heading text-3xl md:text-4xl text-primary-foreground mb-4">
                 Porozmawiajmy o&nbsp;Twoim wnętrzu
               </h1>
@@ -69,15 +70,15 @@ const Kontakt = () => {
 
               <div className="text-primary-foreground/40 font-body text-xs leading-relaxed space-y-1">
                 <p>Możesz też napisać bezpośrednio na adres e-mail.</p>
-                <p>Po wysłaniu formularza odezwę się w ciągu 1\u20132 dni roboczych.</p>
+                <p>Po wysłaniu formularza odezwę się najszybciej jak to możliwe.</p>
               </div>
             </div>
           </FadeIn>
 
-          {/* Right - Form */}
+          {/* Right - Form (appears first on mobile) */}
           <FadeIn delay={150}>
-            <div>
-              {/* Form header - always visible */}
+            <div className="order-1 md:order-2">
+              {/* Form header */}
               <div className="mb-6 pb-4 border-b border-primary-foreground/10">
                 <h2 className="font-heading text-xl text-primary-foreground mb-1">Formularz kontaktowy</h2>
                 <p className="text-primary-foreground/50 font-body text-xs">Wypełnij poniższe pola, odezwę się najszybciej jak mogę.</p>
@@ -87,7 +88,7 @@ const Kontakt = () => {
                 <div className="flex items-center justify-center h-full min-h-[300px]">
                   <div className="text-center">
                     <h2 className="font-heading text-2xl text-primary-foreground mb-3">Dziękuję!</h2>
-                    <p className="text-primary-foreground/60 font-body text-base mb-2">Twoja wiadomość dotarła. Odezwę się w ciągu 1\u20132 dni roboczych.</p>
+                    <p className="text-primary-foreground/60 font-body text-base mb-2">Twoja wiadomość dotarła. Odezwę się najszybciej jak to możliwe.</p>
                     <p className="text-primary-foreground/40 font-body text-sm">Jeśli to pilne, napisz na anprojekt.com@gmail.com</p>
                   </div>
                 </div>
@@ -129,8 +130,8 @@ const Kontakt = () => {
         </div>
       </div>
 
-      {/* Separator before footer */}
-      <div className="border-t border-primary-foreground/10" />
+      {/* Clear separator before footer */}
+      <div className="border-t border-primary-foreground/10 mt-8" />
     </main>
   );
 };

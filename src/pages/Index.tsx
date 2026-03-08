@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import ProjectCarousel from "@/components/ProjectCarousel";
-import { ArrowRight, Palette, ClipboardList, UserCheck, Home, Building, Building2, Trees, MessageCircle, Ruler, Monitor, Hammer, Plus, X, Check } from "lucide-react";
+import { ArrowRight, Palette, ClipboardList, UserCheck, Home, Building, Building2, Trees, MessageCircle, Ruler, Monitor, Hammer, Plus, X, Check, Star } from "lucide-react";
 
 import vizKitchenRattan from "@/assets/viz-kitchen-rattan.png";
 import vizLivingBeige from "@/assets/viz-living-beige.png";
 import vizBedroomMural from "@/assets/viz-bedroom-mural.png";
 import vizBathroomMarble from "@/assets/viz-bathroom-marble.png";
+import vizDiningFireplace from "@/assets/viz-dining-fireplace.png";
+import vizBedroomDark from "@/assets/viz-bedroom-dark.png";
 import annaPortrait from "@/assets/anna-portrait.jpg";
 
 const heroSlides = [vizKitchenRattan, vizLivingBeige, vizBedroomMural];
@@ -57,9 +59,9 @@ const processSteps = [
 ];
 
 const testimonials = [
-  { text: "Ania przeprowadziła nas przez cały proces. Od pierwszego spotkania po odbiór kluczy. Efekt przeszedł nasze oczekiwania.", author: "Klient z Rzeszowa" },
-  { text: "Profesjonalne podejście i świetne wyczucie stylu. Nasze mieszkanie wygląda dokładnie tak, jak sobie wymarzyliśmy.", author: "Klientka z Krosna" },
-  { text: "Spokojnie i konkretnie. Ania pomogła nam uniknąć wielu kosztownych błędów przy wykończeniu domu.", author: "Klient z Nowego Sącza" },
+  { text: "Ania przeprowadziła nas przez cały proces. Od pierwszego spotkania po odbiór kluczy. Efekt przeszedł nasze oczekiwania.", author: "Katarzyna M.", location: "Rzeszów", rating: 5 },
+  { text: "Profesjonalne podejście i świetne wyczucie stylu. Nasze mieszkanie wygląda dokładnie tak, jak sobie wymarzyliśmy.", author: "Marta i Tomek K.", location: "Krosno", rating: 5 },
+  { text: "Spokojnie i konkretnie. Ania pomogła nam uniknąć wielu kosztownych błędów przy wykończeniu domu.", author: "Paweł Z.", location: "Nowy Sącz", rating: 5 },
 ];
 
 const Index = () => {
@@ -79,9 +81,9 @@ const Index = () => {
   }, []);
 
   return (
-    <main className="snap-y snap-mandatory">
+    <main>
       {/* HERO */}
-      <section className="relative h-screen w-full overflow-hidden snap-start">
+      <section className="relative h-screen w-full overflow-hidden">
         {heroSlides.map((slide, i) => (
           <div key={i} className={`absolute inset-0 transition-all duration-1000 ease-in-out ${i === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}>
             <img src={slide} alt={`Wizualizacja wnętrza AN Projekt ${i + 1}`} className="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"} />
@@ -89,10 +91,10 @@ const Index = () => {
         ))}
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/30 to-foreground/10" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl text-dark-foreground mb-4 animate-fade-in-up">
+          <h1 className="font-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-dark-foreground mb-4 animate-fade-in-up max-w-[280px] sm:max-w-none">
             Wnętrza dopasowane<br className="hidden md:block" /> do&nbsp;Twojego życia
           </h1>
-          <p className="font-body text-base md:text-lg text-dark-foreground/90 mb-8 max-w-lg animate-fade-in-up-delay">
+          <p className="font-body text-sm sm:text-base md:text-lg text-dark-foreground/90 mb-8 max-w-md animate-fade-in-up-delay">
             Funkcjonalne, estetyczne i przemyślane w każdym detalu.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 animate-fade-in-up-delay-2">
@@ -111,8 +113,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* INTRO - before realizacje */}
-      <section className="bg-secondary section-padding-sm snap-start">
+      {/* INTRO */}
+      <section className="bg-secondary section-padding-sm">
         <div className="max-w-3xl mx-auto text-center">
           <FadeIn>
             <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">AN Projekt</p>
@@ -127,7 +129,7 @@ const Index = () => {
       </section>
 
       {/* REALIZACJE - vertical tiles */}
-      <section className="bg-background section-padding-sm snap-start">
+      <section className="bg-background section-padding-sm">
         <div className="max-w-[1200px] mx-auto">
           <FadeIn>
             <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-4 text-center">Wybrane realizacje</h2>
@@ -146,8 +148,17 @@ const Index = () => {
         </div>
       </section>
 
+      {/* GALLERY STRIP - more images */}
+      <section className="bg-secondary py-4">
+        <div className="flex gap-4 overflow-hidden">
+          {[vizDiningFireplace, vizBedroomDark, vizBathroomMarble, vizKitchenRattan, vizLivingBeige, vizBedroomMural].map((img, i) => (
+            <img key={i} src={img} alt={`Wizualizacja ${i + 1}`} className="h-32 md:h-48 w-auto object-cover flex-shrink-0" loading="lazy" />
+          ))}
+        </div>
+      </section>
+
       {/* PILLARS */}
-      <section className="bg-secondary section-padding-sm snap-start">
+      <section className="bg-background section-padding-sm">
         <div className="max-w-[1200px] mx-auto">
           <FadeIn>
             <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-12 text-center">Na czym opiera się moja praca?</h2>
@@ -169,7 +180,7 @@ const Index = () => {
       </section>
 
       {/* PACKAGES - Accordion */}
-      <section className="bg-background section-padding snap-start">
+      <section className="bg-secondary section-padding">
         <div className="max-w-[1200px] mx-auto">
           <FadeIn>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
@@ -192,12 +203,12 @@ const Index = () => {
               const isOpen = expandedPkg === i;
               return (
                 <FadeIn key={pkg.name} delay={i * 60}>
-                  <div className={`border-t border-border transition-all duration-500 ${isOpen ? "bg-secondary rounded-xl my-2 border-transparent shadow-sm" : ""}`}>
+                  <div className={`border-t border-border transition-all duration-500 ${isOpen ? "bg-background rounded-xl my-2 border-transparent shadow-sm" : "hover:bg-background/50"}`}>
                     <button
                       onClick={() => setExpandedPkg(isOpen ? null : i)}
                       className="w-full flex items-center gap-4 md:gap-6 py-6 px-4 md:px-6 text-left"
                     >
-                      <span className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center shrink-0 font-body text-sm text-muted-foreground">
+                      <span className="w-10 h-10 rounded-full bg-background flex items-center justify-center shrink-0 font-body text-sm text-muted-foreground">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <h3 className="font-heading text-xl md:text-2xl text-foreground flex-1">{pkg.name}</h3>
@@ -208,20 +219,17 @@ const Index = () => {
                       <div className="px-4 md:px-6 pb-6 flex flex-col md:flex-row gap-6">
                         <div className="flex-1">
                           <p className="text-muted-foreground font-body text-base leading-relaxed mb-4">{pkg.desc}</p>
-                          <Link to="/oferta" className="inline-flex items-center gap-2 text-sm font-body tracking-[0.05em] uppercase text-foreground border-b border-foreground/30 pb-0.5 hover:border-accent hover:text-accent transition-colors">
-                            Zapytaj o tę opcję <ArrowRight size={14} />
-                          </Link>
-                        </div>
-                        <div className="md:w-48 shrink-0">
-                          <img src={pkg.image} alt={pkg.name} className="w-full aspect-[4/3] object-cover rounded-lg" />
-                        </div>
-                        <div className="md:w-56 shrink-0">
-                          <p className="font-body text-xs tracking-[0.1em] uppercase text-muted-foreground mb-3">Zakres</p>
-                          <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-2 mb-4">
                             {pkg.tags.map((tag) => (
                               <span key={tag} className="px-3 py-1.5 rounded-full border border-border text-foreground font-body text-xs">{tag}</span>
                             ))}
                           </div>
+                          <Link to="/oferta" className="inline-flex items-center gap-2 text-sm font-body tracking-[0.05em] uppercase text-foreground border-b border-foreground/30 pb-0.5 hover:border-accent hover:text-accent transition-colors">
+                            Zapytaj o tę opcję <ArrowRight size={14} />
+                          </Link>
+                        </div>
+                        <div className="md:w-56 shrink-0">
+                          <img src={pkg.image} alt={pkg.name} className="w-full aspect-[4/3] object-cover rounded-lg" />
                         </div>
                       </div>
                     </div>
@@ -235,7 +243,7 @@ const Index = () => {
       </section>
 
       {/* HORIZONTAL PROCESS TIMELINE */}
-      <section className="bg-secondary section-padding snap-start">
+      <section className="bg-background section-padding">
         <div className="max-w-[1000px] mx-auto">
           <FadeIn>
             <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-4 text-center">Jak przebiega współpraca?</h2>
@@ -271,12 +279,11 @@ const Index = () => {
       </section>
 
       {/* O MNIE */}
-      <section className="bg-background section-padding-sm snap-start">
+      <section className="bg-secondary section-padding-sm">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           <FadeIn>
             <div className="relative overflow-hidden rounded-lg">
               <img src={annaPortrait} alt="Anna Nowak, projektantka wnętrz AN Projekt" className="w-full aspect-[3/4] object-cover object-top" loading="lazy" />
-              <div className="absolute inset-0 rounded-lg ring-2 ring-accent/20 animate-pulse pointer-events-none" />
             </div>
           </FadeIn>
           <FadeIn delay={150}>
@@ -297,30 +304,42 @@ const Index = () => {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="bg-secondary section-padding-sm snap-start">
-        <div className="max-w-[800px] mx-auto text-center">
+      {/* TESTIMONIALS - Trustpilot style */}
+      <section className="bg-background section-padding">
+        <div className="max-w-[900px] mx-auto">
           <FadeIn>
-            <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-8">Opinie klientów</p>
-            <div className="relative h-[160px] md:h-[120px]">
-              {testimonials.map((t, i) => (
-                <div key={i} className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-700 ${i === activeTestimonial ? "opacity-100 blur-0 scale-100" : "opacity-0 blur-sm scale-95 pointer-events-none"}`}>
-                  <blockquote className="font-heading text-xl md:text-2xl text-foreground italic leading-relaxed mb-4">&bdquo;{t.text}&rdquo;</blockquote>
-                  <p className="text-muted-foreground font-body text-sm">{t.author}</p>
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-center gap-2 mt-6">
-              {testimonials.map((_, i) => (
-                <button key={i} onClick={() => setActiveTestimonial(i)} className={`w-2 h-2 rounded-full transition-all duration-300 ${i === activeTestimonial ? "bg-accent w-6" : "bg-foreground/20"}`} aria-label={`Opinia ${i + 1}`} />
-              ))}
-            </div>
+            <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-8 text-center">Opinie klientów</p>
           </FadeIn>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {testimonials.map((t, i) => (
+              <FadeIn key={i} delay={i * 100}>
+                <div className="bg-secondary rounded-xl p-6 flex flex-col h-full">
+                  <div className="flex gap-0.5 mb-4">
+                    {Array.from({ length: t.rating }).map((_, j) => (
+                      <Star key={j} size={16} className="text-accent fill-accent" />
+                    ))}
+                  </div>
+                  <blockquote className="font-body text-sm text-foreground leading-relaxed mb-6 flex-1">
+                    &bdquo;{t.text}&rdquo;
+                  </blockquote>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+                      <span className="font-heading text-sm text-accent">{t.author.charAt(0)}</span>
+                    </div>
+                    <div>
+                      <p className="font-body text-sm font-medium text-foreground">{t.author}</p>
+                      <p className="font-body text-xs text-muted-foreground">{t.location}</p>
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* DIVIDER - CTA before footer */}
-      <section className="bg-primary section-padding snap-start">
+      {/* CTA with gradient into footer */}
+      <section className="section-padding" style={{ background: "linear-gradient(to bottom, hsl(var(--background)), hsl(var(--primary)))" }}>
         <div className="max-w-[800px] mx-auto text-center">
           <FadeIn>
             <h2 className="font-heading text-2xl md:text-3xl text-primary-foreground mb-4">Planujesz remont lub urządzanie wnętrza?</h2>

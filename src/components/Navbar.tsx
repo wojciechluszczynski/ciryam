@@ -8,6 +8,7 @@ const navLinks = [
   { href: "/realizacje", label: "Realizacje" },
   { href: "/oferta", label: "Oferta" },
   { href: "/o-mnie", label: "O mnie" },
+  { href: "/blog", label: "Blog" },
   { href: "/kontakt", label: "Kontakt" },
 ];
 
@@ -18,7 +19,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -28,14 +29,15 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Blur backdrop strip behind navbar */}
+      {/* Blur backdrop - always present, opacity controlled by scroll */}
       <div
-        className={`fixed top-0 left-0 right-0 z-40 h-24 transition-all duration-700 pointer-events-none ${
-          scrolled
-            ? "opacity-100 backdrop-blur-xl bg-background/60"
-            : "opacity-0"
-        }`}
-        style={{ maskImage: "linear-gradient(to bottom, black 60%, transparent)" }}
+        className="fixed top-0 left-0 right-0 z-40 h-28 pointer-events-none transition-opacity duration-500"
+        style={{
+          opacity: scrolled ? 1 : 0,
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          background: "linear-gradient(to bottom, hsl(var(--background) / 0.85) 0%, hsl(var(--background) / 0.6) 60%, transparent 100%)",
+        }}
       />
 
       <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-3 md:px-8 pt-4">

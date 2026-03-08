@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight, Search } from "lucide-react";
+import { ChevronLeft, ChevronRight, Search, X } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import vizLivingBeige from "@/assets/viz-living-beige.png";
 import vizKitchenRattan from "@/assets/viz-kitchen-rattan.png";
@@ -19,7 +19,6 @@ const featured = [
     location: "Rzeszów",
     desc: "Ciepłe, przytulne wnętrze z przemyślanym układem i eleganckimi detalami.",
     image: vizLivingBeige,
-    href: "/realizacje",
   },
   {
     title: "Czarna Perła",
@@ -28,7 +27,6 @@ const featured = [
     location: "Podkarpacie",
     desc: "Nowoczesny dom z odważnymi materiałami i dużą ilością naturalnego światła.",
     image: vizKitchenRattan,
-    href: "/realizacje",
   },
   {
     title: "Bambusowa Oaza",
@@ -37,19 +35,18 @@ const featured = [
     location: "Małopolska",
     desc: "Przestrzeń inspirowana naturą, rattan, drewno i spokojne kolory.",
     image: vizDiningFireplace,
-    href: "/realizacje",
   },
 ];
 
 const allProjects = [
-  { title: "Złota Harmonia", type: "Mieszkanie", area: 85, location: "Rzeszów", image: vizLivingBeige, href: "/realizacje" },
-  { title: "Czarna Perła", type: "Dom", area: 180, location: "Podkarpacie", image: vizKitchenRattan, href: "/realizacje" },
-  { title: "Bambusowa Oaza", type: "Salon", area: 65, location: "Małopolska", image: vizDiningFireplace, href: "/realizacje" },
-  { title: "Marmurowa Łazienka", type: "Łazienka", area: 12, location: "Krosno", image: vizBathroomMarble, href: "/realizacje" },
-  { title: "Ciemna Sypialnia", type: "Sypialnia", area: 20, location: "Rzeszów", image: vizBedroomDark, href: "/realizacje" },
-  { title: "Mural Sypialnia", type: "Sypialnia", area: 18, location: "Nowy Sącz", image: vizBedroomMural, href: "/realizacje" },
-  { title: "Marmurowa Garderoba", type: "Garderoba", area: 8, location: "Podkarpacie", image: vizClosetMarble, href: "/realizacje" },
-  { title: "Detale Ceramiczne", type: "Kuchnia", area: 25, location: "Krosno", image: vizDetailCeramics, href: "/realizacje" },
+  { title: "Złota Harmonia", type: "Mieszkanie", area: 85, location: "Rzeszów", image: vizLivingBeige, images: [vizLivingBeige, vizKitchenRattan, vizDiningFireplace] },
+  { title: "Czarna Perła", type: "Dom", area: 180, location: "Podkarpacie", image: vizKitchenRattan, images: [vizKitchenRattan, vizBathroomMarble, vizBedroomDark] },
+  { title: "Bambusowa Oaza", type: "Salon", area: 65, location: "Małopolska", image: vizDiningFireplace, images: [vizDiningFireplace, vizBedroomMural, vizClosetMarble] },
+  { title: "Marmurowa Łazienka", type: "Łazienka", area: 12, location: "Krosno", image: vizBathroomMarble, images: [vizBathroomMarble, vizDetailCeramics, vizClosetMarble] },
+  { title: "Ciemna Sypialnia", type: "Sypialnia", area: 20, location: "Rzeszów", image: vizBedroomDark, images: [vizBedroomDark, vizBedroomMural, vizLivingBeige] },
+  { title: "Mural Sypialnia", type: "Sypialnia", area: 18, location: "Nowy Sącz", image: vizBedroomMural, images: [vizBedroomMural, vizBedroomDark, vizDiningFireplace] },
+  { title: "Marmurowa Garderoba", type: "Garderoba", area: 8, location: "Podkarpacie", image: vizClosetMarble, images: [vizClosetMarble, vizBathroomMarble, vizDetailCeramics] },
+  { title: "Detale Ceramiczne", type: "Kuchnia", area: 25, location: "Krosno", image: vizDetailCeramics, images: [vizDetailCeramics, vizKitchenRattan, vizDiningFireplace] },
 ];
 
 const sizeFilters = [
@@ -64,6 +61,8 @@ const Realizacje = () => {
   const [search, setSearch] = useState("");
   const [activeFilter, setActiveFilter] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  // Lightbox state
+  const [lightbox, setLightbox] = useState<{ images: string[]; idx: number } | null>(null);
 
   const navigate = useCallback((dir: number) => {
     if (isTransitioning) return;
@@ -77,12 +76,28 @@ const Realizacje = () => {
     return () => clearInterval(timer);
   }, [navigate]);
 
+  // Lightbox keyboard
+  useEffect(() => {
+    if (!lightbox) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightbox(null);
+      if (e.key === "ArrowRight") setLightbox(prev => prev ? { ...prev, idx: (prev.idx + 1) % prev.images.length } : null);
+      if (e.key === "ArrowLeft") setLightbox(prev => prev ? { ...prev, idx: (prev.idx - 1 + prev.images.length) % prev.images.length } : null);
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [lightbox]);
+
   const filtered = allProjects.filter((p) => {
     const matchesSearch = !search || p.title.toLowerCase().includes(search.toLowerCase()) || p.type.toLowerCase().includes(search.toLowerCase()) || p.location.toLowerCase().includes(search.toLowerCase());
     const filter = sizeFilters[activeFilter];
     const matchesSize = p.area >= filter.min && p.area < filter.max;
     return matchesSearch && matchesSize;
   });
+
+  const openLightbox = (project: typeof allProjects[0]) => {
+    setLightbox({ images: project.images, idx: 0 });
+  };
 
   return (
     <main>
@@ -150,13 +165,13 @@ const Realizacje = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {filtered.map((p, i) => (
               <FadeIn key={p.title} delay={i * 60}>
-                <Link to={p.href} className="group block">
+                <button onClick={() => openLightbox(p)} className="group block text-left w-full">
                   <div className="overflow-hidden rounded-lg mb-3">
                     <img src={p.image} alt={`${p.title} projekt wnętrz`} className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-[1.03]" loading="lazy" />
                   </div>
                   <h3 className="font-heading text-base text-foreground mb-0.5">{p.title}</h3>
                   <p className="text-muted-foreground font-body text-xs">{p.type} {p.area} m² · {p.location}</p>
-                </Link>
+                </button>
               </FadeIn>
             ))}
           </div>
@@ -179,6 +194,42 @@ const Realizacje = () => {
           </FadeIn>
         </div>
       </section>
+
+      {/* Lightbox */}
+      {lightbox && (
+        <div className="fixed inset-0 z-[100] bg-foreground/95 flex items-center justify-center" onClick={() => setLightbox(null)}>
+          <button className="absolute top-6 right-6 text-dark-foreground/80 hover:text-dark-foreground transition-colors z-10" onClick={() => setLightbox(null)}>
+            <X size={32} />
+          </button>
+          <button
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-dark-foreground/20 backdrop-blur-sm flex items-center justify-center text-dark-foreground hover:bg-dark-foreground/30 transition-colors z-10"
+            onClick={(e) => { e.stopPropagation(); setLightbox(prev => prev ? { ...prev, idx: (prev.idx - 1 + prev.images.length) % prev.images.length } : null); }}
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-dark-foreground/20 backdrop-blur-sm flex items-center justify-center text-dark-foreground hover:bg-dark-foreground/30 transition-colors z-10"
+            onClick={(e) => { e.stopPropagation(); setLightbox(prev => prev ? { ...prev, idx: (prev.idx + 1) % prev.images.length } : null); }}
+          >
+            <ChevronRight size={24} />
+          </button>
+          <img
+            src={lightbox.images[lightbox.idx]}
+            alt="Wizualizacja projektu"
+            className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          />
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+            {lightbox.images.map((_, i) => (
+              <button
+                key={i}
+                onClick={(e) => { e.stopPropagation(); setLightbox(prev => prev ? { ...prev, idx: i } : null); }}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${i === lightbox.idx ? "bg-dark-foreground w-6" : "bg-dark-foreground/40"}`}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </main>
   );
 };

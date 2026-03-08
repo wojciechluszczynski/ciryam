@@ -5,7 +5,7 @@ import vizKitchenRattan from "@/assets/viz-kitchen-rattan.png";
 import vizLivingBeige from "@/assets/viz-living-beige.png";
 import vizBedroomMural from "@/assets/viz-bedroom-mural.png";
 import vizBathroomMarble from "@/assets/viz-bathroom-marble.png";
-import { ArrowRight, Home, Building, Building2, Trees, MessageCircle, MapPin, Ruler, Monitor, Hammer, Plus, X, Check } from "lucide-react";
+import { ArrowRight, Home, Building, Building2, Trees, MessageCircle, MapPin, Ruler, Monitor, Hammer, Plus, X, Check, ChevronDown } from "lucide-react";
 
 const packages = [
   {
@@ -58,16 +58,20 @@ const timeline = [
 ];
 
 const faqs = [
-  { q: "Ile trwa cały proces?", a: "Zależy od zakresu projektu. Prostsza koncepcja (np. jedno pomieszczenie) to ok. 2\u20133 tygodnie. Pełny projekt z wizualizacjami i dokumentacją techniczną zajmuje zwykle 4\u20136 tygodni. Opcja Kompleks z nadzorem na budowie to 6\u20138 tygodni lub dłużej, w zależności od harmonogramu prac remontowych. Na czas realizacji wpływa też szybkość podejmowania decyzji i ewentualne korekty." },
-  { q: "Czy mogę zamówić tylko konsultację?", a: "Oczywiście. Konsultacja to dobry start, jeśli masz konkretne pytanie, chcesz omówić układ pomieszczeń, dobrać materiały lub po prostu porozmawiać o swoim pomyśle na wnętrze. Spotkanie trwa ok. 60 minut i może odbyć się online lub na miejscu. Po konsultacji możesz zdecydować, czy chcesz kontynuować współpracę w szerszym zakresie." },
-  { q: "Czy dojeżdżasz do Rzeszowa i Nowego Sącza?", a: "Tak, działam na terenie Podkarpacia i Małopolski. Wizje lokalne w okolicach Krosna, Rzeszowa i Nowego Sącza są wliczone w cenę projektu. Przy większych odległościach ustalamy to indywidualnie. Wiele elementów projektów, takich jak koncepcja, wizualizacje czy dobór materiałów, mogę realizować również zdalnie." },
-  { q: "Co jeśli nie wiem, czego potrzebuję?", a: "Nie musisz wiedzieć od razu, to zupełnie normalne. Pierwsza rozmowa jest po to, żeby wspólnie ustalić, jaka forma współpracy będzie najlepsza. Opowiesz mi o swoich potrzebach, pokażesz zdjęcia przestrzeni, a ja zaproponuję kierunek i zakres, który będzie miał sens. Wiele osób zaczyna od konsultacji i dopiero potem decyduje się na pełny projekt." },
-  { q: "Jak wygląda kwestia cen?", a: "Wycena zależy od metrażu, liczby pomieszczeń i zakresu prac. Po pierwszej rozmowie i poznaniu Twoich potrzeb przygotuję indywidualną ofertę dopasowaną do projektu. Pierwsza rozmowa jest bezpłatna. Ceny są transparentne i nie ma żadnych ukrytych kosztów." },
+  { q: "Ile trwa cały proces?", a: "Zależy od zakresu projektu. Prostsza koncepcja (np. jedno pomieszczenie) to ok. 2\u20133 tygodnie. Pełny projekt z wizualizacjami i dokumentacją techniczną zajmuje zwykle 4\u20136 tygodni. Opcja Kompleks z nadzorem na budowie to 6\u20138 tygodni lub dłużej, w zależności od harmonogramu prac remontowych." },
+  { q: "Czy mogę zamówić tylko konsultację?", a: "Oczywiście. Konsultacja to dobry start, jeśli masz konkretne pytanie, chcesz omówić układ pomieszczeń, dobrać materiały lub po prostu porozmawiać o swoim pomyśle na wnętrze. Spotkanie trwa ok. 60 minut i może odbyć się online lub na miejscu." },
+  { q: "Czy dojeżdżasz do Rzeszowa i Nowego Sącza?", a: "Tak, działam na terenie Podkarpacia i Małopolski. Wizje lokalne w okolicach Krosna, Rzeszowa i Nowego Sącza są wliczone w cenę projektu. Przy większych odległościach ustalamy to indywidualnie." },
+  { q: "Co jeśli nie wiem, czego potrzebuję?", a: "Nie musisz wiedzieć od razu, to zupełnie normalne. Pierwsza rozmowa jest po to, żeby wspólnie ustalić, jaka forma współpracy będzie najlepsza. Opowiesz mi o swoich potrzebach, a ja zaproponuję kierunek i zakres." },
+  { q: "Jak wygląda kwestia cen?", a: "Wycena zależy od metrażu, liczby pomieszczeń i zakresu prac. Po pierwszej rozmowie przygotuję indywidualną ofertę. Ceny są transparentne i nie ma żadnych ukrytych kosztów." },
+  { q: "Czy projektujesz wnętrza komercyjne?", a: "Skupiam się głównie na wnętrzach mieszkalnych, ale chętnie porozmawiam o projektach lokali usługowych, gabinetów czy małych biur. Napisz do mnie z opisem projektu." },
+  { q: "Czy mogę wprowadzać poprawki do wizualizacji?", a: "Tak, w każdej opcji współpracy przewiduję rundę korekt. Zależy mi, żebyś była/był w pełni zadowolona/zadowolony z projektu przed przejściem do dokumentacji technicznej." },
+  { q: "Czy pomagasz w wyborze materiałów i mebli?", a: "Tak, w ramach Opcji Komfortowej i Kompleks przygotowuję zestawienie materiałów, mebli i dodatków z konkretnymi propozycjami i linkami do sklepów. W Opcji Kompleks pomagam też przy zakupach na miejscu." },
 ];
 
 const Oferta = () => {
   const [activeStep, setActiveStep] = useState<number | null>(null);
   const [expandedPkg, setExpandedPkg] = useState<number | null>(null);
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   return (
     <main>
@@ -83,7 +87,7 @@ const Oferta = () => {
         </div>
       </section>
 
-      {/* Packages - Accordion */}
+      {/* Packages - Accordion with bigger images */}
       <section className="bg-background section-padding">
         <div className="max-w-[1200px] mx-auto">
           <div className="space-y-0">
@@ -91,14 +95,14 @@ const Oferta = () => {
               const isOpen = expandedPkg === i;
               return (
                 <FadeIn key={pkg.name} delay={i * 60}>
-                  <div className={`border-t border-border transition-all duration-500 ${isOpen ? "bg-secondary rounded-xl my-2 border-transparent" : ""}`}>
+                  <div className={`border-t border-border transition-all duration-500 ${isOpen ? "bg-secondary rounded-xl my-2 border-transparent" : "hover:bg-secondary/50"}`}>
                     <button onClick={() => setExpandedPkg(isOpen ? null : i)} className="w-full flex items-center gap-4 md:gap-6 py-6 px-4 md:px-6 text-left">
                       <span className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center shrink-0 font-body text-sm text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
                       <h2 className="font-heading text-xl md:text-2xl text-foreground flex-1">{pkg.name}</h2>
                       {isOpen ? <X size={20} className="text-muted-foreground shrink-0" /> : <Plus size={20} className="text-muted-foreground shrink-0" />}
                     </button>
 
-                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
+                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}>
                       <div className="px-4 md:px-6 pb-6 flex flex-col md:flex-row gap-6">
                         <div className="flex-1">
                           <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4">{pkg.target}</p>
@@ -107,7 +111,7 @@ const Oferta = () => {
                               <li key={f} className="text-foreground/80 font-body text-sm flex items-start gap-2.5">
                                 {f.startsWith("  ") ? (
                                   <span className="ml-7 flex items-start gap-2.5">
-                                    <span className="w-1 h-1 rounded-full bg-accent/50 mt-2 shrink-0" />
+                                    <span className="w-1.5 h-1.5 rounded-full bg-accent/50 mt-1.5 shrink-0" />
                                     {f.trim()}
                                   </span>
                                 ) : (
@@ -119,12 +123,17 @@ const Oferta = () => {
                               </li>
                             ))}
                           </ul>
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {pkg.tags.map((tag) => (
+                              <span key={tag} className="px-3 py-1.5 rounded-full border border-border text-foreground font-body text-xs">{tag}</span>
+                            ))}
+                          </div>
                           <Link to="/kontakt" className="inline-flex items-center gap-2 text-sm font-body tracking-[0.05em] uppercase text-foreground border-b border-foreground/30 pb-0.5 hover:border-accent hover:text-accent transition-colors">
                             Zapytaj o tę opcję <ArrowRight size={14} />
                           </Link>
                         </div>
-                        <div className="md:w-52 shrink-0">
-                          <img src={pkg.image} alt={pkg.name} className="w-full aspect-[4/3] object-cover rounded-lg" />
+                        <div className="md:w-72 shrink-0">
+                          <img src={pkg.image} alt={pkg.name} className="w-full aspect-[4/3] object-cover" />
                         </div>
                       </div>
                     </div>
@@ -171,21 +180,30 @@ const Oferta = () => {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* FAQ - Accordion */}
       <section className="bg-background section-padding">
         <div className="max-w-[700px] mx-auto">
           <FadeIn>
             <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-12 text-center">Najczęściej zadawane pytania</h2>
           </FadeIn>
-          <div className="space-y-8">
+          <div className="space-y-0">
             {faqs.map((faq, i) => (
-              <FadeIn key={i} delay={i * 80}>
-                <div className="border-b border-border pb-7">
-                  <h3 className="font-heading text-lg text-foreground mb-3">{faq.q}</h3>
-                  <p className="text-muted-foreground font-body text-base leading-relaxed">{faq.a}</p>
+              <FadeIn key={i} delay={i * 60}>
+                <div className="border-t border-border">
+                  <button
+                    onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
+                    className="w-full flex items-center justify-between py-5 px-1 text-left group"
+                  >
+                    <h3 className="font-heading text-base md:text-lg text-foreground pr-4 group-hover:text-accent transition-colors">{faq.q}</h3>
+                    <ChevronDown size={18} className={`text-muted-foreground shrink-0 transition-transform duration-300 ${expandedFaq === i ? "rotate-180" : ""}`} />
+                  </button>
+                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${expandedFaq === i ? "max-h-[300px] opacity-100 pb-5" : "max-h-0 opacity-0"}`}>
+                    <p className="text-muted-foreground font-body text-base leading-relaxed px-1">{faq.a}</p>
+                  </div>
                 </div>
               </FadeIn>
             ))}
+            <div className="border-t border-border" />
           </div>
         </div>
       </section>
