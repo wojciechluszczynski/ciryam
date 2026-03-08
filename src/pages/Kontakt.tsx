@@ -42,7 +42,7 @@ const Kontakt = () => {
 
   return (
     <main className="bg-primary min-h-screen pt-28 md:pt-32">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 pb-4 md:pb-6">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 pb-0">
         {/* Mobile: form first */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
           {/* Left - Contact info (desktop) / appears second on mobile */}
