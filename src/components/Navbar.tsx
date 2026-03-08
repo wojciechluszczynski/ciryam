@@ -65,7 +65,7 @@ const Navbar = () => {
                 to={link.href}
                 className={`text-sm tracking-[0.05em] font-body transition-colors duration-300 text-foreground hover:text-accent ${
                   location.pathname === link.href ? "text-accent" : ""
-                } ${link.label === "Blog" ? "px-2.5 py-1 rounded-full bg-accent/10 text-accent font-medium" : ""}`}
+                }`}
               >
                 {link.label}
               </Link>
