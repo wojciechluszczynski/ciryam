@@ -1,42 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
+import ProjectCarousel from "@/components/ProjectCarousel";
 import { ArrowRight } from "lucide-react";
 
 import vizKitchenRattan from "@/assets/viz-kitchen-rattan.png";
 import vizLivingBeige from "@/assets/viz-living-beige.png";
-import vizDiningFireplace from "@/assets/viz-dining-fireplace.png";
-import vizBathroomMarble from "@/assets/viz-bathroom-marble.png";
 import vizBedroomMural from "@/assets/viz-bedroom-mural.png";
-import vizClosetMarble from "@/assets/viz-closet-marble.png";
-import vizBedroomDark from "@/assets/viz-bedroom-dark.png";
 import vizDetailCeramics from "@/assets/viz-detail-ceramics.png";
+import annaPortrait from "@/assets/anna-portrait.jpg";
 
 const heroSlides = [vizKitchenRattan, vizLivingBeige, vizBedroomMural];
-
-const projects = [
-  {
-    title: "Złota Harmonia",
-    desc: "Ciepłe, przytulne mieszkanie z przemyślanym układem i eleganckimi detalami.",
-    image: vizLivingBeige,
-    href: "/zlota-harmonia",
-    meta: "Mieszkanie 85 m² · Rzeszów",
-  },
-  {
-    title: "Czarna Perła",
-    desc: "Nowoczesny dom z odważnymi materiałami i dużą ilością naturalnego światła.",
-    image: vizKitchenRattan,
-    href: "/czarna-perla",
-    meta: "Dom 180 m² · Podkarpacie",
-  },
-  {
-    title: "Bambusowa Oaza",
-    desc: "Przestrzeń inspirowana naturą – rattan, drewno i spokojne kolory.",
-    image: vizDiningFireplace,
-    href: "/bambusowa-oaza",
-    meta: "Salon 65 m² · Małopolska",
-  },
-];
 
 const pillars = [
   {
@@ -73,10 +47,10 @@ const packages = [
 ];
 
 const processSteps = [
-  { num: "01", title: "Rozmowa i poznanie potrzeb", desc: "Spotykamy się lub rozmawiamy online. Poznaję Twoje oczekiwania, styl życia i budżet." },
-  { num: "02", title: "Układ, kierunek i koncepcja", desc: "Przygotowuję wstępny układ funkcjonalny i propozycję stylistyczną." },
-  { num: "03", title: "Projekt i dokumentacja", desc: "Tworzę wizualizacje 3D i pełną dokumentację techniczną dla wykonawcy." },
-  { num: "04", title: "Wsparcie przy realizacji", desc: "Pomagam w wyborze materiałów, kontakcie z wykonawcą i kontroli na budowie." },
+  { num: "01", title: "Rozmowa o projekcie", desc: "Spotykamy się lub rozmawiamy online. Poznaję Twoje oczekiwania, styl życia i budżet." },
+  { num: "02", title: "Układ funkcjonalny i koncepcja", desc: "Przygotowuję wstępny układ, moodboard i propozycję kierunku stylistycznego." },
+  { num: "03", title: "Projekt i wizualizacje", desc: "Tworzę wizualizacje 3D i pełną dokumentację techniczną dla wykonawcy." },
+  { num: "04", title: "Dokumentacja i wsparcie przy realizacji", desc: "Pomagam w wyborze materiałów, kontakcie z wykonawcą i kontroli na budowie." },
 ];
 
 const Index = () => {
@@ -102,7 +76,7 @@ const Index = () => {
           >
             <img
               src={slide}
-              alt={`Wizualizacja wnętrza projektantka wnętrz Krosno ${i + 1}`}
+              alt={`Wizualizacja wnętrza – projekt AN Projekt ${i + 1}`}
               className="w-full h-full object-cover"
               loading={i === 0 ? "eager" : "lazy"}
             />
@@ -111,23 +85,23 @@ const Index = () => {
         <div className="absolute inset-0 bg-foreground/40" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
           <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl text-dark-foreground mb-4 animate-fade-in-up">
-            Wnętrza, które pasują do&nbsp;Twojego życia
+            Projektuję przemyślane<br className="hidden md:block" /> i&nbsp;ponadczasowe wnętrza
           </h1>
-          <p className="font-body text-base md:text-lg text-dark-foreground/90 mb-8 max-w-xl animate-fade-in-up-delay">
-            Projektuję funkcjonalne i estetyczne wnętrza na Podkarpaciu i&nbsp;w&nbsp;Małopolsce.
+          <p className="font-body text-base md:text-lg text-dark-foreground/90 mb-8 max-w-lg animate-fade-in-up-delay">
+            Od koncepcji po realizację. Dla klientów indywidualnych.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 animate-fade-in-up-delay-2">
             <Link
               to="/kontakt"
               className="px-7 py-3 rounded-full bg-accent text-accent-foreground text-sm tracking-[0.05em] font-body hover:bg-accent/90 transition-all duration-300"
             >
-              Umów spotkanie
+              Zapytaj o projekt
             </Link>
             <Link
-              to="/realizacje"
+              to="/kontakt"
               className="px-7 py-3 rounded-full bg-dark-foreground/20 backdrop-blur-sm text-dark-foreground text-sm tracking-[0.05em] font-body hover:bg-dark-foreground/30 transition-all duration-300"
             >
-              Zadaj mi pytanie
+              Umów konsultację
             </Link>
           </div>
         </div>
@@ -154,7 +128,7 @@ const Index = () => {
               Pomagam zaplanować wnętrze, które będzie piękne, wygodne i&nbsp;przemyślane do&nbsp;ostatniego detalu.
             </h2>
             <p className="text-muted-foreground font-body text-base md:text-lg max-w-2xl mx-auto">
-              Działam na Podkarpaciu i w Małopolsce. Każdy projekt traktuję indywidualnie&nbsp;– wsłuchuję się w&nbsp;potrzeby i&nbsp;szukam najlepszych rozwiązań.
+              Każdy projekt traktuję indywidualnie – wsłuchuję się w potrzeby i szukam najlepszych rozwiązań dla konkretnej przestrzeni i stylu życia.
             </p>
           </FadeIn>
         </div>
@@ -171,7 +145,8 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
             {pillars.map((p, i) => (
               <FadeIn key={p.title} delay={i * 100}>
-                <div>
+                <div className="group">
+                  <div className="w-10 h-0.5 bg-accent mb-5 transition-all duration-500 group-hover:w-16" />
                   <h3 className="font-heading text-xl text-foreground mb-3">{p.title}</h3>
                   <p className="text-muted-foreground font-body text-base leading-relaxed">{p.desc}</p>
                 </div>
@@ -189,13 +164,14 @@ const Index = () => {
               Cztery opcje współpracy
             </h2>
             <p className="text-muted-foreground font-body text-base text-center mb-12 max-w-xl mx-auto">
-              Wybierz formę, która najlepiej odpowiada Twoim potrzebom&nbsp;– od&nbsp;jednorazowej konsultacji po pełne wsparcie.
+              Wybierz formę, która najlepiej odpowiada Twoim potrzebom.
             </p>
           </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {packages.map((pkg, i) => (
               <FadeIn key={pkg.name} delay={i * 100}>
-                <div className="bg-secondary p-8 h-full flex flex-col">
+                <div className="bg-secondary p-8 h-full flex flex-col group hover:shadow-lg transition-shadow duration-300">
+                  <div className="w-8 h-0.5 bg-accent/50 mb-4 transition-all duration-500 group-hover:w-12 group-hover:bg-accent" />
                   <h3 className="font-heading text-lg text-foreground mb-3">{pkg.name}</h3>
                   <p className="text-muted-foreground font-body text-sm flex-1 leading-relaxed">{pkg.desc}</p>
                 </div>
@@ -229,8 +205,8 @@ const Index = () => {
           <div className="space-y-10">
             {processSteps.map((step, i) => (
               <FadeIn key={step.num} delay={i * 80}>
-                <div className="flex gap-6 items-start">
-                  <span className="font-heading text-3xl text-accent/70 shrink-0 w-10">{step.num}</span>
+                <div className="flex gap-6 items-start group">
+                  <span className="font-heading text-3xl text-accent/50 shrink-0 w-10 transition-colors duration-300 group-hover:text-accent">{step.num}</span>
                   <div>
                     <h3 className="font-heading text-lg text-foreground mb-1">{step.title}</h3>
                     <p className="text-muted-foreground font-body text-base">{step.desc}</p>
@@ -242,7 +218,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* REALIZACJE */}
+      {/* REALIZACJE CAROUSEL */}
       <section className="bg-background section-padding">
         <div className="max-w-[1200px] mx-auto">
           <FadeIn>
@@ -250,33 +226,12 @@ const Index = () => {
               Wybrane realizacje
             </h2>
             <p className="text-muted-foreground font-body text-base text-center mb-14 max-w-lg mx-auto">
-              Każdy projekt to inna historia – zobacz, jak wygląda efekt współpracy.
+              Każdy projekt to inna historia – zobacz efekty współpracy.
             </p>
           </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {projects.map((p, i) => (
-              <FadeIn key={p.href} delay={i * 120}>
-                <Link to={p.href} className="group block">
-                  <div className="overflow-hidden mb-5">
-                    <img
-                      src={p.image}
-                      alt={`${p.title} – projekt wnętrz AN Projekt`}
-                      className="w-full aspect-[4/5] object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                      loading="lazy"
-                    />
-                  </div>
-                  <h3 className="font-heading text-xl text-foreground mb-1">{p.title}</h3>
-                  <p className="text-muted-foreground font-body text-sm mb-2">{p.meta}</p>
-                  <p className="text-muted-foreground font-body text-sm mb-3">{p.desc}</p>
-                  <span className="text-sm font-body tracking-[0.05em] uppercase text-foreground border-b border-foreground/30 pb-0.5 group-hover:border-accent group-hover:text-accent transition-colors">
-                    Zobacz projekt
-                  </span>
-                </Link>
-              </FadeIn>
-            ))}
-          </div>
-          <FadeIn delay={300}>
-            <div className="text-center mt-14">
+          <ProjectCarousel />
+          <FadeIn delay={200}>
+            <div className="text-center mt-10">
               <Link
                 to="/realizacje"
                 className="inline-flex items-center gap-2 px-7 py-3 rounded-full border border-foreground text-foreground text-sm tracking-[0.05em] font-body hover:bg-foreground hover:text-background transition-all duration-300"
@@ -292,11 +247,11 @@ const Index = () => {
       <section className="bg-secondary section-padding">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           <FadeIn>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden rounded-lg">
               <img
-                src={vizDetailCeramics}
-                alt="Anna Nowak – projektantka wnętrz, Odrzykoń"
-                className="w-full aspect-[3/4] object-cover"
+                src={annaPortrait}
+                alt="Anna Nowak – projektantka wnętrz AN Projekt"
+                className="w-full aspect-[3/4] object-cover object-top"
                 loading="lazy"
               />
             </div>
@@ -305,13 +260,13 @@ const Index = () => {
             <div>
               <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-4">O mnie</p>
               <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-5">
-                Cześć, jestem Ania
+                Anna Nowak · AN Projekt
               </h2>
               <p className="text-muted-foreground font-body text-base leading-relaxed mb-4">
-                Projektuję wnętrza, które łączą estetykę z&nbsp;codzienną wygodą. Zależy mi na tym, żeby efekt końcowy był nie tylko ładny, ale przede wszystkim funkcjonalny i&nbsp;dopasowany do&nbsp;Twojego stylu życia.
+                Projektuję wnętrza mieszkań i&nbsp;domów dla osób, które chcą stworzyć przestrzeń dopasowaną do swojego stylu życia – funkcjonalną, estetyczną i&nbsp;przemyślaną w&nbsp;każdym detalu.
               </p>
               <p className="text-muted-foreground font-body text-base leading-relaxed mb-6">
-                Mieszkam w Odrzykoniu i działam głównie na Podkarpaciu i w&nbsp;Małopolsce. Lubię pracować blisko klienta – to pozwala lepiej zrozumieć potrzeby i&nbsp;dostarczyć projekt, z&nbsp;którego naprawdę się cieszysz.
+                Moja droga do projektowania wnętrz zaczęła się od budowy własnego domu. Dziś pomagam moim klientom przejść przez ten proces spokojniej i&nbsp;bardziej świadomie.
               </p>
               <Link
                 to="/o-mnie"
@@ -324,7 +279,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* TRUST / SOCIAL PROOF placeholder */}
+      {/* TRUST / SOCIAL PROOF */}
       <section className="bg-background section-padding-sm">
         <div className="max-w-[800px] mx-auto text-center">
           <FadeIn>
@@ -351,7 +306,7 @@ const Index = () => {
               to="/kontakt"
               className="inline-block px-8 py-3.5 rounded-full bg-accent text-accent-foreground text-sm tracking-[0.05em] font-body hover:bg-accent/90 transition-all duration-300"
             >
-              Umów spotkanie
+              Porozmawiaj o swoim wnętrzu
             </Link>
           </FadeIn>
         </div>

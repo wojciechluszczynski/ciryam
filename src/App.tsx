@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import Chatbot from "@/components/Chatbot";
 import Index from "./pages/Index";
 import Kontakt from "./pages/Kontakt";
 import Oferta from "./pages/Oferta";
@@ -48,6 +49,7 @@ const App = () => (
         </Routes>
         <Footer />
         <ScrollToTop />
+        <Chatbot />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

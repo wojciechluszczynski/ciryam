@@ -32,8 +32,9 @@ const Kontakt = () => {
     honeypot: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (form.honeypot) return;
     if (!form.name || !form.email || !form.message || !form.consent) {
@@ -44,6 +45,10 @@ const Kontakt = () => {
       toast.error("Proszę podać prawidłowy adres email.");
       return;
     }
+    setSending(true);
+    // Simulate send (replace with backend call when Cloud is connected)
+    await new Promise((r) => setTimeout(r, 800));
+    setSending(false);
     setSubmitted(true);
     toast.success("Dziękuję! Odezwę się w ciągu 1–2 dni roboczych.");
   };
@@ -71,11 +76,11 @@ const Kontakt = () => {
               <div className="flex flex-col gap-2 text-primary-foreground/70 font-body text-sm mb-8">
                 <span className="text-primary-foreground font-medium text-base">Anna Nowak · AN Projekt</span>
                 <span>Odrzykoń, Podkarpacie</span>
-                <a href="tel:+48XXXXXXXXX" className="hover:text-accent transition-colors">
-                  +48 XXX XXX XXX
+                <a href="tel:+48730359642" className="hover:text-accent transition-colors">
+                  +48 730 359 642
                 </a>
-                <a href="mailto:anna@anprojekt.com.pl" className="hover:text-accent transition-colors">
-                  anna@anprojekt.com.pl
+                <a href="mailto:anprojekt.com@gmail.com" className="hover:text-accent transition-colors">
+                  anprojekt.com@gmail.com
                 </a>
               </div>
 
@@ -117,13 +122,12 @@ const Kontakt = () => {
                     Twoja wiadomość dotarła. Odezwę się w ciągu 1–2 dni roboczych.
                   </p>
                   <p className="text-primary-foreground/40 font-body text-sm">
-                    Jeśli to pilne, napisz bezpośrednio na anna@anprojekt.com.pl
+                    Jeśli to pilne, napisz na anprojekt.com@gmail.com
                   </p>
                 </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                {/* Honeypot */}
                 <input
                   type="text"
                   name="website"
@@ -226,9 +230,10 @@ const Kontakt = () => {
 
                 <button
                   type="submit"
-                  className="w-full mt-3 py-3.5 rounded-full bg-primary-foreground text-primary font-body text-sm tracking-[0.1em] uppercase hover:bg-accent hover:text-accent-foreground transition-all duration-300"
+                  disabled={sending}
+                  className="w-full mt-3 py-3.5 rounded-full bg-accent text-accent-foreground font-body text-sm tracking-[0.05em] uppercase hover:bg-accent/90 transition-all duration-300 disabled:opacity-60"
                 >
-                  Wyślij wiadomość
+                  {sending ? "Wysyłanie..." : "Wyślij wiadomość"}
                 </button>
               </form>
             )}
