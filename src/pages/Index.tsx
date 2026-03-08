@@ -62,6 +62,8 @@ const testimonials = [
   { text: "Ania przeprowadziła nas przez cały proces. Od pierwszego spotkania po odbiór kluczy. Efekt przeszedł nasze oczekiwania.", author: "Katarzyna M.", location: "Rzeszów", rating: 5 },
   { text: "Profesjonalne podejście i świetne wyczucie stylu. Nasze mieszkanie wygląda dokładnie tak, jak sobie wymarzyliśmy.", author: "Marta i Tomek K.", location: "Krosno", rating: 5 },
   { text: "Spokojnie i konkretnie. Ania pomogła nam uniknąć wielu kosztownych błędów przy wykończeniu domu.", author: "Paweł Z.", location: "Nowy Sącz", rating: 5 },
+  { text: "Niesamowite podejście do klienta. Ania słucha, doradza i proponuje rozwiązania, o których sami byśmy nie pomyśleli.", author: "Joanna W.", location: "Sanok", rating: 5 },
+  { text: "Projekt wnętrza od Ani to była najlepsza decyzja. Wszystko przemyślane, piękne i funkcjonalne na co dzień.", author: "Michał D.", location: "Jasło", rating: 5 },
 ];
 
 const Index = () => {
@@ -329,25 +331,25 @@ const Index = () => {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="section-padding" style={{ background: "hsl(30 15% 94%)" }}>
-        <div className="max-w-[900px] mx-auto">
+      <section className="bg-card section-padding-sm">
+        <div className="max-w-[1200px] mx-auto">
           <FadeIn>
             <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-8 text-center">Opinie klientów</p>
           </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="flex gap-5 overflow-x-auto pb-4 scrollbar-hide">
             {testimonials.map((t, i) => (
-              <FadeIn key={i} delay={i * 100}>
-                <div className="bg-background rounded-xl p-6 flex flex-col h-full">
+              <FadeIn key={i} delay={i * 80}>
+                <div className="bg-background rounded-xl p-6 flex flex-col min-w-[280px] max-w-[300px] h-full border border-border/50">
                   <div className="flex gap-0.5 mb-4">
                     {Array.from({ length: t.rating }).map((_, j) => (
-                      <Star key={j} size={16} className="text-accent fill-accent" />
+                      <Star key={j} size={14} className="text-accent fill-accent" />
                     ))}
                   </div>
-                  <blockquote className="font-body text-sm text-foreground leading-relaxed mb-6 flex-1">
+                  <blockquote className="font-body text-sm text-foreground leading-relaxed mb-5 flex-1">
                     &bdquo;{t.text}&rdquo;
                   </blockquote>
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+                    <div className="w-9 h-9 rounded-full bg-accent/20 flex items-center justify-center">
                       <span className="font-heading text-sm text-accent">{t.author.charAt(0)}</span>
                     </div>
                     <div>
@@ -363,11 +365,11 @@ const Index = () => {
       </section>
 
       {/* CTA */}
-      <section className="section-padding" style={{ background: "linear-gradient(to bottom, hsl(30 12% 88%), hsl(var(--primary)))" }}>
+      <section className="bg-primary section-padding-sm">
         <div className="max-w-[800px] mx-auto text-center">
           <FadeIn>
             <h2 className="font-heading text-2xl md:text-3xl text-primary-foreground mb-4">Planujesz remont lub urządzanie wnętrza?</h2>
-            <p className="text-primary-foreground/70 font-body text-base md:text-lg mb-8">
+            <p className="text-primary-foreground/70 font-body text-base mb-6">
               Napisz do mnie. Chętnie porozmawiam o Twoim projekcie. Pierwsza rozmowa jest bezpłatna.
             </p>
             <Link to="/kontakt" className="inline-block px-8 py-3.5 rounded-full bg-accent text-accent-foreground text-sm tracking-[0.05em] font-body hover:bg-accent/90 transition-all duration-300">

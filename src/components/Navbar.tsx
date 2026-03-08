@@ -29,14 +29,16 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Blur backdrop - always present, opacity controlled by scroll */}
+      {/* Blur backdrop - strongest at top, fading down */}
       <div
-        className="fixed top-0 left-0 right-0 z-40 h-28 pointer-events-none transition-opacity duration-500"
+        className="fixed top-0 left-0 right-0 z-40 h-20 pointer-events-none transition-opacity duration-500"
         style={{
           opacity: scrolled ? 1 : 0,
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          background: "linear-gradient(to bottom, hsl(var(--background) / 0.85) 0%, hsl(var(--background) / 0.6) 60%, transparent 100%)",
+          maskImage: "linear-gradient(to bottom, black 0%, black 40%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 40%, transparent 100%)",
+          backdropFilter: "blur(24px)",
+          WebkitBackdropFilter: "blur(24px)",
+          background: "linear-gradient(to bottom, hsl(var(--background) / 0.9) 0%, hsl(var(--background) / 0.4) 60%, transparent 100%)",
         }}
       />
 

@@ -9,8 +9,8 @@ const PinterestIcon = () => (
 
 const Footer = () => {
   return (
-    <footer className="text-primary-foreground" style={{ background: "linear-gradient(to bottom, hsl(var(--primary) / 0.85), hsl(var(--primary)))" }}>
-      <div className="max-w-[1200px] mx-auto section-padding">
+    <footer className="bg-primary text-primary-foreground">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-14">
           {/* Col 1 - Brand */}
           <div>
