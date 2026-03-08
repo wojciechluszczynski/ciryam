@@ -61,8 +61,6 @@ const Realizacje = () => {
   const [search, setSearch] = useState("");
   const [activeFilter, setActiveFilter] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  // Lightbox state
-  const [lightbox, setLightbox] = useState<{ images: string[]; idx: number } | null>(null);
 
   const navigate = useCallback((dir: number) => {
     if (isTransitioning) return;
@@ -76,28 +74,12 @@ const Realizacje = () => {
     return () => clearInterval(timer);
   }, [navigate]);
 
-  // Lightbox keyboard
-  useEffect(() => {
-    if (!lightbox) return;
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setLightbox(null);
-      if (e.key === "ArrowRight") setLightbox(prev => prev ? { ...prev, idx: (prev.idx + 1) % prev.images.length } : null);
-      if (e.key === "ArrowLeft") setLightbox(prev => prev ? { ...prev, idx: (prev.idx - 1 + prev.images.length) % prev.images.length } : null);
-    };
-    document.addEventListener("keydown", handler);
-    return () => document.removeEventListener("keydown", handler);
-  }, [lightbox]);
-
   const filtered = allProjects.filter((p) => {
     const matchesSearch = !search || p.title.toLowerCase().includes(search.toLowerCase()) || p.type.toLowerCase().includes(search.toLowerCase()) || p.location.toLowerCase().includes(search.toLowerCase());
     const filter = sizeFilters[activeFilter];
     const matchesSize = p.area >= filter.min && p.area < filter.max;
     return matchesSearch && matchesSize;
   });
-
-  const openLightbox = (project: typeof allProjects[0]) => {
-    setLightbox({ images: project.images, idx: 0 });
-  };
 
   return (
     <main>
