@@ -150,14 +150,16 @@ const Index = () => {
         </div>
       </section>
 
-      {/* GALLERY STRIP - scrollable with hover */}
-      <section className="bg-secondary py-6">
-        <div className="flex gap-4 overflow-x-auto px-6 pb-2 scrollbar-hide cursor-grab">
-          {[vizDiningFireplace, vizBedroomDark, vizBathroomMarble, vizKitchenRattan, vizLivingBeige, vizBedroomMural].map((img, i) => (
-            <Link key={i} to="/realizacje" className="flex-shrink-0 group">
-              <img src={img} alt={`Wizualizacja ${i + 1}`} className="h-36 md:h-52 w-auto object-cover rounded-xl transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-            </Link>
-          ))}
+      {/* GALLERY STRIP - infinite marquee */}
+      <section className="bg-secondary py-6 overflow-hidden">
+        <div className="flex w-max animate-marquee gap-4">
+          {[...Array(2)].flatMap((_, setIdx) =>
+            [vizDiningFireplace, vizBedroomDark, vizBathroomMarble, vizKitchenRattan, vizLivingBeige, vizBedroomMural].map((img, i) => (
+              <Link key={`${setIdx}-${i}`} to="/realizacje" className="flex-shrink-0 group">
+                <img src={img} alt={`Wizualizacja ${i + 1}`} className="h-36 md:h-52 w-auto object-cover rounded-xl transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              </Link>
+            ))
+          )}
         </div>
       </section>
 
