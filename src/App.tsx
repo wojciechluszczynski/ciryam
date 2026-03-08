@@ -20,6 +20,7 @@ import ProjectPage from "./pages/ProjectPage";
 import PolitykaPrywatnosci from "./pages/PolitykaPrywatnosci";
 import Regulamin from "./pages/Regulamin";
 import Ebook from "./pages/Ebook";
+import EbookPreview from "./pages/EbookPreview";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -52,6 +53,7 @@ const App = () => (
           <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
           <Route path="/regulamin" element={<Regulamin />} />
           <Route path="/ebook" element={<Ebook />} />
+          <Route path="/ebook/przewodnik" element={<EbookPreview />} />
           <Route path="/:slug" element={<ProjectPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

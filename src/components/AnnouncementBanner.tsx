@@ -51,10 +51,10 @@ const AnnouncementBanner = () => {
             Jak przygotować się do remontu – pobierz przewodnik
           </p>
           <Link
-            to="/ebook"
+            to="/ebook/przewodnik"
             className="shrink-0 px-3 py-1 rounded-full bg-accent-foreground/15 hover:bg-accent-foreground/25 text-accent-foreground font-body text-xs transition-colors"
           >
-            Pobierz →
+            Czytaj →
           </Link>
           <button
             onClick={handleDismiss}
