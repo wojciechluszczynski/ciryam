@@ -39,14 +39,14 @@ const featured = [
 ];
 
 const allProjects = [
-  { title: "Złota Harmonia", type: "Mieszkanie", area: 85, location: "Rzeszów", image: vizLivingBeige, images: [vizLivingBeige, vizKitchenRattan, vizDiningFireplace] },
-  { title: "Czarna Perła", type: "Dom", area: 180, location: "Podkarpacie", image: vizKitchenRattan, images: [vizKitchenRattan, vizBathroomMarble, vizBedroomDark] },
-  { title: "Bambusowa Oaza", type: "Salon", area: 65, location: "Małopolska", image: vizDiningFireplace, images: [vizDiningFireplace, vizBedroomMural, vizClosetMarble] },
-  { title: "Marmurowa Łazienka", type: "Łazienka", area: 12, location: "Krosno", image: vizBathroomMarble, images: [vizBathroomMarble, vizDetailCeramics, vizClosetMarble] },
-  { title: "Ciemna Sypialnia", type: "Sypialnia", area: 20, location: "Rzeszów", image: vizBedroomDark, images: [vizBedroomDark, vizBedroomMural, vizLivingBeige] },
-  { title: "Mural Sypialnia", type: "Sypialnia", area: 18, location: "Nowy Sącz", image: vizBedroomMural, images: [vizBedroomMural, vizBedroomDark, vizDiningFireplace] },
-  { title: "Marmurowa Garderoba", type: "Garderoba", area: 8, location: "Podkarpacie", image: vizClosetMarble, images: [vizClosetMarble, vizBathroomMarble, vizDetailCeramics] },
-  { title: "Detale Ceramiczne", type: "Kuchnia", area: 25, location: "Krosno", image: vizDetailCeramics, images: [vizDetailCeramics, vizKitchenRattan, vizDiningFireplace] },
+  { title: "Złota Harmonia", slug: "zlota-harmonia", type: "Mieszkanie", area: 85, location: "Rzeszów", image: vizLivingBeige },
+  { title: "Czarna Perła", slug: "czarna-perla", type: "Dom", area: 180, location: "Podkarpacie", image: vizKitchenRattan },
+  { title: "Bambusowa Oaza", slug: "bambusowa-oaza", type: "Salon", area: 65, location: "Małopolska", image: vizDiningFireplace },
+  { title: "Marmurowa Łazienka", slug: "marmurowa-lazienka", type: "Łazienka", area: 12, location: "Krosno", image: vizBathroomMarble },
+  { title: "Ciemna Sypialnia", slug: "ciemna-sypialnia", type: "Sypialnia", area: 20, location: "Rzeszów", image: vizBedroomDark },
+  { title: "Mural Sypialnia", slug: "mural-sypialnia", type: "Sypialnia", area: 18, location: "Nowy Sącz", image: vizBedroomMural },
+  { title: "Marmurowa Garderoba", slug: "marmurowa-garderoba", type: "Garderoba", area: 8, location: "Podkarpacie", image: vizClosetMarble },
+  { title: "Detale Ceramiczne", slug: "detale-ceramiczne", type: "Kuchnia", area: 25, location: "Krosno", image: vizDetailCeramics },
 ];
 
 const sizeFilters = [
