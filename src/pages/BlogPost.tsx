@@ -976,7 +976,7 @@ const BlogPost = () => {
         <div className="absolute inset-0 bg-foreground/30" />
       </div>
 
-      <article className="max-w-[720px] mx-auto px-6 py-12 md:py-16">
+      <article ref={articleRef} className="max-w-[720px] mx-auto px-6 py-12 md:py-16">
         <FadeIn>
           <Link to="/blog" className="inline-flex items-center gap-2 text-muted-foreground font-body text-sm mb-8 hover:text-accent transition-colors">
             <ArrowLeft size={14} /> Wróć do bloga
