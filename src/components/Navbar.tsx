@@ -26,24 +26,16 @@ const Navbar = () => {
     setMobileOpen(false);
   }, [location]);
 
-  const isHome = location.pathname === "/";
-  // On home before scroll, text is white on hero image
-  const lightText = isHome && !scrolled && !mobileOpen;
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-4 md:px-8 pt-4">
       <div
-        className={`max-w-[1100px] mx-auto flex items-center justify-between px-6 md:px-8 py-3 rounded-full transition-all duration-500 ${
-          scrolled || !isHome
-            ? "bg-background/95 backdrop-blur-md shadow-md"
-            : "bg-background/80 backdrop-blur-sm"
-        }`}
+        className="max-w-[1100px] mx-auto flex items-center justify-between px-6 md:px-8 py-3 rounded-full transition-all duration-500 bg-background/95 backdrop-blur-md shadow-md"
       >
         <Link to="/" className="z-50 shrink-0">
           <img
             src={logo}
             alt="AN Projekt – projektant wnętrz Krosno"
-            className="h-8 md:h-9 transition-all duration-300"
+            className="h-8 md:h-9 transition-all duration-300 invert"
           />
         </Link>
 
@@ -64,7 +56,7 @@ const Navbar = () => {
             to="/kontakt"
             className="text-sm tracking-[0.05em] font-body px-5 py-2 rounded-full bg-accent text-accent-foreground hover:bg-accent/90 transition-all duration-300"
           >
-            Umów spotkanie
+            Zapytaj o projekt
           </Link>
         </nav>
 
@@ -99,7 +91,7 @@ const Navbar = () => {
           to="/kontakt"
           className="mt-3 px-7 py-2.5 rounded-full bg-accent text-accent-foreground text-sm tracking-[0.05em] hover:bg-accent/90 transition-colors"
         >
-          Umów spotkanie
+          Zapytaj o projekt
         </Link>
       </div>
     </header>

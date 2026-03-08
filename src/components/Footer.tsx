@@ -65,11 +65,11 @@ const Footer = () => {
             <div className="flex flex-col gap-2 text-primary-foreground/60 font-body text-sm">
               <span>Anna Nowak</span>
               <span>Odrzykoń, Podkarpacie</span>
-              <a href="tel:+48XXXXXXXXX" className="hover:text-accent transition-colors">
-                +48 XXX XXX XXX
+              <a href="tel:+48730359642" className="hover:text-accent transition-colors">
+                +48 730 359 642
               </a>
-              <a href="mailto:anna@anprojekt.com.pl" className="hover:text-accent transition-colors">
-                anna@anprojekt.com.pl
+              <a href="mailto:anprojekt.com@gmail.com" className="hover:text-accent transition-colors">
+                anprojekt.com@gmail.com
               </a>
             </div>
           </div>
