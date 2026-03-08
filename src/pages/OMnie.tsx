@@ -38,25 +38,25 @@ const OMnie = () => {
 
   return (
     <main>
-      {/* Hero - name first, then portrait */}
-      <section className="relative overflow-hidden">
-        <div className="bg-background pt-28 md:pt-32 pb-8 md:pb-0 px-6 md:px-12 lg:px-20">
-          <div className="max-w-[1200px] mx-auto">
-            {/* Mobile: name first */}
-            <div className="md:hidden text-center mb-8">
-              <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-3">O mnie</p>
-              <h1 className="font-heading text-3xl text-foreground mb-2">Anna Nowak</h1>
-              <p className="font-body text-sm text-muted-foreground">Projektantka wnętrz, założycielka AN Projekt</p>
-            </div>
+      {/* Hero - side by side */}
+      <section className="bg-background pt-28 md:pt-36 pb-16 md:pb-20 px-6 md:px-12 lg:px-20">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+          {/* Mobile: name first */}
+          <div className="order-2 md:order-1">
+            <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-4">O mnie</p>
+            <h1 className="font-heading text-3xl md:text-5xl text-foreground mb-3">Anna Nowak</h1>
+            <p className="font-body text-base md:text-lg text-muted-foreground mb-6">Projektantka wnętrz, założycielka pracowni AN Projekt</p>
+            <p className="text-muted-foreground font-body text-base leading-relaxed mb-6">
+              Projektuję wnętrza mieszkań i domów dla osób, które chcą stworzyć przestrzeń dopasowaną do swojego stylu życia. Funkcjonalną, estetyczną i przemyślaną w każdym detalu.
+            </p>
+            <Link to="/kontakt" className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-accent text-accent-foreground text-sm tracking-[0.05em] font-body hover:bg-accent/90 transition-all duration-300">
+              Porozmawiajmy <ArrowRight size={14} />
+            </Link>
           </div>
-        </div>
-        <div className="relative h-[50vh] md:h-[70vh] min-h-[350px] overflow-hidden">
-          <img src={annaPortrait} alt="Anna Nowak, projektantka wnętrz AN Projekt" className="w-full h-full object-cover object-top" />
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/20 to-transparent" />
-          <div className="absolute bottom-12 md:bottom-16 left-6 md:left-16 lg:left-24 z-10 hidden md:block">
-            <p className="font-body text-xs tracking-[0.2em] uppercase text-dark-foreground/70 mb-3">O mnie</p>
-            <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl text-dark-foreground">Anna Nowak</h1>
-            <p className="font-body text-base text-dark-foreground/80 mt-2 max-w-md">Projektantka wnętrz, założycielka pracowni AN Projekt</p>
+          <div className="order-1 md:order-2">
+            <div className="overflow-hidden rounded-2xl">
+              <img src={annaPortrait} alt="Anna Nowak, projektantka wnętrz AN Projekt" className="w-full aspect-[3/4] object-cover object-top" />
+            </div>
           </div>
         </div>
       </section>
