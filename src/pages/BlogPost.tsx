@@ -637,80 +637,280 @@ Zaplanuj przechowywanie jako część projektu salonu, a nie dodatek na końcu.
 
 Stolik kawowy powinien mieć wysokość zbliżoną do wysokości siedziska sofy (zazwyczaj 40–45 cm).`,
   },
-  "ciemne-wnetrza": {
-    title: "Ciemne wnętrza: odwaga czy ryzyko?",
-    metaTitle: "Ciemne wnętrza: odwaga czy ryzyko? | AN Projekt",
-    metaDesc: "Ciemne kolory we wnętrzach mogą być eleganckie i przytulne. Podpowiadam, jak je stosować, żeby nie przytłoczyć przestrzeni.",
+  "co-robi-dobry-projektant-wnetrz": {
+    title: "7 rzeczy, które robi dobry projektant wnętrz – i których nie zrobi sam IKEA ani YouTube",
+    metaTitle: "7 rzeczy, które robi dobry projektant wnętrz – i których nie zrobi sam IKEA ani YouTube | AN Projekt",
+    metaDesc: "Zastanawiasz się, czy warto zatrudnić projektanta wnętrz? Oto 7 konkretnych rzeczy, które robi dobra projektantka – a których nie zastąpią sklepy meblowe ani tutoriale.",
     image: vizBedroomDark,
-    category: "Trendy",
+    category: "Porady",
     date: "5 lutego 2026",
-    readTime: "5 min",
-    content: `## Kiedy stosować ciemne kolory?
+    readTime: "9 min",
+    content: `## Dlaczego coraz więcej osób szuka projektanta zamiast urządzać samodzielnie?
 
-W sypialniach, gabinetach i przestrzeniach, które mają sprzyjać wyciszeniu. Ciemne wnętrza mogą być niezwykle eleganckie i przytulne, jeśli zastosuje się je z wyczuciem.
-
----
-
-## Jak uniknąć przytłoczenia?
-
-Kluczem jest odpowiednie oświetlenie, kontrasty i naturalne materiały, które ocieplają ciemną paletę. Drewno, rattan i lniane tkaniny doskonale równoważą ciemne ściany.
+Rosnące koszty błędów, brak czasu, przytłaczająca liczba wyborów – to główne powody. Projektant wnętrz to nie luksus. To oszczędność czasu i pieniędzy, bo pomaga uniknąć kosztownych pomyłek, które przy samodzielnym urządzaniu zdarzają się bardzo często.
 
 ---
 
-## Praktyczne wskazówki
+## 1. Projektuje układ, nie tylko wygląd
 
-- Ciemne kolory optycznie zmniejszają pomieszczenie – stosuj je w przestrzeniach, gdzie to nie przeszkadza
-- Łącz ciemne ściany z jasną podłogą lub sufitem
-- Zadbaj o wiele punktów świetlnych na różnych wysokościach
-- Dodaj elementy naturalne: drewno, kamień, rośliny`,
+- Funkcjonalność przed estetyką – dobry projekt zaczyna się od pytania „jak żyjesz?", a nie „jaki kolor ścian?"
+- Ruch w mieszkaniu: jak poruszają się domownicy, gdzie się mijają, co blokuje
+- Strefy: praca / odpoczynek / jedzenie / sen – każda wymaga innej przestrzeni
+- Tego nie zrobi IKEA: sklep sprzedaje meble, nie rozwiązuje problemów przestrzennych
+
+---
+
+## 2. Widzi całość zanim cokolwiek powstanie
+
+- Wizualizacje 3D pokazują efekt końcowy przed remontem
+- Brak przykrych niespodzianek na etapie realizacji
+- Klient decyduje świadomie, nie „na wiarę"
+
+---
+
+## 3. Dobiera materiały, kolory i faktury w spójną całość
+
+- Moodboard materialny: podłoga + ściany + meble + tekstylia + oświetlenie
+- Proporcje kolorów (zasada 60-30-10)
+- Czego unika dobry projektant: przypadkowe zestawienia, które „osobno są ładne, razem nie działają"
+
+---
+
+## 4. Przewiduje błędy zanim wydasz pieniądze
+
+- Elektryka, hydraulika, wentylacja – to trzeba zaplanować PRZED tynkami
+- Błąd za 3 000 zł na etapie projektu = błąd za 30 000 zł po remoncie
+- Konkretny przykład: gniazdka za kanapą, okap bez wentylacji, za mała łazienka
+
+---
+
+## 5. Zna lokalnych wykonawców i dostawców
+
+- Sprawdzeni fachowcy = mniej ryzyka
+- Zniżki u dostawców materiałów (często projekt zwraca się na zakupach)
+- Koordynacja ekip: kto kiedy, w jakiej kolejności
+
+---
+
+## 6. Oszczędza Twój czas i energię psychiczną
+
+- Tysiące decyzji przy remoncie: projektantka je strukturyzuje
+- Zamiast 40 godzin researchu – 2 spotkania i masz odpowiedzi
+- Efekt: mniej stresu, szybszy remont, lepszy wynik
+
+---
+
+## 7. Odpowiada za efekt końcowy
+
+- Projektantka nie znika po oddaniu pliku PDF
+- Pakiet Kompleksowa: 3 spotkania nadzorujące na budowie
+- Pilnuje, żeby efekt był zgodny z projektem
+
+---
+
+## A co z YouTube i IKEA?
+
+- YouTube: świetne do inspiracji, złe do planowania konkretnej przestrzeni
+- IKEA: dobry sklep, zły projektant (sprzedaje własne produkty, nie Twoje potrzeby)
+- Połączenie obu bez projektanta = ryzyko chaotycznego efektu
+
+---
+
+## Dla kogo projektant wnętrz się opłaca najbardziej?
+
+- Nowe mieszkanie z deweloperki (wszystko od zera)
+- Generalny remont (duże pieniądze, jedna szansa)
+- Trudna przestrzeń (mała, ciemna, nieregularna)
+- Ktoś kto ceni swój czas i nie lubi podejmować setek decyzji
+
+---
+
+## Najczęstsze pytania
+
+**Czy projektant wnętrz jest tylko dla bogatych?**
+Nie – projekt wnętrza to koszt 120–170 zł/m², który zazwyczaj zwraca się w lepszych decyzjach zakupowych i unikniętych błędach.
+
+**Czy mogę samodzielnie urządzić mieszkanie bez projektanta?**
+Tak, jeśli masz czas, cierpliwość i doświadczenie. Warto rozważyć przynajmniej konsultację (1h), która kosztuje znacznie mniej niż pełny projekt.
+
+**Czym różni się projektant wnętrz od architekta?**
+Architekt projektuje budynki i konstrukcję. Projektant wnętrz zajmuje się przestrzenią wewnątrz – układem, materiałami, kolorami, oświetleniem i wyposażeniem.
+
+**Czy projektantka z Podkarpacia dojedzie do mnie?**
+Tak – AN Projekt obsługuje Podkarpacie (Krosno, Rzeszów) i Małopolskę (Nowy Sącz).`,
   },
-  "garderoba-marzen": {
-    title: "Garderoba marzeń: od projektu do realizacji",
-    metaTitle: "Garderoba marzeń: od projektu do realizacji | AN Projekt",
-    metaDesc: "Jak zaprojektować garderobę, która pomieści wszystko i będzie wyglądać jak z magazynu?",
+  "jak-dobrac-kolory-materialy-do-wnetrza": {
+    title: "Jak dobrać kolory, materiały i dodatki do wnętrza – zasady, które działają zawsze",
+    metaTitle: "Jak dobrać kolory, materiały i dodatki do wnętrza – zasady, które działają zawsze | AN Projekt",
+    metaDesc: "Nie wiesz jak dobrać kolory i materiały do swojego wnętrza? Tłumaczę zasady doboru kolorystyki, faktur i dodatków – po ludzku, bez żargonu.",
     image: vizClosetMarble,
     category: "Porady",
     date: "1 lutego 2026",
-    readTime: "4 min",
-    content: `## Planowanie garderoby
+    readTime: "8 min",
+    content: `## Dlaczego dobór kolorów sprawia tyle trudności?
 
-Zastanów się, jakie ubrania masz i jak je przechowujesz. To pomoże zaplanować odpowiednie półki, drążki i szuflady. Garderoba to nie luksus, a praktyczne rozwiązanie, które ułatwia codzienne życie.
-
----
-
-## Oświetlenie
-
-Dobre oświetlenie w garderobie to podstawa. Zaplanuj ledowe listwy i punktowe oświetlenie przy lustrze. Naturalne światło to dodatkowy atut, ale nie zawsze możliwe.
+Brak kontekstu: kolor na próbniku wygląda inaczej niż na ścianie, światło zmienia wszystko, trendy z Instagrama działają tylko w studiu fotograficznym. Dlatego warto poznać kilka zasad, które sprawdzają się niezależnie od stylu.
 
 ---
 
-## Materiały i wykończenie
+## Zasada 60-30-10 – fundament każdej kolorystyki
 
-Lustrzane fronty optycznie powiększają przestrzeń. Marmurowa podłoga i złote uchwyty nadają wnętrzu luksusowy charakter. System szaf od podłogi do sufitu maksymalizuje pojemność.`,
+- 60%: kolor dominujący (ściany, podłogi, duże meble)
+- 30%: kolor uzupełniający (sofa, zasłony, zabudowa)
+- 10%: kolor akcentowy (poduszki, rośliny, obrazy, lampy)
+- Przykład: biel (60%) + szarość (30%) + złoto (10%)
+- Przykład: beż (60%) + brąz naturalny (30%) + zielony (10%)
+
+---
+
+## Ciepłe vs. zimne kolory – jak światło zmienia wszystko
+
+- Kierunek świata a dobór kolorów (pokój na północ vs. południe)
+- Jak sprawdzić kolor w swoim świetle przed zakupem
+- Które kolory optycznie powiększają, a które zmniejszają przestrzeń
+
+---
+
+## Jak dobierać materiały i faktury?
+
+- Zasada 3 faktur: nie więcej niż 3 różne materiały w jednym pomieszczeniu
+- Popularne zestawienia które działają:
+- Drewno + tkanina + metal (styl modern classic, Japandi)
+- Beton + skóra + drewno (industrial)
+- Marmur + biel + rattan (boho premium)
+- Len + biel + drewno jasne (skandynawski minimalizm)
+- Czego unikać: łączenie zbyt wielu wzorów i faktur naraz
+
+---
+
+## Jak dobrać podłogę do reszty wnętrza?
+
+- Podłoga to baza – dobierasz ją pierwsza
+- Jasna podłoga: optycznie powiększa, ale zbiera kurz
+- Ciemna podłoga: elegancka, przytłaczająca w małych pokojach
+- Układ desek: poziomy (poszerza) vs. ukośny (dynamizuje)
+
+---
+
+## Jak dobrać dodatki żeby nie wyglądało chaotycznie?
+
+- Zasada grupowania: dekoracje w grupach po 3 (różne wysokości)
+- Rośliny: zawsze działają – dodają życia i miękkości
+- Jak nie przesadzić z dekoracjami (mniej = więcej)
+- Złota zasada: każdy detal powinien mieć powód żeby tam być
+
+---
+
+## Trendy 2025/2026 w kolorach i materiałach wnętrz
+
+- Kolory: zieleń butelkowa, terakota, ciepły brąz, kremowa biel
+- Materiały: rattan, len, trawertyn, mosiądz szczotkowany
+- Odejście od: szarego betonu, zimnej stali, sterylnej bieli
+- Trend trwały: naturalne materiały, zrównoważone wybory
+
+---
+
+## Najczęstsze pytania
+
+**Ile kolorów może być w jednym pokoju?**
+Maksymalnie 3–4 kolory, w proporcjach 60-30-10. Więcej kolorów = chaos wizualny.
+
+**Czy mogę mieć kolorowe ściany w małym pokoju?**
+Tak, ale ostrożnie. Jeden kolorowy akcent (jedna ściana) często działa lepiej niż malowanie całego pokoju.
+
+**Jak sprawdzić czy kolor ściany będzie pasował do moich mebli?**
+Zamów próbnik koloru (20×20 cm) i obserwuj go przez 2 dni w różnym świetle – rano, w południe i wieczorem przy sztucznym oświetleniu.
+
+**Czy projektantka pomaga przy doborze kolorów i materiałów?**
+Tak – dobór kolorystyki i moodboard materialny jest częścią każdego pakietu AN Projekt.`,
   },
-  "ceramika-we-wnetrzach": {
-    title: "Ceramika we wnętrzach: nie tylko płytki",
-    metaTitle: "Ceramika we wnętrzach: nie tylko płytki | AN Projekt",
-    metaDesc: "Ceramika to materiał o ogromnym potencjale dekoracyjnym. Odkryj, jak wykorzystać ją w nowoczesnych wnętrzach.",
+  "checklista-przed-remontem-mieszkania": {
+    title: "Checklista przed remontem mieszkania lub domu – 27 pytań, które musisz zadać sobie przed startem",
+    metaTitle: "Checklista przed remontem mieszkania lub domu – 27 pytań przed startem | AN Projekt",
+    metaDesc: "Planujesz remont? Sprawdź checklistę 27 pytań, które musisz zadać sobie zanim zaczniesz. Oszczędź czas, nerwy i pieniądze.",
     image: vizDetailCeramics,
-    category: "Materiały",
+    category: "Porady",
     date: "25 stycznia 2026",
-    readTime: "5 min",
-    content: `## Ceramiczne lampy i wazony
+    readTime: "10 min",
+    content: `## Dlaczego większość remontów wymyka się spod kontroli?
 
-Ręcznie robiona ceramika dodaje wnętrzu ciepła i indywidualnego charakteru. Każdy element jest unikatowy, co nadaje przestrzeni osobowość.
-
----
-
-## Ścianki z cegły
-
-Ceramiczna cegła na ścianie to klasyk, który nigdy nie wychodzi z mody. Idealny do loftów i przestrzeni w stylu industrialnym.
+Brak planu, zbyt wczesne decyzje zakupowe, zmiany „w trakcie" = koszty × 3. Jeśli nie wiesz od czego zacząć, ta checklista pomoże Ci ogarnąć wszystko zanim wejdą ekipy.
 
 ---
 
-## Ceramika w kuchni
+## BLOK 1 – Planowanie i zakres (pytania 1–7)
 
-Ręcznie robiona ceramika na ścianie nad blatem kuchennym to sposób na unikatowy charakter kuchni. Każda płytka jest inna, co tworzy niepowtarzalny efekt.`,
+1. Czy masz określony zakres prac? (co dokładnie remontujesz)
+2. Czy masz projekt wnętrza lub przynajmniej rzut z wymiarami?
+3. Czy wiesz, które ściany są nośne i których nie możesz ruszyć?
+4. Czy znasz stan instalacji elektrycznej i hydraulicznej?
+5. Czy planujesz zmianę układu pomieszczeń?
+6. Czy masz pozwolenia, jeśli są wymagane?
+7. Czy ustaliłeś priorytety: co musisz, co chcesz, co byłoby fajne?
+
+---
+
+## BLOK 2 – Budżet i finanse (pytania 8–13)
+
+1. Jaki jest Twój całkowity budżet na remont?
+2. Czy masz bufor awaryjny (minimum 15–20% ponad budżet)?
+3. Czy wiesz, ile kosztują materiały które chcesz użyć?
+4. Czy porównałeś minimum 3 wyceny wykonawców?
+5. Czy masz umowę z wykonawcą z harmonogramem płatności?
+6. Czy wiesz, co jest w cenie wykonawcy a co musisz kupić sam?
+
+---
+
+## BLOK 3 – Materiały i zakupy (pytania 14–19)
+
+1. Czy masz wybrany styl i kolorystykę całego wnętrza?
+2. Czy masz moodboard materialny (podłoga, ściany, meble, oświetlenie)?
+3. Czy zamówiłeś próbniki kolorów i materiałów?
+4. Czy sprawdziłeś czasy dostaw (płytki, okna, drzwi, meble na wymiar)?
+5. Czy kupiłeś materiały z nadmiarem (podłogi, płytki min. +10%)?
+6. Czy masz zaplanowane oświetlenie (punkty świetlne, gniazdka)?
+
+---
+
+## BLOK 4 – Wykonawcy i harmonogram (pytania 20–24)
+
+1. Czy masz potwierdzonego generalnego wykonawcę lub koordynatora?
+2. Czy znasz kolejność prac (hydraulika → elektryka → tynki → podłogi)?
+3. Czy masz harmonogram z datami dla każdej ekipy?
+4. Czy wiesz, gdzie będziesz mieszkać w trakcie remontu?
+5. Czy masz plan na przechowanie mebli i dobytku?
+
+---
+
+## BLOK 5 – Ostatnie pytania przed startem (pytania 25–27)
+
+1. Czy wszystkie decyzje projektowe są podjęte zanim zaczną ekipy?
+2. Czy masz kontakt do koordynatora/projektantki na czas remontu?
+3. Czy zrobiłeś zdjęcia dokumentacyjne przed startem?
+
+---
+
+## Ile punktów odhaczyłeś?
+
+- **25–27:** Jesteś gotowy. Remont powinien przebiec sprawnie.
+- **18–24:** Kilka luk. Uzupełnij zanim zaczniesz.
+- **Poniżej 18:** Warto się zatrzymać i zaplanować dokładniej. Możesz potrzebować pomocy projektantki.
+
+---
+
+## Najczęstsze pytania
+
+**Czy projektantka może pomóc przy planowaniu remontu?**
+Tak – to jedno z głównych zadań projektantki wnętrz. Pakiet Kompleksowa obejmuje m.in. spotkania z wykonawcą i nadzór na budowie.
+
+**Ile powinien wynosić budżet awaryjny przy remoncie?**
+Minimum 15%, optymalnie 20% całkowitego budżetu remontowego.
+
+**Od czego zacząć remont mieszkania?**
+Od projektu wnętrza i ustalenia zakresu prac. Potem elektryka i hydraulika, tynki, podłogi, zabudowy, malowanie, meble, dekoracje.
+
+**Czy można remontować bez projektu wnętrza?**
+Można, ale to ryzykowne – większość kosztownych błędów (złe gniazdka, nieodpowiednie płytki, za mała kuchnia) wynika właśnie z braku projektu.`,
   },
 };
 
