@@ -13,7 +13,7 @@ import vizClosetMarble from "@/assets/viz-closet-marble.png";
 import vizDetailCeramics from "@/assets/viz-detail-ceramics.png";
 import heroKitchen from "@/assets/hero-kitchen.png";
 
-const categories = ["Wszystkie", "Współpraca", "Błędy", "Porady", "Trendy", "Materiały"];
+const categories = ["Wszystkie", "Współpraca", "Błędy", "Porady", "Ebooki", "Trendy", "Materiały"];
 
 const blogPosts = [
   {
@@ -97,6 +97,16 @@ const blogPosts = [
     date: "25 stycznia 2026",
     readTime: "10 min",
     slug: "checklista-przed-remontem-mieszkania",
+  },
+  {
+    title: "Darmowy ebook: Jak przygotować się do remontu – kompletny przewodnik",
+    excerpt: "Pobierz darmowy ebook z checklistą, harmonogramem i praktycznymi wskazówkami. Zaplanuj remont bez stresu i niepotrzebnych wydatków.",
+    image: vizLivingBeige,
+    category: "Ebooki",
+    date: "20 stycznia 2026",
+    readTime: "Ebook PDF",
+    slug: "ebook",
+    isEbook: true,
   },
 ];
 
@@ -193,7 +203,7 @@ const Blog = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {(activeCategory === "Wszystkie" && !search ? regularPosts.length > 0 ? regularPosts : filtered : filtered).map((post, i) => (
               <FadeIn key={post.slug} delay={i * 60}>
-                <Link to={`/blog/${post.slug}`} className="group block">
+                <Link to={(post as any).isEbook ? "/ebook" : `/blog/${post.slug}`} className="group block">
                   <div className="overflow-hidden rounded-xl mb-4">
                     <img src={post.image} alt={post.title} className="w-full aspect-[16/10] object-cover transition-transform duration-500 group-hover:scale-[1.03]" loading="lazy" />
                   </div>

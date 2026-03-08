@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
+import AnnouncementBanner from "@/components/AnnouncementBanner";
 import CookieBanner from "@/components/CookieBanner";
 import Index from "./pages/Index";
 import Kontakt from "./pages/Kontakt";
@@ -18,6 +19,7 @@ import BlogPost from "./pages/BlogPost";
 import ProjectPage from "./pages/ProjectPage";
 import PolitykaPrywatnosci from "./pages/PolitykaPrywatnosci";
 import Regulamin from "./pages/Regulamin";
+import Ebook from "./pages/Ebook";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +38,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <AnnouncementBanner />
         <ScrollRestoration />
         <Navbar />
         <Routes>
@@ -48,6 +51,7 @@ const App = () => (
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
           <Route path="/regulamin" element={<Regulamin />} />
+          <Route path="/ebook" element={<Ebook />} />
           <Route path="/:slug" element={<ProjectPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
