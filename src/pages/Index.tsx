@@ -342,24 +342,24 @@ const Index = () => {
             {testimonials.map((t, i) => (
               <FadeIn key={i} delay={i * 80}>
                 <div
-                  className={`bg-background rounded-xl p-6 flex flex-col min-w-[280px] max-w-[300px] h-full border transition-all duration-700 cursor-pointer ${
+                  className={`rounded-xl p-6 flex flex-col min-w-[280px] max-w-[300px] h-full transition-all duration-700 cursor-pointer ${
                     activeTestimonial === i
-                      ? "border-accent shadow-md scale-[1.03]"
-                      : "border-border/50 opacity-60"
+                      ? "bg-background shadow-lg scale-[1.03]"
+                      : "bg-background/60 opacity-50 hover:opacity-70"
                   }`}
                   onClick={() => setActiveTestimonial(i)}
                 >
                   <div className="flex gap-0.5 mb-4">
                     {Array.from({ length: t.rating }).map((_, j) => (
-                      <Star key={j} size={14} className="text-accent fill-accent" />
+                      <Star key={j} size={14} className={`transition-colors duration-500 ${activeTestimonial === i ? "text-accent fill-accent" : "text-border fill-border"}`} />
                     ))}
                   </div>
                   <blockquote className="font-body text-sm text-foreground leading-relaxed mb-5 flex-1">
                     &bdquo;{t.text}&rdquo;
                   </blockquote>
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-accent/20 flex items-center justify-center">
-                      <span className="font-heading text-sm text-accent">{t.author.charAt(0)}</span>
+                    <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-500 ${activeTestimonial === i ? "bg-accent/15" : "bg-muted"}`}>
+                      <span className={`font-heading text-sm transition-colors duration-500 ${activeTestimonial === i ? "text-accent" : "text-muted-foreground"}`}>{t.author.charAt(0)}</span>
                     </div>
                     <div>
                       <p className="font-body text-sm font-medium text-foreground">{t.author}</p>

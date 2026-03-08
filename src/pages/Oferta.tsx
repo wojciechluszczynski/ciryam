@@ -188,37 +188,68 @@ const Oferta = () => {
             <div className="overflow-x-auto">
               <table className="w-full font-body text-sm">
                 <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left py-4 px-3 text-muted-foreground font-normal text-xs uppercase tracking-wider">Co zawiera</th>
+                  <tr>
+                    <th className="text-left py-4 px-3 text-muted-foreground font-normal text-xs uppercase tracking-wider border-b border-border">Co zawiera</th>
                     {packages.map((pkg) => (
-                      <th key={pkg.name} className="text-center py-4 px-3 font-heading text-sm text-foreground whitespace-nowrap">
+                      <th
+                        key={pkg.name}
+                        className={`text-center py-4 px-3 font-heading text-sm whitespace-nowrap border-b ${
+                          pkg.popular
+                            ? "bg-primary text-primary-foreground rounded-t-xl border-primary relative"
+                            : "text-foreground border-border"
+                        }`}
+                      >
+                        {pkg.popular && (
+                          <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-accent text-accent-foreground font-body text-[10px] tracking-[0.1em] uppercase whitespace-nowrap">
+                            Popularny wybór
+                          </span>
+                        )}
                         {pkg.name}
-                        {pkg.popular && <span className="block text-accent text-xs font-body font-normal mt-0.5">★ popularna</span>}
+                        <span className={`block text-xs font-body font-normal mt-1 ${pkg.popular ? "text-primary-foreground/60" : "text-muted-foreground"}`}>{pkg.price}</span>
                       </th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {comparisonFeatures.map((feat) => (
-                    <tr key={feat.name} className="border-b border-border/50">
-                      <td className="py-3 px-3 text-foreground/80 text-sm">{feat.name}</td>
+                    <tr key={feat.name}>
+                      <td className="py-3 px-3 text-foreground/80 text-sm border-b border-border/50">{feat.name}</td>
                       {feat.values.map((val, j) => (
-                        <td key={j} className="py-3 px-3 text-center">
+                        <td
+                          key={j}
+                          className={`py-3 px-3 text-center border-b ${
+                            packages[j].popular
+                              ? "bg-primary/5 border-primary/10"
+                              : "border-border/50"
+                          }`}
+                        >
                           {val === true ? (
                             <Check size={16} className="text-accent mx-auto" />
                           ) : val === false ? (
                             <span className="text-muted-foreground/30">—</span>
                           ) : (
-                            <span className="text-foreground/70 text-xs">{val}</span>
+                            <span className={`text-xs font-medium ${packages[j].popular ? "text-accent" : "text-foreground/70"}`}>{val}</span>
                           )}
                         </td>
                       ))}
                     </tr>
                   ))}
                   <tr>
-                    <td className="py-4 px-3 text-foreground font-medium">Cena</td>
+                    <td className="py-5 px-3 text-foreground font-medium">Cena</td>
                     {packages.map((pkg) => (
-                      <td key={pkg.name} className="py-4 px-3 text-center font-heading text-sm text-accent">{pkg.price}</td>
+                      <td
+                        key={pkg.name}
+                        className={`py-5 px-3 text-center ${
+                          pkg.popular ? "bg-primary/5 rounded-b-xl" : ""
+                        }`}
+                      >
+                        <span className={`font-heading text-base ${pkg.popular ? "text-accent" : "text-foreground"}`}>{pkg.price}</span>
+                        {pkg.popular && (
+                          <Link to="/kontakt" className="block mt-2 mx-auto w-fit px-5 py-1.5 rounded-full bg-accent text-accent-foreground font-body text-xs hover:bg-accent/90 transition-colors">
+                            Wybierz
+                          </Link>
+                        )}
+                      </td>
                     ))}
                   </tr>
                 </tbody>

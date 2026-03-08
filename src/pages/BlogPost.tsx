@@ -917,6 +917,22 @@ Można, ale to ryzykowne – większość kosztownych błędów (złe gniazdka, 
 const BlogPost = () => {
   const { slug } = useParams();
   const post = slug ? posts[slug] : null;
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const articleRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!articleRef.current) return;
+      const rect = articleRef.current.getBoundingClientRect();
+      const articleTop = window.scrollY + rect.top;
+      const articleHeight = rect.height;
+      const scrolled = window.scrollY - articleTop;
+      const progress = Math.max(0, Math.min(1, scrolled / (articleHeight - window.innerHeight)));
+      setScrollProgress(progress);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [post]);
 
   if (!post) {
     return (
@@ -945,6 +961,14 @@ const BlogPost = () => {
 
   return (
     <main className="bg-background">
+      {/* Reading progress bar */}
+      <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-border/20">
+        <div
+          className="h-full bg-accent transition-all duration-150 ease-out"
+          style={{ width: `${scrollProgress * 100}%` }}
+        />
+      </div>
+
       {/* Hero image */}
       <div className="relative h-[40vh] md:h-[50vh] overflow-hidden">
         <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
