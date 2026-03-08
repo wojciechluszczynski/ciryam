@@ -24,7 +24,7 @@ const EbookCaseStudy = () => (
     <div className="section-padding bg-secondary -mt-1">
       <div className="max-w-[1000px] mx-auto">
         <FadeIn>
-          <span className="font-body text-[10px] tracking-[0.2em] uppercase text-accent mb-4 block">07</span>
+          <span className="font-body text-[10px] tracking-[0.2em] uppercase text-accent mb-4 block">Case study</span>
           <h2 className="font-heading text-2xl md:text-4xl text-foreground mb-6">
             Realizacja: Złota Harmonia — Rzeszów
           </h2>

@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { Check, AlertTriangle } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 
 const questions = [
@@ -75,13 +75,18 @@ const EbookChooseDesigner = () => (
 
         <div className="w-full h-px bg-primary-foreground/8 mb-8" />
 
-        <p className="font-body text-[10px] tracking-[0.15em] uppercase text-destructive/80 mb-5">
-          Czerwone flagi — uważaj gdy projektant:
-        </p>
+        <div className="flex items-center gap-2 mb-5">
+          <AlertTriangle size={14} className="text-accent shrink-0" />
+          <p className="font-body text-[10px] tracking-[0.15em] uppercase text-primary-foreground/60">
+            Na co uważać przy wyborze projektanta
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {redFlags.map((flag) => (
-            <div key={flag} className="flex items-start gap-2.5 font-body text-sm text-primary-foreground/50 bg-primary-foreground/5 rounded-lg p-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-destructive mt-1.5 shrink-0" />
+            <div key={flag} className="flex items-start gap-2.5 font-body text-sm text-primary-foreground/50 bg-primary-foreground/5 rounded-xl p-3.5 border border-primary-foreground/5">
+              <span className="w-4 h-4 rounded-full bg-accent/15 flex items-center justify-center shrink-0 mt-0.5">
+                <AlertTriangle size={9} className="text-accent" />
+              </span>
               <span>{flag}</span>
             </div>
           ))}
