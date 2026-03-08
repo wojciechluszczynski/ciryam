@@ -13,70 +13,70 @@ import vizClosetMarble from "@/assets/viz-closet-marble.png";
 import vizDetailCeramics from "@/assets/viz-detail-ceramics.png";
 import heroKitchen from "@/assets/hero-kitchen.png";
 
-const categories = ["Wszystkie", "Trendy", "Porady", "Realizacje", "Materiały", "Proces"];
+const categories = ["Wszystkie", "Współpraca", "Błędy", "Porady", "Trendy", "Materiały"];
 
 const blogPosts = [
   {
-    title: "5 błędów przy planowaniu kuchni, których łatwo uniknąć",
-    excerpt: "Kuchnia to serce domu. Sprawdź, jakich pułapek unikać, żeby Twoja kuchnia była funkcjonalna i piękna na lata.",
-    image: vizKitchenRattan,
-    category: "Porady",
-    date: "28 lutego 2026",
-    readTime: "5 min",
-    slug: "bledy-planowanie-kuchni",
+    title: "Jak wygląda współpraca z projektantką wnętrz? Proces krok po kroku",
+    excerpt: "Zastanawiasz się, jak przebiega projektowanie wnętrz od pierwszej rozmowy do realizacji? Tłumaczę cały proces krok po kroku – bez żargonu, po ludzku.",
+    image: heroKitchen,
+    category: "Współpraca",
+    date: "5 marca 2026",
+    readTime: "8 min",
+    slug: "jak-wyglada-wspolpraca-z-projektantem-wnetrz",
     featured: true,
   },
   {
-    title: "Trendy wnętrzarskie 2026: co zostaje, a co odchodzi?",
-    excerpt: "Przegląd najważniejszych trendów w projektowaniu wnętrz na 2026 rok. Minimalizm, ciepłe materiały i odwaga w kolorze.",
+    title: "Projekt wnętrza – od czego zacząć i co przygotować?",
+    excerpt: "Planujesz projekt wnętrza i nie wiesz od czego zacząć? Dowiedz się, co przygotować przed pierwszym spotkaniem z projektantką.",
     image: vizLivingBeige,
-    category: "Trendy",
-    date: "20 lutego 2026",
+    category: "Współpraca",
+    date: "1 marca 2026",
     readTime: "7 min",
-    slug: "trendy-wnetrzarskie-2026",
+    slug: "projekt-wnetrza-od-czego-zaczac",
   },
   {
-    title: "Jak wybrać idealne płytki do łazienki?",
-    excerpt: "Rodzaje płytek, formaty, kolory i układy. Praktyczny przewodnik po wyborze płytek do łazienki, który ułatwi decyzję.",
-    image: vizBathroomMarble,
-    category: "Materiały",
-    date: "15 lutego 2026",
-    readTime: "6 min",
-    slug: "jak-wybrac-plytki-lazienka",
-  },
-  {
-    title: "Mały metraż, duże możliwości: jak urządzić kawalerkę?",
-    excerpt: "Sprytne rozwiązania, wielofunkcyjne meble i optyczne triki, które sprawią, że małe mieszkanie będzie wyglądać na większe.",
-    image: vizBedroomMural,
-    category: "Porady",
-    date: "8 lutego 2026",
-    readTime: "5 min",
-    slug: "maly-metraz-kawalerka",
-  },
-  {
-    title: "Realizacja: Złota Harmonia w Rzeszowie",
-    excerpt: "Zaglądamy za kulisy projektu mieszkania w Rzeszowie. 85 m² ciepłych, przytulnych wnętrz z przemyślanym układem.",
+    title: "Projektant wnętrz Krosno i Rzeszów – kiedy warto i ile kosztuje?",
+    excerpt: "Szukasz projektanta wnętrz w Krośnie lub Rzeszowie? Dowiedz się, kiedy warto skorzystać z pomocy projektantki i jak wygląda współpraca na Podkarpaciu.",
     image: vizDiningFireplace,
-    category: "Realizacje",
-    date: "1 lutego 2026",
-    readTime: "4 min",
-    slug: "realizacja-zlota-harmonia",
+    category: "Współpraca",
+    date: "25 lutego 2026",
+    readTime: "7 min",
+    slug: "projektant-wnetrz-krosno-rzeszow",
   },
   {
-    title: "Jak przebiega współpraca z projektantem wnętrz?",
-    excerpt: "Krok po kroku: od pierwszej rozmowy po odbiór kluczy. Dowiedz się, czego możesz się spodziewać podczas współpracy.",
-    image: heroKitchen,
-    category: "Proces",
-    date: "25 stycznia 2026",
-    readTime: "6 min",
-    slug: "wspolpraca-z-projektantem",
+    title: "10 najczęstszych błędów przy urządzaniu mieszkania",
+    excerpt: "Urządzasz mieszkanie i chcesz uniknąć kosztownych błędów? Oto 10 najczęstszych błędów przy urządzaniu wnętrz, które widzę jako projektantka.",
+    image: vizBedroomMural,
+    category: "Błędy",
+    date: "20 lutego 2026",
+    readTime: "8 min",
+    slug: "bledy-przy-urzadzaniu-mieszkania",
+  },
+  {
+    title: "Dlaczego remont wymyka się spod kontroli – błędy w planowaniu",
+    excerpt: "Remont, który miał kosztować 80 tys., kończy się na 130 tys. Skąd się biorą te różnice? Tłumaczę, jakie błędy kosztują najwięcej.",
+    image: vizBathroomMarble,
+    category: "Błędy",
+    date: "15 lutego 2026",
+    readTime: "7 min",
+    slug: "remont-mieszkania-bledy-planowanie",
+  },
+  {
+    title: "Najczęstsze błędy przy projektowaniu kuchni i salonu",
+    excerpt: "Źle zaplanowana kuchnia to jeden z największych problemów po remoncie. Oto najczęstsze błędy, których warto uniknąć.",
+    image: vizKitchenRattan,
+    category: "Błędy",
+    date: "10 lutego 2026",
+    readTime: "7 min",
+    slug: "bledy-projektowanie-kuchni-salonu",
   },
   {
     title: "Ciemne wnętrza: odwaga czy ryzyko?",
     excerpt: "Ciemne kolory we wnętrzach mogą być eleganckie i przytulne. Podpowiadam, jak je stosować, żeby nie przytłoczyć przestrzeni.",
     image: vizBedroomDark,
     category: "Trendy",
-    date: "18 stycznia 2026",
+    date: "5 lutego 2026",
     readTime: "5 min",
     slug: "ciemne-wnetrza",
   },
@@ -85,7 +85,7 @@ const blogPosts = [
     excerpt: "Jak zaprojektować garderobę, która pomieści wszystko i będzie wyglądać jak z magazynu? Praktyczne porady i inspiracje.",
     image: vizClosetMarble,
     category: "Porady",
-    date: "10 stycznia 2026",
+    date: "1 lutego 2026",
     readTime: "4 min",
     slug: "garderoba-marzen",
   },
@@ -94,7 +94,7 @@ const blogPosts = [
     excerpt: "Ceramika to materiał o ogromnym potencjale dekoracyjnym. Odkryj, jak wykorzystać ją w nowoczesnych wnętrzach.",
     image: vizDetailCeramics,
     category: "Materiały",
-    date: "3 stycznia 2026",
+    date: "25 stycznia 2026",
     readTime: "5 min",
     slug: "ceramika-we-wnetrzach",
   },
@@ -216,14 +216,14 @@ const Blog = () => {
       </section>
 
       {/* CTA */}
-      <section className="bg-primary section-padding">
+      <section className="bg-primary section-padding-sm">
         <div className="max-w-[700px] mx-auto text-center">
           <FadeIn>
-            <h2 className="font-heading text-2xl md:text-3xl text-primary-foreground mb-4">Chcesz być na bieżąco?</h2>
-            <p className="text-primary-foreground/70 font-body text-base mb-8">Obserwuj mnie na Instagramie, gdzie dzielę się inspiracjami i zakulisowymi ujęciami z projektów.</p>
-            <a href="https://www.instagram.com/an_projekt/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-accent text-accent-foreground text-sm tracking-[0.05em] font-body hover:bg-accent/90 transition-all duration-300">
-              Obserwuj na Instagramie <ArrowRight size={14} />
-            </a>
+            <h2 className="font-heading text-2xl md:text-3xl text-primary-foreground mb-4">Planujesz projekt wnętrza?</h2>
+            <p className="text-primary-foreground/70 font-body text-base mb-8">Napisz do mnie. Pierwsza rozmowa jest bezpłatna i bez zobowiązań.</p>
+            <Link to="/kontakt" className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-accent text-accent-foreground text-sm tracking-[0.05em] font-body hover:bg-accent/90 transition-all duration-300">
+              Zapytaj o projekt <ArrowRight size={14} />
+            </Link>
           </FadeIn>
         </div>
       </section>
