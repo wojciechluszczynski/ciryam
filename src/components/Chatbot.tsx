@@ -3,16 +3,16 @@ import { X, Send } from "lucide-react";
 import annaPortrait from "@/assets/anna-portrait.jpg";
 
 const quickTopics = [
-  { label: "Jak wygląda współpraca?", answer: "Współpraca zaczyna się od bezpłatnej rozmowy, podczas której poznaję Twoje potrzeby. Następnie przygotowuję układ funkcjonalny i koncepcję, potem wizualizacje 3D, a na końcu dokumentację techniczną. W opcji Kompleks wspieram też realizację na budowie." },
-  { label: "Jakie są opcje współpracy?", answer: "Oferuję 4 formy: Konsultację (jednorazowe spotkanie), Opcję Koncepcyjną (układ + wizualizacje), Opcję Komfortową (pełny projekt z dokumentacją) i Opcję Kompleks (projekt + nadzór na budowie). Szczegóły znajdziesz na stronie Oferta." },
-  { label: "Ile kosztuje projekt?", answer: "Wycena zależy od metrażu i zakresu prac. Po pierwszej rozmowie przygotuję indywidualną ofertę dopasowaną do Twoich potrzeb. Pierwsza rozmowa jest bezpłatna, napisz lub zadzwoń." },
-  { label: "Gdzie działasz?", answer: "Pracuję głównie na Podkarpaciu (okolice Krosna, Rzeszowa) i w Małopolsce (okolice Nowego Sącza). Wiele elementów projektów realizuję również zdalnie." },
-  { label: "Jak się skontaktować?", answer: "Napisz na anprojekt.com@gmail.com lub zadzwoń: +48 730 359 642. Możesz też wypełnić formularz na stronie Kontakt. Odezwę się w ciągu 1-2 dni roboczych." },
+  { label: "Jak wyglada wspolpraca?", answer: "Wspolpraca zaczyna sie od bezplatnej rozmowy, podczas ktorej poznaję Twoje potrzeby. Nastepnie przygotowuje uklad funkcjonalny i koncepcje, potem wizualizacje 3D, a na koncu dokumentacje techniczna. W opcji Kompleks wspieram tez realizacje na budowie." },
+  { label: "Jakie sa opcje wspolpracy?", answer: "Oferuje 4 formy: Konsultacje (jednorazowe spotkanie), Opcje Koncepcyjna (uklad + wizualizacje), Opcje Komfortowa (pelny projekt z dokumentacja) i Opcje Kompleks (projekt + nadzor na budowie). Szczegoly znajdziesz na stronie Oferta." },
+  { label: "Ile kosztuje projekt?", answer: "Wycena zalezy od metrazu i zakresu prac. Po pierwszej rozmowie przygotuje indywidualna oferte dopasowana do Twoich potrzeb. Pierwsza rozmowa jest bezplatna, napisz lub zadzwon." },
+  { label: "Gdzie dzialasz?", answer: "Pracuje glownie na Podkarpaciu (okolice Krosna, Rzeszowa) i w Malopolsce (okolice Nowego Sacza). Wiele elementow projektow realizuje rowniez zdalnie." },
+  { label: "Jak sie skontaktowac?", answer: "Napisz na anprojekt.com@gmail.com lub zadzwon: +48 730 359 642. Mozesz tez wypelnic formularz na stronie Kontakt. Odezwe sie w ciagu 1-2 dni roboczych." },
 ];
 
 const siteLinks = [
   { label: "Zobacz realizacje", href: "/realizacje" },
-  { label: "Sprawdź ofertę", href: "/oferta" },
+  { label: "Sprawdz oferte", href: "/oferta" },
   { label: "Poznaj mnie", href: "/o-mnie" },
   { label: "Formularz kontaktowy", href: "/kontakt" },
 ];
@@ -26,12 +26,11 @@ const Chatbot = () => {
   const [open, setOpen] = useState(false);
   const [showGreeting, setShowGreeting] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: "bot", content: "Cześć! Mogę pomóc Ci znaleźć informacje o ofercie, procesie współpracy lub skontaktować się z Anią. O co chcesz zapytać?" },
+    { role: "bot", content: "Czesc! Moge pomoc Ci znalezc informacje o ofercie, procesie wspolpracy lub skontaktowac sie z Ania. O co chcesz zapytac?" },
   ]);
   const [input, setInput] = useState("");
   const [showTopics, setShowTopics] = useState(true);
 
-  // Show greeting bubble after 3 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!open) setShowGreeting(true);
@@ -55,17 +54,17 @@ const Chatbot = () => {
     setShowTopics(false);
 
     const lower = userMsg.toLowerCase();
-    let botResponse = "Dziękuję za pytanie! Aby uzyskać szczegółową odpowiedź, najlepiej skontaktuj się bezpośrednio z Anią: anprojekt.com@gmail.com lub +48 730 359 642.";
+    let botResponse = "Dziekuje za pytanie! Aby uzyskac szczegolowa odpowiedz, najlepiej skontaktuj sie bezposrednio z Ania: anprojekt.com@gmail.com lub +48 730 359 642.";
 
     if (lower.includes("cen") || lower.includes("koszt") || lower.includes("ile")) {
       botResponse = quickTopics[2].answer;
-    } else if (lower.includes("współprac") || lower.includes("proces") || lower.includes("etap")) {
+    } else if (lower.includes("wspolprac") || lower.includes("proces") || lower.includes("etap")) {
       botResponse = quickTopics[0].answer;
     } else if (lower.includes("ofert") || lower.includes("pakiet") || lower.includes("opcj")) {
       botResponse = quickTopics[1].answer;
     } else if (lower.includes("kontakt") || lower.includes("mail") || lower.includes("telefon") || lower.includes("zadzwon")) {
       botResponse = quickTopics[4].answer;
-    } else if (lower.includes("gdzie") || lower.includes("region") || lower.includes("dojazd") || lower.includes("rzeszów") || lower.includes("krosno")) {
+    } else if (lower.includes("gdzie") || lower.includes("region") || lower.includes("dojazd") || lower.includes("rzesz") || lower.includes("krosno")) {
       botResponse = quickTopics[3].answer;
     }
 
@@ -84,16 +83,19 @@ const Chatbot = () => {
           className="fixed bottom-24 right-6 z-50 bg-background rounded-2xl shadow-lg border border-border px-4 py-3 max-w-[220px] animate-fade-in-up cursor-pointer"
           onClick={() => { setOpen(true); setShowGreeting(false); }}
         >
-          <p className="font-body text-sm text-foreground">Cześć, porozmawiajmy o Twoim projekcie?</p>
+          <p className="font-body text-sm text-foreground">Czesc, porozmawiajmy o Twoim projekcie?</p>
           <div className="absolute -bottom-2 right-6 w-4 h-4 bg-background border-r border-b border-border rotate-45" />
         </div>
       )}
 
-      {/* Chat bubble */}
+      {/* Chat bubble with warm brown glow */}
       <button
         onClick={() => { setOpen(!open); setShowGreeting(false); }}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center overflow-hidden"
-        aria-label="Otwórz czat"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center overflow-hidden group"
+        aria-label="Otworz czat"
+        style={{
+          boxShadow: open ? undefined : "0 0 20px 4px hsl(25 22% 55% / 0.35), 0 4px 12px rgba(0,0,0,0.1)",
+        }}
       >
         {open ? (
           <div className="w-full h-full bg-accent flex items-center justify-center">
@@ -119,7 +121,7 @@ const Chatbot = () => {
             <img src={annaPortrait} alt="Anna Nowak" className="w-9 h-9 rounded-full object-cover object-top" />
             <div>
               <p className="text-primary-foreground font-body text-sm font-medium">AN Projekt</p>
-              <p className="text-primary-foreground/60 font-body text-xs">Zwykle odpowiadam w ciągu 1-2 dni</p>
+              <p className="text-primary-foreground/60 font-body text-xs">Zwykle odpowiadam w ciagu 1-2 dni</p>
             </div>
           </div>
 
@@ -173,7 +175,7 @@ const Chatbot = () => {
                   onClick={() => setShowTopics(true)}
                   className="px-3 py-1.5 rounded-full bg-secondary text-muted-foreground font-body text-xs hover:bg-accent/10 transition-colors border border-border/50"
                 >
-                  Więcej pytań
+                  Wiecej pytan
                 </button>
               </div>
             )}
@@ -193,7 +195,7 @@ const Chatbot = () => {
             <button
               onClick={handleSend}
               className="w-9 h-9 rounded-full bg-accent text-accent-foreground flex items-center justify-center hover:bg-accent/90 transition-colors shrink-0"
-              aria-label="Wyślij"
+              aria-label="Wyslij"
             >
               <Send size={16} />
             </button>

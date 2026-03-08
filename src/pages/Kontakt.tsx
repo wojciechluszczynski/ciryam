@@ -3,17 +3,23 @@ import { Instagram, Facebook } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import { toast } from "sonner";
 
+const PinterestIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className="w-[22px] h-[22px]">
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+  </svg>
+);
+
 const projectTypes = [
   "Mieszkanie",
   "Dom jednorodzinny",
   "Pojedyncze pomieszczenie",
-  "Lokal usługowy",
+  "Lokal uslugowy",
   "Inne",
 ];
 
 const stages = [
-  "Dopiero planuję",
-  "Mam projekt / pomysł",
+  "Dopiero planuje",
+  "Mam projekt / pomysl",
   "Remont w trakcie",
   "Szukam konsultacji",
 ];
@@ -38,19 +44,18 @@ const Kontakt = () => {
     e.preventDefault();
     if (form.honeypot) return;
     if (!form.name || !form.email || !form.message || !form.consent) {
-      toast.error("Proszę wypełnić wymagane pola i zaakceptować zgodę.");
+      toast.error("Prosze wypelnic wymagane pola i zaakceptowac zgode.");
       return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      toast.error("Proszę podać prawidłowy adres email.");
+      toast.error("Prosze podac prawidlowy adres email.");
       return;
     }
     setSending(true);
-    // Simulate send (replace with backend call when Cloud is connected)
     await new Promise((r) => setTimeout(r, 800));
     setSending(false);
     setSubmitted(true);
-    toast.success("Dziękuję! Odezwę się w ciągu 1–2 dni roboczych.");
+    toast.success("Dziekuje! Odezwe sie w ciagu 1-2 dni roboczych.");
   };
 
   const inputClass =
@@ -67,15 +72,15 @@ const Kontakt = () => {
           <FadeIn>
             <div>
               <h1 className="font-heading text-3xl md:text-4xl text-primary-foreground mb-4">
-                Porozmawiajmy o&nbsp;Twoim wnętrzu
+                Porozmawiajmy o&nbsp;Twoim wnetrzu
               </h1>
               <p className="text-primary-foreground/60 font-body text-base mb-10">
-                Opisz w kilku zdaniach swój projekt lub zadaj pytanie. Pierwsza rozmowa jest bezpłatna.
+                Opisz w kilku zdaniach swoj projekt lub zadaj pytanie. Pierwsza rozmowa jest bezplatna.
               </p>
 
               <div className="flex flex-col gap-2 text-primary-foreground/70 font-body text-sm mb-8">
-                <span className="text-primary-foreground font-medium text-base">Anna Nowak · AN Projekt</span>
-                <span>Odrzykoń, Podkarpacie</span>
+                <span className="text-primary-foreground font-medium text-base">Anna Nowak, AN Projekt</span>
+                <span>Odrzikon, Podkarpacie</span>
                 <a href="tel:+48730359642" className="hover:text-accent transition-colors">
                   +48 730 359 642
                 </a>
@@ -103,11 +108,20 @@ const Kontakt = () => {
                 >
                   <Facebook size={22} />
                 </a>
+                <a
+                  href="https://www.pinterest.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary-foreground/40 hover:text-accent transition-colors"
+                  aria-label="Pinterest"
+                >
+                  <PinterestIcon />
+                </a>
               </div>
 
               <div className="text-primary-foreground/40 font-body text-xs leading-relaxed space-y-1">
-                <p>Możesz też napisać bezpośrednio na adres e‑mail.</p>
-                <p>Po wysłaniu formularza odezwę się w ciągu 1–2 dni roboczych.</p>
+                <p>Mozesz tez napisac bezposrednio na adres e-mail.</p>
+                <p>Po wyslaniu formularza odezwe sie w ciagu 1-2 dni roboczych.</p>
               </div>
             </div>
           </FadeIn>
@@ -117,12 +131,12 @@ const Kontakt = () => {
             {submitted ? (
               <div className="flex items-center justify-center h-full">
                 <div className="text-center">
-                  <h2 className="font-heading text-2xl text-primary-foreground mb-3">Dziękuję!</h2>
+                  <h2 className="font-heading text-2xl text-primary-foreground mb-3">Dziekuje!</h2>
                   <p className="text-primary-foreground/60 font-body text-base mb-2">
-                    Twoja wiadomość dotarła. Odezwę się w ciągu 1–2 dni roboczych.
+                    Twoja wiadomosc dotarla. Odezwe sie w ciagu 1-2 dni roboczych.
                   </p>
                   <p className="text-primary-foreground/40 font-body text-sm">
-                    Jeśli to pilne, napisz na anprojekt.com@gmail.com
+                    Jesli to pilne, napisz na anprojekt.com@gmail.com
                   </p>
                 </div>
               </div>
@@ -140,7 +154,7 @@ const Kontakt = () => {
 
                 <input
                   type="text"
-                  placeholder="Imię i nazwisko *"
+                  placeholder="Imie i nazwisko *"
                   value={form.name}
                   onChange={(e) => set("name", e.target.value)}
                   className={inputClass}
@@ -168,7 +182,7 @@ const Kontakt = () => {
 
                 <input
                   type="text"
-                  placeholder="Miejscowość"
+                  placeholder="Miejscowosc"
                   value={form.city}
                   onChange={(e) => set("city", e.target.value)}
                   className={inputClass}
@@ -188,7 +202,7 @@ const Kontakt = () => {
                   </select>
                   <input
                     type="text"
-                    placeholder="Przybliżony metraż"
+                    placeholder="Przyblizony metraz"
                     value={form.area}
                     onChange={(e) => set("area", e.target.value)}
                     className={inputClass}
@@ -201,14 +215,14 @@ const Kontakt = () => {
                   onChange={(e) => set("stage", e.target.value)}
                   className={`${inputClass} appearance-none ${!form.stage ? "text-primary-foreground/30" : ""}`}
                 >
-                  <option value="" disabled>Na jakim etapie jesteś?</option>
+                  <option value="" disabled>Na jakim etapie jestes?</option>
                   {stages.map((s) => (
                     <option key={s} value={s} className="text-foreground bg-background">{s}</option>
                   ))}
                 </select>
 
                 <textarea
-                  placeholder="Opisz w kilku zdaniach swój projekt lub pytanie... *"
+                  placeholder="Opisz w kilku zdaniach swoj projekt lub pytanie... *"
                   value={form.message}
                   onChange={(e) => set("message", e.target.value)}
                   className={`${inputClass} resize-none min-h-[100px]`}
@@ -223,8 +237,8 @@ const Kontakt = () => {
                     className="mt-1 accent-accent"
                   />
                   <span className="text-primary-foreground/50 font-body text-xs leading-relaxed">
-                    Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie, zgodnie z&nbsp;
-                    <a href="/polityka-prywatnosci" className="underline hover:text-accent">polityką prywatności</a>. *
+                    Wyrazam zgode na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie, zgodnie z&nbsp;
+                    <a href="/polityka-prywatnosci" className="underline hover:text-accent">polityka prywatnosci</a>. *
                   </span>
                 </label>
 
@@ -233,7 +247,7 @@ const Kontakt = () => {
                   disabled={sending}
                   className="w-full mt-3 py-3.5 rounded-full bg-accent text-accent-foreground font-body text-sm tracking-[0.05em] uppercase hover:bg-accent/90 transition-all duration-300 disabled:opacity-60"
                 >
-                  {sending ? "Wysyłanie..." : "Wyślij wiadomość"}
+                  {sending ? "Wysylanie..." : "Wyslij wiadomosc"}
                 </button>
               </form>
             )}

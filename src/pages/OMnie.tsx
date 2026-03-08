@@ -1,22 +1,10 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import annaPortrait from "@/assets/anna-portrait.jpg";
 import vizBathroomMarble from "@/assets/viz-bathroom-marble.png";
 import vizBedroomDark from "@/assets/viz-bedroom-dark.png";
-import { ArrowRight, Instagram, Facebook } from "lucide-react";
-
-const values = [
-  { title: "Estetyka z funkcją", desc: "Projektuję tak, żeby było pięknie i praktycznie, w równym stopniu." },
-  { title: "Bliskość i komunikacja", desc: "Pracuję bezpośrednio z klientem, bez pośredników. Słucham, pytam, proponuję." },
-  { title: "Odpowiedzialność", desc: "Biorę odpowiedzialność za każdy etap, od pomysłu po nadzór na budowie." },
-];
-
-const processSteps = [
-  "Rozmowa o projekcie",
-  "Układ funkcjonalny i koncepcja",
-  "Projekt i wizualizacje",
-  "Dokumentacja i wsparcie przy realizacji",
-];
+import { ArrowRight, Instagram, Facebook, MessageCircle, MapPin, Ruler, Monitor, Hammer } from "lucide-react";
 
 const PinterestIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-[22px] h-[22px]">
@@ -24,7 +12,22 @@ const PinterestIcon = () => (
   </svg>
 );
 
+const values = [
+  { title: "Estetyka z funkcja", desc: "Projektuje tak, zeby bylo pieknie i praktycznie, w rownym stopniu." },
+  { title: "Bliskosc i komunikacja", desc: "Pracuje bezposrednio z klientem, bez posrednikow. Slucham, pytam, proponuje." },
+  { title: "Odpowiedzialnosc", desc: "Biore odpowiedzialnosc za kazdy etap, od pomyslu po nadzor na budowie." },
+];
+
+const processSteps = [
+  { title: "Rozmowa o projekcie", icon: MessageCircle },
+  { title: "Wizja lokalna i pomiar", icon: MapPin },
+  { title: "Koncepcja i wizualizacje", icon: Ruler },
+  { title: "Dokumentacja i wsparcie", icon: Hammer },
+];
+
 const OMnie = () => {
+  const [activeStep, setActiveStep] = useState<number | null>(null);
+
   return (
     <main>
       {/* Hero */}
@@ -32,7 +35,7 @@ const OMnie = () => {
         <div className="max-w-[1200px] mx-auto">
           <FadeIn>
             <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-4">O mnie</p>
-            <h1 className="font-heading text-3xl md:text-5xl text-foreground max-w-2xl">Anna Nowak · AN Projekt</h1>
+            <h1 className="font-heading text-3xl md:text-5xl text-foreground max-w-2xl">Anna Nowak</h1>
           </FadeIn>
         </div>
       </section>
@@ -41,29 +44,33 @@ const OMnie = () => {
       <section className="bg-background section-padding-sm">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           <FadeIn>
-            <div className="relative overflow-hidden rounded-lg">
+            <div className="relative overflow-hidden rounded-lg group">
               <img
                 src={annaPortrait}
-                alt="Anna Nowak, projektantka wnętrz AN Projekt"
+                alt="Anna Nowak, projektantka wnetrz AN Projekt"
                 className="w-full aspect-[3/4] object-cover object-top"
                 loading="lazy"
               />
-              <div className="absolute inset-0 rounded-lg ring-2 ring-accent/20 animate-pulse pointer-events-none" />
+              {/* Pulsing accent ring */}
+              <div className="absolute inset-0 rounded-lg pointer-events-none">
+                <div className="absolute inset-0 rounded-lg ring-2 ring-accent/20 animate-pulse" />
+                <div className="absolute inset-2 rounded-lg ring-1 ring-accent/10 animate-pulse" style={{ animationDelay: "0.5s" }} />
+              </div>
             </div>
           </FadeIn>
           <FadeIn delay={150}>
             <div>
               <p className="text-muted-foreground font-body text-base leading-relaxed mb-5">
-                Nazywam się Anna Nowak i prowadzę pracownię AN Projekt.
+                Nazywam sie Anna Nowak i prowadze pracownie AN Projekt.
               </p>
               <p className="text-muted-foreground font-body text-base leading-relaxed mb-5">
-                Projektuję wnętrza mieszkań i domów dla osób, które chcą stworzyć przestrzeń dopasowaną do swojego stylu życia. Funkcjonalną, estetyczną i przemyślaną w każdym detalu.
+                Projektuje wnetrza mieszkan i domow dla osob, ktore chca stworzyc przestrzen dopasowana do swojego stylu zycia. Funkcjonalna, estetyczna i przemyslana w kazdym detalu.
               </p>
               <p className="text-muted-foreground font-body text-base leading-relaxed mb-5">
-                Moja droga do projektowania wnętrz zaczęła się od budowy własnego domu. To właśnie wtedy zobaczyłam, jak wiele decyzji trzeba podjąć w trakcie projektowania i realizacji wnętrza, i jak łatwo w tym procesie o chaos, stres czy kosztowne pomyłki.
+                Moja droga do projektowania wnetrz zaczela sie od budowy wlasnego domu. To wlasnie wtedy zobaczylam, jak wiele decyzji trzeba podjac w trakcie projektowania i realizacji wnetrza, i jak latwo w tym procesie o chaos, stres czy kosztowne pomylki.
               </p>
               <p className="text-foreground font-body text-base leading-relaxed font-medium">
-                Dziś pomagam moim klientom przejść przez ten proces spokojniej i bardziej świadomie.
+                Dzis pomagam moim klientom przejsc przez ten proces spokojniej i bardziej swiadomie.
               </p>
             </div>
           </FadeIn>
@@ -75,22 +82,22 @@ const OMnie = () => {
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           <FadeIn>
             <div>
-              <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-5">Jak pracuję</h2>
+              <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-5">Jak pracuje</h2>
               <p className="text-muted-foreground font-body text-base leading-relaxed mb-5">
-                W swojej pracy łączę estetykę z funkcjonalnością. Każdy projekt powstaje indywidualnie, dopasowany do stylu życia domowników, charakteru przestrzeni i budżetu inwestycji.
+                W swojej pracy lacze estyke z funkcjonalnoscia. Kazdy projekt powstaje indywidualnie, dopasowany do stylu zycia domownikow, charakteru przestrzeni i budzetu inwestycji.
               </p>
               <p className="text-muted-foreground font-body text-base leading-relaxed mb-5">
-                Nie tworzę wnętrz „z katalogu". Zależy mi, aby były spójne, wygodne w codziennym użytkowaniu i po prostu dobrze się w nich mieszkało.
+                Nie tworze wnetrz "z katalogu". Zalezy mi, aby byly spojne, wygodne w codziennym uzytkowaniu i po prostu dobrze sie w nich mieszkalo.
               </p>
               <p className="text-muted-foreground font-body text-base leading-relaxed">
-                Pracuję głównie z klientami z Podkarpacia i Małopolski, między innymi w okolicach Krosna, Rzeszowa czy Nowego Sącza, ale wiele elementów projektów można realizować również zdalnie.
+                Pracuje glownie z klientami z Podkarpacia i Malopolski, miedzy innymi w okolicach Krosna, Rzeszowa czy Nowego Sacza, ale wiele elementow projektow mozna realizowac rowniez zdalnie.
               </p>
             </div>
           </FadeIn>
           <FadeIn delay={150}>
             <img
               src={vizBathroomMarble}
-              alt="Wizualizacja łazienki, projekt AN Projekt"
+              alt="Wizualizacja lazienki, projekt AN Projekt"
               className="w-full aspect-[4/3] object-cover rounded-lg"
               loading="lazy"
             />
@@ -98,18 +105,36 @@ const OMnie = () => {
         </div>
       </section>
 
-      {/* Process block */}
+      {/* Horizontal Process */}
       <section className="bg-background section-padding-sm">
         <div className="max-w-[800px] mx-auto">
           <FadeIn>
-            <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-10 text-center">Jak wygląda współpraca?</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {processSteps.map((step, i) => (
-                <div key={step} className="flex items-start gap-4 group">
-                  <span className="font-heading text-2xl text-accent/60 shrink-0 group-hover:text-accent transition-colors">{String(i + 1).padStart(2, "0")}</span>
-                  <p className="font-body text-base text-foreground pt-1">{step}</p>
-                </div>
-              ))}
+            <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-10 text-center">Jak wyglada wspolpraca?</h2>
+            <div className="relative">
+              <div className="hidden sm:block absolute top-5 left-0 right-0 h-px bg-border" />
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+                {processSteps.map((step, i) => {
+                  const StepIcon = step.icon;
+                  return (
+                    <div
+                      key={step.title}
+                      className="relative cursor-pointer text-center"
+                      onMouseEnter={() => setActiveStep(i)}
+                      onMouseLeave={() => setActiveStep(null)}
+                    >
+                      <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center mx-auto mb-3 transition-all duration-300 ${
+                        activeStep === i ? "border-accent bg-accent/10 scale-110" : "border-border bg-background"
+                      }`}>
+                        <StepIcon size={16} className={`transition-colors ${activeStep === i ? "text-accent" : "text-muted-foreground"}`} />
+                      </div>
+                      <span className={`font-heading text-lg mr-1 transition-colors ${activeStep === i ? "text-accent" : "text-accent/50"}`}>
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <p className="font-body text-sm text-foreground">{step.title}</p>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </FadeIn>
         </div>
@@ -122,7 +147,7 @@ const OMnie = () => {
             <div className="aspect-video flex items-center justify-center mb-6 overflow-hidden rounded-lg">
               <img src={vizBedroomDark} alt="Wizualizacja sypialni AN Projekt" className="w-full h-full object-cover" />
             </div>
-            <p className="text-muted-foreground font-body text-sm">Miejsce na krótkie wideo. Ania opowiada o swoim podejściu do projektów</p>
+            <p className="text-muted-foreground font-body text-sm">Miejsce na krotkie wideo. Ania opowiada o swoim podejsciu do projektow</p>
           </FadeIn>
         </div>
       </section>
@@ -131,7 +156,7 @@ const OMnie = () => {
       <section className="bg-background section-padding">
         <div className="max-w-[1000px] mx-auto">
           <FadeIn>
-            <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-12 text-center">Co jest dla mnie ważne</h2>
+            <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-12 text-center">Co jest dla mnie wazne</h2>
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {values.map((v, i) => (
@@ -153,14 +178,14 @@ const OMnie = () => {
           <FadeIn>
             <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-4">Kontakt</h2>
             <p className="text-muted-foreground font-body text-base mb-8">
-              Masz pytania albo chcesz porozmawiać o swoim projekcie?
+              Masz pytania albo chcesz porozmawiac o swoim projekcie?
             </p>
             <div className="flex flex-col gap-2 items-center text-foreground font-body text-base mb-6">
               <a href="mailto:anprojekt.com@gmail.com" className="hover:text-accent transition-colors">
-                📧 anprojekt.com@gmail.com
+                anprojekt.com@gmail.com
               </a>
               <a href="tel:+48730359642" className="hover:text-accent transition-colors">
-                📞 +48 730 359 642
+                +48 730 359 642
               </a>
             </div>
             <div className="flex gap-4 justify-center mb-8">
@@ -183,10 +208,10 @@ const OMnie = () => {
         <div className="max-w-[800px] mx-auto text-center">
           <FadeIn>
             <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-4">
-              Planujesz remont lub wykończenie wnętrza?
+              Planujesz remont lub wykonczenie wnetrza?
             </h2>
             <p className="text-muted-foreground font-body text-base mb-8">
-              Chętnie pomogę Ci przełożyć pomysły na konkretny, przemyślany projekt.
+              Chetnie pomoge Ci przelozyc pomysly na konkretny, przemyslany projekt.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
