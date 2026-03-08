@@ -672,8 +672,8 @@ const EbookPreview = () => {
                 "Nie ma realnego portfolio (tylko stocki)",
                 "Nie pyta o potrzeby i budżet",
                 "Brak jasnej umowy i harmonogramu",
-                "Obiecuje projekt „w tydzień" za każdą cenę",
-                "Wszystkie ceny „do ustalenia" bez widełek",
+                'Obiecuje projekt "w tydzień" za każdą cenę',
+                'Wszystkie ceny "do ustalenia" bez widełek',
               ].map((flag) => (
                 <div key={flag} className="flex items-start gap-2.5 font-body text-sm text-primary-foreground/50 bg-primary-foreground/5 rounded-lg p-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-destructive mt-1.5 shrink-0" />
