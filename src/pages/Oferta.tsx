@@ -186,25 +186,25 @@ const Oferta = () => {
           </FadeIn>
           <FadeIn delay={100}>
             <div className="overflow-x-auto">
-              <table className="w-full font-body text-sm">
+              <table className="w-full font-body text-sm table-fixed">
                 <thead>
                   <tr>
-                    <th className="text-left py-4 px-3 text-muted-foreground font-normal text-xs uppercase tracking-wider border-b border-border">Co zawiera</th>
+                    <th className="w-[28%] text-left py-4 px-3 text-muted-foreground font-normal text-xs uppercase tracking-wider border-b border-border">Co zawiera</th>
                     {packages.map((pkg) => (
                       <th
                         key={pkg.name}
-                        className={`text-center py-4 px-3 font-heading text-sm whitespace-nowrap border-b ${
+                        className={`w-[18%] text-center py-5 px-2 font-heading text-sm border-b ${
                           pkg.popular
-                            ? "bg-primary text-primary-foreground rounded-t-xl border-primary relative"
+                            ? "bg-primary text-primary-foreground rounded-t-xl border-primary"
                             : "text-foreground border-border"
                         }`}
                       >
                         {pkg.popular && (
-                          <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-accent text-accent-foreground font-body text-[10px] tracking-[0.1em] uppercase whitespace-nowrap">
-                            Popularny wybór
+                          <span className="block mb-2 mx-auto w-fit px-3 py-0.5 rounded-full bg-accent text-accent-foreground font-body text-[10px] tracking-[0.1em] uppercase">
+                            Najczęściej wybierana
                           </span>
                         )}
-                        {pkg.name}
+                        <span className="block text-sm">{pkg.name}</span>
                         <span className={`block text-xs font-body font-normal mt-1 ${pkg.popular ? "text-primary-foreground/60" : "text-muted-foreground"}`}>{pkg.price}</span>
                       </th>
                     ))}
