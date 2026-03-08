@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
+import AnnouncementBanner from "@/components/AnnouncementBanner";
 import CookieBanner from "@/components/CookieBanner";
 import Index from "./pages/Index";
 import Kontakt from "./pages/Kontakt";
