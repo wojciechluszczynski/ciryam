@@ -120,16 +120,16 @@ const Oferta = () => {
                   <div className={`border-t border-border transition-all duration-500 ${isOpen ? "bg-secondary rounded-xl my-2 border-transparent" : "hover:bg-secondary/50"}`}>
                     <button onClick={() => setExpandedPkg(isOpen ? null : i)} className="w-full flex items-center gap-4 md:gap-6 py-6 px-4 md:px-6 text-left">
                       <span className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center shrink-0 font-body text-sm text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
-                      <div className="flex-1 flex items-center gap-3">
-                        <h2 className="font-heading text-xl md:text-2xl text-foreground">{pkg.name}</h2>
+                      <div className="flex-1 min-w-0 flex items-center gap-3 flex-wrap sm:flex-nowrap">
+                        <h2 className="font-heading text-xl md:text-2xl text-foreground shrink-0">{pkg.name}</h2>
                         {pkg.popular && (
-                          <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-accent/10 text-accent font-body text-xs">
-                            <Star size={10} className="fill-accent" /> Popularna
+                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-accent/10 text-accent font-body text-[10px] tracking-[0.05em] uppercase shrink-0">
+                            <Star size={10} className="fill-accent" /> Najczęściej wybierana
                           </span>
                         )}
                       </div>
-                      <span className="font-body text-sm text-accent hidden sm:block">{pkg.price}</span>
-                      {isOpen ? <X size={20} className="text-muted-foreground shrink-0" /> : <Plus size={20} className="text-muted-foreground shrink-0" />}
+                      <span className="font-body text-sm text-accent hidden sm:block shrink-0">{pkg.price}</span>
+                      <div className="shrink-0">{isOpen ? <X size={20} className="text-muted-foreground" /> : <Plus size={20} className="text-muted-foreground" />}</div>
                     </button>
 
                     <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}>
@@ -186,25 +186,25 @@ const Oferta = () => {
           </FadeIn>
           <FadeIn delay={100}>
             <div className="overflow-x-auto">
-              <table className="w-full font-body text-sm">
+              <table className="w-full font-body text-sm table-fixed">
                 <thead>
                   <tr>
-                    <th className="text-left py-4 px-3 text-muted-foreground font-normal text-xs uppercase tracking-wider border-b border-border">Co zawiera</th>
+                    <th className="w-[28%] text-left py-4 px-3 text-muted-foreground font-normal text-xs uppercase tracking-wider border-b border-border">Co zawiera</th>
                     {packages.map((pkg) => (
                       <th
                         key={pkg.name}
-                        className={`text-center py-4 px-3 font-heading text-sm whitespace-nowrap border-b ${
+                        className={`w-[18%] text-center py-5 px-2 font-heading text-sm border-b ${
                           pkg.popular
-                            ? "bg-primary text-primary-foreground rounded-t-xl border-primary relative"
+                            ? "bg-primary text-primary-foreground rounded-t-xl border-primary"
                             : "text-foreground border-border"
                         }`}
                       >
                         {pkg.popular && (
-                          <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-accent text-accent-foreground font-body text-[10px] tracking-[0.1em] uppercase whitespace-nowrap">
-                            Popularny wybór
+                          <span className="block mb-2 mx-auto w-fit px-3 py-0.5 rounded-full bg-accent text-accent-foreground font-body text-[10px] tracking-[0.1em] uppercase">
+                            Najczęściej wybierana
                           </span>
                         )}
-                        {pkg.name}
+                        <span className="block text-sm">{pkg.name}</span>
                         <span className={`block text-xs font-body font-normal mt-1 ${pkg.popular ? "text-primary-foreground/60" : "text-muted-foreground"}`}>{pkg.price}</span>
                       </th>
                     ))}

@@ -962,18 +962,18 @@ const BlogPost = () => {
 
   return (
     <main className="bg-background">
-      {/* Reading progress bar */}
-      <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-border/20">
-        <div
-          className="h-full bg-accent transition-all duration-150 ease-out"
-          style={{ width: `${scrollProgress * 100}%` }}
-        />
-      </div>
-
       {/* Hero image */}
       <div className="relative h-[40vh] md:h-[50vh] overflow-hidden">
         <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-foreground/30" />
+      </div>
+
+      {/* Reading progress bar - sticky under hero */}
+      <div className="sticky top-0 z-40 w-full h-1 bg-border/20">
+        <div
+          className="h-full bg-accent transition-all duration-150 ease-out"
+          style={{ width: `${scrollProgress * 100}%` }}
+        />
       </div>
 
       <article ref={articleRef} className="max-w-[720px] mx-auto px-6 py-12 md:py-16">
