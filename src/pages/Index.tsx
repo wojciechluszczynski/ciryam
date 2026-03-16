@@ -132,8 +132,62 @@ const Index = () => {
         </div>
       </section>
 
+      {/* VIDEO */}
+      <section className="bg-background section-padding" id="wideo">
+        <div className="max-w-[1100px] mx-auto">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">{t("video.label")}</p>
+              <h2 className="font-heading text-4xl md:text-6xl text-foreground mb-4">{t("video.title")}</h2>
+              <p className="text-muted-foreground font-body text-sm max-w-lg mx-auto leading-relaxed">{t("video.desc")}</p>
+            </div>
+          </FadeIn>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            {/* Main featured video */}
+            <FadeIn delay={100}>
+              <div className="md:col-span-2 bg-card border border-border rounded-xl overflow-hidden">
+                <div className="aspect-video">
+                  <iframe
+                    width="100%" height="100%"
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    title="CIRYAM - Official Music Video"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </FadeIn>
+            {/* Secondary videos */}
+            {[
+              { src: "https://www.youtube.com/embed/dQw4w9WgXcQ", title: "CIRYAM – Live @ Zaścianek Kraków" },
+              { src: "https://www.youtube.com/embed/dQw4w9WgXcQ", title: "CIRYAM – Behind The Scenes 2025" },
+            ].map((video, i) => (
+              <FadeIn key={i} delay={200 + i * 100}>
+                <div className="bg-card border border-border rounded-xl overflow-hidden group">
+                  <div className="aspect-video">
+                    <iframe
+                      width="100%" height="100%"
+                      src={video.src}
+                      title={video.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CONCERTS */}
-      <section className="bg-background section-padding" id="koncerty">
+      <section className="bg-secondary section-padding" id="koncerty">
         <div className="max-w-[900px] mx-auto">
           <FadeIn>
             <div className="text-center mb-12">

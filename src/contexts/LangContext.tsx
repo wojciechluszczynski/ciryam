@@ -94,6 +94,11 @@ const translations: Record<Lang, Record<string, string>> = {
     "cta.desc": "Gramy na festiwalach rockowych, w klubach muzycznych, na imprezach firmowych i prywatnych. Napisz do nas – przygotujemy ofertę dopasowaną do Twojego wydarzenia.",
     "cta.button": "Kontakt / Booking",
 
+    // Video
+    "video.label": "Wideo",
+    "video.title": "Zobacz nas w akcji",
+    "video.desc": "Teledyski, nagrania z koncertów i materiały zza kulis. Przekonaj się, jak brzmi CIRYAM na żywo.",
+
     // Concerts page
     "concerts.page.title": "Koncerty CIRYAM",
     "concerts.page.desc1": "Każdy koncert CIRYAM to niepowtarzalne przeżycie – od małych, kameralnych klubów po wielkie festiwalowe sceny. Sprawdź najbliższe daty i kup bilet online, zanim się wyprzedadzą.",
@@ -206,6 +211,11 @@ const translations: Record<Lang, Record<string, string>> = {
     "concerts.buyTicket": "Buy ticket",
     "concerts.upcoming": "Upcoming concerts",
     "concerts.archive": "Concert archive",
+
+    // Video
+    "video.label": "Video",
+    "video.title": "Watch us in action",
+    "video.desc": "Music videos, live recordings and behind-the-scenes footage. See what CIRYAM sounds like on stage.",
 
     // Gallery
     "gallery.label": "Gallery",
