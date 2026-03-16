@@ -207,6 +207,11 @@ const translations: Record<Lang, Record<string, string>> = {
     "concerts.upcoming": "Upcoming concerts",
     "concerts.archive": "Concert archive",
 
+    // Video
+    "video.label": "Video",
+    "video.title": "Watch us in action",
+    "video.desc": "Music videos, live recordings and behind-the-scenes footage. See what CIRYAM sounds like on stage.",
+
     // Gallery
     "gallery.label": "Gallery",
     "gallery.title": "On stage and beyond",
