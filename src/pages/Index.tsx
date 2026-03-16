@@ -197,7 +197,7 @@ const Index = () => {
               <FadeIn key={i} delay={100 + i * 100}>
                 <div className="bg-card border border-border rounded-xl overflow-hidden">
                   <div className="aspect-video">
-                    <iframe
+                    <LazyIframe
                       width="100%" height="100%"
                       src={video.src}
                       title={video.title}
@@ -205,7 +205,7 @@ const Index = () => {
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                       className="w-full h-full"
-                      loading="lazy"
+                      fallbackHeight="100%"
                     />
                   </div>
                 </div>
