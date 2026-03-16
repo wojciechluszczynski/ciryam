@@ -159,8 +159,8 @@ const Chatbot = () => {
         {open ? (
           <div className="w-full h-full rounded-full bg-accent flex items-center justify-center"><X size={22} className="text-accent-foreground" /></div>
         ) : (
-          <div className="relative w-full h-full rounded-full overflow-hidden bg-accent flex items-center justify-center">
-            <img src={ciryamLogo} alt="CIRYAM" className="w-8 h-8 object-contain" style={{ filter: "invert(1)" }} />
+          <div className="relative w-full h-full rounded-full overflow-hidden bg-black flex items-center justify-center border-2 border-accent/40">
+            <img src={ciryamLogo} alt="CIRYAM" className="w-8 h-8 object-contain brightness-0 invert" />
           </div>
         )}
       </button>
