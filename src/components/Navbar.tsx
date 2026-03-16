@@ -87,6 +87,8 @@ const Navbar = () => {
               <span className={lang === "en" ? "text-accent" : ""}>EN</span>
             </button>
 
+            <CartDrawer />
+
             <a
               href="https://ciryam.pl/sklep"
               target="_blank"
