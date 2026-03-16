@@ -267,25 +267,31 @@ const Index = () => {
       </section>
 
       {/* WHY CIRYAM */}
-      <section className="bg-secondary section-padding">
-        <div className="max-w-[1100px] mx-auto">
+      <section className="relative bg-background section-padding overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--accent)/0.06)_0%,transparent_70%)]" />
+        <div className="max-w-[1100px] mx-auto relative">
           <FadeIn>
-            <div className="text-center mb-12">
+            <div className="text-center mb-16">
               <h2 className="font-heading text-4xl md:text-6xl text-foreground mb-4">{t("why.title")}</h2>
               <p className="text-muted-foreground font-body text-sm max-w-xl mx-auto">{t("why.desc")}</p>
             </div>
           </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border/50 rounded-2xl overflow-hidden">
             {[
-              { icon: Music, title: t("why.originals"), desc: t("why.originals.desc") },
-              { icon: Mic2, title: t("why.energy"), desc: t("why.energy.desc") },
-              { icon: ShoppingBag, title: t("why.merch"), desc: t("why.merch.desc") },
+              { icon: Music, title: t("why.originals"), desc: t("why.originals.desc"), accent: "from-accent/20 to-transparent" },
+              { icon: Mic2, title: t("why.energy"), desc: t("why.energy.desc"), accent: "from-accent/10 to-transparent" },
+              { icon: ShoppingBag, title: t("why.merch"), desc: t("why.merch.desc"), accent: "from-accent/15 to-transparent" },
             ].map((item, i) => (
-              <FadeIn key={item.title} delay={i * 100}>
-                <div className="bg-card border border-border rounded-xl p-6 md:p-8 hover:border-accent/30 transition-colors group">
-                  <item.icon size={28} className="text-accent mb-4 group-hover:scale-110 transition-transform" />
-                  <h3 className="font-heading text-xl text-foreground mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground font-body text-sm leading-relaxed">{item.desc}</p>
+              <FadeIn key={item.title} delay={i * 150}>
+                <div className="relative bg-card p-8 md:p-10 h-full group">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                  <div className="relative">
+                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-500">
+                      <item.icon size={22} className="text-accent" />
+                    </div>
+                    <h3 className="font-heading text-lg text-foreground mb-3 tracking-wide">{item.title}</h3>
+                    <p className="text-muted-foreground font-body text-sm leading-relaxed">{item.desc}</p>
+                  </div>
                 </div>
               </FadeIn>
             ))}
