@@ -25,7 +25,7 @@ const Muzyka = () => {
 
         <FadeIn delay={200}>
           <h2 className="font-heading text-2xl text-foreground mb-6">{t("music.platforms")}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-12">
             {[
               { name: "Spotify", url: "https://open.spotify.com/artist/ciryam" },
               { name: "SoundCloud", url: "https://soundcloud.com/ciryam" },
