@@ -161,7 +161,6 @@ const Chatbot = () => {
         ) : (
           <div className="relative w-full h-full rounded-full overflow-hidden bg-accent flex items-center justify-center">
             <img src={ciryamLogo} alt="CIRYAM" className="w-8 h-8 object-contain" style={{ filter: "invert(1)" }} />
-            <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-background animate-pulse" />
           </div>
         )}
       </button>
