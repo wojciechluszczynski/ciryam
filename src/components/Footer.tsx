@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Youtube } from "lucide-react";
 import ciryamLogo from "@/assets/ciryam-logo.png";
+import { useLang } from "@/contexts/LangContext";
 
 const SpotifyIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -15,60 +16,43 @@ const SoundCloudIcon = () => (
 );
 
 const Footer = () => {
+  const { t } = useLang();
+
   return (
     <footer className="bg-secondary border-t border-border">
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {/* Brand */}
           <div>
             <img src={ciryamLogo} alt="CIRYAM" className="h-10 w-auto mb-4" style={{ filter: "invert(1)" }} />
-            <p className="text-muted-foreground font-body text-sm mb-6 leading-relaxed">
-              Polski zespół rockowy. Gramy na żywo, nagrywamy płyty, robimy hałas.
-            </p>
+            <p className="text-muted-foreground font-body text-sm mb-6 leading-relaxed">{t("footer.desc")}</p>
             <div className="flex gap-4">
-              <a href="https://www.facebook.com/ciryamband" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Facebook">
-                <Facebook size={20} />
-              </a>
-              <a href="https://www.instagram.com/ciryam_official/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Instagram">
-                <Instagram size={20} />
-              </a>
-              <a href="https://www.youtube.com/@ciryam" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="YouTube">
-                <Youtube size={20} />
-              </a>
-              <a href="https://open.spotify.com/artist/ciryam" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Spotify">
-                <SpotifyIcon />
-              </a>
-              <a href="https://soundcloud.com/ciryam" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="SoundCloud">
-                <SoundCloudIcon />
-              </a>
+              <a href="https://www.facebook.com/ciryamband" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Facebook"><Facebook size={20} /></a>
+              <a href="https://www.instagram.com/ciryam_official/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Instagram"><Instagram size={20} /></a>
+              <a href="https://www.youtube.com/@ciryam" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="YouTube"><Youtube size={20} /></a>
+              <a href="https://open.spotify.com/artist/ciryam" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Spotify"><SpotifyIcon /></a>
+              <a href="https://soundcloud.com/ciryam" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="SoundCloud"><SoundCloudIcon /></a>
             </div>
           </div>
 
-          {/* Navigation */}
           <div>
-            <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-5 text-muted-foreground">
-              Nawigacja
-            </h4>
+            <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-5 text-muted-foreground">{t("footer.nav")}</h4>
             <nav className="flex flex-col gap-2.5">
               {[
-                { href: "/muzyka", label: "Muzyka" },
-                { href: "/koncerty", label: "Koncerty" },
-                { href: "/o-zespole", label: "O zespole" },
-                { href: "/sklep", label: "Sklep" },
-                { href: "/kontakt", label: "Kontakt" },
+                { href: "/muzyka", labelKey: "nav.music" },
+                { href: "/koncerty", labelKey: "nav.concerts" },
+                { href: "/o-zespole", labelKey: "nav.about" },
+                { href: "/sklep", labelKey: "nav.shop" },
+                { href: "/kontakt", labelKey: "nav.contact" },
               ].map((link) => (
                 <Link key={link.href} to={link.href} className="text-foreground/60 hover:text-accent transition-colors font-body text-sm">
-                  {link.label}
+                  {t(link.labelKey)}
                 </Link>
               ))}
             </nav>
           </div>
 
-          {/* Contact */}
           <div>
-            <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-5 text-muted-foreground">
-              Booking & Kontakt
-            </h4>
+            <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-5 text-muted-foreground">{t("footer.booking")}</h4>
             <div className="flex flex-col gap-2 text-foreground/60 font-body text-sm">
               <a href="mailto:booking@ciryam.pl" className="hover:text-accent transition-colors">booking@ciryam.pl</a>
               <a href="mailto:kontakt@ciryam.pl" className="hover:text-accent transition-colors">kontakt@ciryam.pl</a>
@@ -77,16 +61,11 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className="border-t border-border">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-muted-foreground/60 text-xs font-body">
-            © 2026 CIRYAM. Wszelkie prawa zastrzeżone.
-          </p>
+          <p className="text-muted-foreground/60 text-xs font-body">{t("footer.rights")}</p>
           <div className="flex gap-5 text-xs font-body">
-            <Link to="/polityka-prywatnosci" className="text-muted-foreground/60 hover:text-accent transition-colors">
-              Polityka prywatności
-            </Link>
+            <Link to="/polityka-prywatnosci" className="text-muted-foreground/60 hover:text-accent transition-colors">{t("footer.privacy")}</Link>
           </div>
         </div>
       </div>
