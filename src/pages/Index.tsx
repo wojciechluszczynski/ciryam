@@ -165,7 +165,6 @@ const Index = () => {
           <FadeIn delay={200}>
             <div className="flex flex-wrap justify-center gap-4 mt-8">
               {[
-                { name: "Spotify", url: "https://open.spotify.com/artist/ciryam" },
                 { name: "SoundCloud", url: "https://soundcloud.com/ciryam" },
                 { name: "YouTube", url: "https://www.youtube.com/user/Ciryam/" },
                 { name: "Vimeo", url: "https://vimeo.com/ciryam" },
