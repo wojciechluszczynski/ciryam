@@ -1,15 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Play, Calendar, MapPin, ExternalLink, ShoppingBag, Music, Mic2 } from "lucide-react";
+import { ArrowRight, Play, Calendar, MapPin, ExternalLink, ShoppingBag, Music, Mic2, Sparkles, Loader2 } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
+import { storefrontApiRequest, STOREFRONT_PRODUCTS_QUERY, type ShopifyProduct } from "@/lib/shopify";
+import { supabase } from "@/integrations/supabase/client";
+import { useCartStore } from "@/stores/cartStore";
+import { toast } from "sonner";
 
 import ciryamBand from "@/assets/ciryam-band.jpg";
 import ciryamBand2 from "@/assets/ciryam-band-2.jpg";
 import ciryamLive from "@/assets/ciryam-live.jpg";
-import merchTshirt from "@/assets/merch-tshirt.jpg";
-import merchCd from "@/assets/merch-cd.jpg";
-import merchPoster from "@/assets/merch-poster.jpg";
 
 const heroSlides = [ciryamBand, ciryamBand2, ciryamLive];
 
