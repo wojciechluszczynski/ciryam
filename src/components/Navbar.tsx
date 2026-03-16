@@ -92,7 +92,6 @@ const Navbar = () => {
               <span className={lang === "en" ? "text-accent" : ""}>EN</span>
             </button>
 
-            <CartDrawer />
 
             <a
               href="https://www.kupbilecik.pl/baza/17722/CIryam/"
