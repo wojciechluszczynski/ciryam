@@ -96,17 +96,19 @@ const StickyPlayer = () => {
           </p>
         </div>
 
-        <iframe
-          ref={iframeRef}
-          width="0"
-          height="0"
-          scrolling="no"
-          frameBorder="no"
-          allow="autoplay"
-          src={SC_WIDGET_SRC}
-          title="SoundCloud Player"
-          className="absolute opacity-0 pointer-events-none"
-        />
+        {loaded && (
+          <iframe
+            ref={iframeRef}
+            width="0"
+            height="0"
+            scrolling="no"
+            frameBorder="no"
+            allow="autoplay"
+            src={SC_WIDGET_SRC}
+            title="SoundCloud Player"
+            className="absolute opacity-0 pointer-events-none"
+          />
+        )}
 
         <button
           onClick={toggleMute}
