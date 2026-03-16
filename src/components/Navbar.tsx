@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Globe } from "lucide-react";
 import ciryamLogo from "@/assets/ciryam-logo.png";
 import { useLang } from "@/contexts/LangContext";
+import { CartDrawer } from "@/components/CartDrawer";
 
 const navLinks = [
   { href: "/", labelKey: "nav.start" },
@@ -85,6 +86,8 @@ const Navbar = () => {
               <span className="text-border">/</span>
               <span className={lang === "en" ? "text-accent" : ""}>EN</span>
             </button>
+
+            <CartDrawer />
 
             <a
               href="https://ciryam.pl/sklep"

@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { LangProvider } from "@/contexts/LangContext";
+import { useCartSync } from "@/hooks/useCartSync";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnnouncementBanner from "@/components/AnnouncementBanner";
@@ -17,6 +18,7 @@ import Koncerty from "./pages/Koncerty";
 import Muzyka from "./pages/Muzyka";
 import OZespole from "./pages/OZespole";
 import Sklep from "./pages/Sklep";
+import ProductDetail from "./pages/ProductDetail";
 import PolitykaPrywatnosci from "./pages/PolitykaPrywatnosci";
 import NotFound from "./pages/NotFound";
 
@@ -24,10 +26,34 @@ const queryClient = new QueryClient();
 
 const ScrollRestoration = () => {
   const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return null;
+};
+
+const AppContent = () => {
+  useCartSync();
+  return (
+    <>
+      <AnnouncementBanner />
+      <ScrollRestoration />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/kontakt" element={<Kontakt />} />
+        <Route path="/koncerty" element={<Koncerty />} />
+        <Route path="/muzyka" element={<Muzyka />} />
+        <Route path="/o-zespole" element={<OZespole />} />
+        <Route path="/sklep" element={<Sklep />} />
+        <Route path="/product/:handle" element={<ProductDetail />} />
+        <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+      <StickyPlayer />
+      <Chatbot />
+      <CookieBanner />
+    </>
+  );
 };
 
 const App = () => (
@@ -37,23 +63,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <AnnouncementBanner />
-          <ScrollRestoration />
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/kontakt" element={<Kontakt />} />
-            <Route path="/koncerty" element={<Koncerty />} />
-            <Route path="/muzyka" element={<Muzyka />} />
-            <Route path="/o-zespole" element={<OZespole />} />
-            <Route path="/sklep" element={<Sklep />} />
-            <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <Footer />
-          <StickyPlayer />
-          <Chatbot />
-          <CookieBanner />
+          <AppContent />
         </BrowserRouter>
       </LangProvider>
     </TooltipProvider>
