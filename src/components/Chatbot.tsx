@@ -168,8 +168,8 @@ const Chatbot = () => {
       {open && (
         <div className="fixed bottom-[8rem] right-6 z-[9998] w-[360px] max-h-[520px] bg-background rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden animate-fade-in-up">
           <div className="bg-card px-4 py-3 flex items-center gap-3 border-b border-border">
-            <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
-              <img src={ciryamLogo} alt="CIRYAM" className="w-6 h-6 object-contain" style={{ filter: "invert(1)" }} />
+            <div className="w-9 h-9 rounded-full bg-black flex items-center justify-center shrink-0 border border-accent/30">
+              <img src={ciryamLogo} alt="CIRYAM" className="w-6 h-6 object-contain brightness-0 invert" />
             </div>
             <div className="flex-1">
               <p className="text-foreground font-heading text-base tracking-wide">CIRYAM BOT</p>
