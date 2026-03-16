@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ShoppingBag, Loader2, Search, Sparkles, X } from "lucide-react";
+import { ShoppingBag, Loader2, Search, Sparkles, X, ArrowUpDown } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
 import { useCartStore } from "@/stores/cartStore";
@@ -30,6 +30,7 @@ const Sklep = () => {
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState<"" | "asc" | "desc">("");
   const [aiRecommendations, setAiRecommendations] = useState<string[]>([]);
   const [aiLoading, setAiLoading] = useState(false);
   const addItem = useCartStore(state => state.addItem);
@@ -59,14 +60,22 @@ const Sklep = () => {
 
   // Filter products
   const filteredProducts = useMemo(() => {
-    return products.filter(p => {
+    let result = products.filter(p => {
       const matchCategory = !activeCategory || p.node.productType === activeCategory;
       const matchSearch = !searchQuery || 
         p.node.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         p.node.description?.toLowerCase().includes(searchQuery.toLowerCase());
       return matchCategory && matchSearch;
     });
-  }, [products, activeCategory, searchQuery]);
+    if (sortOrder) {
+      result = [...result].sort((a, b) => {
+        const priceA = parseFloat(a.node.priceRange.minVariantPrice.amount);
+        const priceB = parseFloat(b.node.priceRange.minVariantPrice.amount);
+        return sortOrder === "asc" ? priceA - priceB : priceB - priceA;
+      });
+    }
+    return result;
+  }, [products, activeCategory, searchQuery, sortOrder]);
 
   // Fetch AI recommendations
   const fetchRecommendations = async () => {
@@ -236,7 +245,7 @@ const Sklep = () => {
               </div>
               <div className="flex items-center justify-between mb-5 mt-1">
                 <h2 className="font-heading text-lg md:text-xl text-foreground">
-                  {lang === "pl" ? "Nasze rekomendacje" : "Our Picks"}
+                  {lang === "pl" ? "Najpopularniejsze produkty" : "Most Popular"}
                 </h2>
                 <button
                   onClick={fetchRecommendations}
@@ -286,6 +295,25 @@ const Sklep = () => {
               <p className="text-muted-foreground font-body text-xs">
                 {filteredProducts.length} {lang === "pl" ? "produktów" : "products"}
               </p>
+              <div className="flex items-center gap-2">
+                {(["", "asc", "desc"] as const).map((order) => (
+                  <button
+                    key={order}
+                    onClick={() => setSortOrder(order)}
+                    className={`px-3 py-1 rounded-full font-heading text-[10px] tracking-[0.1em] uppercase transition-colors border ${
+                      sortOrder === order
+                        ? "bg-accent text-accent-foreground border-accent"
+                        : "bg-card text-muted-foreground border-border hover:border-accent/30 hover:text-foreground"
+                    }`}
+                  >
+                    {order === "" 
+                      ? (lang === "pl" ? "Domyślnie" : "Default")
+                      : order === "asc" 
+                        ? (lang === "pl" ? "Od najtańszych" : "Price ↑") 
+                        : (lang === "pl" ? "Od najdroższych" : "Price ↓")}
+                  </button>
+                ))}
+              </div>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
               {filteredProducts.map((product, i) => renderProductCard(product, i))}
