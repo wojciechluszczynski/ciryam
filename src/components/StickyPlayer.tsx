@@ -92,7 +92,7 @@ const StickyPlayer = () => {
         <div className="flex-1 min-w-0">
           <p className="font-heading text-xs tracking-[0.1em] uppercase text-foreground truncate">CIRYAM – Dices</p>
           <p className="font-body text-[10px] text-muted-foreground truncate">
-            {ready ? (playing ? "Odtwarzanie..." : "Kliknij play") : "Ładowanie..."}
+            {ready ? (playing ? "Odtwarzanie..." : "Poczuj nasz klimat — naciśnij i słuchaj") : "Ładowanie..."}
           </p>
         </div>
 
