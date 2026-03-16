@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Play, Calendar, MapPin, ExternalLink, ShoppingBag } from "lucide-react";
+import { ArrowRight, Play, Calendar, MapPin, ExternalLink, ShoppingBag, Music, Mic2 } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 
 import ciryamBand from "@/assets/ciryam-band.jpg";
@@ -12,7 +12,6 @@ import merchPoster from "@/assets/merch-poster.jpg";
 
 const heroSlides = [ciryamBand, ciryamBand2, ciryamLive];
 
-// TODO: Uzupełnij prawdziwe daty koncertów i linki do biletów
 const upcomingConcerts = [
   { date: "2026-04-12", city: "Kraków", venue: "Zaścianek", ticketUrl: "#" },
   { date: "2026-04-26", city: "Warszawa", venue: "Hydrozagadka", ticketUrl: "#" },
@@ -35,6 +34,13 @@ const formatDate = (dateStr: string) => {
   };
 };
 
+const stats = [
+  { value: "50+", label: "Koncertów rocznie" },
+  { value: "10K+", label: "Fanów online" },
+  { value: "6", label: "Lat na scenie" },
+  { value: "3", label: "Wydane albumy" },
+];
+
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -49,16 +55,19 @@ const Index = () => {
       <section className="relative h-screen w-full overflow-hidden">
         {heroSlides.map((slide, i) => (
           <div key={i} className={`absolute inset-0 transition-all duration-1000 ease-in-out ${i === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}>
-            <img src={slide} alt={`CIRYAM ${i + 1}`} className="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"} />
+            <img src={slide} alt={`CIRYAM zespół rockowy na żywo ${i + 1}`} className="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"} />
           </div>
         ))}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
         <div className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-20 md:pb-28">
-          <h1 className="font-heading text-5xl sm:text-6xl md:text-8xl lg:text-9xl text-foreground mb-4 animate-fade-in-up tracking-[0.1em]">
+          <p className="font-body text-xs md:text-sm text-accent mb-3 tracking-[0.3em] uppercase animate-fade-in-up">
+            Polski zespół rockowy
+          </p>
+          <h1 className="font-heading text-6xl sm:text-7xl md:text-[9rem] lg:text-[12rem] text-foreground mb-4 animate-fade-in-up leading-none">
             CIRYAM
           </h1>
-          <p className="font-body text-sm md:text-base text-muted-foreground mb-8 max-w-md animate-fade-in-up-delay tracking-wide uppercase">
-            Oficjalna strona zespołu
+          <p className="font-body text-sm md:text-base text-muted-foreground mb-8 max-w-lg animate-fade-in-up-delay leading-relaxed">
+            Autorski rock z Podkarpacia. Ciężkie riffy, melodyjne refreny i scena, która nie zostawia obojętnym. Gramy w całej Polsce.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 animate-fade-in-up-delay-2">
             <a
@@ -84,14 +93,28 @@ const Index = () => {
         </div>
       </section>
 
-      {/* MUZYKA - SoundCloud */}
+      {/* STATS MARQUEE */}
+      <section className="bg-accent py-4 overflow-hidden">
+        <div className="flex animate-marquee whitespace-nowrap">
+          {[...stats, ...stats, ...stats].map((stat, i) => (
+            <div key={i} className="flex items-center gap-3 mx-8">
+              <span className="font-heading text-2xl md:text-3xl text-accent-foreground">{stat.value}</span>
+              <span className="font-body text-xs text-accent-foreground/70 uppercase tracking-wider">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* MUZYKA */}
       <section className="bg-secondary section-padding" id="muzyka">
         <div className="max-w-[900px] mx-auto text-center">
           <FadeIn>
-            <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">Muzyka</p>
-            <h2 className="font-heading text-3xl md:text-5xl text-foreground mb-6">Posłuchaj nas</h2>
-            <p className="text-muted-foreground font-body text-sm md:text-base max-w-lg mx-auto mb-10">
-              Sprawdź nasze najnowsze nagrania na platformach streamingowych.
+            <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">Dyskografia</p>
+            <h2 className="font-heading text-4xl md:text-6xl text-foreground mb-6">Posłuchaj naszej muzyki</h2>
+            <p className="text-muted-foreground font-body text-sm md:text-base max-w-2xl mx-auto mb-10 leading-relaxed">
+              CIRYAM łączy energię klasycznego hard rocka z nowoczesną produkcją. Nasze utwory to mieszanka ciężkich riffów gitarowych, 
+              dynamicznych rytmów i melodii, które zostają w głowie. Od debiutanckiego albumu po najnowszy materiał – 
+              każda płyta to krok naprzód w naszej muzycznej podróży.
             </p>
           </FadeIn>
           <FadeIn delay={150}>
@@ -103,7 +126,7 @@ const Index = () => {
                 frameBorder="no"
                 allow="autoplay"
                 src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ciryam/sets/ciryam&color=%23d4a017&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
-                title="SoundCloud CIRYAM"
+                title="SoundCloud CIRYAM - polski zespół rockowy"
                 className="rounded-lg"
               />
             </div>
@@ -130,8 +153,11 @@ const Index = () => {
           <FadeIn>
             <div className="text-center mb-12">
               <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">Na żywo</p>
-              <h2 className="font-heading text-3xl md:text-5xl text-foreground mb-4">Najbliższe koncerty</h2>
-              <p className="text-muted-foreground font-body text-sm">Przyjdź, posłuchaj, poczuj energię na żywo.</p>
+              <h2 className="font-heading text-4xl md:text-6xl text-foreground mb-4">Najbliższe koncerty</h2>
+              <p className="text-muted-foreground font-body text-sm max-w-lg mx-auto leading-relaxed">
+                Każdy koncert CIRYAM to pełne emocji przeżycie. Sprawdź, kiedy gramy w Twoim mieście i zdobądź bilet, 
+                zanim się wyprzedadzą. Gramy od Rzeszowa po Gdańsk – scena jest naszym domem.
+              </p>
             </div>
           </FadeIn>
 
@@ -142,11 +168,11 @@ const Index = () => {
                 <FadeIn key={i} delay={i * 60}>
                   <div className="group border-t border-border py-5 flex items-center gap-4 md:gap-8 hover:bg-secondary/50 px-4 rounded-lg transition-colors">
                     <div className="text-center shrink-0 w-16">
-                      <span className="font-heading text-2xl md:text-3xl text-foreground block leading-none">{day}</span>
+                      <span className="font-heading text-3xl md:text-4xl text-foreground block leading-none">{day}</span>
                       <span className="font-heading text-xs tracking-[0.15em] text-accent">{month}</span>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-heading text-lg md:text-xl text-foreground">{concert.city}</h3>
+                      <h3 className="font-heading text-xl md:text-2xl text-foreground">{concert.city}</h3>
                       <p className="flex items-center gap-1.5 text-muted-foreground font-body text-sm">
                         <MapPin size={12} /> {concert.venue}
                       </p>
@@ -183,29 +209,30 @@ const Index = () => {
           <FadeIn>
             <div className="text-center mb-10">
               <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">Galeria</p>
-              <h2 className="font-heading text-3xl md:text-5xl text-foreground">Na scenie i poza nią</h2>
+              <h2 className="font-heading text-4xl md:text-6xl text-foreground mb-4">Na scenie i poza nią</h2>
+              <p className="text-muted-foreground font-body text-sm max-w-lg mx-auto">
+                Zdjęcia z koncertów, sesji i backstage'u. Tak wygląda CIRYAM od kulis.
+              </p>
             </div>
           </FadeIn>
           <FadeIn delay={100}>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-              {/* Large feature image */}
               <div className="col-span-2 row-span-2 relative group overflow-hidden rounded-xl">
-                <img src={ciryamBand} alt="CIRYAM zespół" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={ciryamBand} alt="CIRYAM – sesja promocyjna zespołu rockowego" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
                   <span className="font-heading text-sm tracking-[0.15em] uppercase text-accent">Sesja promo 2024</span>
                 </div>
               </div>
-              {/* Smaller images */}
               <div className="relative group overflow-hidden rounded-xl aspect-square">
-                <img src={ciryamLive} alt="CIRYAM live" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={ciryamLive} alt="CIRYAM – koncert na żywo w klubie Zaścianek" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
                   <span className="font-heading text-xs tracking-[0.15em] uppercase text-accent">Live @ Zaścianek</span>
                 </div>
               </div>
               <div className="relative group overflow-hidden rounded-xl aspect-square">
-                <img src={ciryamBand2} alt="CIRYAM" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={ciryamBand2} alt="CIRYAM – zdjęcie zespołu backstage" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
                   <span className="font-heading text-xs tracking-[0.15em] uppercase text-accent">Backstage</span>
@@ -221,21 +248,26 @@ const Index = () => {
         <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           <FadeIn>
             <div className="relative overflow-hidden rounded-xl">
-              <img src={ciryamBand} alt="CIRYAM - zespół" className="w-full aspect-[4/5] object-cover" loading="lazy" />
+              <img src={ciryamBand} alt="CIRYAM – polski zespół rockowy z Podkarpacia" className="w-full aspect-[4/5] object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
             </div>
           </FadeIn>
           <FadeIn delay={150}>
             <div>
               <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">O zespole</p>
-              <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-6">CIRYAM</h2>
+              <h2 className="font-heading text-4xl md:text-5xl text-foreground mb-6">Poznaj CIRYAM</h2>
               <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4">
-                CIRYAM to polski zespół rockowy, który łączy energię klasycznego rocka z nowoczesnym brzmieniem.
-                Tworzymy muzykę, która nie pozostawia obojętnym – od ciężkich riffów po melodyjne refreny.
+                CIRYAM to polski zespół rockowy z Podkarpacia, który od ponad 6 lat podbija scenę muzyczną w Polsce.
+                Łączymy energię klasycznego hard rocka z nowoczesnym brzmieniem – od ciężkich riffów gitarowych 
+                po emocjonalne, zapadające w pamięć refreny.
+              </p>
+              <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4">
+                Na naszym koncie ponad 50 koncertów rocznie, trzy wydane albumy i tysiące fanów w całej Polsce.
+                Każdy występ traktujemy jak niezapomniane wydarzenie – na scenie zostawiamy wszystko.
               </p>
               <p className="text-muted-foreground font-body text-sm leading-relaxed mb-8">
-                Gramy koncerty w całej Polsce, nagrywamy płyty i stale rozwijamy nasze brzmienie.
-                Na scenie dajemy z siebie wszystko – każdy koncert to nowe doświadczenie.
+                Gramy na festiwalach, w klubach muzycznych i na imprezach prywatnych. 
+                Nasze teksty opowiadają o życiu bez filtrów – o emocjach, marzeniach i codziennych zmaganiach.
               </p>
               <Link
                 to="/o-zespole"
@@ -248,14 +280,45 @@ const Index = () => {
         </div>
       </section>
 
+      {/* FEATURES / USP */}
+      <section className="bg-secondary section-padding">
+        <div className="max-w-[1100px] mx-auto">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <h2 className="font-heading text-4xl md:text-6xl text-foreground mb-4">Dlaczego CIRYAM?</h2>
+              <p className="text-muted-foreground font-body text-sm max-w-xl mx-auto">
+                Nie gramy podróbek – tworzymy własną muzykę, która porusza i elektryzuje.
+              </p>
+            </div>
+          </FadeIn>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { icon: Music, title: "Autorskie utwory", desc: "100% oryginalnej muzyki. Każdy riff, tekst i melodia to nasze dzieło – autentyczny rock bez kompromisów." },
+              { icon: Mic2, title: "Energia na żywo", desc: "Ponad 50 koncertów rocznie w całej Polsce. Nasza scena to miejsce, gdzie rock żyje – głośno, intensywnie, prawdziwie." },
+              { icon: ShoppingBag, title: "Oficjalny merch", desc: "Koszulki, bluzy, płyty winylowe i CD. Noś CIRYAM z dumą – każdy zakup wspiera niezależną muzykę." },
+            ].map((item, i) => (
+              <FadeIn key={item.title} delay={i * 100}>
+                <div className="bg-card border border-border rounded-xl p-6 md:p-8 hover:border-accent/30 transition-colors group">
+                  <item.icon size={28} className="text-accent mb-4 group-hover:scale-110 transition-transform" />
+                  <h3 className="font-heading text-xl text-foreground mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground font-body text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SKLEP */}
-      <section className="bg-secondary section-padding" id="sklep">
+      <section className="bg-background section-padding" id="sklep">
         <div className="max-w-[1100px] mx-auto">
           <FadeIn>
             <div className="text-center mb-12">
               <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">Merch</p>
-              <h2 className="font-heading text-3xl md:text-5xl text-foreground mb-4">Sklep CIRYAM</h2>
-              <p className="text-muted-foreground font-body text-sm">Koszulki, płyty, plakaty i więcej.</p>
+              <h2 className="font-heading text-4xl md:text-6xl text-foreground mb-4">Sklep CIRYAM</h2>
+              <p className="text-muted-foreground font-body text-sm max-w-lg mx-auto">
+                Oficjalny merchandising zespołu. Koszulki, płyty, plakaty i więcej – wesprzyj niezależną muzykę!
+              </p>
             </div>
           </FadeIn>
 
@@ -264,11 +327,11 @@ const Index = () => {
               <FadeIn key={item.name} delay={i * 100}>
                 <div className="group bg-card border border-border rounded-xl overflow-hidden hover:border-accent/30 transition-colors">
                   <div className="aspect-square overflow-hidden">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                    <img src={item.image} alt={`${item.name} – oficjalny merch CIRYAM`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   </div>
                   <div className="p-4">
-                    <h3 className="font-heading text-sm text-foreground mb-1">{item.name}</h3>
-                    <p className="text-accent font-heading text-lg">{item.price}</p>
+                    <h3 className="font-heading text-base text-foreground mb-1">{item.name}</h3>
+                    <p className="text-accent font-heading text-xl">{item.price}</p>
                   </div>
                 </div>
               </FadeIn>
@@ -288,15 +351,17 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-background section-padding">
+      {/* CTA / BOOKING */}
+      <section className="bg-secondary section-padding">
         <div className="max-w-[700px] mx-auto text-center">
           <FadeIn>
-            <h2 className="font-heading text-3xl md:text-5xl text-foreground mb-6">
-              Zaproś nas<br />na swój event
+            <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">Booking</p>
+            <h2 className="font-heading text-4xl md:text-6xl text-foreground mb-6">
+              Zaproś CIRYAM na swój event
             </h2>
-            <p className="text-muted-foreground font-body text-sm mb-8 max-w-md mx-auto">
-              Gramy na festiwalach, w klubach i na imprezach prywatnych. Napisz do nas, a wrócimy z ofertą.
+            <p className="text-muted-foreground font-body text-sm mb-8 max-w-md mx-auto leading-relaxed">
+              Gramy na festiwalach rockowych, w klubach muzycznych, na imprezach firmowych i prywatnych. 
+              Napisz do nas – przygotujemy ofertę dopasowaną do Twojego wydarzenia.
             </p>
             <Link
               to="/kontakt"
