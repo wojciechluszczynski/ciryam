@@ -22,6 +22,12 @@ const OZespole = lazy(() => import("./pages/OZespole"));
 const Sklep = lazy(() => import("./pages/Sklep"));
 const ProductDetail = lazy(() => import("./pages/ProductDetail"));
 const PolitykaPrywatnosci = lazy(() => import("./pages/PolitykaPrywatnosci"));
+const Aktualnosci = lazy(() => import("./pages/Aktualnosci"));
+const AktualnosciPost = lazy(() => import("./pages/AktualnosciPost"));
+const AdminLogin = lazy(() => import("./pages/AdminLogin"));
+const AdminPosts = lazy(() => import("./pages/AdminPosts"));
+const AdminPostEdit = lazy(() => import("./pages/AdminPostEdit"));
+const ProtectedRoute = lazy(() => import("./components/ProtectedRoute"));
 
 const queryClient = new QueryClient();
 
@@ -33,11 +39,14 @@ const ScrollRestoration = () => {
 
 const AppContent = () => {
   useCartSync();
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith("/admin");
+
   return (
     <>
-      <AnnouncementBanner />
+      {!isAdmin && <AnnouncementBanner />}
       <ScrollRestoration />
-      <Navbar />
+      {!isAdmin && <Navbar />}
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<Index />} />
@@ -48,13 +57,18 @@ const AppContent = () => {
           <Route path="/sklep" element={<Sklep />} />
           <Route path="/product/:handle" element={<ProductDetail />} />
           <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
+          <Route path="/aktualnosci" element={<Aktualnosci />} />
+          <Route path="/aktualnosci/:slug" element={<AktualnosciPost />} />
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/posts" element={<Suspense fallback={null}><ProtectedRoute><AdminPosts /></ProtectedRoute></Suspense>} />
+          <Route path="/admin/posts/:id" element={<Suspense fallback={null}><ProtectedRoute><AdminPostEdit /></ProtectedRoute></Suspense>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
-      <Footer />
-      <StickyPlayer />
-      <Suspense fallback={null}><Chatbot /></Suspense>
-      <CookieBanner />
+      {!isAdmin && <Footer />}
+      {!isAdmin && <StickyPlayer />}
+      {!isAdmin && <Suspense fallback={null}><Chatbot /></Suspense>}
+      {!isAdmin && <CookieBanner />}
     </>
   );
 };
