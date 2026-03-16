@@ -56,7 +56,7 @@ const Sklep = () => (
           </p>
           <a
             href="mailto:sklep@ciryam.pl"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-colors"
           >
             <ExternalLink size={14} /> sklep@ciryam.pl
           </a>

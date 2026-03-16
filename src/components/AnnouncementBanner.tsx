@@ -51,7 +51,7 @@ const AnnouncementBanner = () => {
           </p>
           <Link
             to="/koncerty"
-            className="shrink-0 px-3 py-1 bg-accent-foreground/15 hover:bg-accent-foreground/25 text-accent-foreground font-body text-xs transition-colors"
+            className="shrink-0 px-3 py-1 rounded-full bg-accent-foreground/15 hover:bg-accent-foreground/25 text-accent-foreground font-body text-xs transition-colors"
           >
             Koncerty →
           </Link>

@@ -58,7 +58,7 @@ const Koncerty = () => (
                   </div>
                   <a
                     href={concert.ticketUrl}
-                    className="shrink-0 px-6 py-2.5 bg-accent text-accent-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors"
+                    className="shrink-0 px-6 py-2.5 rounded-full bg-accent text-accent-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors"
                   >
                     Kup bilet
                   </a>
