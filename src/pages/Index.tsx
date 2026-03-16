@@ -270,16 +270,16 @@ const Index = () => {
           </FadeIn>
           <FadeIn delay={100}>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-              <div className="col-span-2 row-span-2 relative group overflow-hidden rounded-xl">
-                <img src={ciryamBand} alt="CIRYAM band promo" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width={900} height={600} decoding="async" />
+              <div className="col-span-2 row-span-2 relative group overflow-hidden rounded-xl bg-background">
+                <img src={ciryamBand} alt="CIRYAM band promo" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" width={900} height={600} decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
-              <div className="relative group overflow-hidden rounded-xl aspect-square">
-                <img src={ciryamBand8} alt="CIRYAM live concert" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width={450} height={450} decoding="async" />
+              <div className="relative group overflow-hidden rounded-xl aspect-square bg-background">
+                <img src={ciryamBand8} alt="CIRYAM live concert" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" width={450} height={450} decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
-              <div className="relative group overflow-hidden rounded-xl aspect-square">
-                <img src={ciryamBand} alt="CIRYAM backstage" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width={450} height={450} decoding="async" />
+              <div className="relative group overflow-hidden rounded-xl aspect-square bg-background">
+                <img src={ciryamBand} alt="CIRYAM backstage" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" width={450} height={450} decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </div>
