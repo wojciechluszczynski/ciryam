@@ -226,24 +226,27 @@ const Sklep = () => {
           </div>
         </FadeIn>
 
-        {/* AI Recommendations */}
+        {/* Hot Products */}
         {recommendedProducts.length > 0 && !activeCategory && !searchQuery && (
           <FadeIn delay={100}>
-            <div className="mb-10">
-              <div className="flex items-center gap-2 mb-4">
-                <Sparkles size={16} className="text-accent" />
-                <h2 className="font-heading text-sm tracking-[0.2em] uppercase text-accent">
-                  {lang === "pl" ? "Rekomendacje AI" : "AI Recommendations"}
+            <div className="mb-12 relative rounded-2xl border border-accent/20 bg-accent/[0.03] p-6 md:p-8">
+              <div className="absolute -top-3 left-6 bg-accent text-accent-foreground px-4 py-1 rounded-full font-heading text-[11px] tracking-[0.15em] uppercase flex items-center gap-1.5">
+                <Sparkles size={12} />
+                {lang === "pl" ? "Popularne" : "Hot"}
+              </div>
+              <div className="flex items-center justify-between mb-5 mt-1">
+                <h2 className="font-heading text-lg md:text-xl text-foreground">
+                  {lang === "pl" ? "Nasze rekomendacje" : "Our Picks"}
                 </h2>
                 <button
                   onClick={fetchRecommendations}
                   disabled={aiLoading}
-                  className="ml-2 text-[10px] text-muted-foreground hover:text-foreground font-body underline underline-offset-2 transition-colors disabled:opacity-50"
+                  className="text-[10px] text-muted-foreground hover:text-foreground font-body underline underline-offset-2 transition-colors disabled:opacity-50"
                 >
                   {aiLoading ? (
                     <Loader2 size={12} className="animate-spin inline" />
                   ) : (
-                    lang === "pl" ? "odśwież" : "refresh"
+                    lang === "pl" ? "pokaż inne" : "show more"
                   )}
                 </button>
               </div>
