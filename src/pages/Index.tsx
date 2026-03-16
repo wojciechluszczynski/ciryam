@@ -57,7 +57,7 @@ const Index = () => {
       <section className="relative h-screen w-full overflow-hidden">
         {heroSlides.map((slide, i) => (
           <div key={i} className={`absolute inset-0 transition-all duration-1000 ease-in-out ${i === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}>
-            <img src={slide} alt={`CIRYAM rock band live ${i + 1}`} className="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"} />
+            <img src={slide} alt={`CIRYAM rock band live ${i + 1}`} className="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"} width={1400} height={940} fetchPriority={i === 0 ? "high" : "auto"} decoding={i === 0 ? "sync" : "async"} />
           </div>
         ))}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/40" />
