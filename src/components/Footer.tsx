@@ -58,9 +58,15 @@ const Footer = () => {
 
           <div>
             <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-5 text-muted-foreground">{t("footer.booking")}</h4>
-            <div className="flex flex-col gap-2 text-foreground/60 font-body text-sm">
-              <a href="mailto:booking@ciryam.pl" className="hover:text-accent transition-colors">booking@ciryam.pl</a>
-              <a href="mailto:kontakt@ciryam.pl" className="hover:text-accent transition-colors">kontakt@ciryam.pl</a>
+            <div className="flex flex-col gap-3 text-foreground/60 font-body text-sm">
+              <div>
+                <p className="text-foreground/80 font-semibold mb-0.5">Booking & koncerty</p>
+                <a href="mailto:booking@ciryam.pl" className="hover:text-accent transition-colors">booking@ciryam.pl</a>
+              </div>
+              <div>
+                <p className="text-foreground/80 font-semibold mb-0.5">Kontakt ogólny & media</p>
+                <a href="mailto:kontakt@ciryam.pl" className="hover:text-accent transition-colors">kontakt@ciryam.pl</a>
+              </div>
             </div>
           </div>
         </div>
