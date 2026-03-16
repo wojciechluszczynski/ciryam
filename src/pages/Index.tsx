@@ -157,9 +157,9 @@ const Index = () => {
           </FadeIn>
           <FadeIn delay={150}>
             <div className="bg-card border border-border rounded-xl p-4 md:p-6 overflow-hidden">
-              <iframe width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay"
+              <LazyIframe width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay"
                 src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ciryam/sets/ciryam&color=%23ffffff&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
-                title="SoundCloud CIRYAM" className="rounded-lg" />
+                title="SoundCloud CIRYAM" className="rounded-lg" fallbackHeight="300px" />
             </div>
           </FadeIn>
           <FadeIn delay={200}>
