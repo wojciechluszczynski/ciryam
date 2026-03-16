@@ -6,9 +6,13 @@ import FadeIn from "@/components/FadeIn";
 import ciryamBand from "@/assets/ciryam-band.jpg";
 import ciryamBand2 from "@/assets/ciryam-band-2.jpg";
 import ciryamLive from "@/assets/ciryam-live.jpg";
+import merchTshirt from "@/assets/merch-tshirt.jpg";
+import merchCd from "@/assets/merch-cd.jpg";
+import merchPoster from "@/assets/merch-poster.jpg";
 
 const heroSlides = [ciryamBand, ciryamBand2, ciryamLive];
 
+// TODO: Uzupełnij prawdziwe daty koncertów i linki do biletów
 const upcomingConcerts = [
   { date: "2026-04-12", city: "Kraków", venue: "Zaścianek", ticketUrl: "#" },
   { date: "2026-04-26", city: "Warszawa", venue: "Hydrozagadka", ticketUrl: "#" },
@@ -18,9 +22,9 @@ const upcomingConcerts = [
 ];
 
 const shopItems = [
-  { name: "Koszulka CIRYAM Logo", price: "89 zł", image: ciryamBand },
-  { name: "Płyta CD \"Dices\"", price: "49 zł", image: ciryamBand2 },
-  { name: "Plakat koncertowy", price: "39 zł", image: ciryamLive },
+  { name: "Koszulka CIRYAM Logo", price: "89 zł", image: merchTshirt },
+  { name: "Płyta CD \"Dices\"", price: "49 zł", image: merchCd },
+  { name: "Plakat koncertowy", price: "39 zł", image: merchPoster },
 ];
 
 const formatDate = (dateStr: string) => {
