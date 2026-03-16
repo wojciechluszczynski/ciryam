@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { LangProvider } from "@/contexts/LangContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnnouncementBanner from "@/components/AnnouncementBanner";
@@ -32,27 +33,29 @@ const ScrollRestoration = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AnnouncementBanner />
-        <ScrollRestoration />
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/kontakt" element={<Kontakt />} />
-          <Route path="/koncerty" element={<Koncerty />} />
-          <Route path="/muzyka" element={<Muzyka />} />
-          <Route path="/o-zespole" element={<OZespole />} />
-          <Route path="/sklep" element={<Sklep />} />
-          <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Footer />
-        <StickyPlayer />
-        <Chatbot />
-        <CookieBanner />
-      </BrowserRouter>
+      <LangProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AnnouncementBanner />
+          <ScrollRestoration />
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/kontakt" element={<Kontakt />} />
+            <Route path="/koncerty" element={<Koncerty />} />
+            <Route path="/muzyka" element={<Muzyka />} />
+            <Route path="/o-zespole" element={<OZespole />} />
+            <Route path="/sklep" element={<Sklep />} />
+            <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Footer />
+          <StickyPlayer />
+          <Chatbot />
+          <CookieBanner />
+        </BrowserRouter>
+      </LangProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
