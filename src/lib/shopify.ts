@@ -86,6 +86,8 @@ export const STOREFRONT_PRODUCTS_QUERY = `
           title
           description
           handle
+          productType
+          tags
           priceRange {
             minVariantPrice {
               amount
