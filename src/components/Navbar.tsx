@@ -69,11 +69,14 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`text-xs tracking-[0.15em] uppercase font-heading transition-colors duration-300 hover:text-accent ${
-                  location.pathname === link.href ? "text-accent" : "text-foreground"
+                className={`relative text-xs tracking-[0.15em] uppercase font-heading transition-all duration-300 hover:text-accent group ${
+                  location.pathname === link.href ? "text-accent" : "text-foreground/70"
                 }`}
               >
                 {t(link.labelKey)}
+                <span className={`absolute -bottom-1 left-0 h-[1px] bg-accent transition-all duration-300 ${
+                  location.pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
+                }`} />
               </Link>
             ))}
 
