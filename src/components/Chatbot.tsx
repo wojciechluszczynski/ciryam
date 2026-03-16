@@ -153,15 +153,12 @@ const Chatbot = () => {
     <>
 
       <button onClick={() => open ? handleClose() : handleOpen()}
-        className="fixed bottom-[4.5rem] right-6 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center overflow-hidden group z-[9999]"
-        aria-label="Open CIRYAM chat assistant"
-        style={{ boxShadow: open ? undefined : "0 0 24px 4px hsl(38 92% 50% / 0.3), 0 4px 16px rgba(0,0,0,0.2)" }}>
+        className="fixed bottom-[4.5rem] right-6 w-14 h-14 rounded-full bg-secondary border border-border shadow-md flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent/50 transition-all duration-300 z-[9999]"
+        aria-label="Open CIRYAM chat assistant">
         {open ? (
-          <div className="w-full h-full rounded-full bg-accent flex items-center justify-center"><X size={22} className="text-accent-foreground" /></div>
+          <X size={20} />
         ) : (
-          <div className="relative w-full h-full rounded-full overflow-hidden bg-black flex items-center justify-center border-2 border-accent/40">
-            <img src={ciryamLogo} alt="CIRYAM" className="w-8 h-8 object-contain brightness-0 invert" />
-          </div>
+          <MessageCircle size={20} />
         )}
       </button>
 
