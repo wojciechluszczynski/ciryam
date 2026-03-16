@@ -1,15 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Play, Calendar, MapPin, ExternalLink, ShoppingBag, Music, Mic2 } from "lucide-react";
+import { ArrowRight, Play, Calendar, MapPin, ExternalLink, ShoppingBag, Music, Mic2, Sparkles, Loader2 } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
+import { storefrontApiRequest, STOREFRONT_PRODUCTS_QUERY, type ShopifyProduct } from "@/lib/shopify";
+import { supabase } from "@/integrations/supabase/client";
+import { useCartStore } from "@/stores/cartStore";
+import { toast } from "sonner";
 
 import ciryamBand from "@/assets/ciryam-band.jpg";
 import ciryamBand2 from "@/assets/ciryam-band-2.jpg";
 import ciryamLive from "@/assets/ciryam-live.jpg";
-import merchTshirt from "@/assets/merch-tshirt.jpg";
-import merchCd from "@/assets/merch-cd.jpg";
-import merchPoster from "@/assets/merch-poster.jpg";
 
 const heroSlides = [ciryamBand, ciryamBand2, ciryamLive];
 
@@ -31,13 +32,56 @@ const formatDate = (dateStr: string) => {
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const addItem = useCartStore(state => state.addItem);
+  const isCartLoading = useCartStore(state => state.isLoading);
 
-  const shopItems = [
-    { name: t("product.tshirt"), price: "89 zł", image: merchTshirt },
-    { name: t("product.cd"), price: "49 zł", image: merchCd },
-    { name: t("product.poster"), price: "39 zł", image: merchPoster },
-  ];
+  const [shopProducts, setShopProducts] = useState<ShopifyProduct[]>([]);
+  const [aiRecs, setAiRecs] = useState<string[]>([]);
+  const [recsLoading, setRecsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await storefrontApiRequest(STOREFRONT_PRODUCTS_QUERY, { first: 50 });
+        if (data?.data?.products?.edges) setShopProducts(data.data.products.edges);
+      } catch (e) { console.error(e); }
+    };
+    fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    if (shopProducts.length > 0 && aiRecs.length === 0) {
+      setRecsLoading(true);
+      const randomProduct = shopProducts[Math.floor(Math.random() * shopProducts.length)];
+      supabase.functions.invoke('recommend-products', {
+        body: {
+          products: shopProducts.map(p => ({ title: p.node.title, type: p.node.productType, price: parseFloat(p.node.priceRange.minVariantPrice.amount).toFixed(0) })),
+          currentProductTitle: randomProduct.node.title,
+          lang,
+        },
+      }).then(({ data }) => {
+        if (data?.suggestions) setAiRecs(data.suggestions);
+      }).catch(console.error).finally(() => setRecsLoading(false));
+    }
+  }, [shopProducts]);
+
+  const featuredProducts = useMemo(() => {
+    if (aiRecs.length > 0) {
+      const matched = shopProducts.filter(p =>
+        aiRecs.some(rec => p.node.title.toLowerCase().includes(rec.toLowerCase()) || rec.toLowerCase().includes(p.node.title.toLowerCase()))
+      );
+      if (matched.length >= 3) return matched.slice(0, 3);
+    }
+    return shopProducts.slice(0, 3);
+  }, [shopProducts, aiRecs]);
+
+  const handleAddToCart = async (product: ShopifyProduct) => {
+    const variant = product.node.variants.edges[0]?.node;
+    if (!variant) return;
+    await addItem({ product, variantId: variant.id, variantTitle: variant.title, price: variant.price, quantity: 1, selectedOptions: variant.selectedOptions || [] });
+    toast.success(lang === "pl" ? "Dodano do koszyka!" : "Added to cart!", { position: "top-center" });
+  };
 
   const stats = [
     { value: "50+", label: t("stats.concerts") },
@@ -309,21 +353,56 @@ const Index = () => {
               <p className="text-muted-foreground font-body text-sm max-w-lg mx-auto">{t("shop.desc")}</p>
             </div>
           </FadeIn>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {shopItems.map((item, i) => (
-              <FadeIn key={item.name} delay={i * 100}>
-                <div className="group bg-card border border-border rounded-xl overflow-hidden hover:border-accent/30 transition-colors">
-                  <div className="aspect-square overflow-hidden">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-heading text-base text-foreground mb-1">{item.name}</h3>
-                    <p className="text-accent font-heading text-xl">{item.price}</p>
-                  </div>
+
+          {featuredProducts.length > 0 ? (
+            <FadeIn delay={100}>
+              <div className="relative rounded-2xl border border-accent/20 bg-accent/[0.03] p-6 md:p-8 mb-8">
+                <div className="absolute -top-3 left-6 bg-accent text-accent-foreground px-4 py-1 rounded-full font-heading text-[11px] tracking-[0.15em] uppercase flex items-center gap-1.5">
+                  <Sparkles size={12} />
+                  {lang === "pl" ? "Popularne" : "Hot"}
                 </div>
-              </FadeIn>
-            ))}
-          </div>
+                <h3 className="font-heading text-lg md:text-xl text-foreground mb-5 mt-1">
+                  {lang === "pl" ? "Najpopularniejsze produkty" : "Most Popular"}
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+                  {featuredProducts.map((product, i) => {
+                    const img = product.node.images.edges[0]?.node;
+                    const price = product.node.priceRange.minVariantPrice;
+                    return (
+                      <FadeIn key={product.node.id} delay={i * 100}>
+                        <div className="group bg-card border border-border rounded-xl overflow-hidden hover:border-accent/30 transition-colors">
+                          <Link to={`/product/${product.node.handle}`}>
+                            <div className="aspect-square overflow-hidden bg-secondary">
+                              {img ? (
+                                <img src={img.url} alt={img.altText || product.node.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                              ) : (
+                                <div className="w-full h-full flex items-center justify-center text-muted-foreground"><ShoppingBag size={32} /></div>
+                              )}
+                            </div>
+                          </Link>
+                          <div className="p-4">
+                            <Link to={`/product/${product.node.handle}`}>
+                              <h3 className="font-heading text-sm text-foreground mb-1 hover:text-accent transition-colors">{product.node.title}</h3>
+                            </Link>
+                            <div className="flex items-center justify-between">
+                              <span className="text-accent font-heading text-lg">{price.currencyCode} {parseFloat(price.amount).toFixed(2)}</span>
+                              <button onClick={() => handleAddToCart(product)} disabled={isCartLoading}
+                                className="px-3 py-1.5 rounded-full bg-accent text-accent-foreground font-heading text-[10px] tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors disabled:opacity-60">
+                                {isCartLoading ? <Loader2 size={12} className="animate-spin" /> : (lang === "pl" ? "Dodaj" : "Add")}
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </FadeIn>
+                    );
+                  })}
+                </div>
+              </div>
+            </FadeIn>
+          ) : recsLoading ? (
+            <div className="flex justify-center py-12"><Loader2 size={24} className="animate-spin text-accent" /></div>
+          ) : null}
+
           <FadeIn delay={300}>
             <div className="text-center mt-10">
               <Link to="/sklep" className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-all duration-300">
