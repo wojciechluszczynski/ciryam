@@ -39,7 +39,7 @@ const Sklep = () => (
                 <h3 className="font-heading text-sm text-foreground mb-1">{product.name}</h3>
                 <div className="flex items-center justify-between">
                   <span className="text-accent font-heading text-lg">{product.price}</span>
-                  <button className="px-3 py-1.5 bg-accent text-accent-foreground font-heading text-[10px] tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors opacity-0 group-hover:opacity-100">
+                  <button className="px-3 py-1.5 rounded-full bg-accent text-accent-foreground font-heading text-[10px] tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors opacity-0 group-hover:opacity-100">
                     Dodaj
                   </button>
                 </div>
