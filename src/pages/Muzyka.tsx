@@ -3,6 +3,15 @@ import LazyIframe from "@/components/LazyIframe";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
 
+const musicVideos = [
+  // Chronological order (oldest first)
+  { title: "W Ciszy", album: "Szepty dusz (2004)", youtubeId: "A0sR8SfO_Xc" },
+  { title: "Venus (english version)", album: "Desires (2017)", youtubeId: "14QXTwQZ3ts" },
+  { title: "Alone – band version", album: "Desires (2017)", youtubeId: "41ImTmg7HYE" },
+  { title: "Wataha", album: "Hymn Wilków Krosno (2019)", youtubeId: "eEBIo2nJUsM" },
+  { title: "Noc", album: "Zamyślony zapach (2023)", youtubeId: "iyTQo9v-xNs" },
+];
+
 const Muzyka = () => {
   const { t } = useLang();
 
@@ -24,11 +33,44 @@ const Muzyka = () => {
           </div>
         </FadeIn>
 
+        {/* Teledyski */}
+        <div className="mb-16">
+          <FadeIn delay={150}>
+            <h2 className="font-heading text-2xl text-foreground mb-2">Teledyski</h2>
+            <p className="text-muted-foreground font-body text-sm mb-8">
+              Nasze oficjalne teledyski — od debiutanckiego „W Ciszy" po najnowszą „Noc".
+            </p>
+          </FadeIn>
+
+          <div className="space-y-10">
+            {musicVideos.map((video, i) => (
+              <FadeIn key={video.youtubeId} delay={200 + i * 80}>
+                <div>
+                  <div className="aspect-video rounded-xl overflow-hidden border border-border">
+                    <LazyIframe
+                      width="100%"
+                      height="100%"
+                      src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                      title={`CIRYAM – ${video.title}`}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      fallbackHeight="100%"
+                    />
+                  </div>
+                  <div className="mt-3 flex items-baseline gap-3">
+                    <h3 className="font-heading text-lg text-foreground">{video.title}</h3>
+                    <span className="font-body text-xs text-muted-foreground">{video.album}</span>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+
         <FadeIn delay={200}>
           <h2 className="font-heading text-2xl text-foreground mb-6">{t("music.platforms")}</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-12">
             {[
-              
               { name: "SoundCloud", url: "https://soundcloud.com/ciryam" },
               { name: "YouTube", url: "https://www.youtube.com/user/Ciryam/" },
               { name: "Facebook", url: "https://www.facebook.com/CIRYAM/" },
