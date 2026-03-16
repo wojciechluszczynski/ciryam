@@ -25,11 +25,14 @@ const Muzyka = () => {
 
         <FadeIn delay={200}>
           <h2 className="font-heading text-2xl text-foreground mb-6">{t("music.platforms")}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-12">
             {[
               { name: "Spotify", url: "https://open.spotify.com/artist/ciryam" },
               { name: "SoundCloud", url: "https://soundcloud.com/ciryam" },
-              { name: "YouTube Music", url: "https://www.youtube.com/@ciryam" },
+              { name: "YouTube", url: "https://www.youtube.com/user/Ciryam/" },
+              { name: "Facebook", url: "https://www.facebook.com/CIRYAM/" },
+              { name: "Instagram", url: "https://www.instagram.com/ciryam__official/" },
+              { name: "Vimeo", url: "https://vimeo.com/ciryam" },
             ].map((platform) => (
               <a key={platform.name} href={platform.url} target="_blank" rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 py-4 rounded-xl border border-border text-foreground font-heading text-base tracking-[0.1em] uppercase hover:border-accent hover:text-accent transition-colors">

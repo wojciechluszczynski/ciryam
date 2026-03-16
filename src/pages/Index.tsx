@@ -121,7 +121,8 @@ const Index = () => {
               {[
                 { name: "Spotify", url: "https://open.spotify.com/artist/ciryam" },
                 { name: "SoundCloud", url: "https://soundcloud.com/ciryam" },
-                { name: "YouTube", url: "https://www.youtube.com/@ciryam" },
+                { name: "YouTube", url: "https://www.youtube.com/user/Ciryam/" },
+                { name: "Vimeo", url: "https://vimeo.com/ciryam" },
               ].map((p) => (
                 <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-border text-foreground font-body text-sm hover:border-accent hover:text-accent transition-colors">
                   <ExternalLink size={14} /> {p.name}
