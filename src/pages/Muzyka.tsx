@@ -1,4 +1,5 @@
 import { ExternalLink } from "lucide-react";
+import LazyIframe from "@/components/LazyIframe";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
 
