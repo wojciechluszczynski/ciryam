@@ -60,14 +60,22 @@ const Sklep = () => {
 
   // Filter products
   const filteredProducts = useMemo(() => {
-    return products.filter(p => {
+    let result = products.filter(p => {
       const matchCategory = !activeCategory || p.node.productType === activeCategory;
       const matchSearch = !searchQuery || 
         p.node.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         p.node.description?.toLowerCase().includes(searchQuery.toLowerCase());
       return matchCategory && matchSearch;
     });
-  }, [products, activeCategory, searchQuery]);
+    if (sortOrder) {
+      result = [...result].sort((a, b) => {
+        const priceA = parseFloat(a.node.priceRange.minVariantPrice.amount);
+        const priceB = parseFloat(b.node.priceRange.minVariantPrice.amount);
+        return sortOrder === "asc" ? priceA - priceB : priceB - priceA;
+      });
+    }
+    return result;
+  }, [products, activeCategory, searchQuery, sortOrder]);
 
   // Fetch AI recommendations
   const fetchRecommendations = async () => {
