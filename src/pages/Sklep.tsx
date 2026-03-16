@@ -295,6 +295,25 @@ const Sklep = () => {
               <p className="text-muted-foreground font-body text-xs">
                 {filteredProducts.length} {lang === "pl" ? "produktów" : "products"}
               </p>
+              <div className="flex items-center gap-2">
+                {(["", "asc", "desc"] as const).map((order) => (
+                  <button
+                    key={order}
+                    onClick={() => setSortOrder(order)}
+                    className={`px-3 py-1 rounded-full font-heading text-[10px] tracking-[0.1em] uppercase transition-colors border ${
+                      sortOrder === order
+                        ? "bg-accent text-accent-foreground border-accent"
+                        : "bg-card text-muted-foreground border-border hover:border-accent/30 hover:text-foreground"
+                    }`}
+                  >
+                    {order === "" 
+                      ? (lang === "pl" ? "Domyślnie" : "Default")
+                      : order === "asc" 
+                        ? (lang === "pl" ? "Od najtańszych" : "Price ↑") 
+                        : (lang === "pl" ? "Od najdroższych" : "Price ↓")}
+                  </button>
+                ))}
+              </div>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
               {filteredProducts.map((product, i) => renderProductCard(product, i))}
