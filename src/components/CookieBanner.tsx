@@ -24,7 +24,7 @@ const CookieBanner = () => {
     <>
       {/* Expanded panel */}
       {expanded && (
-        <div className="fixed bottom-20 left-6 z-50 w-[300px] bg-background rounded-2xl shadow-2xl border border-border p-5 animate-fade-in-up" style={{ bottom: "5rem" }}>
+        <div className="fixed bottom-[8rem] left-6 z-50 w-[300px] bg-background rounded-2xl shadow-2xl border border-border p-5 animate-fade-in-up">
           <button onClick={() => setExpanded(false)} className="absolute top-3 right-3 text-muted-foreground hover:text-foreground">
             <X size={16} />
           </button>
