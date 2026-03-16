@@ -24,17 +24,17 @@ const bandKnowledgeEn = {
 };
 
 const quickTopicsPl = [
-  { label: "\ud83c\udfb5 Pos\u0142uchaj muzyki", key: "music" },
-  { label: "\ud83c\udfa4 Nadchodz\u0105ce koncerty", key: "concerts" },
-  { label: "\ud83d\uded2 Sklep z merchem", key: "shop" },
-  { label: "\ud83d\udce9 Booking / kontakt", key: "booking" },
+  { label: "Posłuchaj muzyki", key: "music" },
+  { label: "Nadchodzące koncerty", key: "concerts" },
+  { label: "Sklep z merchem", key: "shop" },
+  { label: "Booking / kontakt", key: "booking" },
 ];
 
 const quickTopicsEn = [
-  { label: "\ud83c\udfb5 Listen to music", key: "music" },
-  { label: "\ud83c\udfa4 Upcoming concerts", key: "concerts" },
-  { label: "\ud83d\uded2 Merch shop", key: "shop" },
-  { label: "\ud83d\udce9 Booking / contact", key: "booking" },
+  { label: "Listen to music", key: "music" },
+  { label: "Upcoming concerts", key: "concerts" },
+  { label: "Merch shop", key: "shop" },
+  { label: "Booking / contact", key: "booking" },
 ];
 
 const siteLinksPl = [
@@ -169,7 +169,7 @@ const Chatbot = () => {
               <img src={ciryamLogo} alt="CIRYAM" className="w-6 h-6 object-contain brightness-0 invert" />
             </div>
             <div className="flex-1">
-              <p className="text-foreground font-heading text-base tracking-wide">CIRYAM BOT</p>
+              <p className="text-foreground font-heading text-base tracking-wide">CIRYAM</p>
               <p className="text-muted-foreground font-body text-xs">
                 {lang === "pl" ? "Koncerty \u2022 Muzyka \u2022 Merch" : "Concerts \u2022 Music \u2022 Merch"}
               </p>
