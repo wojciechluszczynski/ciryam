@@ -24,17 +24,17 @@ const bandKnowledgeEn = {
 };
 
 const quickTopicsPl = [
-  { label: "\ud83c\udfb5 Pos\u0142uchaj muzyki", key: "music" },
-  { label: "\ud83c\udfa4 Nadchodz\u0105ce koncerty", key: "concerts" },
-  { label: "\ud83d\uded2 Sklep z merchem", key: "shop" },
-  { label: "\ud83d\udce9 Booking / kontakt", key: "booking" },
+  { label: "Posłuchaj muzyki", key: "music" },
+  { label: "Nadchodzące koncerty", key: "concerts" },
+  { label: "Sklep z merchem", key: "shop" },
+  { label: "Booking / kontakt", key: "booking" },
 ];
 
 const quickTopicsEn = [
-  { label: "\ud83c\udfb5 Listen to music", key: "music" },
-  { label: "\ud83c\udfa4 Upcoming concerts", key: "concerts" },
-  { label: "\ud83d\uded2 Merch shop", key: "shop" },
-  { label: "\ud83d\udce9 Booking / contact", key: "booking" },
+  { label: "Listen to music", key: "music" },
+  { label: "Upcoming concerts", key: "concerts" },
+  { label: "Merch shop", key: "shop" },
+  { label: "Booking / contact", key: "booking" },
 ];
 
 const siteLinksPl = [
