@@ -2,16 +2,18 @@ import { Calendar, MapPin } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
 
+const TICKET_URL = "https://www.kupbilecik.pl/baza/17722/CIryam/";
+
 const concerts = [
-  { date: "2026-04-12", city: "Kraków", venue: "Zaścianek", ticketUrl: "#", status: "upcoming" as const },
-  { date: "2026-04-26", city: "Warszawa", venue: "Hydrozagadka", ticketUrl: "#", status: "upcoming" as const },
-  { date: "2026-05-10", city: "Wrocław", venue: "Firlej", ticketUrl: "#", status: "upcoming" as const },
-  { date: "2026-05-24", city: "Gdańsk", venue: "Drizzly Grizzly", ticketUrl: "#", status: "upcoming" as const },
-  { date: "2026-06-14", city: "Rzeszów", venue: "Vinyl Music Club", ticketUrl: "#", status: "upcoming" as const },
-  { date: "2026-06-28", city: "Poznań", venue: "Blue Note", ticketUrl: "#", status: "upcoming" as const },
-  { date: "2026-03-08", city: "Kraków", venue: "Zaścianek", ticketUrl: "#", status: "past" as const },
-  { date: "2026-02-15", city: "Rzeszów", venue: "Vinyl Music Club", ticketUrl: "#", status: "past" as const },
-  { date: "2025-12-21", city: "Warszawa", venue: "Progresja", ticketUrl: "#", status: "past" as const },
+  { date: "2026-04-12", city: "Kraków", venue: "Zaścianek", ticketUrl: TICKET_URL, status: "upcoming" as const },
+  { date: "2026-04-26", city: "Warszawa", venue: "Hydrozagadka", ticketUrl: TICKET_URL, status: "upcoming" as const },
+  { date: "2026-05-10", city: "Wrocław", venue: "Firlej", ticketUrl: TICKET_URL, status: "upcoming" as const },
+  { date: "2026-05-24", city: "Gdańsk", venue: "Drizzly Grizzly", ticketUrl: TICKET_URL, status: "upcoming" as const },
+  { date: "2026-06-14", city: "Rzeszów", venue: "Vinyl Music Club", ticketUrl: TICKET_URL, status: "upcoming" as const },
+  { date: "2026-06-28", city: "Poznań", venue: "Blue Note", ticketUrl: TICKET_URL, status: "upcoming" as const },
+  { date: "2026-03-08", city: "Kraków", venue: "Zaścianek", ticketUrl: TICKET_URL, status: "past" as const },
+  { date: "2026-02-15", city: "Rzeszów", venue: "Vinyl Music Club", ticketUrl: TICKET_URL, status: "past" as const },
+  { date: "2025-12-21", city: "Warszawa", venue: "Progresja", ticketUrl: TICKET_URL, status: "past" as const },
 ];
 
 const formatDate = (dateStr: string) => {
