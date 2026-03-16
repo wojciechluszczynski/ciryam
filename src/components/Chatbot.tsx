@@ -169,7 +169,7 @@ const Chatbot = () => {
               <img src={ciryamLogo} alt="CIRYAM" className="w-6 h-6 object-contain brightness-0 invert" />
             </div>
             <div className="flex-1">
-              <p className="text-foreground font-heading text-base tracking-wide">CIRYAM BOT</p>
+              <p className="text-foreground font-heading text-base tracking-wide">CIRYAM</p>
               <p className="text-muted-foreground font-body text-xs">
                 {lang === "pl" ? "Koncerty \u2022 Muzyka \u2022 Merch" : "Concerts \u2022 Music \u2022 Merch"}
               </p>
