@@ -11,7 +11,7 @@ import { toast } from "sonner";
 
 import ciryamBand from "@/assets/ciryam-band.jpg";
 import ciryamBand2 from "@/assets/ciryam-band-2.jpg";
-import ciryamLive from "@/assets/ciryam-live.webp";
+import ciryamLive from "@/assets/ciryam-live.jpg";
 
 const heroSlides = [ciryamBand, ciryamBand2, ciryamLive];
 
