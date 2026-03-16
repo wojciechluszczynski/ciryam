@@ -153,7 +153,7 @@ const Chatbot = () => {
     <>
 
       <button onClick={() => open ? handleClose() : handleOpen()}
-        className="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center overflow-hidden group z-[9999]"
+        className="fixed bottom-[4.5rem] right-6 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center overflow-hidden group z-[9999]"
         aria-label="Open CIRYAM chat assistant"
         style={{ boxShadow: open ? undefined : "0 0 24px 4px hsl(38 92% 50% / 0.3), 0 4px 16px rgba(0,0,0,0.2)" }}>
         {open ? (
