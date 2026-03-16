@@ -109,7 +109,7 @@ const translations: Record<Lang, Record<string, string>> = {
     "music.platforms": "Słuchaj na platformach",
     "music.seo.title": "O muzyce CIRYAM",
     "music.seo.p1": "CIRYAM to polski zespół rockowy, który od pierwszych akordów stawia na autentyczność. Nasze brzmienie czerpie z klasycznego hard rocka lat 70. i 80., ale nie boimy się nowoczesnych rozwiązań produkcyjnych. Efekt? Muzyka, która jest jednocześnie surowa i przystępna.",
-    "music.seo.p2": "Album „Dices" – nasz najnowszy materiał – to 10 utworów, które opowiadają o ryzyku, emocjach i życiowych wyborach. Od mocnego otwieracza po akustyczną balladę na zakończenie – płyta zabiera słuchacza w rockową podróż.",
+    "music.seo.p2": 'Album "Dices" \u2013 nasz najnowszy materia\u0142 \u2013 to 10 utwor\u00f3w, kt\u00f3re opowiadaj\u0105 o ryzyku, emocjach i \u017cyciowych wyborach. Od mocnego otwieracza po akustyczn\u0105 ballad\u0119 na zako\u0144czenie \u2013 p\u0142yta zabiera s\u0142uchacza w rockow\u0105 podr\u00f3\u017c.',
     "music.seo.p3": "Wszystkie nasze płyty dostępne są w formatach cyfrowych (Spotify, Apple Music, SoundCloud) oraz fizycznych (CD, winyl) w oficjalnym sklepie CIRYAM.",
 
     // About page
