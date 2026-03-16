@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Globe } from "lucide-react";
 import ciryamLogo from "@/assets/ciryam-logo.webp";
 import { useLang } from "@/contexts/LangContext";
-import { CartDrawer } from "@/components/CartDrawer";
+
 
 const navLinks = [
   { href: "/", labelKey: "nav.start" },
@@ -92,7 +92,6 @@ const Navbar = () => {
               <span className={lang === "en" ? "text-accent" : ""}>EN</span>
             </button>
 
-            <CartDrawer />
 
             <a
               href="https://www.kupbilecik.pl/baza/17722/CIryam/"
@@ -164,7 +163,7 @@ const Navbar = () => {
             <span className={lang === "en" ? "text-accent" : ""}>ENGLISH</span>
           </button>
 
-          <CartDrawer />
+          
 
           <a
             href="https://www.kupbilecik.pl/baza/17722/CIryam/"
