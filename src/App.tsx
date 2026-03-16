@@ -48,6 +48,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
+        <StickyPlayer />
         <CookieBanner />
       </BrowserRouter>
     </TooltipProvider>
