@@ -6,21 +6,15 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Chatbot from "@/components/Chatbot";
 import AnnouncementBanner from "@/components/AnnouncementBanner";
 import CookieBanner from "@/components/CookieBanner";
 import Index from "./pages/Index";
 import Kontakt from "./pages/Kontakt";
-import Oferta from "./pages/Oferta";
-import Realizacje from "./pages/Realizacje";
-import OMnie from "./pages/OMnie";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import ProjectPage from "./pages/ProjectPage";
+import Koncerty from "./pages/Koncerty";
+import Muzyka from "./pages/Muzyka";
+import OZespole from "./pages/OZespole";
+import Sklep from "./pages/Sklep";
 import PolitykaPrywatnosci from "./pages/PolitykaPrywatnosci";
-import Regulamin from "./pages/Regulamin";
-import Ebook from "./pages/Ebook";
-import EbookPreview from "./pages/EbookPreview";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -45,20 +39,14 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/kontakt" element={<Kontakt />} />
-          <Route path="/oferta" element={<Oferta />} />
-          <Route path="/realizacje" element={<Realizacje />} />
-          <Route path="/o-mnie" element={<OMnie />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/koncerty" element={<Koncerty />} />
+          <Route path="/muzyka" element={<Muzyka />} />
+          <Route path="/o-zespole" element={<OZespole />} />
+          <Route path="/sklep" element={<Sklep />} />
           <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
-          <Route path="/regulamin" element={<Regulamin />} />
-          <Route path="/ebook" element={<Ebook />} />
-          <Route path="/ebook/przewodnik" element={<EbookPreview />} />
-          <Route path="/:slug" element={<ProjectPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
-        <Chatbot />
         <CookieBanner />
       </BrowserRouter>
     </TooltipProvider>

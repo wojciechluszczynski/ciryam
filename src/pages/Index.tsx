@@ -1,84 +1,42 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { ArrowRight, Play, Calendar, MapPin, ExternalLink, ShoppingBag } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
-import ProjectCarousel from "@/components/ProjectCarousel";
-import { ArrowRight, Palette, ClipboardList, UserCheck, Home, Building, Building2, Trees, MessageCircle, Ruler, Monitor, Hammer, Plus, X, Check, Star } from "lucide-react";
 
-import vizKitchenRattan from "@/assets/viz-kitchen-rattan.png";
-import vizLivingBeige from "@/assets/viz-living-beige.png";
-import vizBedroomMural from "@/assets/viz-bedroom-mural.png";
-import vizBathroomMarble from "@/assets/viz-bathroom-marble.png";
-import vizDiningFireplace from "@/assets/viz-dining-fireplace.png";
-import vizBedroomDark from "@/assets/viz-bedroom-dark.png";
-import annaPortrait from "@/assets/anna-portrait.jpg";
+import ciryamBand from "@/assets/ciryam-band.jpg";
+import ciryamBand2 from "@/assets/ciryam-band-2.jpg";
+import ciryamLive from "@/assets/ciryam-live.jpg";
 
-const heroSlides = [vizKitchenRattan, vizLivingBeige, vizBedroomMural];
+const heroSlides = [ciryamBand, ciryamBand2, ciryamLive];
 
-const pillars = [
-  { icon: Palette, title: "Estetyka z funkcją", desc: "Projektuję tak, żeby było pięknie i wygodnie na co dzień, bez kompromisów." },
-  { icon: ClipboardList, title: "Porządek w procesie", desc: "Prowadzę Cię krok po kroku, żebyś nie musiał/a martwić się o szczegóły." },
-  { icon: UserCheck, title: "Indywidualne podejście", desc: "Każdy projekt dopasowuję do Twojego stylu życia, gustu i budżetu." },
+const upcomingConcerts = [
+  { date: "2026-04-12", city: "Kraków", venue: "Zaścianek", ticketUrl: "#" },
+  { date: "2026-04-26", city: "Warszawa", venue: "Hydrozagadka", ticketUrl: "#" },
+  { date: "2026-05-10", city: "Wrocław", venue: "Firlej", ticketUrl: "#" },
+  { date: "2026-05-24", city: "Gdańsk", venue: "Drizzly Grizzly", ticketUrl: "#" },
+  { date: "2026-06-14", city: "Rzeszów", venue: "Vinyl Music Club", ticketUrl: "#" },
 ];
 
-const packages = [
-  {
-    icon: Home,
-    name: "Konsultacja",
-    desc: "Krótka rozmowa o Twoim wnętrzu. Omówimy pomysł, układ, styl lub konkretny problem.",
-    image: vizLivingBeige,
-    tags: ["Spotkanie 60 min", "Analiza przestrzeni", "Rekomendacje"],
-  },
-  {
-    icon: Building,
-    name: "Opcja Koncepcyjna",
-    desc: "Układ funkcjonalny, wizualizacje i podstawowe rysunki techniczne. Solidna baza pod Twój projekt.",
-    image: vizKitchenRattan,
-    tags: ["Układ funkcjonalny", "Moodboard", "Wizualizacje 3D"],
-  },
-  {
-    icon: Building2,
-    name: "Opcja Komfortowa",
-    desc: "Pełny projekt z wizualizacjami 3D 360°, dokumentacją techniczną. Gotowy do realizacji.",
-    image: vizBedroomMural,
-    tags: ["Pełny projekt", "Wizualizacja 360°", "Dokumentacja"],
-  },
-  {
-    icon: Trees,
-    name: "Opcja Kompleks",
-    desc: "Najbardziej rozbudowana forma współpracy. Od koncepcji po nadzór na budowie.",
-    image: vizBathroomMarble,
-    tags: ["Pełne wsparcie", "Nadzór budowy", "Zakupy materiałów"],
-  },
+const shopItems = [
+  { name: "Koszulka CIRYAM Logo", price: "89 zł", image: ciryamBand },
+  { name: "Płyta CD \"Dices\"", price: "49 zł", image: ciryamBand2 },
+  { name: "Plakat koncertowy", price: "39 zł", image: ciryamLive },
 ];
 
-const processSteps = [
-  { num: "01", title: "Rozmowa o projekcie", desc: "Spotykamy się lub rozmawiamy online. Poznaję Twoje oczekiwania, styl życia i budżet.", icon: MessageCircle },
-  { num: "02", title: "Układ funkcjonalny i koncepcja", desc: "Przygotowuję wstępny układ, moodboard i propozycję kierunku stylistycznego.", icon: Ruler },
-  { num: "03", title: "Projekt i wizualizacje", desc: "Tworzę wizualizacje 3D i pełną dokumentację techniczną dla wykonawcy.", icon: Monitor },
-  { num: "04", title: "Dokumentacja i wsparcie", desc: "Pomagam w wyborze materiałów, kontakcie z wykonawcą i kontroli na budowie.", icon: Hammer },
-];
-
-const testimonials = [
-  { text: "Ania przeprowadziła nas przez cały proces. Od pierwszego spotkania po odbiór kluczy. Efekt przeszedł nasze oczekiwania.", author: "Katarzyna M.", location: "Rzeszów", rating: 5 },
-  { text: "Profesjonalne podejście i świetne wyczucie stylu. Nasze mieszkanie wygląda dokładnie tak, jak sobie wymarzyliśmy.", author: "Marta i Tomek K.", location: "Krosno", rating: 5 },
-  { text: "Spokojnie i konkretnie. Ania pomogła nam uniknąć wielu kosztownych błędów przy wykończeniu domu.", author: "Paweł Z.", location: "Nowy Sącz", rating: 5 },
-  { text: "Niesamowite podejście do klienta. Ania słucha, doradza i proponuje rozwiązania, o których sami byśmy nie pomyśleli.", author: "Joanna W.", location: "Sanok", rating: 5 },
-  { text: "Projekt wnętrza od Ani to była najlepsza decyzja. Wszystko przemyślane, piękne i funkcjonalne na co dzień.", author: "Michał D.", location: "Jasło", rating: 5 },
-];
+const formatDate = (dateStr: string) => {
+  const d = new Date(dateStr);
+  return {
+    day: d.getDate().toString().padStart(2, "0"),
+    month: d.toLocaleDateString("pl-PL", { month: "short" }).toUpperCase(),
+    year: d.getFullYear(),
+  };
+};
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-  const [activeStep, setActiveStep] = useState<number | null>(null);
-  const [expandedPkg, setExpandedPkg] = useState<number | null>(null);
 
   useEffect(() => {
-    const timer = setInterval(() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length), 6000);
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    const timer = setInterval(() => setActiveTestimonial((prev) => (prev + 1) % testimonials.length), 10000);
+    const timer = setInterval(() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length), 5000);
     return () => clearInterval(timer);
   }, []);
 
@@ -88,314 +46,235 @@ const Index = () => {
       <section className="relative h-screen w-full overflow-hidden">
         {heroSlides.map((slide, i) => (
           <div key={i} className={`absolute inset-0 transition-all duration-1000 ease-in-out ${i === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}>
-            <img src={slide} alt={`Wizualizacja wnętrza AN Projekt ${i + 1}`} className="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"} />
+            <img src={slide} alt={`CIRYAM ${i + 1}`} className="w-full h-full object-cover grayscale" loading={i === 0 ? "eager" : "lazy"} />
           </div>
         ))}
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/30 to-foreground/10" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-dark-foreground mb-4 animate-fade-in-up max-w-[280px] sm:max-w-none">
-            Wnętrza dopasowane<br className="hidden md:block" /> do&nbsp;Twojego życia
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/20" />
+        <div className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-20 md:pb-28">
+          <h1 className="font-heading text-5xl sm:text-6xl md:text-8xl lg:text-9xl text-foreground mb-4 animate-fade-in-up tracking-[0.1em]">
+            CIRYAM
           </h1>
-          <p className="font-body text-sm sm:text-base md:text-lg text-dark-foreground/90 mb-8 max-w-md animate-fade-in-up-delay">
-            Funkcjonalne, estetyczne i przemyślane w każdym detalu.
+          <p className="font-body text-sm md:text-base text-muted-foreground mb-8 max-w-md animate-fade-in-up-delay tracking-wide uppercase">
+            Oficjalna strona zespołu
           </p>
           <div className="flex flex-col sm:flex-row gap-3 animate-fade-in-up-delay-2">
-            <Link to="/kontakt" className="px-7 py-3 rounded-full bg-accent text-accent-foreground text-sm tracking-[0.05em] font-body hover:bg-accent/90 transition-all duration-300">
-              Zapytaj o projekt
-            </Link>
-            <Link to="/realizacje" className="px-7 py-3 rounded-full bg-dark-foreground/20 backdrop-blur-sm text-dark-foreground text-sm tracking-[0.05em] font-body hover:bg-dark-foreground/30 transition-all duration-300">
-              Zobacz realizacje
+            <a
+              href="https://soundcloud.com/ciryam"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3 bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-all duration-300 flex items-center gap-2"
+            >
+              <Play size={16} /> Posłuchaj
+            </a>
+            <Link
+              to="/koncerty"
+              className="px-8 py-3 border border-foreground/30 text-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-foreground/10 transition-all duration-300 flex items-center gap-2"
+            >
+              <Calendar size={16} /> Koncerty
             </Link>
           </div>
         </div>
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2.5">
           {heroSlides.map((_, i) => (
-            <button key={i} onClick={() => setCurrentSlide(i)} className={`w-2 h-2 rounded-full transition-all duration-300 ${i === currentSlide ? "bg-dark-foreground w-6" : "bg-dark-foreground/40"}`} aria-label={`Slajd ${i + 1}`} />
+            <button key={i} onClick={() => setCurrentSlide(i)} className={`w-2 h-2 transition-all duration-300 ${i === currentSlide ? "bg-accent w-8" : "bg-foreground/30"}`} aria-label={`Slajd ${i + 1}`} />
           ))}
         </div>
       </section>
 
-      {/* INTRO */}
-      <section className="bg-secondary section-padding-sm">
-        <div className="max-w-3xl mx-auto text-center">
+      {/* MUZYKA */}
+      <section className="bg-secondary section-padding" id="muzyka">
+        <div className="max-w-[900px] mx-auto text-center">
           <FadeIn>
-            <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">AN Projekt</p>
-            <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl text-foreground leading-snug mb-6">
-              Pomagam zaplanować wnętrze, które będzie piękne, wygodne i&nbsp;przemyślane do&nbsp;ostatniego detalu.
-            </h2>
-            <p className="text-muted-foreground font-body text-base md:text-lg max-w-2xl mx-auto">
-              Każdy projekt traktuję indywidualnie. Wsłuchuję się w potrzeby i szukam najlepszych rozwiązań dla konkretnej przestrzeni i stylu życia.
+            <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">Muzyka</p>
+            <h2 className="font-heading text-3xl md:text-5xl text-foreground mb-6">Posłuchaj nas</h2>
+            <p className="text-muted-foreground font-body text-sm md:text-base max-w-lg mx-auto mb-10">
+              Sprawdź nasze najnowsze nagrania na platformach streamingowych.
             </p>
           </FadeIn>
-        </div>
-      </section>
-
-      {/* REALIZACJE - vertical tiles */}
-      <section className="bg-background section-padding-sm">
-        <div className="max-w-[1200px] mx-auto">
-          <FadeIn>
-            <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-4 text-center">Wybrane realizacje</h2>
-            <p className="text-muted-foreground font-body text-base text-center mb-12 max-w-lg mx-auto">
-              Każdy projekt to inna historia. Zobacz efekty współpracy.
-            </p>
+          <FadeIn delay={150}>
+            <div className="bg-card border border-border p-6 md:p-8">
+              <iframe
+                width="100%"
+                height="300"
+                scrolling="no"
+                frameBorder="no"
+                allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/ciryam&color=%23dc2626&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
+                title="SoundCloud CIRYAM"
+              />
+            </div>
           </FadeIn>
-          <ProjectCarousel />
           <FadeIn delay={200}>
-            <div className="text-center mt-10">
-              <Link to="/realizacje" className="inline-flex items-center gap-2 px-7 py-3 rounded-full border border-foreground text-foreground text-sm tracking-[0.05em] font-body hover:bg-foreground hover:text-background transition-all duration-300">
-                Wszystkie realizacje <ArrowRight size={16} />
-              </Link>
+            <div className="flex flex-wrap justify-center gap-4 mt-8">
+              <a href="https://open.spotify.com/artist/ciryam" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-2.5 border border-border text-foreground font-body text-sm hover:border-accent hover:text-accent transition-colors">
+                <ExternalLink size={14} /> Spotify
+              </a>
+              <a href="https://soundcloud.com/ciryam" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-2.5 border border-border text-foreground font-body text-sm hover:border-accent hover:text-accent transition-colors">
+                <ExternalLink size={14} /> SoundCloud
+              </a>
+              <a href="https://www.youtube.com/@ciryam" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-2.5 border border-border text-foreground font-body text-sm hover:border-accent hover:text-accent transition-colors">
+                <ExternalLink size={14} /> YouTube
+              </a>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* GALLERY STRIP - infinite marquee */}
-      <section className="bg-secondary py-6 overflow-hidden">
-        <div className="flex w-max animate-marquee gap-4">
-          {[...Array(2)].flatMap((_, setIdx) =>
-            [vizDiningFireplace, vizBedroomDark, vizBathroomMarble, vizKitchenRattan, vizLivingBeige, vizBedroomMural].map((img, i) => (
-              <Link key={`${setIdx}-${i}`} to="/realizacje" className="flex-shrink-0 group">
-                <img src={img} alt={`Wizualizacja ${i + 1}`} className="h-36 md:h-52 w-auto object-cover rounded-xl transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-              </Link>
-            ))
-          )}
-        </div>
-      </section>
-
-      {/* PILLARS */}
-      <section className="bg-background section-padding-sm">
-        <div className="max-w-[1200px] mx-auto">
+      {/* KONCERTY */}
+      <section className="bg-background section-padding" id="koncerty">
+        <div className="max-w-[900px] mx-auto">
           <FadeIn>
-            <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-12 text-center">Na czym opiera się moja praca?</h2>
-          </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-            {pillars.map((p, i) => (
-              <FadeIn key={p.title} delay={i * 100}>
-                <div className="group flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-full bg-accent/10 flex items-center justify-center shrink-0 group-hover:bg-accent/20 transition-colors duration-300 mt-0.5">
-                    <p.icon size={18} className="text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="font-heading text-lg text-foreground mb-2">{p.title}</h3>
-                    <p className="text-muted-foreground font-body text-sm leading-relaxed">{p.desc}</p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PACKAGES - Accordion */}
-      <section className="bg-secondary section-padding">
-        <div className="max-w-[1200px] mx-auto">
-          <FadeIn>
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
-              <div>
-                <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-3 flex items-center gap-2">
-                  <ClipboardList size={14} className="text-accent" /> Warianty współpracy
-                </p>
-                <h2 className="font-heading text-2xl md:text-3xl text-foreground max-w-md">
-                  Wybierz formę, która odpowiada Twoim potrzebom
-                </h2>
-              </div>
-              <Link to="/oferta" className="px-6 py-2.5 rounded-full bg-accent text-accent-foreground text-sm font-body hover:bg-accent/90 transition-colors self-start md:self-auto">
-                Poznaj szczegóły
-              </Link>
+            <div className="text-center mb-12">
+              <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">Na żywo</p>
+              <h2 className="font-heading text-3xl md:text-5xl text-foreground mb-4">Najbliższe koncerty</h2>
+              <p className="text-muted-foreground font-body text-sm">Przyjdź, posłuchaj, poczuj energię na żywo.</p>
             </div>
           </FadeIn>
 
           <div className="space-y-0">
-            {packages.map((pkg, i) => {
-              const isOpen = expandedPkg === i;
+            {upcomingConcerts.map((concert, i) => {
+              const { day, month } = formatDate(concert.date);
               return (
-                <FadeIn key={pkg.name} delay={i * 60}>
-                  <div className={`border-t border-border transition-all duration-500 ${isOpen ? "bg-background rounded-xl my-2 border-transparent shadow-sm" : "hover:bg-background/50"}`}>
-                    <button
-                      onClick={() => setExpandedPkg(isOpen ? null : i)}
-                      className="w-full flex items-center gap-4 md:gap-6 py-6 px-4 md:px-6 text-left"
-                    >
-                      <span className="w-10 h-10 rounded-full bg-background flex items-center justify-center shrink-0 font-body text-sm text-muted-foreground">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <h3 className="font-heading text-xl md:text-2xl text-foreground flex-1">{pkg.name}</h3>
-                      {isOpen ? <X size={20} className="text-muted-foreground shrink-0" /> : <Plus size={20} className="text-muted-foreground shrink-0" />}
-                    </button>
-
-                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"}`}>
-                      <div className="px-4 md:px-6 pb-6 flex flex-col md:flex-row gap-6">
-                        <div className="flex-1">
-                          <p className="text-muted-foreground font-body text-base leading-relaxed mb-4">{pkg.desc}</p>
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            {pkg.tags.map((tag) => (
-                              <span key={tag} className="px-3 py-1.5 rounded-full border border-border text-foreground font-body text-xs">{tag}</span>
-                            ))}
-                          </div>
-                          <Link to="/oferta" className="inline-flex items-center gap-2 text-sm font-body tracking-[0.05em] uppercase text-foreground border-b border-foreground/30 pb-0.5 hover:border-accent hover:text-accent transition-colors">
-                            Zapytaj o tę opcję <ArrowRight size={14} />
-                          </Link>
-                        </div>
-                        <div className="md:w-56 shrink-0">
-                          <img src={pkg.image} alt={pkg.name} className="w-full aspect-[4/3] object-cover rounded-lg" />
-                        </div>
-                      </div>
+                <FadeIn key={i} delay={i * 60}>
+                  <div className="group border-t border-border py-5 flex items-center gap-4 md:gap-8 hover:bg-secondary/50 px-4 transition-colors">
+                    <div className="text-center shrink-0 w-16">
+                      <span className="font-heading text-2xl md:text-3xl text-foreground block leading-none">{day}</span>
+                      <span className="font-heading text-xs tracking-[0.15em] text-accent">{month}</span>
                     </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-heading text-lg md:text-xl text-foreground">{concert.city}</h3>
+                      <p className="flex items-center gap-1.5 text-muted-foreground font-body text-sm">
+                        <MapPin size={12} /> {concert.venue}
+                      </p>
+                    </div>
+                    <a
+                      href={concert.ticketUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="shrink-0 px-5 py-2 bg-accent text-accent-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors opacity-70 group-hover:opacity-100"
+                    >
+                      Bilety
+                    </a>
                   </div>
                 </FadeIn>
               );
             })}
             <div className="border-t border-border" />
           </div>
-        </div>
-      </section>
 
-      {/* HORIZONTAL PROCESS TIMELINE */}
-      <section className="bg-background section-padding">
-        <div className="max-w-[1000px] mx-auto">
-          <FadeIn>
-            <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-4 text-center">Jak przebiega współpraca?</h2>
-            <p className="text-muted-foreground font-body text-base text-center mb-14 max-w-lg mx-auto">
-              Przejrzysty proces, bez niespodzianek.
-            </p>
-          </FadeIn>
-          <FadeIn delay={100}>
-            <div className="relative">
-              <div className="hidden md:block absolute top-5 left-0 right-0 h-px bg-border" />
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-                {processSteps.map((step, i) => {
-                  const StepIcon = step.icon;
-                  return (
-                    <div key={step.num} className="relative group cursor-pointer" onMouseEnter={() => setActiveStep(i)} onMouseLeave={() => setActiveStep(null)}>
-                      <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center mx-auto mb-4 transition-all duration-300 ${activeStep === i ? "border-accent bg-accent/10 scale-110" : "border-border bg-background"}`}>
-                        <StepIcon size={16} className={`transition-colors duration-300 ${activeStep === i ? "text-accent" : "text-muted-foreground"}`} />
-                      </div>
-                      <div className="text-center">
-                        <p className={`font-body text-xs tracking-[0.15em] uppercase mb-1 transition-colors duration-300 ${activeStep === i ? "text-accent" : "text-muted-foreground"}`}>Krok {step.num}</p>
-                        <h3 className="font-heading text-sm text-foreground mb-2">{step.title}</h3>
-                        <div className={`overflow-hidden transition-all duration-500 ${activeStep === i ? "max-h-24 opacity-100" : "max-h-0 opacity-0"}`}>
-                          <p className="text-muted-foreground font-body text-xs leading-relaxed">{step.desc}</p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* O MNIE */}
-      <section className="bg-secondary section-padding-sm">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-          <FadeIn>
-            <div className="relative overflow-hidden rounded-lg">
-              <img src={annaPortrait} alt="Anna Nowak, projektantka wnętrz AN Projekt" className="w-full aspect-[3/4] object-cover object-top" loading="lazy" />
-            </div>
-          </FadeIn>
-          <FadeIn delay={150}>
-            <div>
-              <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-4">O mnie</p>
-              <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-5">Anna Nowak</h2>
-              <p className="text-muted-foreground font-body text-base leading-relaxed mb-4">
-                Projektuję wnętrza mieszkań i domów dla osób, które chcą stworzyć przestrzeń dopasowaną do swojego stylu życia. Funkcjonalną, estetyczną i przemyślaną w każdym detalu.
-              </p>
-              <p className="text-muted-foreground font-body text-base leading-relaxed mb-6">
-                Moja droga do projektowania wnętrz zaczęła się od budowy własnego domu. Dziś pomagam moim klientom przejść przez ten proces spokojniej i bardziej świadomie.
-              </p>
-
-              {/* Signature */}
-              <p className="font-heading italic text-2xl text-accent mb-8" style={{ fontFamily: "'Playfair Display', serif" }}>Anna Nowak</p>
-
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 mb-8">
-                <div>
-                  <p className="font-heading text-3xl md:text-4xl text-foreground">50+</p>
-                  <p className="font-body text-xs text-muted-foreground mt-1">Zrealizowanych projektów</p>
-                </div>
-                <div>
-                  <p className="font-heading text-3xl md:text-4xl text-foreground">8</p>
-                  <p className="font-body text-xs text-muted-foreground mt-1">Lat doświadczenia</p>
-                </div>
-                <div>
-                  <p className="font-heading text-3xl md:text-4xl text-foreground">100%</p>
-                  <p className="font-body text-xs text-muted-foreground mt-1">Zadowolonych klientów</p>
-                </div>
-              </div>
-
-              <Link to="/o-mnie" className="inline-flex items-center gap-2 text-sm font-body tracking-[0.05em] uppercase text-foreground border-b border-foreground/30 pb-0.5 hover:border-accent hover:text-accent transition-colors">
-                Poznaj mnie lepiej <ArrowRight size={14} />
+          <FadeIn delay={300}>
+            <div className="text-center mt-10">
+              <Link
+                to="/koncerty"
+                className="inline-flex items-center gap-2 font-heading text-sm tracking-[0.1em] uppercase text-foreground border-b border-foreground/30 pb-1 hover:border-accent hover:text-accent transition-colors"
+              >
+                Wszystkie koncerty <ArrowRight size={14} />
               </Link>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="bg-card section-padding-sm">
-        <div className="max-w-[1200px] mx-auto">
+      {/* PHOTO STRIP */}
+      <section className="py-4 overflow-hidden bg-secondary">
+        <div className="flex w-max animate-marquee gap-4">
+          {[...Array(3)].flatMap((_, setIdx) =>
+            [ciryamBand, ciryamBand2, ciryamLive].map((img, i) => (
+              <div key={`${setIdx}-${i}`} className="flex-shrink-0">
+                <img src={img} alt={`CIRYAM foto ${i + 1}`} className="h-40 md:h-56 w-auto object-cover grayscale hover:grayscale-0 transition-all duration-500" loading="lazy" />
+              </div>
+            ))
+          )}
+        </div>
+      </section>
+
+      {/* O ZESPOLE */}
+      <section className="bg-background section-padding" id="o-zespole">
+        <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           <FadeIn>
-            <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-8 text-center">Opinie klientów</p>
+            <div className="relative overflow-hidden">
+              <img src={ciryamBand} alt="CIRYAM - zespół" className="w-full aspect-[4/5] object-cover grayscale" loading="lazy" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+            </div>
           </FadeIn>
-          <div className="flex gap-5 overflow-x-auto pb-4 scrollbar-hide">
-            {testimonials.map((t, i) => (
-              <FadeIn key={i} delay={i * 80}>
-                <div
-                  className={`rounded-xl p-6 flex flex-col min-w-[280px] max-w-[300px] h-full transition-all duration-700 cursor-pointer ${
-                    activeTestimonial === i
-                      ? "bg-background shadow-lg scale-[1.03]"
-                      : "bg-background/60 opacity-50 hover:opacity-70"
-                  }`}
-                  onClick={() => setActiveTestimonial(i)}
-                >
-                  <div className="flex gap-0.5 mb-4">
-                    {Array.from({ length: t.rating }).map((_, j) => (
-                      <Star key={j} size={14} className={`transition-colors duration-500 ${activeTestimonial === i ? "text-accent fill-accent" : "text-border fill-border"}`} />
-                    ))}
+          <FadeIn delay={150}>
+            <div>
+              <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">O zespole</p>
+              <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-6">CIRYAM</h2>
+              <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4">
+                CIRYAM to polski zespół rockowy, który łączy energię klasycznego rocka z nowoczesnym brzmieniem.
+                Tworzymy muzykę, która nie pozostawia obojętnym – od ciężkich riffów po melodyjne refreny.
+              </p>
+              <p className="text-muted-foreground font-body text-sm leading-relaxed mb-8">
+                Gramy koncerty w całej Polsce, nagrywamy płyty i stale rozwijamy nasze brzmienie.
+                Na scenie dajemy z siebie wszystko – każdy koncert to nowe doświadczenie.
+              </p>
+              <Link
+                to="/o-zespole"
+                className="inline-flex items-center gap-2 font-heading text-sm tracking-[0.1em] uppercase text-foreground border-b border-foreground/30 pb-1 hover:border-accent hover:text-accent transition-colors"
+              >
+                Poznaj nas bliżej <ArrowRight size={14} />
+              </Link>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* SKLEP */}
+      <section className="bg-secondary section-padding" id="sklep">
+        <div className="max-w-[1100px] mx-auto">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">Merch</p>
+              <h2 className="font-heading text-3xl md:text-5xl text-foreground mb-4">Sklep CIRYAM</h2>
+              <p className="text-muted-foreground font-body text-sm">Koszulki, płyty, plakaty i więcej.</p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {shopItems.map((item, i) => (
+              <FadeIn key={item.name} delay={i * 100}>
+                <div className="group bg-card border border-border overflow-hidden hover:border-accent/30 transition-colors">
+                  <div className="aspect-square overflow-hidden">
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" loading="lazy" />
                   </div>
-                  <blockquote className="font-body text-sm text-foreground leading-relaxed mb-5 flex-1">
-                    &bdquo;{t.text}&rdquo;
-                  </blockquote>
-                  <div className="flex items-center gap-3">
-                    <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-500 ${activeTestimonial === i ? "bg-accent/15" : "bg-muted"}`}>
-                      <span className={`font-heading text-sm transition-colors duration-500 ${activeTestimonial === i ? "text-accent" : "text-muted-foreground"}`}>{t.author.charAt(0)}</span>
-                    </div>
-                    <div>
-                      <p className="font-body text-sm font-medium text-foreground">{t.author}</p>
-                      <p className="font-body text-xs text-muted-foreground">{t.location}</p>
-                    </div>
+                  <div className="p-4">
+                    <h3 className="font-heading text-sm text-foreground mb-1">{item.name}</h3>
+                    <p className="text-accent font-heading text-lg">{item.price}</p>
                   </div>
                 </div>
               </FadeIn>
             ))}
           </div>
-          {/* Dots indicator */}
-          <div className="flex justify-center gap-2 mt-4">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveTestimonial(i)}
-                className={`w-2 h-2 rounded-full transition-all duration-500 ${
-                  activeTestimonial === i ? "bg-accent w-5" : "bg-border"
-                }`}
-                aria-label={`Opinia ${i + 1}`}
-              />
-            ))}
-          </div>
+
+          <FadeIn delay={300}>
+            <div className="text-center mt-10">
+              <Link
+                to="/sklep"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-all duration-300"
+              >
+                <ShoppingBag size={16} /> Odwiedź sklep
+              </Link>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-accent/10 section-padding-sm">
-        <div className="max-w-[800px] mx-auto text-center">
+      <section className="bg-background section-padding">
+        <div className="max-w-[700px] mx-auto text-center">
           <FadeIn>
-            <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-4">Planujesz remont lub urządzanie wnętrza?</h2>
-            <p className="text-muted-foreground font-body text-base mb-6">
-              Napisz do mnie. Chętnie porozmawiam o Twoim projekcie. Pierwsza rozmowa jest bezpłatna.
+            <h2 className="font-heading text-3xl md:text-5xl text-foreground mb-6">
+              Zaproś nas<br />na swój event
+            </h2>
+            <p className="text-muted-foreground font-body text-sm mb-8 max-w-md mx-auto">
+              Gramy na festiwalach, w klubach i na imprezach prywatnych. Napisz do nas, a wrócimy z ofertą.
             </p>
-            <Link to="/kontakt" className="inline-block px-8 py-3.5 rounded-full bg-accent text-accent-foreground text-sm tracking-[0.05em] font-body hover:bg-accent/90 transition-all duration-300">
-              Porozmawiaj o swoim wnętrzu
+            <Link
+              to="/kontakt"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-all duration-300"
+            >
+              Kontakt / Booking <ArrowRight size={14} />
             </Link>
           </FadeIn>
         </div>
