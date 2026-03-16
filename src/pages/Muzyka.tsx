@@ -28,7 +28,7 @@ const Muzyka = () => {
           <h2 className="font-heading text-2xl text-foreground mb-6">{t("music.platforms")}</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-12">
             {[
-              { name: "Spotify", url: "https://open.spotify.com/artist/ciryam" },
+              
               { name: "SoundCloud", url: "https://soundcloud.com/ciryam" },
               { name: "YouTube", url: "https://www.youtube.com/user/Ciryam/" },
               { name: "Facebook", url: "https://www.facebook.com/CIRYAM/" },
