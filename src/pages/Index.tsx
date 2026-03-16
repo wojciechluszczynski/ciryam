@@ -194,7 +194,7 @@ const Index = () => {
                       <h3 className="font-heading text-xl md:text-2xl text-foreground">{concert.city}</h3>
                       <p className="flex items-center gap-1.5 text-muted-foreground font-body text-sm"><MapPin size={12} /> {concert.venue}</p>
                     </div>
-                    <a href={concert.ticketUrl} className="shrink-0 px-5 py-2 rounded-full bg-accent text-accent-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors opacity-70 group-hover:opacity-100">
+                    <a href={concert.ticketUrl} target="_blank" rel="noopener noreferrer" className="shrink-0 px-5 py-2 rounded-full bg-accent text-accent-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors opacity-70 group-hover:opacity-100">
                       {t("concerts.tickets")}
                     </a>
                   </div>
