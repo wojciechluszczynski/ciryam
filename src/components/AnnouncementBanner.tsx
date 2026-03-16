@@ -43,24 +43,22 @@ const AnnouncementBanner = () => {
       }`}
     >
       <div className="bg-accent text-accent-foreground">
-        <div className="max-w-[1200px] mx-auto px-10 md:px-8 py-2 flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 relative">
-          <div className="flex items-center gap-2">
-            <Ticket size={14} className="shrink-0 hidden sm:block" />
-            <p className="font-body text-xs sm:text-sm text-center leading-tight">
-              <span className="font-medium">Nowy koncert!</span>{" "}
-              <span className="hidden sm:inline">Sprawdź najbliższe daty i kup bilety</span>
-              <span className="sm:hidden">Sprawdź daty</span>
-            </p>
-          </div>
+        <div className="max-w-[1200px] mx-auto px-10 md:px-8 py-2 flex items-center justify-center gap-2 sm:gap-3 relative">
+          <Ticket size={14} className="shrink-0 hidden sm:block" />
+          <p className="font-body text-xs sm:text-sm text-center leading-tight">
+            <span className="font-medium">Nowy koncert!</span>{" "}
+            <span className="hidden sm:inline">Sprawdź najbliższe daty i kup bilety</span>
+            <span className="sm:hidden">Sprawdź daty</span>
+          </p>
           <Link
             to="/koncerty"
-            className="shrink-0 px-3 py-1 rounded-full bg-accent-foreground/15 hover:bg-accent-foreground/25 text-accent-foreground font-body text-xs transition-colors"
+            className="shrink-0 px-3 py-1 rounded-full bg-accent-foreground/15 hover:bg-accent-foreground/25 text-accent-foreground font-body text-[10px] sm:text-xs transition-colors whitespace-nowrap"
           >
             Koncerty →
           </Link>
           <button
             onClick={handleDismiss}
-            className="absolute right-2 top-2 sm:top-1/2 sm:-translate-y-1/2 text-accent-foreground/60 hover:text-accent-foreground transition-colors p-1"
+            className="absolute right-2 top-1/2 -translate-y-1/2 text-accent-foreground/60 hover:text-accent-foreground transition-colors p-1"
             aria-label="Zamknij"
           >
             <X size={14} />
