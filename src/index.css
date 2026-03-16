@@ -24,7 +24,7 @@
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 55%;
 
-    --accent: 38 92% 50%;
+    --accent: 0 0% 100%;
     --accent-foreground: 0 0% 5%;
 
     --destructive: 0 84% 60%;
@@ -32,7 +32,7 @@
 
     --border: 0 0% 18%;
     --input: 0 0% 18%;
-    --ring: 38 92% 50%;
+    --ring: 0 0% 100%;
 
     --radius: 0.5rem;
 
@@ -47,7 +47,7 @@
     --sidebar-accent: 0 0% 15%;
     --sidebar-accent-foreground: 0 0% 92%;
     --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 38 92% 50%;
+    --sidebar-ring: 0 0% 100%;
   }
 }
 
@@ -143,5 +143,5 @@
 
 /* Glow effect for accent elements */
 .glow-accent {
-  box-shadow: 0 0 30px hsl(38 92% 50% / 0.3), 0 0 60px hsl(38 92% 50% / 0.1);
+  box-shadow: 0 0 30px hsl(0 0% 100% / 0.15), 0 0 60px hsl(0 0% 100% / 0.05);
 }
