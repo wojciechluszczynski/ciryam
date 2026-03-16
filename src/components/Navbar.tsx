@@ -1,21 +1,23 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import ciryamLogo from "@/assets/ciryam-logo.png";
+import { useLang } from "@/contexts/LangContext";
 
 const navLinks = [
-  { href: "/", label: "Start" },
-  { href: "/muzyka", label: "Muzyka" },
-  { href: "/koncerty", label: "Koncerty" },
-  { href: "/o-zespole", label: "O zespole" },
-  { href: "/sklep", label: "Sklep" },
-  { href: "/kontakt", label: "Kontakt" },
+  { href: "/", labelKey: "nav.start" },
+  { href: "/muzyka", labelKey: "nav.music" },
+  { href: "/koncerty", labelKey: "nav.concerts" },
+  { href: "/o-zespole", labelKey: "nav.about" },
+  { href: "/sklep", labelKey: "nav.shop" },
+  { href: "/kontakt", labelKey: "nav.contact" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const { lang, setLang, t } = useLang();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -26,6 +28,8 @@ const Navbar = () => {
   useEffect(() => {
     setMobileOpen(false);
   }, [location]);
+
+  const toggleLang = () => setLang(lang === "pl" ? "en" : "pl");
 
   return (
     <>
@@ -51,7 +55,7 @@ const Navbar = () => {
             <img
               src={ciryamLogo}
               alt="CIRYAM"
-              className="h-8 md:h-10 w-auto invert brightness-0 invert"
+              className="h-8 md:h-10 w-auto"
               style={{ filter: "invert(1)" }}
             />
           </Link>
@@ -66,26 +70,50 @@ const Navbar = () => {
                   location.pathname === link.href ? "text-accent" : "text-foreground"
                 }`}
               >
-                {link.label}
+                {t(link.labelKey)}
               </Link>
             ))}
+
+            {/* Language selector */}
+            <button
+              onClick={toggleLang}
+              className="flex items-center gap-1.5 text-xs tracking-[0.1em] uppercase font-heading text-muted-foreground hover:text-accent transition-colors duration-300"
+              aria-label="Change language"
+            >
+              <Globe size={14} />
+              <span className={lang === "pl" ? "text-accent" : ""}>PL</span>
+              <span className="text-border">/</span>
+              <span className={lang === "en" ? "text-accent" : ""}>EN</span>
+            </button>
+
             <a
               href="https://ciryam.pl/sklep"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs tracking-[0.15em] uppercase font-heading px-5 py-2 rounded-full bg-accent text-accent-foreground hover:bg-accent/80 transition-all duration-300"
             >
-              Kup bilety
+              {t("nav.tickets")}
             </a>
           </nav>
 
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden z-50 text-foreground transition-colors"
-            aria-label="Menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-3 lg:hidden z-50">
+            {/* Mobile lang toggle */}
+            <button
+              onClick={toggleLang}
+              className="flex items-center gap-1 text-xs font-heading text-muted-foreground"
+              aria-label="Change language"
+            >
+              <Globe size={14} />
+              <span className="text-accent">{lang.toUpperCase()}</span>
+            </button>
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="text-foreground transition-colors"
+              aria-label="Menu"
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu */}
@@ -110,10 +138,21 @@ const Navbar = () => {
                   location.pathname === link.href ? "text-accent" : "text-foreground"
                 }`}
               >
-                {link.label}
+                {t(link.labelKey)}
               </Link>
             ))}
           </div>
+
+          {/* Mobile language toggle */}
+          <button
+            onClick={toggleLang}
+            className="flex items-center gap-2 mb-8 text-sm font-heading text-muted-foreground tracking-[0.15em]"
+          >
+            <Globe size={16} />
+            <span className={lang === "pl" ? "text-accent" : ""}>POLSKI</span>
+            <span>/</span>
+            <span className={lang === "en" ? "text-accent" : ""}>ENGLISH</span>
+          </button>
 
           <a
             href="https://ciryam.pl/sklep"
@@ -121,7 +160,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
             className="px-8 py-3 rounded-full bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-colors"
           >
-            Kup bilety
+            {t("nav.tickets")}
           </a>
         </div>
       </header>
