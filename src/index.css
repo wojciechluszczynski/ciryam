@@ -74,6 +74,13 @@
   }
 }
 
+/* Golden accent on hover for interactive elements */
+a:hover,
+button:hover {
+  --accent: var(--accent-hover);
+  --accent-foreground: 0 0% 100%;
+}
+
 @layer utilities {
   .section-padding {
     @apply py-16 md:py-24 px-6 md:px-12 lg:px-20;
