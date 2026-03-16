@@ -28,7 +28,6 @@ const formatDate = (dateStr: string) => {
   return {
     day: d.getDate().toString().padStart(2, "0"),
     month: d.toLocaleDateString("pl-PL", { month: "short" }).toUpperCase(),
-    year: d.getFullYear(),
   };
 };
 
@@ -46,10 +45,10 @@ const Index = () => {
       <section className="relative h-screen w-full overflow-hidden">
         {heroSlides.map((slide, i) => (
           <div key={i} className={`absolute inset-0 transition-all duration-1000 ease-in-out ${i === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}>
-            <img src={slide} alt={`CIRYAM ${i + 1}`} className="w-full h-full object-cover grayscale" loading={i === 0 ? "eager" : "lazy"} />
+            <img src={slide} alt={`CIRYAM ${i + 1}`} className="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"} />
           </div>
         ))}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30" />
         <div className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-20 md:pb-28">
           <h1 className="font-heading text-5xl sm:text-6xl md:text-8xl lg:text-9xl text-foreground mb-4 animate-fade-in-up tracking-[0.1em]">
             CIRYAM
@@ -62,13 +61,13 @@ const Index = () => {
               href="https://soundcloud.com/ciryam"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-3 bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-all duration-300 flex items-center gap-2"
+              className="px-8 py-3 rounded-full bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-all duration-300 flex items-center gap-2"
             >
               <Play size={16} /> Posłuchaj
             </a>
             <Link
               to="/koncerty"
-              className="px-8 py-3 border border-foreground/30 text-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-foreground/10 transition-all duration-300 flex items-center gap-2"
+              className="px-8 py-3 rounded-full border border-foreground/30 text-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-foreground/10 transition-all duration-300 flex items-center gap-2"
             >
               <Calendar size={16} /> Koncerty
             </Link>
@@ -76,12 +75,12 @@ const Index = () => {
         </div>
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2.5">
           {heroSlides.map((_, i) => (
-            <button key={i} onClick={() => setCurrentSlide(i)} className={`w-2 h-2 transition-all duration-300 ${i === currentSlide ? "bg-accent w-8" : "bg-foreground/30"}`} aria-label={`Slajd ${i + 1}`} />
+            <button key={i} onClick={() => setCurrentSlide(i)} className={`h-1 rounded-full transition-all duration-300 ${i === currentSlide ? "bg-accent w-8" : "bg-foreground/30 w-2"}`} aria-label={`Slajd ${i + 1}`} />
           ))}
         </div>
       </section>
 
-      {/* MUZYKA */}
+      {/* MUZYKA - SoundCloud */}
       <section className="bg-secondary section-padding" id="muzyka">
         <div className="max-w-[900px] mx-auto text-center">
           <FadeIn>
@@ -92,29 +91,30 @@ const Index = () => {
             </p>
           </FadeIn>
           <FadeIn delay={150}>
-            <div className="bg-card border border-border p-6 md:p-8">
+            <div className="bg-card border border-border rounded-xl p-4 md:p-6 overflow-hidden">
               <iframe
                 width="100%"
                 height="300"
                 scrolling="no"
                 frameBorder="no"
                 allow="autoplay"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/ciryam&color=%23dc2626&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
+                src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ciryam/sets/ciryam&color=%23d4a017&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
                 title="SoundCloud CIRYAM"
+                className="rounded-lg"
               />
             </div>
           </FadeIn>
           <FadeIn delay={200}>
             <div className="flex flex-wrap justify-center gap-4 mt-8">
-              <a href="https://open.spotify.com/artist/ciryam" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-2.5 border border-border text-foreground font-body text-sm hover:border-accent hover:text-accent transition-colors">
-                <ExternalLink size={14} /> Spotify
-              </a>
-              <a href="https://soundcloud.com/ciryam" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-2.5 border border-border text-foreground font-body text-sm hover:border-accent hover:text-accent transition-colors">
-                <ExternalLink size={14} /> SoundCloud
-              </a>
-              <a href="https://www.youtube.com/@ciryam" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-2.5 border border-border text-foreground font-body text-sm hover:border-accent hover:text-accent transition-colors">
-                <ExternalLink size={14} /> YouTube
-              </a>
+              {[
+                { name: "Spotify", url: "https://open.spotify.com/artist/ciryam" },
+                { name: "SoundCloud", url: "https://soundcloud.com/ciryam" },
+                { name: "YouTube", url: "https://www.youtube.com/@ciryam" },
+              ].map((p) => (
+                <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-border text-foreground font-body text-sm hover:border-accent hover:text-accent transition-colors">
+                  <ExternalLink size={14} /> {p.name}
+                </a>
+              ))}
             </div>
           </FadeIn>
         </div>
@@ -136,7 +136,7 @@ const Index = () => {
               const { day, month } = formatDate(concert.date);
               return (
                 <FadeIn key={i} delay={i * 60}>
-                  <div className="group border-t border-border py-5 flex items-center gap-4 md:gap-8 hover:bg-secondary/50 px-4 transition-colors">
+                  <div className="group border-t border-border py-5 flex items-center gap-4 md:gap-8 hover:bg-secondary/50 px-4 rounded-lg transition-colors">
                     <div className="text-center shrink-0 w-16">
                       <span className="font-heading text-2xl md:text-3xl text-foreground block leading-none">{day}</span>
                       <span className="font-heading text-xs tracking-[0.15em] text-accent">{month}</span>
@@ -149,9 +149,7 @@ const Index = () => {
                     </div>
                     <a
                       href={concert.ticketUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="shrink-0 px-5 py-2 bg-accent text-accent-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors opacity-70 group-hover:opacity-100"
+                      className="shrink-0 px-5 py-2 rounded-full bg-accent text-accent-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors opacity-70 group-hover:opacity-100"
                     >
                       Bilety
                     </a>
@@ -175,16 +173,42 @@ const Index = () => {
         </div>
       </section>
 
-      {/* PHOTO STRIP */}
-      <section className="py-4 overflow-hidden bg-secondary">
-        <div className="flex w-max animate-marquee gap-4">
-          {[...Array(3)].flatMap((_, setIdx) =>
-            [ciryamBand, ciryamBand2, ciryamLive].map((img, i) => (
-              <div key={`${setIdx}-${i}`} className="flex-shrink-0">
-                <img src={img} alt={`CIRYAM foto ${i + 1}`} className="h-40 md:h-56 w-auto object-cover grayscale hover:grayscale-0 transition-all duration-500" loading="lazy" />
+      {/* GALERIA */}
+      <section className="section-padding bg-secondary" id="galeria">
+        <div className="max-w-[1200px] mx-auto">
+          <FadeIn>
+            <div className="text-center mb-10">
+              <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">Galeria</p>
+              <h2 className="font-heading text-3xl md:text-5xl text-foreground">Na scenie i poza nią</h2>
+            </div>
+          </FadeIn>
+          <FadeIn delay={100}>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+              {/* Large feature image */}
+              <div className="col-span-2 row-span-2 relative group overflow-hidden rounded-xl">
+                <img src={ciryamBand} alt="CIRYAM zespół" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                  <span className="font-heading text-sm tracking-[0.15em] uppercase text-accent">Sesja promo 2024</span>
+                </div>
               </div>
-            ))
-          )}
+              {/* Smaller images */}
+              <div className="relative group overflow-hidden rounded-xl aspect-square">
+                <img src={ciryamLive} alt="CIRYAM live" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                  <span className="font-heading text-xs tracking-[0.15em] uppercase text-accent">Live @ Zaścianek</span>
+                </div>
+              </div>
+              <div className="relative group overflow-hidden rounded-xl aspect-square">
+                <img src={ciryamBand2} alt="CIRYAM" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                  <span className="font-heading text-xs tracking-[0.15em] uppercase text-accent">Backstage</span>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -192,8 +216,8 @@ const Index = () => {
       <section className="bg-background section-padding" id="o-zespole">
         <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           <FadeIn>
-            <div className="relative overflow-hidden">
-              <img src={ciryamBand} alt="CIRYAM - zespół" className="w-full aspect-[4/5] object-cover grayscale" loading="lazy" />
+            <div className="relative overflow-hidden rounded-xl">
+              <img src={ciryamBand} alt="CIRYAM - zespół" className="w-full aspect-[4/5] object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
             </div>
           </FadeIn>
@@ -211,7 +235,7 @@ const Index = () => {
               </p>
               <Link
                 to="/o-zespole"
-                className="inline-flex items-center gap-2 font-heading text-sm tracking-[0.1em] uppercase text-foreground border-b border-foreground/30 pb-1 hover:border-accent hover:text-accent transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-accent text-accent font-heading text-sm tracking-[0.1em] uppercase hover:bg-accent hover:text-accent-foreground transition-colors"
               >
                 Poznaj nas bliżej <ArrowRight size={14} />
               </Link>
@@ -234,9 +258,9 @@ const Index = () => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {shopItems.map((item, i) => (
               <FadeIn key={item.name} delay={i * 100}>
-                <div className="group bg-card border border-border overflow-hidden hover:border-accent/30 transition-colors">
+                <div className="group bg-card border border-border rounded-xl overflow-hidden hover:border-accent/30 transition-colors">
                   <div className="aspect-square overflow-hidden">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" loading="lazy" />
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   </div>
                   <div className="p-4">
                     <h3 className="font-heading text-sm text-foreground mb-1">{item.name}</h3>
@@ -251,7 +275,7 @@ const Index = () => {
             <div className="text-center mt-10">
               <Link
                 to="/sklep"
-                className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-all duration-300"
+                className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-all duration-300"
               >
                 <ShoppingBag size={16} /> Odwiedź sklep
               </Link>
@@ -272,7 +296,7 @@ const Index = () => {
             </p>
             <Link
               to="/kontakt"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-all duration-300"
             >
               Kontakt / Booking <ArrowRight size={14} />
             </Link>
