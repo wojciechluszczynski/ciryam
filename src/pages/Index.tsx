@@ -145,30 +145,12 @@ const Index = () => {
             </div>
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            {/* Main featured video */}
-            <FadeIn delay={100}>
-              <div className="md:col-span-2 bg-card border border-border rounded-xl overflow-hidden">
-                <div className="aspect-video">
-                  <iframe
-                    width="100%" height="100%"
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                    title="CIRYAM - Official Music Video"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="w-full h-full"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </FadeIn>
-            {/* Secondary videos */}
             {[
-              { src: "https://www.youtube.com/embed/dQw4w9WgXcQ", title: "CIRYAM – Live @ Zaścianek Kraków" },
-              { src: "https://www.youtube.com/embed/dQw4w9WgXcQ", title: "CIRYAM – Behind The Scenes 2025" },
+              { src: "https://www.youtube.com/embed/iyTQo9v-xNs", title: 'CIRYAM – "Noc" (official video)' },
+              { src: "https://www.youtube.com/embed/eEBIo2nJUsM", title: "CIRYAM – Wataha (Wilki Krosno)" },
             ].map((video, i) => (
-              <FadeIn key={i} delay={200 + i * 100}>
-                <div className="bg-card border border-border rounded-xl overflow-hidden group">
+              <FadeIn key={i} delay={100 + i * 100}>
+                <div className="bg-card border border-border rounded-xl overflow-hidden">
                   <div className="aspect-video">
                     <iframe
                       width="100%" height="100%"
