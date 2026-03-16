@@ -344,75 +344,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* SHOP */}
-      <section className="bg-background section-padding" id="sklep">
-        <div className="max-w-[1100px] mx-auto">
-          <FadeIn>
-            <div className="text-center mb-12">
-              <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">{t("shop.label")}</p>
-              <h2 className="font-heading text-4xl md:text-6xl text-foreground mb-4">{t("shop.title")}</h2>
-              <p className="text-muted-foreground font-body text-sm max-w-lg mx-auto">{t("shop.desc")}</p>
-            </div>
-          </FadeIn>
 
-          {featuredProducts.length > 0 ? (
-            <FadeIn delay={100}>
-              <div className="relative rounded-2xl border border-accent/20 bg-accent/[0.03] p-6 md:p-8 mb-8">
-                <div className="absolute -top-3 left-6 bg-accent text-accent-foreground px-4 py-1 rounded-full font-heading text-[11px] tracking-[0.15em] uppercase flex items-center gap-1.5">
-                  <Sparkles size={12} />
-                  {lang === "pl" ? "Popularne" : "Hot"}
-                </div>
-                <h3 className="font-heading text-lg md:text-xl text-foreground mb-5 mt-1">
-                  {lang === "pl" ? "Najpopularniejsze produkty" : "Most Popular"}
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
-                  {featuredProducts.map((product, i) => {
-                    const img = product.node.images.edges[0]?.node;
-                    const price = product.node.priceRange.minVariantPrice;
-                    return (
-                      <FadeIn key={product.node.id} delay={i * 100}>
-                        <div className="group bg-card border border-border rounded-xl overflow-hidden hover:border-accent/30 transition-colors">
-                          <Link to={`/product/${product.node.handle}`}>
-                            <div className="aspect-square overflow-hidden bg-secondary">
-                              {img ? (
-                                <img src={img.url} alt={img.altText || product.node.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                              ) : (
-                                <div className="w-full h-full flex items-center justify-center text-muted-foreground"><ShoppingBag size={32} /></div>
-                              )}
-                            </div>
-                          </Link>
-                          <div className="p-4">
-                            <Link to={`/product/${product.node.handle}`}>
-                              <h3 className="font-heading text-sm text-foreground mb-1 hover:text-accent transition-colors">{product.node.title}</h3>
-                            </Link>
-                            <div className="flex items-center justify-between">
-                              <span className="text-accent font-heading text-lg">{price.currencyCode} {parseFloat(price.amount).toFixed(2)}</span>
-                              <button onClick={() => handleAddToCart(product)} disabled={isCartLoading}
-                                className="px-3 py-1.5 rounded-full bg-accent text-accent-foreground font-heading text-[10px] tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors disabled:opacity-60">
-                                {isCartLoading ? <Loader2 size={12} className="animate-spin" /> : (lang === "pl" ? "Dodaj" : "Add")}
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </FadeIn>
-                    );
-                  })}
-                </div>
-              </div>
-            </FadeIn>
-          ) : recsLoading ? (
-            <div className="flex justify-center py-12"><Loader2 size={24} className="animate-spin text-accent" /></div>
-          ) : null}
 
-          <FadeIn delay={300}>
-            <div className="text-center mt-10">
-              <Link to="/sklep" className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-all duration-300">
-                <ShoppingBag size={16} /> {t("shop.visit")}
-              </Link>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
 
       {/* CTA */}
       <section className="bg-secondary section-padding">
