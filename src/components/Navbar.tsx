@@ -42,9 +42,9 @@ const Navbar = () => {
       />
 
       <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-3 md:px-8 pt-4" style={{ top: "var(--banner-height, 0px)" }}>
-        <div className={`max-w-[1100px] mx-auto flex items-center justify-between px-4 md:px-8 py-3 transition-all duration-500 ${
+        <div className={`max-w-[1100px] mx-auto flex items-center justify-between px-4 md:px-8 py-3 rounded-full transition-all duration-500 ${
           scrolled
-            ? "bg-background/95 backdrop-blur-md border border-border/50"
+            ? "bg-background/80 backdrop-blur-xl shadow-lg shadow-background/20"
             : "bg-transparent"
         }`}>
           <Link to="/" className="z-50 shrink-0">
