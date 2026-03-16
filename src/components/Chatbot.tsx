@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { X, Send, MessageCircle, Music, Calendar, ShoppingBag, ArrowRight } from "lucide-react";
-import ciryamLogo from "@/assets/ciryam-logo.png";
+import ciryamLogo from "@/assets/ciryam-logo.webp";
 import { useLang } from "@/contexts/LangContext";
 
 const bandKnowledgePl = {

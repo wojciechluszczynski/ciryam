@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Globe } from "lucide-react";
-import ciryamLogo from "@/assets/ciryam-logo.png";
+import ciryamLogo from "@/assets/ciryam-logo.webp";
 import { useLang } from "@/contexts/LangContext";
 import { CartDrawer } from "@/components/CartDrawer";
 
