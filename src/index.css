@@ -143,5 +143,5 @@
 
 /* Glow effect for accent elements */
 .glow-accent {
-  box-shadow: 0 0 30px hsl(0 72% 51% / 0.3), 0 0 60px hsl(0 72% 51% / 0.1);
+  box-shadow: 0 0 30px hsl(38 92% 50% / 0.3), 0 0 60px hsl(38 92% 50% / 0.1);
 }
