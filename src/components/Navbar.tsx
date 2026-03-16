@@ -73,7 +73,7 @@ const Navbar = () => {
               href="https://ciryam.pl/sklep"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs tracking-[0.15em] uppercase font-heading px-5 py-2 bg-accent text-accent-foreground hover:bg-accent/80 transition-all duration-300"
+              className="text-xs tracking-[0.15em] uppercase font-heading px-5 py-2 rounded-full bg-accent text-accent-foreground hover:bg-accent/80 transition-all duration-300"
             >
               Kup bilety
             </a>
@@ -119,7 +119,7 @@ const Navbar = () => {
             href="https://ciryam.pl/sklep"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-colors"
+            className="px-8 py-3 rounded-full bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-colors"
           >
             Kup bilety
           </a>

@@ -97,7 +97,7 @@ const Kontakt = () => {
                       Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie. *
                     </span>
                   </label>
-                  <button type="submit" disabled={sending} className="w-full mt-3 py-3.5 bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-all duration-300 disabled:opacity-60">
+                  <button type="submit" disabled={sending} className="w-full mt-3 py-3.5 rounded-full bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-all duration-300 disabled:opacity-60">
                     {sending ? "Wysyłanie..." : "Wyślij wiadomość"}
                   </button>
                 </form>
