@@ -10,11 +10,10 @@ import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 
 import ciryamBand from "@/assets/ciryam-band.jpg";
-import ciryamBand2 from "@/assets/ciryam-band-2.jpg";
-import ciryamLive from "@/assets/ciryam-live.jpg";
+import ciryamBand8 from "@/assets/ciryam-band-8.jpg";
 import ciryamLogotype from "@/assets/ciryam-logotype.png";
 
-const heroSlides = [ciryamBand, ciryamBand2, ciryamLive];
+const heroSlides = [ciryamBand, ciryamBand8];
 
 const upcomingConcerts = [
   { date: "2026-04-12", city: "Kraków", venue: "Zaścianek", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
@@ -276,11 +275,11 @@ const Index = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
               <div className="relative group overflow-hidden rounded-xl aspect-square">
-                <img src={ciryamLive} alt="CIRYAM live concert" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width={450} height={450} decoding="async" />
+                <img src={ciryamBand8} alt="CIRYAM live concert" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width={450} height={450} decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
               <div className="relative group overflow-hidden rounded-xl aspect-square">
-                <img src={ciryamBand2} alt="CIRYAM backstage" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width={450} height={450} decoding="async" />
+                <img src={ciryamBand} alt="CIRYAM backstage" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width={450} height={450} decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </div>
