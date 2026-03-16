@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { X, Download } from "lucide-react";
+import { X, Ticket } from "lucide-react";
 
 const AnnouncementBanner = () => {
   const [visible, setVisible] = useState(false);
@@ -8,7 +8,7 @@ const AnnouncementBanner = () => {
   const bannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const wasDismissed = sessionStorage.getItem("ebook-banner-dismissed");
+    const wasDismissed = sessionStorage.getItem("concert-banner-dismissed");
     if (wasDismissed) {
       setDismissed(true);
       return;
@@ -17,7 +17,6 @@ const AnnouncementBanner = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Set CSS variable for navbar offset
   useEffect(() => {
     if (visible && bannerRef.current) {
       const h = bannerRef.current.offsetHeight;
@@ -30,7 +29,7 @@ const AnnouncementBanner = () => {
   const handleDismiss = () => {
     setVisible(false);
     setDismissed(true);
-    sessionStorage.setItem("ebook-banner-dismissed", "1");
+    sessionStorage.setItem("concert-banner-dismissed", "1");
     document.documentElement.style.setProperty("--banner-height", "0px");
   };
 
@@ -45,16 +44,16 @@ const AnnouncementBanner = () => {
     >
       <div className="bg-accent text-accent-foreground">
         <div className="max-w-[1200px] mx-auto px-4 md:px-8 py-1.5 flex items-center justify-center gap-3 relative">
-          <Download size={14} className="shrink-0 hidden sm:block" />
+          <Ticket size={14} className="shrink-0 hidden sm:block" />
           <p className="font-body text-xs sm:text-sm text-center">
-            <span className="font-medium">Darmowy ebook:</span>{" "}
-            Jak przygotować się do remontu – pobierz przewodnik
+            <span className="font-medium">Nowy koncert!</span>{" "}
+            Sprawdź najbliższe daty i kup bilety
           </p>
           <Link
-            to="/ebook/przewodnik"
-            className="shrink-0 px-3 py-1 rounded-full bg-accent-foreground/15 hover:bg-accent-foreground/25 text-accent-foreground font-body text-xs transition-colors"
+            to="/koncerty"
+            className="shrink-0 px-3 py-1 bg-accent-foreground/15 hover:bg-accent-foreground/25 text-accent-foreground font-body text-xs transition-colors"
           >
-            Czytaj →
+            Koncerty →
           </Link>
           <button
             onClick={handleDismiss}
