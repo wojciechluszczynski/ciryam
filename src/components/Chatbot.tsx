@@ -151,16 +151,6 @@ const Chatbot = () => {
 
   return (
     <>
-      {showGreeting && !open && (
-        <div className="fixed bottom-24 right-6 z-50 bg-card rounded-2xl shadow-lg border border-border px-4 py-3 max-w-[240px] animate-fade-in-up cursor-pointer hidden md:block" onClick={handleOpen}>
-          <button onClick={(e) => { e.stopPropagation(); setShowGreeting(false); setGreetingDismissed(true); }}
-            className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors" aria-label="Close">
-            <X size={10} />
-          </button>
-          <p className="font-body text-sm text-foreground">{greetingText}</p>
-          <div className="absolute -bottom-2 right-6 w-4 h-4 bg-card border-r border-b border-border rotate-45" />
-        </div>
-      )}
 
       <button onClick={() => open ? handleClose() : handleOpen()}
         className="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center overflow-hidden group z-[9999]"
