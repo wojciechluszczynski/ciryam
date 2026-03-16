@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ShoppingBag, Loader2, Search, Sparkles, X } from "lucide-react";
+import { ShoppingBag, Loader2, Search, Sparkles, X, ArrowUpDown } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
 import { useCartStore } from "@/stores/cartStore";
