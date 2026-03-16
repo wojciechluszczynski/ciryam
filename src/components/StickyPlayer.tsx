@@ -9,20 +9,37 @@ const StickyPlayer = () => {
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
   const [ready, setReady] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const widgetRef = useRef<any>(null);
 
-  // Load SC Widget API
+  // Defer loading SoundCloud until user interacts or after 5s
   useEffect(() => {
-    if (document.getElementById("sc-widget-api")) return;
+    const timer = setTimeout(() => setLoaded(true), 5000);
+    const onInteract = () => { setLoaded(true); cleanup(); };
+    const cleanup = () => {
+      clearTimeout(timer);
+      window.removeEventListener("click", onInteract);
+      window.removeEventListener("scroll", onInteract);
+    };
+    window.addEventListener("click", onInteract, { once: true, passive: true });
+    window.addEventListener("scroll", onInteract, { once: true, passive: true });
+    return cleanup;
+  }, []);
+
+  // Load SC Widget API only after loaded
+  useEffect(() => {
+    if (!loaded) return;
+    if (document.getElementById("sc-widget-api")) {
+      initWidget();
+      return;
+    }
     const script = document.createElement("script");
     script.id = "sc-widget-api";
     script.src = "https://w.soundcloud.com/player/api.js";
     script.onload = () => initWidget();
     document.head.appendChild(script);
-
-    return () => {};
-  }, []);
+  }, [loaded]);
 
   const initWidget = useCallback(() => {
     if (!iframeRef.current || !(window as any).SC) return;
@@ -79,17 +96,19 @@ const StickyPlayer = () => {
           </p>
         </div>
 
-        <iframe
-          ref={iframeRef}
-          width="0"
-          height="0"
-          scrolling="no"
-          frameBorder="no"
-          allow="autoplay"
-          src={SC_WIDGET_SRC}
-          title="SoundCloud Player"
-          className="absolute opacity-0 pointer-events-none"
-        />
+        {loaded && (
+          <iframe
+            ref={iframeRef}
+            width="0"
+            height="0"
+            scrolling="no"
+            frameBorder="no"
+            allow="autoplay"
+            src={SC_WIDGET_SRC}
+            title="SoundCloud Player"
+            className="absolute opacity-0 pointer-events-none"
+          />
+        )}
 
         <button
           onClick={toggleMute}

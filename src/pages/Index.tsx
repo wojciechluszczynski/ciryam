@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Play, Calendar, MapPin, ExternalLink, ShoppingBag, Music, Mic2, Sparkles, Loader2 } from "lucide-react";
+import LazyIframe from "@/components/LazyIframe";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
 import { storefrontApiRequest, STOREFRONT_PRODUCTS_QUERY, type ShopifyProduct } from "@/lib/shopify";
@@ -156,9 +157,9 @@ const Index = () => {
           </FadeIn>
           <FadeIn delay={150}>
             <div className="bg-card border border-border rounded-xl p-4 md:p-6 overflow-hidden">
-              <iframe width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay"
+              <LazyIframe width="100%" height="300" scrolling="no" frameBorder="no" allow="autoplay"
                 src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ciryam/sets/ciryam&color=%23ffffff&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
-                title="SoundCloud CIRYAM" className="rounded-lg" />
+                title="SoundCloud CIRYAM" className="rounded-lg" fallbackHeight="300px" />
             </div>
           </FadeIn>
           <FadeIn delay={200}>
@@ -196,7 +197,7 @@ const Index = () => {
               <FadeIn key={i} delay={100 + i * 100}>
                 <div className="bg-card border border-border rounded-xl overflow-hidden">
                   <div className="aspect-video">
-                    <iframe
+                    <LazyIframe
                       width="100%" height="100%"
                       src={video.src}
                       title={video.title}
@@ -204,7 +205,7 @@ const Index = () => {
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                       className="w-full h-full"
-                      loading="lazy"
+                      fallbackHeight="100%"
                     />
                   </div>
                 </div>
