@@ -60,7 +60,8 @@ const Index = () => {
             <img src={slide} alt={`CIRYAM rock band live ${i + 1}`} className="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"} />
           </div>
         ))}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/40" />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background/80 to-transparent" />
         <div className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-20 md:pb-28">
           <p className="font-body text-xs md:text-sm text-accent mb-3 tracking-[0.3em] uppercase animate-fade-in-up">
             {t("hero.subtitle")}
