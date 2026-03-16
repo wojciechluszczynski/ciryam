@@ -50,6 +50,7 @@ const App = () => (
         </Routes>
         <Footer />
         <StickyPlayer />
+        <Chatbot />
         <CookieBanner />
       </BrowserRouter>
     </TooltipProvider>
