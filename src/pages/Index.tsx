@@ -10,11 +10,10 @@ import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 
 import ciryamBand from "@/assets/ciryam-band.jpg";
-import ciryamBand2 from "@/assets/ciryam-band-2.jpg";
-import ciryamLive from "@/assets/ciryam-live.jpg";
+import ciryamBand8 from "@/assets/ciryam-band-8.jpg";
 import ciryamLogotype from "@/assets/ciryam-logotype.png";
 
-const heroSlides = [ciryamBand, ciryamBand2, ciryamLive];
+const heroSlides = [ciryamBand, ciryamBand8];
 
 const upcomingConcerts = [
   { date: "2026-04-12", city: "Kraków", venue: "Zaścianek", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
