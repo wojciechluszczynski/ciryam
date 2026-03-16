@@ -43,12 +43,15 @@ const AnnouncementBanner = () => {
       }`}
     >
       <div className="bg-accent text-accent-foreground">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-8 py-1.5 flex items-center justify-center gap-3 relative">
-          <Ticket size={14} className="shrink-0 hidden sm:block" />
-          <p className="font-body text-xs sm:text-sm text-center">
-            <span className="font-medium">Nowy koncert!</span>{" "}
-            Sprawdź najbliższe daty i kup bilety
-          </p>
+        <div className="max-w-[1200px] mx-auto px-10 md:px-8 py-2 flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 relative">
+          <div className="flex items-center gap-2">
+            <Ticket size={14} className="shrink-0 hidden sm:block" />
+            <p className="font-body text-xs sm:text-sm text-center leading-tight">
+              <span className="font-medium">Nowy koncert!</span>{" "}
+              <span className="hidden sm:inline">Sprawdź najbliższe daty i kup bilety</span>
+              <span className="sm:hidden">Sprawdź daty</span>
+            </p>
+          </div>
           <Link
             to="/koncerty"
             className="shrink-0 px-3 py-1 rounded-full bg-accent-foreground/15 hover:bg-accent-foreground/25 text-accent-foreground font-body text-xs transition-colors"
@@ -57,10 +60,10 @@ const AnnouncementBanner = () => {
           </Link>
           <button
             onClick={handleDismiss}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-accent-foreground/60 hover:text-accent-foreground transition-colors"
+            className="absolute right-2 top-2 sm:top-1/2 sm:-translate-y-1/2 text-accent-foreground/60 hover:text-accent-foreground transition-colors p-1"
             aria-label="Zamknij"
           >
-            <X size={16} />
+            <X size={14} />
           </button>
         </div>
       </div>
