@@ -247,7 +247,7 @@ const Index = () => {
         <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           <FadeIn>
             <div className="relative overflow-hidden rounded-xl">
-              <img src={ciryamBand} alt="CIRYAM band" className="w-full aspect-[4/5] object-cover" loading="lazy" />
+              <img src={ciryamBand} alt="CIRYAM band" className="w-full aspect-[4/5] object-cover" loading="lazy" width={550} height={688} decoding="async" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
             </div>
           </FadeIn>
