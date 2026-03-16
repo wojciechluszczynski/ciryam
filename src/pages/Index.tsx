@@ -14,11 +14,11 @@ import merchPoster from "@/assets/merch-poster.jpg";
 const heroSlides = [ciryamBand, ciryamBand2, ciryamLive];
 
 const upcomingConcerts = [
-  { date: "2026-04-12", city: "Kraków", venue: "Zaścianek", ticketUrl: "#" },
-  { date: "2026-04-26", city: "Warszawa", venue: "Hydrozagadka", ticketUrl: "#" },
-  { date: "2026-05-10", city: "Wrocław", venue: "Firlej", ticketUrl: "#" },
-  { date: "2026-05-24", city: "Gdańsk", venue: "Drizzly Grizzly", ticketUrl: "#" },
-  { date: "2026-06-14", city: "Rzeszów", venue: "Vinyl Music Club", ticketUrl: "#" },
+  { date: "2026-04-12", city: "Kraków", venue: "Zaścianek", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
+  { date: "2026-04-26", city: "Warszawa", venue: "Hydrozagadka", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
+  { date: "2026-05-10", city: "Wrocław", venue: "Firlej", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
+  { date: "2026-05-24", city: "Gdańsk", venue: "Drizzly Grizzly", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
+  { date: "2026-06-14", city: "Rzeszów", venue: "Vinyl Music Club", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
 ];
 
 const formatDate = (dateStr: string) => {
