@@ -32,13 +32,56 @@ const formatDate = (dateStr: string) => {
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const addItem = useCartStore(state => state.addItem);
+  const isCartLoading = useCartStore(state => state.isLoading);
 
-  const shopItems = [
-    { name: t("product.tshirt"), price: "89 zł", image: merchTshirt },
-    { name: t("product.cd"), price: "49 zł", image: merchCd },
-    { name: t("product.poster"), price: "39 zł", image: merchPoster },
-  ];
+  const [shopProducts, setShopProducts] = useState<ShopifyProduct[]>([]);
+  const [aiRecs, setAiRecs] = useState<string[]>([]);
+  const [recsLoading, setRecsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await storefrontApiRequest(STOREFRONT_PRODUCTS_QUERY, { first: 50 });
+        if (data?.data?.products?.edges) setShopProducts(data.data.products.edges);
+      } catch (e) { console.error(e); }
+    };
+    fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    if (shopProducts.length > 0 && aiRecs.length === 0) {
+      setRecsLoading(true);
+      const randomProduct = shopProducts[Math.floor(Math.random() * shopProducts.length)];
+      supabase.functions.invoke('recommend-products', {
+        body: {
+          products: shopProducts.map(p => ({ title: p.node.title, type: p.node.productType, price: parseFloat(p.node.priceRange.minVariantPrice.amount).toFixed(0) })),
+          currentProductTitle: randomProduct.node.title,
+          lang,
+        },
+      }).then(({ data }) => {
+        if (data?.suggestions) setAiRecs(data.suggestions);
+      }).catch(console.error).finally(() => setRecsLoading(false));
+    }
+  }, [shopProducts]);
+
+  const featuredProducts = useMemo(() => {
+    if (aiRecs.length > 0) {
+      const matched = shopProducts.filter(p =>
+        aiRecs.some(rec => p.node.title.toLowerCase().includes(rec.toLowerCase()) || rec.toLowerCase().includes(p.node.title.toLowerCase()))
+      );
+      if (matched.length >= 3) return matched.slice(0, 3);
+    }
+    return shopProducts.slice(0, 3);
+  }, [shopProducts, aiRecs]);
+
+  const handleAddToCart = async (product: ShopifyProduct) => {
+    const variant = product.node.variants.edges[0]?.node;
+    if (!variant) return;
+    await addItem({ product, variantId: variant.id, variantTitle: variant.title, price: variant.price, quantity: 1, selectedOptions: variant.selectedOptions || [] });
+    toast.success(lang === "pl" ? "Dodano do koszyka!" : "Added to cart!", { position: "top-center" });
+  };
 
   const stats = [
     { value: "50+", label: t("stats.concerts") },
