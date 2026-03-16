@@ -14,11 +14,11 @@ import merchPoster from "@/assets/merch-poster.jpg";
 const heroSlides = [ciryamBand, ciryamBand2, ciryamLive];
 
 const upcomingConcerts = [
-  { date: "2026-04-12", city: "Kraków", venue: "Zaścianek", ticketUrl: "#" },
-  { date: "2026-04-26", city: "Warszawa", venue: "Hydrozagadka", ticketUrl: "#" },
-  { date: "2026-05-10", city: "Wrocław", venue: "Firlej", ticketUrl: "#" },
-  { date: "2026-05-24", city: "Gdańsk", venue: "Drizzly Grizzly", ticketUrl: "#" },
-  { date: "2026-06-14", city: "Rzeszów", venue: "Vinyl Music Club", ticketUrl: "#" },
+  { date: "2026-04-12", city: "Kraków", venue: "Zaścianek", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
+  { date: "2026-04-26", city: "Warszawa", venue: "Hydrozagadka", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
+  { date: "2026-05-10", city: "Wrocław", venue: "Firlej", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
+  { date: "2026-05-24", city: "Gdańsk", venue: "Drizzly Grizzly", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
+  { date: "2026-06-14", city: "Rzeszów", venue: "Vinyl Music Club", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
 ];
 
 const formatDate = (dateStr: string) => {
@@ -194,7 +194,7 @@ const Index = () => {
                       <h3 className="font-heading text-xl md:text-2xl text-foreground">{concert.city}</h3>
                       <p className="flex items-center gap-1.5 text-muted-foreground font-body text-sm"><MapPin size={12} /> {concert.venue}</p>
                     </div>
-                    <a href={concert.ticketUrl} className="shrink-0 px-5 py-2 rounded-full bg-accent text-accent-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors opacity-70 group-hover:opacity-100">
+                    <a href={concert.ticketUrl} target="_blank" rel="noopener noreferrer" className="shrink-0 px-5 py-2 rounded-full bg-accent text-accent-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors opacity-70 group-hover:opacity-100">
                       {t("concerts.tickets")}
                     </a>
                   </div>
