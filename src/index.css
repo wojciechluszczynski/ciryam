@@ -24,8 +24,9 @@
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 55%;
 
-    --accent: 43 76% 42%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0 0% 100%;
+    --accent-foreground: 0 0% 5%;
+    --accent-hover: 43 76% 42%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
@@ -71,6 +72,13 @@
     letter-spacing: 0.05em;
     line-height: 1.1;
   }
+}
+
+/* Golden accent on hover for interactive elements */
+a:hover,
+button:hover {
+  --accent: var(--accent-hover);
+  --accent-foreground: 0 0% 100%;
 }
 
 @layer utilities {
