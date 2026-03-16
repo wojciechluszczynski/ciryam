@@ -46,7 +46,6 @@ const Footer = () => {
                 { href: "/muzyka", labelKey: "nav.music" },
                 { href: "/koncerty", labelKey: "nav.concerts" },
                 { href: "/o-zespole", labelKey: "nav.about" },
-                { href: "/sklep", labelKey: "nav.shop" },
                 { href: "/kontakt", labelKey: "nav.contact" },
               ].map((link) => (
                 <Link key={link.href} to={link.href} className="text-foreground/60 hover:text-accent transition-colors font-body text-sm">
