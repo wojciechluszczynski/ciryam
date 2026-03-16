@@ -112,8 +112,8 @@ const Index = () => {
           <p className="font-body text-xs md:text-sm text-accent mb-3 tracking-[0.3em] uppercase animate-fade-in-up">
             {t("hero.subtitle")}
           </p>
-          <h1 className="font-heading text-6xl sm:text-7xl md:text-[9rem] lg:text-[12rem] text-foreground mb-4 animate-fade-in-up leading-none">
-            CIRYAM
+          <h1 className="mb-4 animate-fade-in-up leading-none">
+            <img src={ciryamLogotype} alt="CIRYAM" className="h-20 sm:h-28 md:h-40 lg:h-52 w-auto mx-auto invert brightness-0 invert" style={{ filter: "invert(1)" }} />
           </h1>
           <p className="font-body text-sm md:text-base text-muted-foreground mb-8 max-w-lg animate-fade-in-up-delay leading-relaxed">
             {t("hero.desc")}
