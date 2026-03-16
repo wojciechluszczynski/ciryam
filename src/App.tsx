@@ -3,7 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { LangProvider } from "@/contexts/LangContext";
 import { useCartSync } from "@/hooks/useCartSync";
 import Navbar from "@/components/Navbar";
@@ -11,16 +11,17 @@ import Footer from "@/components/Footer";
 import AnnouncementBanner from "@/components/AnnouncementBanner";
 import CookieBanner from "@/components/CookieBanner";
 import StickyPlayer from "@/components/StickyPlayer";
-import Chatbot from "@/components/Chatbot";
 import Index from "./pages/Index";
-import Kontakt from "./pages/Kontakt";
-import Koncerty from "./pages/Koncerty";
-import Muzyka from "./pages/Muzyka";
-import OZespole from "./pages/OZespole";
-import Sklep from "./pages/Sklep";
-import ProductDetail from "./pages/ProductDetail";
-import PolitykaPrywatnosci from "./pages/PolitykaPrywatnosci";
 import NotFound from "./pages/NotFound";
+
+const Chatbot = lazy(() => import("@/components/Chatbot"));
+const Kontakt = lazy(() => import("./pages/Kontakt"));
+const Koncerty = lazy(() => import("./pages/Koncerty"));
+const Muzyka = lazy(() => import("./pages/Muzyka"));
+const OZespole = lazy(() => import("./pages/OZespole"));
+const Sklep = lazy(() => import("./pages/Sklep"));
+const ProductDetail = lazy(() => import("./pages/ProductDetail"));
+const PolitykaPrywatnosci = lazy(() => import("./pages/PolitykaPrywatnosci"));
 
 const queryClient = new QueryClient();
 
