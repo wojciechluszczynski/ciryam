@@ -58,6 +58,8 @@ const Navbar = () => {
               alt="CIRYAM"
               className="h-8 md:h-10 w-auto"
               style={{ filter: "invert(1)" }}
+              width={247}
+              height={100}
             />
           </Link>
 
