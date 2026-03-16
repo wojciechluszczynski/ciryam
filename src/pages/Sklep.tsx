@@ -245,7 +245,7 @@ const Sklep = () => {
               </div>
               <div className="flex items-center justify-between mb-5 mt-1">
                 <h2 className="font-heading text-lg md:text-xl text-foreground">
-                  {lang === "pl" ? "Nasze rekomendacje" : "Our Picks"}
+                  {lang === "pl" ? "Najpopularniejsze produkty" : "Most Popular"}
                 </h2>
                 <button
                   onClick={fetchRecommendations}
