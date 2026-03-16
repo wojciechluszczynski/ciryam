@@ -24,7 +24,7 @@ const CookieBanner = () => {
     <>
       {/* Expanded panel */}
       {expanded && (
-        <div className="fixed bottom-20 left-6 z-50 w-[300px] bg-background rounded-2xl shadow-2xl border border-border p-5 animate-fade-in-up">
+        <div className="fixed bottom-[8rem] left-6 z-50 w-[300px] bg-background rounded-2xl shadow-2xl border border-border p-5 animate-fade-in-up">
           <button onClick={() => setExpanded(false)} className="absolute top-3 right-3 text-muted-foreground hover:text-foreground">
             <X size={16} />
           </button>
@@ -53,7 +53,7 @@ const CookieBanner = () => {
       {!expanded && (
         <button
           onClick={() => setExpanded(true)}
-          className="fixed bottom-6 left-6 z-50 w-12 h-12 rounded-full bg-secondary border border-border shadow-md flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent transition-all duration-300"
+          className="fixed bottom-[4.5rem] left-6 z-50 w-14 h-14 rounded-full bg-secondary border border-border shadow-md flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent transition-all duration-300"
           aria-label="Informacja o cookies"
         >
           <Cookie size={20} />

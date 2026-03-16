@@ -153,7 +153,7 @@ const Chatbot = () => {
     <>
 
       <button onClick={() => open ? handleClose() : handleOpen()}
-        className="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center overflow-hidden group z-[9999]"
+        className="fixed bottom-[4.5rem] right-6 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center overflow-hidden group z-[9999]"
         aria-label="Open CIRYAM chat assistant"
         style={{ boxShadow: open ? undefined : "0 0 24px 4px hsl(38 92% 50% / 0.3), 0 4px 16px rgba(0,0,0,0.2)" }}>
         {open ? (
@@ -166,7 +166,7 @@ const Chatbot = () => {
       </button>
 
       {open && (
-        <div className="fixed bottom-24 right-6 z-[9998] w-[360px] max-h-[520px] bg-background rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden animate-fade-in-up">
+        <div className="fixed bottom-[8rem] right-6 z-[9998] w-[360px] max-h-[520px] bg-background rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden animate-fade-in-up">
           <div className="bg-card px-4 py-3 flex items-center gap-3 border-b border-border">
             <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0">
               <img src={ciryamLogo} alt="CIRYAM" className="w-6 h-6 object-contain" style={{ filter: "invert(1)" }} />
