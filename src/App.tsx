@@ -38,20 +38,22 @@ const AppContent = () => {
       <AnnouncementBanner />
       <ScrollRestoration />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/kontakt" element={<Kontakt />} />
-        <Route path="/koncerty" element={<Koncerty />} />
-        <Route path="/muzyka" element={<Muzyka />} />
-        <Route path="/o-zespole" element={<OZespole />} />
-        <Route path="/sklep" element={<Sklep />} />
-        <Route path="/product/:handle" element={<ProductDetail />} />
-        <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/kontakt" element={<Kontakt />} />
+          <Route path="/koncerty" element={<Koncerty />} />
+          <Route path="/muzyka" element={<Muzyka />} />
+          <Route path="/o-zespole" element={<OZespole />} />
+          <Route path="/sklep" element={<Sklep />} />
+          <Route path="/product/:handle" element={<ProductDetail />} />
+          <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
       <Footer />
       <StickyPlayer />
-      <Chatbot />
+      <Suspense fallback={null}><Chatbot /></Suspense>
       <CookieBanner />
     </>
   );
