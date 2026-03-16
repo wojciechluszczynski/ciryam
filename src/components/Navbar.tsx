@@ -7,6 +7,7 @@ import { CartDrawer } from "@/components/CartDrawer";
 
 const navLinks = [
   { href: "/", labelKey: "nav.start" },
+  { href: "/aktualnosci", labelKey: "nav.news" },
   { href: "/muzyka", labelKey: "nav.music" },
   { href: "/koncerty", labelKey: "nav.concerts" },
   { href: "/o-zespole", labelKey: "nav.about" },
