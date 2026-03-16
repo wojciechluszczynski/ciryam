@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Globe } from "lucide-react";
 import ciryamLogo from "@/assets/ciryam-logo.png";
 import { useLang } from "@/contexts/LangContext";
+import { CartDrawer } from "@/components/CartDrawer";
 
 const navLinks = [
   { href: "/", labelKey: "nav.start" },
