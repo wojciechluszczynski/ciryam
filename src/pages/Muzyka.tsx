@@ -18,7 +18,7 @@ const Muzyka = () => {
         <FadeIn delay={100}>
           <div className="bg-card border border-border rounded-xl p-6 md:p-8 mb-12">
             <iframe width="100%" height="450" scrolling="no" frameBorder="no" allow="autoplay"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/ciryam&color=%23d4a017&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
+              src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ciryam/sets/ciryam&color=%23d4a017&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true"
               title="SoundCloud CIRYAM" />
           </div>
         </FadeIn>
