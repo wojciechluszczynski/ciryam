@@ -1,18 +1,19 @@
 import { ShoppingBag, ExternalLink } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
-import ciryamBand from "@/assets/ciryam-band.jpg";
-import ciryamBand2 from "@/assets/ciryam-band-2.jpg";
-import ciryamLive from "@/assets/ciryam-live.jpg";
+import merchTshirt from "@/assets/merch-tshirt.jpg";
+import merchHoodie from "@/assets/merch-hoodie.jpg";
+import merchCd from "@/assets/merch-cd.jpg";
+import merchVinyl from "@/assets/merch-vinyl.jpg";
+import merchPoster from "@/assets/merch-poster.jpg";
+import merchBeanie from "@/assets/merch-beanie.jpg";
 
 const products = [
-  { name: "Koszulka CIRYAM Logo", price: "89 zł", category: "Odzież", image: ciryamBand },
-  { name: "Koszulka \"Tour 2026\"", price: "99 zł", category: "Odzież", image: ciryamBand2 },
-  { name: "Bluza CIRYAM Hoodie", price: "149 zł", category: "Odzież", image: ciryamLive },
-  { name: "Płyta CD \"Dices\"", price: "49 zł", category: "Muzyka", image: ciryamBand },
-  { name: "Winyl \"Dices\" LP", price: "119 zł", category: "Muzyka", image: ciryamBand2 },
-  { name: "Plakat koncertowy A2", price: "39 zł", category: "Akcesoria", image: ciryamLive },
-  { name: "Naszywka CIRYAM", price: "19 zł", category: "Akcesoria", image: ciryamBand },
-  { name: "Czapka CIRYAM Beanie", price: "59 zł", category: "Odzież", image: ciryamBand2 },
+  { name: "Koszulka CIRYAM Logo", price: "89 zł", category: "Odzież", image: merchTshirt },
+  { name: "Bluza CIRYAM Hoodie", price: "149 zł", category: "Odzież", image: merchHoodie },
+  { name: "Płyta CD \"Dices\"", price: "49 zł", category: "Muzyka", image: merchCd },
+  { name: "Winyl \"Dices\" LP", price: "119 zł", category: "Muzyka", image: merchVinyl },
+  { name: "Plakat koncertowy A2", price: "39 zł", category: "Akcesoria", image: merchPoster },
+  { name: "Czapka CIRYAM Beanie", price: "59 zł", category: "Odzież", image: merchBeanie },
 ];
 
 const Sklep = () => (
@@ -27,12 +28,12 @@ const Sklep = () => (
         <p className="text-muted-foreground font-body text-sm mb-12">Koszulki, płyty, plakaty i więcej. Wspieraj zespół!</p>
       </FadeIn>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
         {products.map((product, i) => (
           <FadeIn key={product.name} delay={i * 50}>
-            <div className="group bg-card border border-border overflow-hidden hover:border-accent/30 transition-colors cursor-pointer">
+            <div className="group bg-card border border-border rounded-xl overflow-hidden hover:border-accent/30 transition-colors cursor-pointer">
               <div className="aspect-square overflow-hidden">
-                <img src={product.image} alt={product.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" loading="lazy" />
+                <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
               </div>
               <div className="p-3 md:p-4">
                 <p className="font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-1">{product.category}</p>
@@ -50,7 +51,7 @@ const Sklep = () => (
       </div>
 
       <FadeIn delay={400}>
-        <div className="text-center mt-12 p-8 border border-border bg-card">
+        <div className="text-center mt-12 p-8 border border-border rounded-xl bg-card">
           <p className="text-muted-foreground font-body text-sm mb-4">
             Pełny sklep z płatnościami online wkrótce. Tymczasem zamówienia przez:
           </p>
