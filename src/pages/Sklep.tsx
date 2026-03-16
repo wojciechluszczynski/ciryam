@@ -30,6 +30,7 @@ const Sklep = () => {
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState<"" | "asc" | "desc">("");
   const [aiRecommendations, setAiRecommendations] = useState<string[]>([]);
   const [aiLoading, setAiLoading] = useState(false);
   const addItem = useCartStore(state => state.addItem);
