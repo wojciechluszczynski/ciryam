@@ -27,7 +27,7 @@ const Footer = () => {
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>
-            <img src={ciryamLogo} alt="CIRYAM" className="h-10 w-auto mb-4" style={{ filter: "invert(1)" }} />
+            <img src={ciryamLogo} alt="CIRYAM" className="h-10 w-auto mb-4" style={{ filter: "invert(1)" }} width={247} height={100} />
             <p className="text-muted-foreground font-body text-sm mb-6 leading-relaxed">{t("footer.desc")}</p>
             <div className="flex gap-4">
               <a href="https://www.facebook.com/CIRYAM/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Facebook"><Facebook size={20} /></a>

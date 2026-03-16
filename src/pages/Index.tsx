@@ -57,7 +57,7 @@ const Index = () => {
       <section className="relative h-screen w-full overflow-hidden">
         {heroSlides.map((slide, i) => (
           <div key={i} className={`absolute inset-0 transition-all duration-1000 ease-in-out ${i === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}>
-            <img src={slide} alt={`CIRYAM rock band live ${i + 1}`} className="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"} />
+            <img src={slide} alt={`CIRYAM rock band live ${i + 1}`} className="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"} width={1400} height={940} fetchPriority={i === 0 ? "high" : "auto"} decoding={i === 0 ? "sync" : "async"} />
           </div>
         ))}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/40" />
@@ -226,15 +226,15 @@ const Index = () => {
           <FadeIn delay={100}>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
               <div className="col-span-2 row-span-2 relative group overflow-hidden rounded-xl">
-                <img src={ciryamBand} alt="CIRYAM band promo" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={ciryamBand} alt="CIRYAM band promo" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width={900} height={600} decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
               <div className="relative group overflow-hidden rounded-xl aspect-square">
-                <img src={ciryamLive} alt="CIRYAM live concert" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={ciryamLive} alt="CIRYAM live concert" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width={450} height={450} decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
               <div className="relative group overflow-hidden rounded-xl aspect-square">
-                <img src={ciryamBand2} alt="CIRYAM backstage" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={ciryamBand2} alt="CIRYAM backstage" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width={450} height={450} decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </div>
@@ -247,7 +247,7 @@ const Index = () => {
         <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           <FadeIn>
             <div className="relative overflow-hidden rounded-xl">
-              <img src={ciryamBand} alt="CIRYAM band" className="w-full aspect-[4/5] object-cover" loading="lazy" />
+              <img src={ciryamBand} alt="CIRYAM band" className="w-full aspect-[4/5] object-cover" loading="lazy" width={550} height={688} decoding="async" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
             </div>
           </FadeIn>

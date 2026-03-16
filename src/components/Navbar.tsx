@@ -58,6 +58,8 @@ const Navbar = () => {
               alt="CIRYAM"
               className="h-8 md:h-10 w-auto"
               style={{ filter: "invert(1)" }}
+              width={247}
+              height={100}
             />
           </Link>
 
@@ -130,6 +132,8 @@ const Navbar = () => {
             alt="CIRYAM"
             className="h-12 w-auto mb-10"
             style={{ filter: "invert(1)" }}
+            width={297}
+            height={120}
           />
 
           <div className="flex flex-col items-center gap-6 mb-10">
