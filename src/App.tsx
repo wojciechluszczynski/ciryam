@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnnouncementBanner from "@/components/AnnouncementBanner";
 import CookieBanner from "@/components/CookieBanner";
+import StickyPlayer from "@/components/StickyPlayer";
 import Index from "./pages/Index";
 import Kontakt from "./pages/Kontakt";
 import Koncerty from "./pages/Koncerty";
@@ -47,6 +48,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
+        <StickyPlayer />
         <CookieBanner />
       </BrowserRouter>
     </TooltipProvider>
