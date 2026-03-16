@@ -105,7 +105,7 @@ const translations: Record<Lang, Record<string, string>> = {
     // Music page
     "music.page.title": "Muzyka CIRYAM",
     "music.page.desc1": "Autorski rock – od ciężkich riffów po melodyjne refreny. Posłuchaj naszych nagrań na wszystkich platformach streamingowych.",
-    "music.page.desc2": "CIRYAM ma na koncie trzy albumy studyjne i dziesiątki singli. Nasz najnowszy materiał „Dices" to najbardziej dojrzały album w naszej dyskografii – połączenie hard rockowej energii z emocjonalnymi tekstami i nowoczesną produkcją.",
+    "music.page.desc2": 'CIRYAM ma na koncie trzy albumy studyjne i dziesi\u0105tki singli. Nasz najnowszy materia\u0142 "Dices" to najbardziej dojrza\u0142y album w naszej dyskografii \u2013 po\u0142\u0105czenie hard rockowej energii z emocjonalnymi tekstami i nowoczesn\u0105 produkcj\u0105.',
     "music.platforms": "Słuchaj na platformach",
     "music.seo.title": "O muzyce CIRYAM",
     "music.seo.p1": "CIRYAM to polski zespół rockowy, który od pierwszych akordów stawia na autentyczność. Nasze brzmienie czerpie z klasycznego hard rocka lat 70. i 80., ale nie boimy się nowoczesnych rozwiązań produkcyjnych. Efekt? Muzyka, która jest jednocześnie surowa i przystępna.",
