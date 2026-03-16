@@ -49,7 +49,7 @@ const OZespole = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 mb-16">
           <FadeIn>
-            <img src={ciryamBand} alt="CIRYAM zespół" className="w-full aspect-[4/5] object-contain rounded-xl bg-background" />
+            <img src={ciryamBand} alt="CIRYAM zespół" className="w-full aspect-[3/4] object-cover object-top rounded-xl" />
           </FadeIn>
           <FadeIn delay={150}>
             <div className="flex flex-col justify-center">
@@ -83,8 +83,8 @@ const OZespole = () => {
 
         <FadeIn delay={250}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16">
-            <img src={ciryamBand6} alt="CIRYAM na scenie" className="w-full aspect-video object-contain rounded-xl bg-background grayscale hover:grayscale-0 transition-all duration-500" />
-            <img src={ciryamBand8} alt="CIRYAM sesja zespołu" className="w-full aspect-video object-contain rounded-xl bg-background grayscale hover:grayscale-0 transition-all duration-500" />
+             <img src={ciryamBand6} alt="CIRYAM na scenie" className="w-full aspect-video object-cover object-top rounded-xl grayscale hover:grayscale-0 transition-all duration-500" />
+            <img src={ciryamBand8} alt="CIRYAM sesja zespołu" className="w-full aspect-video object-cover object-top rounded-xl grayscale hover:grayscale-0 transition-all duration-500" />
           </div>
         </FadeIn>
 
