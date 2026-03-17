@@ -27,8 +27,8 @@ const LazyIframe = ({ fallbackHeight = "300px", ...props }: LazyIframeProps) => 
   }, []);
 
   return (
-    <div ref={containerRef} style={{ minHeight: fallbackHeight }}>
-      {isVisible ? <iframe {...props} /> : null}
+    <div ref={containerRef} style={{ minHeight: fallbackHeight }} className="w-full h-full">
+      {isVisible ? <iframe {...props} style={{ display: "block", width: "100%", height: "100%" }} /> : null}
     </div>
   );
 };
