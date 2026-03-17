@@ -10,7 +10,12 @@ import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 
 import ciryamBand from "@/assets/ciryam-band.jpg";
+import ciryamBand2 from "@/assets/ciryam-band-2.jpg";
+import ciryamBand3 from "@/assets/ciryam-band-3.jpg";
+import ciryamBand4 from "@/assets/ciryam-band-4.jpg";
+import ciryamBand5 from "@/assets/ciryam-band-5.jpg";
 import ciryamBand8 from "@/assets/ciryam-band-8.jpg";
+import ciryamLive from "@/assets/ciryam-live.jpg";
 import ciryamLogotype from "@/assets/ciryam-logotype-white.png";
 
 const heroSlides = [ciryamBand, ciryamBand8];
@@ -268,19 +273,20 @@ const Index = () => {
             </div>
           </FadeIn>
           <FadeIn delay={100}>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-              <div className="col-span-2 row-span-2 relative group overflow-hidden rounded-xl bg-background">
-                <img src={ciryamBand} alt="CIRYAM band promo" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" width={900} height={600} decoding="async" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-              <div className="relative group overflow-hidden rounded-xl aspect-square bg-background">
-                <img src={ciryamBand8} alt="CIRYAM live concert" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" width={450} height={450} decoding="async" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-              <div className="relative group overflow-hidden rounded-xl aspect-square bg-background">
-                <img src={ciryamBand} alt="CIRYAM backstage" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]" loading="lazy" width={450} height={450} decoding="async" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
+            <div className="columns-2 md:columns-3 gap-3 md:gap-4 space-y-3 md:space-y-4">
+              {[
+                { src: ciryamBand, alt: "CIRYAM band promo", aspect: "aspect-[3/4]" },
+                { src: ciryamBand2, alt: "CIRYAM band session", aspect: "aspect-square" },
+                { src: ciryamLive, alt: "CIRYAM live concert", aspect: "aspect-[4/5]" },
+                { src: ciryamBand3, alt: "CIRYAM backstage", aspect: "aspect-[3/4]" },
+                { src: ciryamBand4, alt: "CIRYAM studio", aspect: "aspect-square" },
+                { src: ciryamBand5, alt: "CIRYAM on stage", aspect: "aspect-[4/5]" },
+              ].map((img, i) => (
+                <div key={i} className={`relative group overflow-hidden rounded-xl break-inside-avoid ${img.aspect}`}>
+                  <img src={img.src} alt={img.alt} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" loading="lazy" decoding="async" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
+              ))}
             </div>
           </FadeIn>
         </div>
