@@ -60,39 +60,48 @@ export type Database = {
       }
       blog_posts: {
         Row: {
+          author_avatar_url: string | null
           author_id: string | null
+          author_name: string | null
           category_id: string | null
           content: Json | null
           cover_image_url: string | null
           created_at: string
           excerpt: string | null
           id: string
+          meta_keywords: string[] | null
           published: boolean
           slug: string
           title: string
           updated_at: string
         }
         Insert: {
+          author_avatar_url?: string | null
           author_id?: string | null
+          author_name?: string | null
           category_id?: string | null
           content?: Json | null
           cover_image_url?: string | null
           created_at?: string
           excerpt?: string | null
           id?: string
+          meta_keywords?: string[] | null
           published?: boolean
           slug: string
           title: string
           updated_at?: string
         }
         Update: {
+          author_avatar_url?: string | null
           author_id?: string | null
+          author_name?: string | null
           category_id?: string | null
           content?: Json | null
           cover_image_url?: string | null
           created_at?: string
           excerpt?: string | null
           id?: string
+          meta_keywords?: string[] | null
           published?: boolean
           slug?: string
           title?: string
