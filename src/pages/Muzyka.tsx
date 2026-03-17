@@ -5,14 +5,14 @@ import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
 
 const musicVideos = [
-  { title: "Na niby", album: "", youtubeId: "mTPAc0ICZRw", featured: true },
-  { title: "Ślad", album: "", youtubeId: "CtL2mcYmLBM", featured: true },
-  { title: "Zabierz mnie", album: "", youtubeId: "ZlyVuxGuC4g", featured: true },
-  { title: "Noc", album: "Zamyślony zapach (2023)", youtubeId: "iyTQo9v-xNs" },
-  { title: "Wataha", album: "Hymn Wilków Krosno (2019)", youtubeId: "eEBIo2nJUsM" },
-  { title: "Alone – band version", album: "Desires (2017)", youtubeId: "41ImTmg7HYE" },
-  { title: "Venus (english version)", album: "Desires (2017)", youtubeId: "14QXTwQZ3ts" },
-  { title: "W Ciszy", album: "Szepty dusz (2004)", youtubeId: "A0sR8SfO_Xc" },
+  { title: "Na niby", album: "", youtubeId: "mTPAc0ICZRw", featured: true, desc: "Oficjalny teledysk do singla 'Na niby'. Klimatyczny klip kręcony w opuszczonej fabryce." },
+  { title: "Ślad", album: "", youtubeId: "CtL2mcYmLBM", featured: true, desc: "Energetyczny utwór z mocnym riffem gitarowym. Teledysk zrealizowany na żywo w studiu." },
+  { title: "Zabierz mnie", album: "", youtubeId: "ZlyVuxGuC4g", featured: true, desc: "Balladowy singiel z emocjonalnym przekazem. Klip z nastrojowymi ujęciami plenerów." },
+  { title: "Noc", album: "Zamyślony zapach (2023)", youtubeId: "iyTQo9v-xNs", desc: "Oficjalny teledysk do utworu z albumu 'Zamyślony zapach'. Mroczna, filmowa estetyka." },
+  { title: "Wataha", album: "Hymn Wilków Krosno (2019)", youtubeId: "eEBIo2nJUsM", desc: "Hymn drużyny Wilki Krosno. Połączenie rockowej energii z kibicowskim duchem." },
+  { title: "Alone – band version", album: "Desires (2017)", youtubeId: "41ImTmg7HYE", desc: "Zespołowa wersja utworu 'Alone'. Nagranie z próby w pełnym składzie." },
+  { title: "Venus (english version)", album: "Desires (2017)", youtubeId: "14QXTwQZ3ts", desc: "Anglojęzyczna wersja utworu Venus z albumu Desires. Alternatywny rock z melodyjnym refrenem." },
+  { title: "W Ciszy", album: "Szepty dusz (2004)", youtubeId: "A0sR8SfO_Xc", desc: "Klasyczny utwór z debiutanckiego albumu. Nostalgiczny klimat i surowe brzmienie." },
 ];
 
 const albums = [
