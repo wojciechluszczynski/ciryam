@@ -26,7 +26,7 @@ const DocumentImport = ({ onImport, onMetaGenerated }: DocumentImportProps) => {
 
       if (ext === "docx" || ext === "doc") {
         const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.convertToHtml(arrayBuffer, {
+        const result = await mammoth.convertToHtml({ arrayBuffer } as any, {
           styleMap: [
             "p[style-name='Heading 1'] => h1:fresh",
             "p[style-name='Heading 2'] => h2:fresh",
