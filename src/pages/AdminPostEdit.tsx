@@ -411,6 +411,20 @@ const AdminPostEdit = () => {
         {/* Rich text editor */}
         <BlogEditor content={content} onChange={setContent} />
       </div>
+
+      {/* Preview modal */}
+      {showPreview && (
+        <PostPreview
+          title={title}
+          excerpt={excerpt}
+          content={content}
+          coverUrl={coverUrl}
+          categoryName={categories.find((c) => c.id === categoryId)?.name || null}
+          tags={tags}
+          authorName={authorName}
+          onClose={() => setShowPreview(false)}
+        />
+      )}
     </main>
   );
 };
