@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { ArrowLeft, Save, Eye, Upload, X, Tag, User } from "lucide-react";
+import { ArrowLeft, Save, Eye, Upload, X, Tag, User, MonitorPlay } from "lucide-react";
 import BlogEditor from "@/components/blog/BlogEditor";
 import DocumentImport from "@/components/blog/DocumentImport";
+import PostPreview from "@/components/blog/PostPreview";
 import ciryamLogo from "@/assets/ciryam-logo.png";
 
 interface Category {
@@ -38,6 +39,7 @@ const AdminPostEdit = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
 
   useEffect(() => {
     fetchCategories();
@@ -249,6 +251,12 @@ const AdminPostEdit = () => {
           </button>
           <div className="flex items-center gap-2">
             <button
+              onClick={() => setShowPreview(true)}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border text-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-secondary transition-colors"
+            >
+              <MonitorPlay size={14} /> Podgląd
+            </button>
+            <button
               onClick={() => handleSave(false)}
               disabled={saving}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border text-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-secondary transition-colors disabled:opacity-50"
@@ -403,6 +411,20 @@ const AdminPostEdit = () => {
         {/* Rich text editor */}
         <BlogEditor content={content} onChange={setContent} />
       </div>
+
+      {/* Preview modal */}
+      {showPreview && (
+        <PostPreview
+          title={title}
+          excerpt={excerpt}
+          content={content}
+          coverUrl={coverUrl}
+          categoryName={categories.find((c) => c.id === categoryId)?.name || null}
+          tags={tags}
+          authorName={authorName}
+          onClose={() => setShowPreview(false)}
+        />
+      )}
     </main>
   );
 };

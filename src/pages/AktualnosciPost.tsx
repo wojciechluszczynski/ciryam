@@ -6,9 +6,10 @@ import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
 import LinkExt from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
-import { Calendar, Tag, ArrowLeft } from "lucide-react";
+import { Calendar, Tag, ArrowLeft, User } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
+import ciryamLogo from "@/assets/ciryam-logo.png";
 
 const AktualnosciPost = () => {
   const { slug } = useParams();
@@ -116,7 +117,19 @@ const AktualnosciPost = () => {
             )}
           </div>
 
-          <h1 className="font-heading text-4xl md:text-5xl text-foreground mb-6 leading-tight">{post.title}</h1>
+          <h1 className="font-heading text-4xl md:text-5xl text-foreground mb-4 leading-tight">{post.title}</h1>
+
+          {/* Author */}
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-9 h-9 rounded-full overflow-hidden bg-secondary flex items-center justify-center shrink-0">
+              {(post as any).author_name === "Ciryam" || !(post as any).author_name ? (
+                <img src={ciryamLogo} alt="Ciryam" className="w-full h-full object-cover" />
+              ) : (
+                <User size={16} className="text-muted-foreground" />
+              )}
+            </div>
+            <span className="font-body text-sm text-foreground">{(post as any).author_name || "Ciryam"}</span>
+          </div>
 
           {post.cover_image_url && (
             <div className="rounded-xl overflow-hidden mb-8">
