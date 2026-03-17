@@ -90,10 +90,10 @@ const Index = () => {
   };
 
   const stats = [
-    { value: "50+", label: t("stats.concerts") },
+    { value: "100+", label: t("stats.concerts") },
     { value: "10K+", label: t("stats.fans") },
-    { value: "6", label: t("stats.years") },
-    { value: "3", label: t("stats.albums") },
+    { value: "25+", label: t("stats.years") },
+    { value: "5", label: t("stats.albums") },
   ];
 
   useEffect(() => {
