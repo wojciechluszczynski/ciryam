@@ -32,9 +32,12 @@ const PostPreview = ({
           LinkExt.configure({ openOnClick: false }),
           Youtube,
         ]);
+      } else if (typeof content === "string") {
+        htmlContent = `<p>${content}</p>`;
       }
     }
-  } catch {
+  } catch (e) {
+    console.error("PostPreview generateHTML error:", e);
     htmlContent = "<p>Błąd wyświetlania treści</p>";
   }
 
