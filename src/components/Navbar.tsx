@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/koncerty", labelKey: "nav.concerts" },
   { href: "/o-zespole", labelKey: "nav.about" },
   { href: "/kontakt", labelKey: "nav.contact" },
+  { href: "/press-kit", labelKey: "nav.press" },
 ];
 
 const Navbar = () => {

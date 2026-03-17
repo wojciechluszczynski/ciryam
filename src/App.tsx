@@ -60,6 +60,7 @@ const AppContent = () => {
           <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
           <Route path="/aktualnosci" element={<Aktualnosci />} />
           <Route path="/aktualnosci/:slug" element={<AktualnosciPost />} />
+          <Route path="/press-kit" element={<PressKit />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/admin/posts" element={<Suspense fallback={null}><ProtectedRoute><AdminPosts /></ProtectedRoute></Suspense>} />
           <Route path="/admin/posts/:id" element={<Suspense fallback={null}><ProtectedRoute><AdminPostEdit /></ProtectedRoute></Suspense>} />
