@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { Calendar, Tag, ArrowRight } from "lucide-react";
+import { Calendar, Tag, ArrowRight, Search } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
+import { Input } from "@/components/ui/input";
 import { useLang } from "@/contexts/LangContext";
 
 interface BlogPost {
