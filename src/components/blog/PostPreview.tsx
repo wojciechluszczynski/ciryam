@@ -25,7 +25,7 @@ const PostPreview = ({
     if (content) {
       if (typeof content === "string" && content.startsWith("<")) {
         htmlContent = content;
-      } else if (typeof content === "object" && content.type === "doc") {
+      } else if (typeof content === "object") {
         htmlContent = generateHTML(content, [
           StarterKit,
           Image,
