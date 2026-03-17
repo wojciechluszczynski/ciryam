@@ -81,6 +81,18 @@ const Aktualnosci = () => {
           </p>
         </FadeIn>
 
+        <FadeIn delay={25}>
+          <div className="relative mb-8">
+            <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder={lang === "pl" ? "Szukaj w aktualnościach…" : "Search news…"}
+              className="pl-11 rounded-full border-border bg-card font-body text-sm"
+            />
+          </div>
+        </FadeIn>
+
         {/* Category filter */}
         {categories.length > 0 && (
           <FadeIn delay={50}>
