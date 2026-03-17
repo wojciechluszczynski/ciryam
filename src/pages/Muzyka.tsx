@@ -10,6 +10,9 @@ const musicVideos = [
   { title: "Alone – band version", album: "Desires (2017)", youtubeId: "41ImTmg7HYE" },
   { title: "Wataha", album: "Hymn Wilków Krosno (2019)", youtubeId: "eEBIo2nJUsM" },
   { title: "Noc", album: "Zamyślony zapach (2023)", youtubeId: "iyTQo9v-xNs" },
+  { title: "Na niby", album: "", youtubeId: "mTPAc0ICZRw" },
+  { title: "Ślad", album: "", youtubeId: "CtL2mcYmLBM" },
+  { title: "Zabierz mnie", album: "", youtubeId: "ZlyVuxGuC4g" },
 ];
 
 const Muzyka = () => {
