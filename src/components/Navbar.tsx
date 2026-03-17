@@ -54,7 +54,7 @@ const Navbar = () => {
             ? "bg-background/80 backdrop-blur-xl shadow-lg shadow-background/20"
             : "bg-transparent"
         }`}>
-          <Link to="/" className="z-50 shrink-0">
+          <Link to="/" className="z-50 shrink-0 relative flex items-center">
             <img
               src={ciryamSign}
               alt="CIRYAM"
