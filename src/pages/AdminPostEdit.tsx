@@ -2,14 +2,21 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { ArrowLeft, Save, Eye, Upload, X, Tag } from "lucide-react";
+import { ArrowLeft, Save, Eye, Upload, X, Tag, User } from "lucide-react";
 import BlogEditor from "@/components/blog/BlogEditor";
+import DocumentImport from "@/components/blog/DocumentImport";
+import ciryamLogo from "@/assets/ciryam-logo.png";
 
 interface Category {
   id: string;
   name: string;
   slug: string;
 }
+
+const AUTHORS = [
+  { name: "Ciryam", avatar: null, uselogo: true },
+  { name: "Wojciech Łuszczyński", avatar: null, uselogo: false },
+];
 
 const AdminPostEdit = () => {
   const { id } = useParams();
@@ -25,6 +32,9 @@ const AdminPostEdit = () => {
   const [categoryId, setCategoryId] = useState<string | null>(null);
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState("");
+  const [keywords, setKeywords] = useState<string[]>([]);
+  const [keywordInput, setKeywordInput] = useState("");
+  const [authorName, setAuthorName] = useState("Ciryam");
   const [categories, setCategories] = useState<Category[]>([]);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -57,8 +67,9 @@ const AdminPostEdit = () => {
     setCoverUrl(data.cover_image_url || "");
     setPublished(data.published);
     setCategoryId(data.category_id);
+    setAuthorName((data as any).author_name || "Ciryam");
+    setKeywords((data as any).meta_keywords || []);
 
-    // Fetch tags
     const { data: tagsData } = await supabase
       .from("blog_post_tags")
       .select("tag")
@@ -108,21 +119,27 @@ const AdminPostEdit = () => {
 
   const addTag = () => {
     const tag = tagInput.trim().toLowerCase();
-    if (tag && !tags.includes(tag)) {
-      setTags([...tags, tag]);
-    }
+    if (tag && !tags.includes(tag)) setTags([...tags, tag]);
     setTagInput("");
   };
 
   const removeTag = (tag: string) => setTags(tags.filter((t) => t !== tag));
 
+  const addKeyword = () => {
+    const kw = keywordInput.trim().toLowerCase();
+    if (kw && !keywords.includes(kw)) setKeywords([...keywords, kw]);
+    setKeywordInput("");
+  };
+
+  const removeKeyword = (kw: string) => setKeywords(keywords.filter((k) => k !== kw));
+
   const addCategory = async () => {
     const name = prompt("Nazwa nowej kategorii:");
     if (!name) return;
-    const slug = generateSlug(name);
+    const catSlug = generateSlug(name);
     const { data, error } = await supabase
       .from("blog_categories")
-      .insert({ name, slug })
+      .insert({ name, slug: catSlug })
       .select()
       .single();
     if (error) {
@@ -130,6 +147,31 @@ const AdminPostEdit = () => {
     } else if (data) {
       setCategories([...categories, data]);
       setCategoryId(data.id);
+    }
+  };
+
+  const handleDocumentImport = (html: string) => {
+    // Set HTML content to editor via a special wrapper
+    setContent(html);
+  };
+
+  const handleMetaGenerated = (meta: {
+    title?: string;
+    excerpt?: string;
+    tags?: string[];
+    keywords?: string[];
+    suggested_category?: string;
+  }) => {
+    if (meta.title && !title) {
+      setTitle(meta.title);
+      setSlug(generateSlug(meta.title));
+    }
+    if (meta.excerpt && !excerpt) setExcerpt(meta.excerpt);
+    if (meta.tags?.length) setTags((prev) => [...new Set([...prev, ...meta.tags!])]);
+    if (meta.keywords?.length) setKeywords((prev) => [...new Set([...prev, ...meta.keywords!])]);
+    if (meta.suggested_category) {
+      const match = categories.find((c) => c.slug === meta.suggested_category);
+      if (match && !categoryId) setCategoryId(match.id);
     }
   };
 
@@ -147,7 +189,9 @@ const AdminPostEdit = () => {
     const pub = shouldPublish !== undefined ? shouldPublish : published;
     const { data: { user } } = await supabase.auth.getUser();
 
-    const postData = {
+    const selectedAuthor = AUTHORS.find((a) => a.name === authorName) || AUTHORS[0];
+
+    const postData: any = {
       title: title.trim(),
       slug: slug.trim(),
       excerpt: excerpt.trim() || null,
@@ -156,6 +200,8 @@ const AdminPostEdit = () => {
       published: pub,
       category_id: categoryId,
       author_id: user?.id || null,
+      author_name: selectedAuthor.name,
+      meta_keywords: keywords,
       updated_at: new Date().toISOString(),
     };
 
@@ -182,7 +228,7 @@ const AdminPostEdit = () => {
     if (postId && postId !== "new") {
       await supabase.from("blog_post_tags").delete().eq("post_id", postId);
       if (tags.length > 0) {
-        await supabase.from("blog_post_tags").insert(tags.map((tag) => ({ post_id: postId, tag })));
+        await supabase.from("blog_post_tags").insert(tags.map((tag) => ({ post_id: postId!, tag })));
       }
     }
 
@@ -190,6 +236,8 @@ const AdminPostEdit = () => {
     toast.success(pub ? "Post opublikowany!" : "Zapisano szkic");
     navigate("/admin/posts");
   };
+
+  const currentAuthor = AUTHORS.find((a) => a.name === authorName) || AUTHORS[0];
 
   return (
     <main className="min-h-screen bg-background pt-8 pb-20">
@@ -216,6 +264,9 @@ const AdminPostEdit = () => {
             </button>
           </div>
         </div>
+
+        {/* Document import */}
+        <DocumentImport onImport={handleDocumentImport} onMetaGenerated={handleMetaGenerated} />
 
         {/* Title */}
         <input
@@ -270,26 +321,50 @@ const AdminPostEdit = () => {
           className="w-full bg-card border border-border rounded-lg px-4 py-3 text-foreground font-body text-sm resize-none focus:outline-none focus:border-accent transition-colors mb-6 placeholder:text-muted-foreground/40"
         />
 
-        {/* Category */}
-        <div className="flex items-center gap-3 mb-4">
-          <select
-            value={categoryId || ""}
-            onChange={(e) => setCategoryId(e.target.value || null)}
-            className="bg-card border border-border rounded-lg px-3 py-2 text-foreground font-body text-sm focus:outline-none focus:border-accent transition-colors"
-          >
-            <option value="">Bez kategorii</option>
-            {categories.map((c) => (
-              <option key={c.id} value={c.id}>{c.name}</option>
-            ))}
-          </select>
-          <button onClick={addCategory} className="text-xs text-accent hover:text-accent-hover font-body transition-colors">
-            + Nowa kategoria
-          </button>
+        {/* Author & Category row */}
+        <div className="flex items-center gap-4 mb-4 flex-wrap">
+          {/* Author selector */}
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full overflow-hidden bg-secondary flex items-center justify-center shrink-0">
+              {currentAuthor.uselogo ? (
+                <img src={ciryamLogo} alt="Ciryam" className="w-full h-full object-cover" />
+              ) : (
+                <User size={16} className="text-muted-foreground" />
+              )}
+            </div>
+            <select
+              value={authorName}
+              onChange={(e) => setAuthorName(e.target.value)}
+              className="bg-card border border-border rounded-lg px-3 py-2 text-foreground font-body text-sm focus:outline-none focus:border-accent transition-colors"
+            >
+              {AUTHORS.map((a) => (
+                <option key={a.name} value={a.name}>{a.name}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Category */}
+          <div className="flex items-center gap-2">
+            <select
+              value={categoryId || ""}
+              onChange={(e) => setCategoryId(e.target.value || null)}
+              className="bg-card border border-border rounded-lg px-3 py-2 text-foreground font-body text-sm focus:outline-none focus:border-accent transition-colors"
+            >
+              <option value="">Bez kategorii</option>
+              {categories.map((c) => (
+                <option key={c.id} value={c.id}>{c.name}</option>
+              ))}
+            </select>
+            <button onClick={addCategory} className="text-xs text-accent hover:text-accent-hover font-body transition-colors">
+              + Nowa
+            </button>
+          </div>
         </div>
 
         {/* Tags */}
-        <div className="flex items-center flex-wrap gap-2 mb-6">
+        <div className="flex items-center flex-wrap gap-2 mb-4">
           <Tag size={14} className="text-muted-foreground" />
+          <span className="text-xs text-muted-foreground font-body">Tagi:</span>
           {tags.map((tag) => (
             <span key={tag} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary text-foreground font-body text-xs">
               #{tag}
@@ -303,6 +378,25 @@ const AdminPostEdit = () => {
             onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addTag())}
             placeholder="Dodaj tag..."
             className="bg-transparent border-none outline-none text-foreground font-body text-xs placeholder:text-muted-foreground/40 w-24"
+          />
+        </div>
+
+        {/* Keywords (SEO) */}
+        <div className="flex items-center flex-wrap gap-2 mb-6">
+          <span className="text-xs text-muted-foreground font-body">🔑 SEO:</span>
+          {keywords.map((kw) => (
+            <span key={kw} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-accent/10 text-accent font-body text-xs">
+              {kw}
+              <button onClick={() => removeKeyword(kw)} className="text-accent/60 hover:text-accent"><X size={12} /></button>
+            </span>
+          ))}
+          <input
+            type="text"
+            value={keywordInput}
+            onChange={(e) => setKeywordInput(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addKeyword())}
+            placeholder="Dodaj keyword..."
+            className="bg-transparent border-none outline-none text-foreground font-body text-xs placeholder:text-muted-foreground/40 w-28"
           />
         </div>
 

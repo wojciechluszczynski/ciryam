@@ -9,7 +9,7 @@ import {
   Heading1, Heading2, Heading3, Quote, Minus,
   Link as LinkIcon, Image as ImageIcon, Youtube as YoutubeIcon, Code, Undo, Redo,
 } from "lucide-react";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
@@ -49,11 +49,17 @@ const BlogEditor = ({ content, onChange }: BlogEditorProps) => {
         class: "prose prose-invert prose-sm max-w-none min-h-[300px] focus:outline-none font-body text-foreground leading-relaxed p-4",
       },
       handlePaste: (view, event) => {
-        // Allow default paste handling for rich text from Word/Google Docs
         return false;
       },
     },
   });
+
+  // Update editor content when content prop changes (e.g. from document import)
+  useEffect(() => {
+    if (editor && content && typeof content === "string" && content.startsWith("<")) {
+      editor.commands.setContent(content);
+    }
+  }, [content, editor]);
 
   const addImage = useCallback(async () => {
     const input = document.createElement("input");
