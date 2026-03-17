@@ -239,13 +239,16 @@ const Index = () => {
               const { day, month } = formatDate(concert.date);
               return (
                 <FadeIn key={i} delay={i * 60}>
-                  <div className="group border-t border-border py-5 flex items-center gap-4 md:gap-8 hover:bg-secondary/50 px-4 rounded-lg transition-colors">
-                    <div className="text-center shrink-0 w-16">
-                      <span className="font-heading text-3xl md:text-4xl text-foreground block leading-none">{day}</span>
-                      <span className="font-heading text-xs tracking-[0.15em] text-accent">{month}</span>
+                  <div className="group border-t border-border py-4 flex items-center gap-4 md:gap-6 hover:bg-secondary/50 px-4 rounded-lg transition-colors">
+                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-lg overflow-hidden shrink-0">
+                      <img src={concert.image} alt={concert.venue} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="text-center shrink-0 w-14">
+                      <span className="font-heading text-2xl md:text-3xl text-foreground block leading-none">{day}</span>
+                      <span className="font-heading text-[10px] tracking-[0.15em] text-accent">{month}</span>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-heading text-xl md:text-2xl text-foreground">{concert.city}</h3>
+                      <h3 className="font-heading text-lg md:text-xl text-foreground">{concert.city}</h3>
                       <p className="flex items-center gap-1.5 text-muted-foreground font-body text-sm"><MapPin size={12} /> {concert.venue}</p>
                     </div>
                     <a href={concert.ticketUrl} target="_blank" rel="noopener noreferrer" className="shrink-0 px-5 py-2 rounded-full bg-accent text-accent-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors opacity-70 group-hover:opacity-100">
