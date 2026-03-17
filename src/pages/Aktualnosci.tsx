@@ -47,9 +47,17 @@ const Aktualnosci = () => {
     fetchData();
   }, []);
 
-  const filtered = activeCategory
-    ? posts.filter((p) => p.category_id === activeCategory)
-    : posts;
+  const filtered = useMemo(() => {
+    let result = posts;
+    if (activeCategory) result = result.filter((p) => p.category_id === activeCategory);
+    if (search.trim()) {
+      const q = search.toLowerCase();
+      result = result.filter((p) =>
+        p.title.toLowerCase().includes(q) || (p.excerpt && p.excerpt.toLowerCase().includes(q))
+      );
+    }
+    return result;
+  }, [posts, activeCategory, search]);
 
   const getCategoryName = (catId: string | null) => {
     if (!catId) return null;
