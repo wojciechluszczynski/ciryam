@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { Calendar, Tag, ArrowRight } from "lucide-react";
+import { Calendar, Tag, ArrowRight, Search } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
+import { Input } from "@/components/ui/input";
 import { useLang } from "@/contexts/LangContext";
 
 interface BlogPost {
@@ -26,6 +27,7 @@ const Aktualnosci = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [activeCategory, setActiveCategory] = useState<string>("");
+  const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -45,9 +47,17 @@ const Aktualnosci = () => {
     fetchData();
   }, []);
 
-  const filtered = activeCategory
-    ? posts.filter((p) => p.category_id === activeCategory)
-    : posts;
+  const filtered = useMemo(() => {
+    let result = posts;
+    if (activeCategory) result = result.filter((p) => p.category_id === activeCategory);
+    if (search.trim()) {
+      const q = search.toLowerCase();
+      result = result.filter((p) =>
+        p.title.toLowerCase().includes(q) || (p.excerpt && p.excerpt.toLowerCase().includes(q))
+      );
+    }
+    return result;
+  }, [posts, activeCategory, search]);
 
   const getCategoryName = (catId: string | null) => {
     if (!catId) return null;
@@ -69,6 +79,18 @@ const Aktualnosci = () => {
               ? "Najnowsze wiadomości, relacje z koncertów i zapowiedzi."
               : "Latest news, concert reports and announcements."}
           </p>
+        </FadeIn>
+
+        <FadeIn delay={25}>
+          <div className="relative mb-8">
+            <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder={lang === "pl" ? "Szukaj w aktualnościach…" : "Search news…"}
+              className="pl-11 rounded-full border-border bg-card font-body text-sm"
+            />
+          </div>
         </FadeIn>
 
         {/* Category filter */}
