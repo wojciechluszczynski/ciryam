@@ -9,7 +9,7 @@ import {
   Heading1, Heading2, Heading3, Quote, Minus,
   Link as LinkIcon, Image as ImageIcon, Youtube as YoutubeIcon, Code, Undo, Redo,
 } from "lucide-react";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
