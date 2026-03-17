@@ -200,8 +200,8 @@ const Index = () => {
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {[
-              { src: "https://www.youtube.com/embed/iyTQo9v-xNs", title: 'CIRYAM – "Noc" (official video)' },
-              { src: "https://www.youtube.com/embed/eEBIo2nJUsM", title: "CIRYAM – Wataha (Wilki Krosno)" },
+              { src: "https://www.youtube.com/embed/iyTQo9v-xNs", title: 'CIRYAM – "Noc" (official video)', youtubeId: "iyTQo9v-xNs" },
+              { src: "https://www.youtube.com/embed/eEBIo2nJUsM", title: "CIRYAM – Wataha (Wilki Krosno)", youtubeId: "eEBIo2nJUsM" },
             ].map((video, i) => (
               <FadeIn key={i} delay={100 + i * 100}>
                 <div className="bg-card border border-border rounded-xl overflow-hidden">
@@ -216,6 +216,17 @@ const Index = () => {
                       className="w-full h-full"
                       fallbackHeight="100%"
                     />
+                  </div>
+                  <div className="flex items-center justify-between px-4 py-3">
+                    <span className="font-heading text-sm text-foreground truncate">{video.title}</span>
+                    <a
+                      href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="shrink-0 flex items-center gap-1.5 text-accent font-body text-xs hover:underline"
+                    >
+                      <ExternalLink size={12} /> YouTube
+                    </a>
                   </div>
                 </div>
               </FadeIn>
