@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { ArrowLeft, Save, Eye, Upload, X, Tag, User } from "lucide-react";
+import { ArrowLeft, Save, Eye, Upload, X, Tag, User, MonitorPlay } from "lucide-react";
 import BlogEditor from "@/components/blog/BlogEditor";
 import DocumentImport from "@/components/blog/DocumentImport";
 import ciryamLogo from "@/assets/ciryam-logo.png";
