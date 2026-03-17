@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Globe } from "lucide-react";
 import ciryamLogo from "@/assets/ciryam-logo.webp";
+import ciryamSign from "@/assets/ciryam-sign-white.png";
 import { useLang } from "@/contexts/LangContext";
 
 
@@ -53,11 +54,16 @@ const Navbar = () => {
             ? "bg-background/80 backdrop-blur-xl shadow-lg shadow-background/20"
             : "bg-transparent"
         }`}>
-          <Link to="/" className="z-50 shrink-0">
+          <Link to="/" className="z-50 shrink-0 relative flex items-center">
+            <img
+              src={ciryamSign}
+              alt="CIRYAM"
+              className={`h-8 md:h-10 w-auto invert transition-all duration-500 absolute ${scrolled ? "opacity-0 scale-90" : "opacity-100 scale-100"}`}
+            />
             <img
               src={ciryamLogo}
               alt="CIRYAM"
-              className="h-8 md:h-10 w-auto"
+              className={`h-8 md:h-10 w-auto transition-all duration-500 ${scrolled ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}
               style={{ filter: "invert(1)" }}
               width={247}
               height={100}
