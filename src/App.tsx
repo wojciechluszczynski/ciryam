@@ -24,6 +24,7 @@ const ProductDetail = lazy(() => import("./pages/ProductDetail"));
 const PolitykaPrywatnosci = lazy(() => import("./pages/PolitykaPrywatnosci"));
 const Aktualnosci = lazy(() => import("./pages/Aktualnosci"));
 const AktualnosciPost = lazy(() => import("./pages/AktualnosciPost"));
+const PressKit = lazy(() => import("./pages/PressKit"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const AdminPosts = lazy(() => import("./pages/AdminPosts"));
 const AdminPostEdit = lazy(() => import("./pages/AdminPostEdit"));
@@ -59,6 +60,7 @@ const AppContent = () => {
           <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
           <Route path="/aktualnosci" element={<Aktualnosci />} />
           <Route path="/aktualnosci/:slug" element={<AktualnosciPost />} />
+          <Route path="/press-kit" element={<PressKit />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/admin/posts" element={<Suspense fallback={null}><ProtectedRoute><AdminPosts /></ProtectedRoute></Suspense>} />
           <Route path="/admin/posts/:id" element={<Suspense fallback={null}><ProtectedRoute><AdminPostEdit /></ProtectedRoute></Suspense>} />
