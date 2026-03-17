@@ -251,6 +251,12 @@ const AdminPostEdit = () => {
           </button>
           <div className="flex items-center gap-2">
             <button
+              onClick={() => setShowPreview(true)}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border text-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-secondary transition-colors"
+            >
+              <MonitorPlay size={14} /> Podgląd
+            </button>
+            <button
               onClick={() => handleSave(false)}
               disabled={saving}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border text-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-secondary transition-colors disabled:opacity-50"
