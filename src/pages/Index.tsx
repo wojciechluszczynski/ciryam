@@ -17,15 +17,20 @@ import ciryamBand5 from "@/assets/ciryam-band-5.jpg";
 import ciryamBand8 from "@/assets/ciryam-band-8.jpg";
 import ciryamLive from "@/assets/ciryam-live.jpg";
 import ciryamLogotype from "@/assets/ciryam-logotype-white.png";
+import venueZascianek from "@/assets/venue-zascianek.jpg";
+import venueHydrozagadka from "@/assets/venue-hydrozagadka.jpg";
+import venueFirlej from "@/assets/venue-firlej.jpg";
+import venueDrizzly from "@/assets/venue-drizzly.jpg";
+import venueVinyl from "@/assets/venue-vinyl.jpg";
 
 const heroSlides = [ciryamBand, ciryamBand8];
 
 const upcomingConcerts = [
-  { date: "2026-04-12", city: "Kraków", venue: "Zaścianek", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
-  { date: "2026-04-26", city: "Warszawa", venue: "Hydrozagadka", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
-  { date: "2026-05-10", city: "Wrocław", venue: "Firlej", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
-  { date: "2026-05-24", city: "Gdańsk", venue: "Drizzly Grizzly", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
-  { date: "2026-06-14", city: "Rzeszów", venue: "Vinyl Music Club", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/" },
+  { date: "2026-04-12", city: "Kraków", venue: "Zaścianek", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/", image: venueZascianek },
+  { date: "2026-04-26", city: "Warszawa", venue: "Hydrozagadka", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/", image: venueHydrozagadka },
+  { date: "2026-05-10", city: "Wrocław", venue: "Firlej", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/", image: venueFirlej },
+  { date: "2026-05-24", city: "Gdańsk", venue: "Drizzly Grizzly", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/", image: venueDrizzly },
+  { date: "2026-06-14", city: "Rzeszów", venue: "Vinyl Music Club", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/", image: venueVinyl },
 ];
 
 const formatDate = (dateStr: string) => {
