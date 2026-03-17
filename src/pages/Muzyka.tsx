@@ -56,11 +56,12 @@ const Muzyka = () => {
                   fallbackHeight="100%"
                 />
               </div>
-              <div className="mt-4 flex items-baseline gap-3">
+              <div className="mt-4">
                 <h2 className="font-heading text-2xl text-foreground">{currentVideo.title}</h2>
                 {currentVideo.album && (
                   <span className="font-body text-xs text-muted-foreground">{currentVideo.album}</span>
                 )}
+                <p className="font-body text-sm text-muted-foreground mt-2 leading-relaxed max-w-2xl">{currentVideo.desc}</p>
               </div>
             </div>
 
