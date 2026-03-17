@@ -6,9 +6,10 @@ import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
 import LinkExt from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
-import { Calendar, Tag, ArrowLeft } from "lucide-react";
+import { Calendar, Tag, ArrowLeft, User } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
+import ciryamLogo from "@/assets/ciryam-logo.png";
 
 const AktualnosciPost = () => {
   const { slug } = useParams();
