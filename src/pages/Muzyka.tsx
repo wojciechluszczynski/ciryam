@@ -81,18 +81,20 @@ const Muzyka = () => {
                       activeVideo === video.youtubeId ? "bg-accent/15 border-l-2 border-accent" : "border-l-2 border-transparent"
                     }`}
                   >
-                    <div className="relative w-20 shrink-0 aspect-video rounded overflow-hidden bg-background">
-                      <img
-                        src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`}
-                        alt={video.title}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                      {activeVideo === video.youtubeId && (
-                        <div className="absolute inset-0 bg-background/60 flex items-center justify-center">
-                          <Play size={16} className="text-accent fill-accent" />
-                        </div>
-                      )}
+                    <div className="relative w-24 shrink-0 rounded overflow-hidden bg-background">
+                      <div className="aspect-video">
+                        <img
+                          src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
+                          alt={video.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                        {activeVideo === video.youtubeId && (
+                          <div className="absolute inset-0 bg-background/60 flex items-center justify-center">
+                            <Play size={16} className="text-accent fill-accent" />
+                          </div>
+                        )}
+                      </div>
                     </div>
                     <div className="min-w-0">
                       <p className={`font-heading text-sm truncate ${activeVideo === video.youtubeId ? "text-accent" : "text-foreground"}`}>
