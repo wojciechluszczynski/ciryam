@@ -25,16 +25,19 @@ const PostPreview = ({
     if (content) {
       if (typeof content === "string" && content.startsWith("<")) {
         htmlContent = content;
-      } else if (typeof content === "object") {
+      } else if (typeof content === "object" && content.type === "doc") {
         htmlContent = generateHTML(content, [
           StarterKit,
           Image,
           LinkExt.configure({ openOnClick: false }),
           Youtube,
         ]);
+      } else if (typeof content === "string") {
+        htmlContent = `<p>${content}</p>`;
       }
     }
-  } catch {
+  } catch (e) {
+    console.error("PostPreview generateHTML error:", e);
     htmlContent = "<p>Błąd wyświetlania treści</p>";
   }
 
