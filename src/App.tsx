@@ -24,6 +24,7 @@ const ProductDetail = lazy(() => import("./pages/ProductDetail"));
 const PolitykaPrywatnosci = lazy(() => import("./pages/PolitykaPrywatnosci"));
 const Aktualnosci = lazy(() => import("./pages/Aktualnosci"));
 const AktualnosciPost = lazy(() => import("./pages/AktualnosciPost"));
+const PressKit = lazy(() => import("./pages/PressKit"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const AdminPosts = lazy(() => import("./pages/AdminPosts"));
 const AdminPostEdit = lazy(() => import("./pages/AdminPostEdit"));
