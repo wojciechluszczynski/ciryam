@@ -5,14 +5,14 @@ import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
 
 const musicVideos = [
-  { title: "Na niby", album: "", youtubeId: "mTPAc0ICZRw", featured: true },
-  { title: "Ślad", album: "", youtubeId: "CtL2mcYmLBM", featured: true },
-  { title: "Zabierz mnie", album: "", youtubeId: "ZlyVuxGuC4g", featured: true },
-  { title: "Noc", album: "Zamyślony zapach (2023)", youtubeId: "iyTQo9v-xNs" },
-  { title: "Wataha", album: "Hymn Wilków Krosno (2019)", youtubeId: "eEBIo2nJUsM" },
-  { title: "Alone – band version", album: "Desires (2017)", youtubeId: "41ImTmg7HYE" },
-  { title: "Venus (english version)", album: "Desires (2017)", youtubeId: "14QXTwQZ3ts" },
-  { title: "W Ciszy", album: "Szepty dusz (2004)", youtubeId: "A0sR8SfO_Xc" },
+  { title: "Na niby", album: "", youtubeId: "mTPAc0ICZRw", featured: true, desc: "Oficjalny teledysk do singla 'Na niby'. Klimatyczny klip kręcony w opuszczonej fabryce." },
+  { title: "Ślad", album: "", youtubeId: "CtL2mcYmLBM", featured: true, desc: "Energetyczny utwór z mocnym riffem gitarowym. Teledysk zrealizowany na żywo w studiu." },
+  { title: "Zabierz mnie", album: "", youtubeId: "ZlyVuxGuC4g", featured: true, desc: "Balladowy singiel z emocjonalnym przekazem. Klip z nastrojowymi ujęciami plenerów." },
+  { title: "Noc", album: "Zamyślony zapach (2023)", youtubeId: "iyTQo9v-xNs", desc: "Oficjalny teledysk do utworu z albumu 'Zamyślony zapach'. Mroczna, filmowa estetyka." },
+  { title: "Wataha", album: "Hymn Wilków Krosno (2019)", youtubeId: "eEBIo2nJUsM", desc: "Hymn drużyny Wilki Krosno. Połączenie rockowej energii z kibicowskim duchem." },
+  { title: "Alone – band version", album: "Desires (2017)", youtubeId: "41ImTmg7HYE", desc: "Zespołowa wersja utworu 'Alone'. Nagranie z próby w pełnym składzie." },
+  { title: "Venus (english version)", album: "Desires (2017)", youtubeId: "14QXTwQZ3ts", desc: "Anglojęzyczna wersja utworu Venus z albumu Desires. Alternatywny rock z melodyjnym refrenem." },
+  { title: "W Ciszy", album: "Szepty dusz (2004)", youtubeId: "A0sR8SfO_Xc", desc: "Klasyczny utwór z debiutanckiego albumu. Nostalgiczny klimat i surowe brzmienie." },
 ];
 
 const albums = [
@@ -56,11 +56,12 @@ const Muzyka = () => {
                   fallbackHeight="100%"
                 />
               </div>
-              <div className="mt-4 flex items-baseline gap-3">
+              <div className="mt-4">
                 <h2 className="font-heading text-2xl text-foreground">{currentVideo.title}</h2>
                 {currentVideo.album && (
                   <span className="font-body text-xs text-muted-foreground">{currentVideo.album}</span>
                 )}
+                <p className="font-body text-sm text-muted-foreground mt-2 leading-relaxed max-w-2xl">{currentVideo.desc}</p>
               </div>
             </div>
 
@@ -80,18 +81,20 @@ const Muzyka = () => {
                       activeVideo === video.youtubeId ? "bg-accent/15 border-l-2 border-accent" : "border-l-2 border-transparent"
                     }`}
                   >
-                    <div className="relative w-20 shrink-0 aspect-video rounded overflow-hidden bg-background">
-                      <img
-                        src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`}
-                        alt={video.title}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                      {activeVideo === video.youtubeId && (
-                        <div className="absolute inset-0 bg-background/60 flex items-center justify-center">
-                          <Play size={16} className="text-accent fill-accent" />
-                        </div>
-                      )}
+                    <div className="relative w-24 shrink-0 rounded overflow-hidden bg-background">
+                      <div className="aspect-video">
+                        <img
+                          src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
+                          alt={video.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                        {activeVideo === video.youtubeId && (
+                          <div className="absolute inset-0 bg-background/60 flex items-center justify-center">
+                            <Play size={16} className="text-accent fill-accent" />
+                          </div>
+                        )}
+                      </div>
                     </div>
                     <div className="min-w-0">
                       <p className={`font-heading text-sm truncate ${activeVideo === video.youtubeId ? "text-accent" : "text-foreground"}`}>
