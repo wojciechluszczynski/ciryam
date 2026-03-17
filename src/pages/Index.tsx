@@ -11,7 +11,7 @@ import { toast } from "sonner";
 
 import ciryamBand from "@/assets/ciryam-band.jpg";
 import ciryamBand8 from "@/assets/ciryam-band-8.jpg";
-import ciryamLogotype from "@/assets/ciryam-logotype.png";
+import ciryamLogotype from "@/assets/ciryam-logotype-white.png";
 
 const heroSlides = [ciryamBand, ciryamBand8];
 
@@ -112,7 +112,7 @@ const Index = () => {
             {t("hero.subtitle")}
           </p>
           <h1 className="mb-4 animate-fade-in-up leading-none">
-            <img src={ciryamLogotype} alt="CIRYAM" className="h-20 sm:h-28 md:h-40 lg:h-52 w-auto mx-auto" />
+            <img src={ciryamLogotype} alt="CIRYAM" className="h-20 sm:h-28 md:h-40 lg:h-52 w-auto mx-auto invert" />
           </h1>
           <p className="font-body text-sm md:text-base text-muted-foreground mb-8 max-w-lg animate-fade-in-up-delay leading-relaxed">
             {t("hero.desc")}
