@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { ArrowLeft, Save, Eye, Upload, X, Tag, User, MonitorPlay } from "lucide-react";
 import BlogEditor from "@/components/blog/BlogEditor";
 import DocumentImport from "@/components/blog/DocumentImport";
+import PostPreview from "@/components/blog/PostPreview";
 import ciryamLogo from "@/assets/ciryam-logo.png";
 
 interface Category {
