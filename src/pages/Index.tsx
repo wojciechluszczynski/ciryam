@@ -10,7 +10,12 @@ import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 
 import ciryamBand from "@/assets/ciryam-band.jpg";
+import ciryamBand2 from "@/assets/ciryam-band-2.jpg";
+import ciryamBand3 from "@/assets/ciryam-band-3.jpg";
+import ciryamBand4 from "@/assets/ciryam-band-4.jpg";
+import ciryamBand5 from "@/assets/ciryam-band-5.jpg";
 import ciryamBand8 from "@/assets/ciryam-band-8.jpg";
+import ciryamLive from "@/assets/ciryam-live.jpg";
 import ciryamLogotype from "@/assets/ciryam-logotype-white.png";
 
 const heroSlides = [ciryamBand, ciryamBand8];
