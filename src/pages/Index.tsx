@@ -95,10 +95,12 @@ const Index = () => {
   };
 
   const stats = [
-    { value: "100+", label: t("stats.concerts") },
-    { value: "10K+", label: t("stats.fans") },
-    { value: "25+", label: t("stats.years") },
+    { value: "25", label: t("stats.years") },
     { value: "5", label: t("stats.albums") },
+    { value: "400", label: t("stats.concerts") },
+    { value: "65", label: t("stats.songs") },
+    { value: "88 000", label: t("stats.km") },
+    { value: "101%", label: t("stats.onstage") },
   ];
 
   useEffect(() => {

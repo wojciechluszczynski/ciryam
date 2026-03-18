@@ -228,10 +228,12 @@ const translations: Record<Lang, Record<string, string>> = {
     "hero.concerts": "Concerts",
 
     // Stats
-    "stats.concerts": "Concerts per year",
-    "stats.fans": "Online fans",
     "stats.years": "Years on stage",
-    "stats.albums": "Albums released",
+    "stats.albums": "Albums",
+    "stats.concerts": "Concerts",
+    "stats.songs": "Recorded songs",
+    "stats.km": "Kilometres on tour",
+    "stats.onstage": "On stage",
 
     // Music section
     "music.label": "Discography",
