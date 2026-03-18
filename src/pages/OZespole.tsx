@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Instagram, Facebook, Youtube, Camera, X, ChevronLeft, ChevronRight } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
+import AnimatedCounter from "@/components/AnimatedCounter";
 import ciryamBand from "@/assets/ciryam-band.jpg";
 
 // Gallery imports — Promo 2024
@@ -136,11 +137,8 @@ const OZespole = () => {
               </p>
               {/* Inline stats */}
               <div className="grid grid-cols-2 gap-3 mt-6">
-                {milestones.map((s) => (
-                  <div key={s.label} className="bg-card border border-border rounded-lg p-3 text-center">
-                    <span className="font-heading text-2xl text-accent block">{s.value}</span>
-                    <span className="font-body text-[10px] text-muted-foreground uppercase tracking-wider">{s.label}</span>
-                  </div>
+                {milestones.map((s, i) => (
+                  <AnimatedCounter key={s.label} value={s.value} label={s.label} delay={i * 200} />
                 ))}
               </div>
             </div>
