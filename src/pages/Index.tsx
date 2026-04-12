@@ -18,7 +18,7 @@ import ciryamBand8 from "@/assets/ciryam-band-8.jpg";
 import ciryamLive from "@/assets/ciryam-live.jpg";
 import ciryamLogotype from "@/assets/ciryam-logotype-white.png";
 
-const heroSlides = [ciryamBand2, ciryamBand3, ciryamBand4, ciryamBand5, ciryamBand8];
+const heroSlides = [ciryamBand2, ciryamBand3, ciryamBand4, ciryamBand5];
 
 const upcomingConcerts = [
   { date: "2025-05-23", city: "Kraków", venue: "Garage Pub", event: "Ciryam – trasa 25-lecia" },
