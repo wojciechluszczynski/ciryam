@@ -47,10 +47,10 @@ const PressKit = () => {
               <p>{t("press.bio.p2")}</p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
                 {[
-                  { value: "2001", label: t("press.bio.founded") },
+                  { value: "1999", label: t("press.bio.founded") },
                   { value: "5", label: t("press.bio.albums") },
-                  { value: "50+", label: t("press.bio.concertsYear") },
-                  { value: "250+", label: t("press.bio.totalConcerts") },
+                  { value: "65", label: t("press.bio.concertsYear") },
+                  { value: "400+", label: t("press.bio.totalConcerts") },
                 ].map((stat) => (
                   <div key={stat.label} className="text-center">
                     <div className="text-2xl font-heading font-bold text-accent">{stat.value}</div>
@@ -121,6 +121,16 @@ const PressKit = () => {
               <p className="text-xs text-muted-foreground mt-6 italic">
                 {t("press.rider.note")}
               </p>
+              <div className="mt-6">
+                <a
+                  href="/CIRYAM-RIDER-2024.pdf"
+                  download
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-accent text-accent-foreground font-heading text-xs tracking-[0.15em] uppercase hover:bg-accent/80 transition-colors"
+                >
+                  <Download size={14} />
+                  Pobierz pełny rider (PDF)
+                </a>
+              </div>
             </div>
           </section>
         </FadeIn>
@@ -132,12 +142,16 @@ const PressKit = () => {
               <Mail size={32} className="text-accent mx-auto mb-4" />
               <h2 className="text-2xl font-heading font-bold mb-3">{t("press.contact.title")}</h2>
               <p className="text-muted-foreground mb-6 max-w-lg mx-auto">{t("press.contact.desc")}</p>
+              <div className="flex flex-col items-center gap-2 mb-4">
+                <span className="text-foreground font-heading text-sm">Robert Węgrzyn</span>
+                <span className="text-muted-foreground text-sm">+48 605 103 072</span>
+              </div>
               <a
-                href="mailto:booking@ciryam.pl"
+                href="mailto:okoartmanagement@gmail.com"
                 className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-colors"
               >
                 <Mail size={16} />
-                booking@ciryam.pl
+                okoartmanagement@gmail.com
               </a>
             </div>
           </section>
