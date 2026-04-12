@@ -31,7 +31,7 @@ const translations: Record<Lang, Record<string, string>> = {
 
     // Hero
     "hero.subtitle": "Polski zespół rockowy",
-    "hero.desc": "Autorski rock. Ciężkie riffy, melodyjne refreny i scena, która nie zostawia obojętnym. Gramy w całej Polsce.",
+    "hero.desc": "Autorski rock. Ciężkie riffy, melodyjne refreny\ni energia, która nie zostawia obojętnym.\nGramy w całej Polsce.",
     "hero.listen": "Posłuchaj",
     "hero.concerts": "Koncerty",
 
@@ -46,7 +46,7 @@ const translations: Record<Lang, Record<string, string>> = {
     // Music section
     "music.label": "Dyskografia",
     "music.title": "Posłuchaj naszej muzyki",
-    "music.desc": "CIRYAM łączy energię klasycznego hard rocka z nowoczesną produkcją. Nasze utwory to mieszanka ciężkich riffów gitarowych, dynamicznych rytmów i melodii, które zostają w głowie. Od debiutanckiego albumu po najnowszy materiał – każda płyta to krok naprzód w naszej muzycznej podróży.",
+    "music.desc": "CIRYAM łączy energię klasycznego hard rocka z nowoczesną produkcją.\nNasze utwory to mieszanka ciężkich riffów gitarowych, dynamicznych rytmów i melodii, które zostają w głowie.\nOd debiutanckiego albumu po najnowszy materiał – każda płyta to krok do przodu w naszej muzycznej podróży.",
 
     // Concerts section
     "concerts.label": "Na żywo",
@@ -66,9 +66,9 @@ const translations: Record<Lang, Record<string, string>> = {
     // About section
     "about.label": "O zespole",
     "about.title": "Poznaj CIRYAM",
-    "about.p1": "CIRYAM to polski zespół rockowy, który od ponad 6 lat podbija scenę muzyczną w Polsce. Łączymy energię klasycznego hard rocka z nowoczesnym brzmieniem – od ciężkich riffów gitarowych po emocjonalne, zapadające w pamięć refreny.",
-    "about.p2": "Na naszym koncie ponad 50 koncertów rocznie, trzy wydane albumy i tysiące fanów w całej Polsce. Każdy występ traktujemy jak niezapomniane wydarzenie – na scenie zostawiamy wszystko.",
-    "about.p3": "Gramy na festiwalach, w klubach muzycznych i na imprezach prywatnych. Nasze teksty opowiadają o życiu bez filtrów – o emocjach, marzeniach i codziennych zmaganiach.",
+    "about.p1": "CIRYAM to polski zespół rockowy, który od ponad 25 lat zaznacza swoją obecność na scenie muzycznej w Polsce.\nŁączymy energię klasycznego hard rocka z nowoczesnym brzmieniem — od ciężkich riffów gitarowych po emocjonalne, wpadające w pamięć refreny.",
+    "about.p2": "Na naszym koncie jest ponad 400 koncertów, pięć wydanych albumów i tysiące fanów w całym kraju.\nKażdy występ to dla nas coś więcej niż koncert — to wydarzenie, podczas którego na scenie zostawiamy wszystko.",
+    "about.p3": "Gramy na festiwalach, w klubach muzycznych i na imprezach prywatnych.\nNasze teksty to historie pisane bez filtrów — o emocjach, marzeniach i codziennych zmaganiach.",
     "about.cta": "Poznaj nas bliżej",
 
     // Why section
@@ -100,7 +100,7 @@ const translations: Record<Lang, Record<string, string>> = {
     // Video
     "video.label": "Wideo",
     "video.title": "Zobacz nas w akcji",
-    "video.desc": "Teledyski, nagrania z koncertów i materiały zza kulis. Przekonaj się, jak brzmi CIRYAM na żywo.",
+    "video.desc": "Teledyski, nagrania z koncertów i materiały zza kulis.\nPrzekonaj się, jak brzmi CIRYAM na żywo.",
 
     // Concerts page
     "concerts.page.title": "Koncerty CIRYAM",
@@ -182,8 +182,8 @@ const translations: Record<Lang, Record<string, string>> = {
     "press.title": "CIRYAM – Press Kit",
     "press.subtitle": "Materiały dla organizatorów koncertów, mediów i promotorów. Zdjęcia, rider techniczny i informacje o zespole.",
     "press.bio.title": "O zespole",
-    "press.bio.p1": "CIRYAM to polski zespół rockowy założony w 2001 roku. Gramy autorski rock – ciężkie riffy, melodyjne refreny i sceniczną energię, która nie zostawia obojętnym. Na koncie mamy ponad 250 koncertów w całej Polsce – od kameralnych klubów po wielotysięczne festiwale.",
-    "press.bio.p2": "W dyskografii zespołu znajduje się pięć albumów studyjnych, w tym najnowszy \"Dices\". CIRYAM to sprawdzony zespół na każdą scenę – gramy na festiwalach, w klubach, na eventach firmowych i prywatnych.",
+    "press.bio.p1": "CIRYAM to polski zespół rockowy założony w 1999 roku w Krośnie. Gramy autorski rock – ciężkie riffy, melodyjne refreny i sceniczną energię, która nie zostawia obojętnym. Na koncie mamy ponad 400 koncertów w całej Polsce – od kameralnych klubów po wielotysięczne festiwale.",
+    "press.bio.p2": "W dyskografii zespołu znajduje się pięć albumów studyjnych, w tym najnowszy \"Dices\". CIRYAM to sprawdzony zespół na każdą scenę – gramy na festiwalach, w klubach, na eventach firmowych i prywatnych. Skład: Monika Węgrzyn (wokal), Robert Węgrzyn (gitary, lider), Kuba Czubik (gitara solowa), Jacek Rola (bas).",
     "press.bio.founded": "Rok założenia",
     "press.bio.albums": "Albumy",
     "press.bio.concertsYear": "Koncertów/rok",
@@ -192,20 +192,20 @@ const translations: Record<Lang, Record<string, string>> = {
     "press.photos.desc": "Zdjęcia w wysokiej rozdzielczości do wykorzystania w materiałach promocyjnych. Kliknij, aby pobrać.",
     "press.photos.download": "Pobierz",
     "press.rider.title": "Rider techniczny",
-    "press.rider.intro": "Minimalne wymagania techniczne dla koncertu CIRYAM. Szczegóły do uzgodnienia indywidualnie z managementem.",
+    "press.rider.intro": "Zespół CIRYAM korzysta z własnego systemu odsłuchowego (in-ear monitoring). Poniżej skrócona wersja wymagań technicznych. Pełny rider do pobrania w PDF.",
     "press.rider.stage": "Scena",
     "press.rider.stageVal": "Min. 5×4 m, zadaszona w przypadku koncertów plenerowych",
     "press.rider.pa": "Nagłośnienie (PA)",
-    "press.rider.paVal": "System liniowy lub punktowy dostosowany do wielkości obiektu. Min. 2×2 kW RMS dla klubów, 2×5 kW dla plenerów.",
-    "press.rider.monitors": "Monitory",
-    "press.rider.monitorsVal": "Min. 4 monitory sceniczne (wedge) + 1 mikser monitorowy lub system in-ear dla wokalisty",
-    "press.rider.lights": "Oświetlenie",
-    "press.rider.lightsVal": "Minimum 8 głów ruchomych + 4 pary LED + hazer/wytwornica dymu",
-    "press.rider.backline": "Backline",
-    "press.rider.backlineVal": "Zespół przyjeżdża z własnym backline (gitary, basy, efekty). Wymagany: zestaw perkusyjny, wzmacniacz basowy 300W+, 2x combo gitarowe 50W+",
-    "press.rider.channels": "Kanały mikserskie",
-    "press.rider.channelsVal": "Min. 16 kanałów: perkusja (8), bas (1), 2x gitara (2), klawisze (2), wokal lead (1), 2x backing vocal (2)",
-    "press.rider.note": "* Rider jest orientacyjny. Szczegółowe wymagania techniczne przesyłamy po potwierdzeniu koncertu. Kontakt: booking@ciryam.pl",
+    "press.rider.paVal": "System o równomiernej charakterystyce, 115 dB SPL „C" na stanowisku realizatora, 40 Hz–16 kHz, bez zniekształceń. Skalibrowany przed przyjazdem zespołu.",
+    "press.rider.monitors": "Odsłuch",
+    "press.rider.monitorsVal": "Zespół przyjeżdża z własnym systemem in-ear monitoring",
+    "press.rider.lights": "Multimedia",
+    "press.rider.lightsVal": "Ekran LED zamontowany centralnie z tyłu sceny (HDMI). Zespół przyjeżdża z własnym komputerem do wizualizacji.",
+    "press.rider.backline": "Kanały (7 wejść)",
+    "press.rider.backlineVal": "Wokal lead (własny mic), wokal + gitara Robert (SM58/Beta58), gitara Kuba (D.I), gitara Robert (D.I), bas Jacek (D.I), Soundcraft Main L+R (D.I)",
+    "press.rider.channels": "Wizualizacje",
+    "press.rider.channelsVal": "Podczas koncertu używane są wizualizacje. Przywozimy własny sprzęt (komputer, mikser). Potrzebny technik do ustawienia jasności ekranu.",
+    "press.rider.note": "* Pełny rider techniczny do pobrania poniżej. Kontakt: okoartmanagement@gmail.com / +48 605 103 072 (Robert)",
     "press.contact.title": "Kontakt / Booking",
     "press.contact.desc": "Chcesz zaprosić CIRYAM na swój event? Skontaktuj się z naszym managementem.",
     "nav.press": "Press Kit",
