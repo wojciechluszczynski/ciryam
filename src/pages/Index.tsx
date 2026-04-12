@@ -14,11 +14,17 @@ import ciryamBand2 from "@/assets/ciryam-band-2.jpg";
 import ciryamBand3 from "@/assets/ciryam-band-3.jpg";
 import ciryamBand4 from "@/assets/ciryam-band-4.jpg";
 import ciryamBand5 from "@/assets/ciryam-band-5.jpg";
+import ciryamBand7 from "@/assets/ciryam-band-7.jpg";
 import ciryamBand8 from "@/assets/ciryam-band-8.jpg";
 import ciryamLive from "@/assets/ciryam-live.jpg";
 import ciryamLogotype from "@/assets/ciryam-logotype-white.png";
 
-const heroSlides = [ciryamBand2, ciryamBand3, ciryamBand4, ciryamBand5, ciryamBand8];
+const heroSlides = [
+  { src: ciryamBand2, position: "object-bottom" },
+  { src: ciryamBand5, position: "object-bottom" },
+  { src: ciryamBand7, position: "object-center" },
+  { src: ciryamBand8, position: "object-center" },
+];
 
 const upcomingConcerts = [
   { date: "2025-05-23", city: "Kraków", venue: "Garage Pub", event: "Ciryam – trasa 25-lecia" },
@@ -122,7 +128,7 @@ const Index = () => {
       <section className="relative h-screen w-full overflow-hidden">
         {heroSlides.map((slide, i) => (
           <div key={i} className={`absolute inset-0 transition-all duration-1000 ease-in-out ${i === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}>
-            <img src={slide} alt={`CIRYAM rock band live ${i + 1}`} className="w-full h-full object-cover" loading={i === 0 ? "eager" : "lazy"} width={1400} height={940} fetchPriority={i === 0 ? "high" : "auto"} decoding={i === 0 ? "sync" : "async"} />
+            <img src={slide.src} alt={`CIRYAM rock band live ${i + 1}`} className={`w-full h-full object-cover ${slide.position}`} loading={i === 0 ? "eager" : "lazy"} width={1400} height={940} fetchPriority={i === 0 ? "high" : "auto"} decoding={i === 0 ? "sync" : "async"} />
           </div>
         ))}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/40" />
