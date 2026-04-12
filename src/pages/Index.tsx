@@ -14,11 +14,17 @@ import ciryamBand2 from "@/assets/ciryam-band-2.jpg";
 import ciryamBand3 from "@/assets/ciryam-band-3.jpg";
 import ciryamBand4 from "@/assets/ciryam-band-4.jpg";
 import ciryamBand5 from "@/assets/ciryam-band-5.jpg";
+import ciryamBand7 from "@/assets/ciryam-band-7.jpg";
 import ciryamBand8 from "@/assets/ciryam-band-8.jpg";
 import ciryamLive from "@/assets/ciryam-live.jpg";
 import ciryamLogotype from "@/assets/ciryam-logotype-white.png";
 
-const heroSlides = [ciryamBand2, ciryamBand3, ciryamBand4, ciryamBand5, ciryamBand8];
+const heroSlides = [
+  { src: ciryamBand2, position: "object-bottom" },
+  { src: ciryamBand5, position: "object-bottom" },
+  { src: ciryamBand7, position: "object-center" },
+  { src: ciryamBand8, position: "object-center" },
+];
 
 const upcomingConcerts = [
   { date: "2025-05-23", city: "Kraków", venue: "Garage Pub", event: "Ciryam – trasa 25-lecia" },
