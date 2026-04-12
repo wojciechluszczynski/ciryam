@@ -102,8 +102,7 @@ const members = [
   { name: "Monika Węgrzyn", role: "wokal, autorka tekstów", bio: "Wokalistka o niepowtarzalnej barwie głosu i charyzmie scenicznej. W tekstach łączy emocję, doświadczenie i subtelną obserwację świata." },
   { name: "Robert Węgrzyn", role: "gitary, lider, autor tekstów", bio: "Założyciel CIRYAM. Z pasji twórca muzyki, gitarzysta i menedżer zespołu. Aktywny recenzent sceny muzycznej." },
   { name: "Kuba Czubik", role: "gitara solowa, elektronika", bio: "Gitarzysta solowy łączący technikę, ekspresję i nowoczesne brzmienie. Pasjonat montażu teledysków oraz budowy elektroniki muzycznej." },
-  { name: "Jacek Rola", role: "bas", bio: "Basista odpowiadający za fundament i puls zespołu. Pasjonat fotografii i długich wypraw rowerowych." },
-];
+  { name: "Jacek Rola", role: "bas", bio: "Basista odpowiadający za puls zespołu. Pasjonat fotografii i długich wypraw rowerowych." },
 
 const OZespole = () => {
   const [openAlbum, setOpenAlbum] = useState<Album | null>(null);

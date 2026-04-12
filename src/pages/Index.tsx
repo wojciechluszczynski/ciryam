@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Play, Calendar, MapPin, ExternalLink, ShoppingBag, Music, Mic2, Sparkles, Loader2 } from "lucide-react";
+import { ArrowRight, Play, Calendar, MapPin, ExternalLink, ShoppingBag, Music, Mic2, Sparkles, Loader2, Instagram } from "lucide-react";
 import LazyIframe from "@/components/LazyIframe";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
@@ -17,20 +17,28 @@ import ciryamBand5 from "@/assets/ciryam-band-5.jpg";
 import ciryamBand8 from "@/assets/ciryam-band-8.jpg";
 import ciryamLive from "@/assets/ciryam-live.jpg";
 import ciryamLogotype from "@/assets/ciryam-logotype-white.png";
-import venueZascianek from "@/assets/venue-zascianek.jpg";
-import venueHydrozagadka from "@/assets/venue-hydrozagadka.jpg";
-import venueFirlej from "@/assets/venue-firlej.jpg";
-import venueDrizzly from "@/assets/venue-drizzly.jpg";
-import venueVinyl from "@/assets/venue-vinyl.jpg";
 
-const heroSlides = [ciryamBand, ciryamBand8];
+const heroSlides = [ciryamBand2, ciryamBand3, ciryamBand4, ciryamBand5, ciryamBand8];
 
 const upcomingConcerts = [
-  { date: "2026-04-12", city: "Kraków", venue: "Zaścianek", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/", image: venueZascianek },
-  { date: "2026-04-26", city: "Warszawa", venue: "Hydrozagadka", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/", image: venueHydrozagadka },
-  { date: "2026-05-10", city: "Wrocław", venue: "Firlej", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/", image: venueFirlej },
-  { date: "2026-05-24", city: "Gdańsk", venue: "Drizzly Grizzly", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/", image: venueDrizzly },
-  { date: "2026-06-14", city: "Rzeszów", venue: "Vinyl Music Club", ticketUrl: "https://www.kupbilecik.pl/baza/17722/CIryam/", image: venueVinyl },
+  { date: "2025-05-23", city: "Kraków", venue: "Garage Pub", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-05-24", city: "Sanok", venue: "Piknik charytatywny", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-05-30", city: "Krosno", venue: "Stadion przy Legionów 1", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-06-07", city: "Toruń", venue: "Festiwal Rocka Progresywnego", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-06-21", city: "Przegaliny Duże", venue: "Zlot motocyklowy", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-07-05", city: "Polańczyk", venue: "Tawerna u Michała", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-07-26", city: "Wólka Podleśna", venue: "Impreza", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-07-27", city: "Polańczyk", venue: "Tawerna u Michała", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-08-14", city: "Chorkówka", venue: "Biesiada Karpacka", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-08-22", city: "Kolbuszowa", venue: "Festiwal Muzyczny Spinacz", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-08-23", city: "Tyniec", venue: "Przystań Pod Lutym Turem", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-08-29", city: "Leżajsk", venue: "Podkarpacki Festiwal Tatuażu", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-08-30", city: "Brzesko", venue: "Rynek – Beczka Rym", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-09-05", city: "Warszawa", venue: "VooDoo Club – SCREAMFEST", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-09-13", city: "Jarosław", venue: "Decybel Music Club", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-09-19", city: "Bytom", venue: "Klub Gotyk", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-10-10", city: "Wrocław", venue: "Klub Liverpool + Totentanz", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-12-27", city: "Krosno", venue: "RCKP – Finał 25-lecia", event: "Ciryam – trasa 25-lecia" },
 ];
 
 const formatDate = (dateStr: string) => {
@@ -124,9 +132,9 @@ const Index = () => {
             {t("hero.subtitle")}
           </p>
           <h1 className="mb-4 animate-fade-in-up leading-none">
-            <img src={ciryamLogotype} alt="CIRYAM" className="h-20 sm:h-28 md:h-40 lg:h-52 w-auto mx-auto invert" />
+            <img src={ciryamLogotype} alt="CIRYAM" className="h-10 sm:h-14 md:h-20 lg:h-26 w-auto mx-auto invert" />
           </h1>
-          <p className="font-body text-sm md:text-base text-muted-foreground mb-8 max-w-lg animate-fade-in-up-delay leading-relaxed">
+          <p className="font-body text-sm md:text-base text-muted-foreground mb-8 max-w-lg animate-fade-in-up-delay leading-relaxed whitespace-pre-line text-center">
             {t("hero.desc")}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 animate-fade-in-up-delay-2">
@@ -165,7 +173,7 @@ const Index = () => {
           <FadeIn>
             <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">{t("music.label")}</p>
             <h2 className="font-heading text-4xl md:text-6xl text-foreground mb-6">{t("music.title")}</h2>
-            <p className="text-muted-foreground font-body text-sm md:text-base max-w-2xl mx-auto mb-10 leading-relaxed">{t("music.desc")}</p>
+            <p className="text-muted-foreground font-body text-sm md:text-base max-w-2xl mx-auto mb-10 leading-relaxed whitespace-pre-line">{t("music.desc")}</p>
           </FadeIn>
           <FadeIn delay={150}>
             <div className="bg-card border border-border rounded-xl p-4 md:p-6 overflow-hidden">
@@ -179,7 +187,6 @@ const Index = () => {
               {[
                 { name: "SoundCloud", url: "https://soundcloud.com/ciryam" },
                 { name: "YouTube", url: "https://www.youtube.com/user/Ciryam/" },
-                { name: "Vimeo", url: "https://vimeo.com/ciryam" },
               ].map((p) => (
                 <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-border text-foreground font-body text-sm hover:border-accent hover:text-accent transition-colors">
                   <ExternalLink size={14} /> {p.name}
@@ -197,13 +204,13 @@ const Index = () => {
             <div className="text-center mb-12">
               <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">{t("video.label")}</p>
               <h2 className="font-heading text-4xl md:text-6xl text-foreground mb-4">{t("video.title")}</h2>
-              <p className="text-muted-foreground font-body text-sm max-w-lg mx-auto leading-relaxed">{t("video.desc")}</p>
+              <p className="text-muted-foreground font-body text-sm max-w-lg mx-auto leading-relaxed whitespace-pre-line">{t("video.desc")}</p>
             </div>
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {[
-              { src: "https://www.youtube.com/embed/iyTQo9v-xNs", title: 'CIRYAM – "Noc" (official video)', youtubeId: "iyTQo9v-xNs" },
               { src: "https://www.youtube.com/embed/eEBIo2nJUsM", title: "CIRYAM – Wataha (Wilki Krosno)", youtubeId: "eEBIo2nJUsM" },
+              { src: "https://www.youtube.com/embed/iyTQo9v-xNs", title: 'CIRYAM – "Noc" (official video)', youtubeId: "iyTQo9v-xNs" },
             ].map((video, i) => (
               <FadeIn key={i} delay={100 + i * 100}>
                 <div className="bg-card border border-border rounded-xl overflow-hidden">
@@ -244,18 +251,15 @@ const Index = () => {
             <div className="text-center mb-12">
               <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">{t("concerts.label")}</p>
               <h2 className="font-heading text-4xl md:text-6xl text-foreground mb-4">{t("concerts.title")}</h2>
-              <p className="text-muted-foreground font-body text-sm max-w-lg mx-auto leading-relaxed">{t("concerts.desc")}</p>
+              <p className="text-muted-foreground font-body text-sm max-w-lg mx-auto leading-relaxed whitespace-pre-line">{t("concerts.desc")}</p>
             </div>
           </FadeIn>
           <div className="space-y-0">
-            {upcomingConcerts.map((concert, i) => {
+            {upcomingConcerts.slice(0, 6).map((concert, i) => {
               const { day, month } = formatDate(concert.date);
               return (
                 <FadeIn key={i} delay={i * 60}>
                   <div className="group border-t border-border py-4 flex items-center gap-4 md:gap-6 hover:bg-secondary/50 px-4 rounded-lg transition-colors">
-                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-lg overflow-hidden shrink-0">
-                      <img src={concert.image} alt={concert.venue} className="w-full h-full object-cover" />
-                    </div>
                     <div className="text-center shrink-0 w-14">
                       <span className="font-heading text-2xl md:text-3xl text-foreground block leading-none">{day}</span>
                       <span className="font-heading text-[10px] tracking-[0.15em] text-accent">{month}</span>
@@ -263,10 +267,8 @@ const Index = () => {
                     <div className="flex-1 min-w-0">
                       <h3 className="font-heading text-lg md:text-xl text-foreground">{concert.city}</h3>
                       <p className="flex items-center gap-1.5 text-muted-foreground font-body text-sm"><MapPin size={12} /> {concert.venue}</p>
+                      {concert.event && <p className="text-accent font-body text-xs mt-0.5">{concert.event}</p>}
                     </div>
-                    <a href={concert.ticketUrl} target="_blank" rel="noopener noreferrer" className="shrink-0 px-5 py-2 rounded-full bg-accent text-accent-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors opacity-70 group-hover:opacity-100">
-                      {t("concerts.tickets")}
-                    </a>
                   </div>
                 </FadeIn>
               );
@@ -278,6 +280,51 @@ const Index = () => {
               <Link to="/koncerty" className="inline-flex items-center gap-2 font-heading text-sm tracking-[0.1em] uppercase text-foreground border-b border-foreground/30 pb-1 hover:border-accent hover:text-accent transition-colors">
                 {t("concerts.all")} <ArrowRight size={14} />
               </Link>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* INSTAGRAM FEED */}
+      <section className="bg-background section-padding" id="instagram">
+        <div className="max-w-[1100px] mx-auto">
+          <FadeIn>
+            <div className="text-center mb-10">
+              <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4 flex items-center justify-center gap-2">
+                <Instagram size={14} /> Instagram
+              </p>
+              <h2 className="font-heading text-4xl md:text-6xl text-foreground mb-4">Śledź nas na Instagramie</h2>
+              <p className="text-muted-foreground font-body text-sm max-w-lg mx-auto">
+                Backstage, studio, trasa — codzienność CIRYAM bez filtrów.
+              </p>
+            </div>
+          </FadeIn>
+          <FadeIn delay={100}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {[ciryamBand2, ciryamBand3, ciryamBand4, ciryamBand5, ciryamBand8, ciryamLive, ciryamBand, ciryamBand2].map((img, i) => (
+                <a
+                  key={i}
+                  href="https://www.instagram.com/ciryam__official/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative overflow-hidden rounded-xl aspect-square"
+                >
+                  <img src={img} alt={`CIRYAM Instagram ${i + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+                    <Instagram size={28} className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div className="text-center mt-8">
+              <a
+                href="https://www.instagram.com/ciryam__official/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-accent text-accent font-heading text-sm tracking-[0.1em] uppercase hover:bg-accent hover:text-accent-foreground transition-colors"
+              >
+                <Instagram size={16} /> @ciryam__official
+              </a>
             </div>
           </FadeIn>
         </div>
@@ -296,12 +343,12 @@ const Index = () => {
           <FadeIn delay={100}>
             <div className="columns-2 md:columns-3 gap-3 md:gap-4 space-y-3 md:space-y-4">
               {[
-                { src: ciryamBand, alt: "CIRYAM band promo", aspect: "aspect-[3/4]" },
-                { src: ciryamBand2, alt: "CIRYAM band session", aspect: "aspect-square" },
+                { src: ciryamBand2, alt: "CIRYAM band promo", aspect: "aspect-[3/4]" },
+                { src: ciryamBand3, alt: "CIRYAM band session", aspect: "aspect-square" },
                 { src: ciryamLive, alt: "CIRYAM live concert", aspect: "aspect-[4/5]" },
-                { src: ciryamBand3, alt: "CIRYAM backstage", aspect: "aspect-[3/4]" },
-                { src: ciryamBand4, alt: "CIRYAM studio", aspect: "aspect-square" },
-                { src: ciryamBand5, alt: "CIRYAM on stage", aspect: "aspect-[4/5]" },
+                { src: ciryamBand4, alt: "CIRYAM backstage", aspect: "aspect-[3/4]" },
+                { src: ciryamBand5, alt: "CIRYAM studio", aspect: "aspect-square" },
+                { src: ciryamBand8, alt: "CIRYAM on stage", aspect: "aspect-[4/5]" },
               ].map((img, i) => (
                 <div key={i} className={`relative group overflow-hidden rounded-xl break-inside-avoid ${img.aspect}`}>
                   <img src={img.src} alt={img.alt} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" loading="lazy" decoding="async" />
@@ -318,7 +365,7 @@ const Index = () => {
         <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           <FadeIn>
             <div className="relative overflow-hidden rounded-xl">
-              <img src={ciryamBand} alt="CIRYAM band" className="w-full aspect-[3/4] object-cover object-[center_20%] bg-background" loading="lazy" width={550} height={733} decoding="async" />
+              <img src={ciryamBand2} alt="CIRYAM band" className="w-full aspect-[3/4] object-cover object-[center_20%] bg-background" loading="lazy" width={550} height={733} decoding="async" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
             </div>
           </FadeIn>
@@ -326,9 +373,9 @@ const Index = () => {
             <div>
               <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">{t("about.label")}</p>
               <h2 className="font-heading text-4xl md:text-5xl text-foreground mb-6">{t("about.title")}</h2>
-              <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4">{t("about.p1")}</p>
-              <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4">{t("about.p2")}</p>
-              <p className="text-muted-foreground font-body text-sm leading-relaxed mb-8">{t("about.p3")}</p>
+              <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4 whitespace-pre-line">{t("about.p1")}</p>
+              <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4 whitespace-pre-line">{t("about.p2")}</p>
+              <p className="text-muted-foreground font-body text-sm leading-relaxed mb-8 whitespace-pre-line">{t("about.p3")}</p>
               <Link to="/o-zespole" className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-accent text-accent font-heading text-sm tracking-[0.1em] uppercase hover:bg-accent hover:text-accent-foreground transition-colors">
                 {t("about.cta")} <ArrowRight size={14} />
               </Link>
@@ -369,9 +416,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-
-
 
       {/* CTA */}
       <section className="bg-secondary section-padding">
