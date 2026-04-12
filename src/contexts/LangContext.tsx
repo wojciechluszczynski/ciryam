@@ -196,7 +196,7 @@ const translations: Record<Lang, Record<string, string>> = {
     "press.rider.stage": "Scena",
     "press.rider.stageVal": "Min. 5×4 m, zadaszona w przypadku koncertów plenerowych",
     "press.rider.pa": "Nagłośnienie (PA)",
-    "press.rider.paVal": "System o równomiernej charakterystyce, 115 dB SPL „C" na stanowisku realizatora, 40 Hz–16 kHz, bez zniekształceń. Skalibrowany przed przyjazdem zespołu.",
+    "press.rider.paVal": "System o równomiernej charakterystyce, 115 dB SPL C na stanowisku realizatora, 40 Hz - 16 kHz, bez zniekształceń. Skalibrowany przed przyjazdem zespołu.",
     "press.rider.monitors": "Odsłuch",
     "press.rider.monitorsVal": "Zespół przyjeżdża z własnym systemem in-ear monitoring",
     "press.rider.lights": "Multimedia",
