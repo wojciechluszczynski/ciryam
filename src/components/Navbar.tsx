@@ -76,7 +76,7 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`relative text-xs tracking-[0.15em] uppercase font-heading transition-all duration-300 hover:text-accent group ${
+                className={`relative text-sm tracking-[0.15em] uppercase font-heading transition-all duration-300 hover:text-accent group ${
                   location.pathname === link.href ? "text-accent" : "text-foreground/70"
                 }`}
               >
