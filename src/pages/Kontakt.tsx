@@ -53,8 +53,9 @@ const Kontakt = () => {
 
               <div className="flex flex-col gap-2 text-foreground/60 font-body text-sm mb-8">
                 <span className="text-foreground font-medium text-base">{t("contact.management")}</span>
-                <a href="mailto:booking@ciryam.pl" className="hover:text-accent transition-colors">booking@ciryam.pl</a>
-                <a href="mailto:kontakt@ciryam.pl" className="hover:text-accent transition-colors">kontakt@ciryam.pl</a>
+                <span className="text-foreground/80">Robert Węgrzyn</span>
+                <a href="mailto:okoartmanagement@gmail.com" className="hover:text-accent transition-colors">okoartmanagement@gmail.com</a>
+                <a href="tel:+48605103072" className="hover:text-accent transition-colors">+48 605 103 072</a>
               </div>
 
               <div className="flex gap-4 mb-10">

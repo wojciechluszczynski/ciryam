@@ -3,6 +3,7 @@ import { Instagram, Facebook, Youtube, Camera, X, ChevronLeft, ChevronRight } fr
 import FadeIn from "@/components/FadeIn";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import ciryamBand from "@/assets/ciryam-band.jpg";
+import ciryamBand2 from "@/assets/ciryam-band-2.jpg";
 
 // Gallery imports — Promo 2024
 import promo2024_1 from "@/assets/gallery-promo2024-1.jpg";
@@ -124,7 +125,7 @@ const OZespole = () => {
         {/* Hero + story — compact */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 mb-16">
           <FadeIn>
-            <img src={ciryamBand} alt="CIRYAM zespół" className="w-full aspect-[4/5] md:aspect-[3/4] object-cover object-[center_15%] md:object-[center_20%] rounded-xl" />
+            <img src={ciryamBand2} alt="CIRYAM zespół" className="w-full aspect-[4/5] md:aspect-[3/4] object-cover object-[center_15%] md:object-[center_20%] rounded-xl" />
           </FadeIn>
           <FadeIn delay={150}>
             <div className="flex flex-col justify-center">
@@ -279,7 +280,9 @@ const OZespole = () => {
               <a href="https://www.facebook.com/CIRYAM/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Facebook"><Facebook size={28} /></a>
               <a href="https://www.instagram.com/ciryam__official/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Instagram"><Instagram size={28} /></a>
               <a href="https://www.youtube.com/user/Ciryam/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="YouTube"><Youtube size={28} /></a>
-              <a href="https://vimeo.com/ciryam" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Vimeo"><VimeoIcon size={28} /></a>
+              <a href="https://www.tiktok.com/@ciryam" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13.2a8.16 8.16 0 005.58 2.18V12a4.83 4.83 0 01-3.77-1.55V6.69h3.77z" /></svg>
+              </a>
             </div>
           </div>
         </FadeIn>
