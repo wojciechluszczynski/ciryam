@@ -6,12 +6,24 @@ import { useLang } from "@/contexts/LangContext";
 const TICKET_URL = "https://www.kupbilecik.pl/baza/17722/CIryam/";
 
 const concerts = [
-  { date: "2026-04-12", city: "Kraków", venue: "Zaścianek", ticketUrl: TICKET_URL, status: "upcoming" as const },
-  { date: "2026-04-26", city: "Warszawa", venue: "Hydrozagadka", ticketUrl: TICKET_URL, status: "upcoming" as const },
-  { date: "2026-05-10", city: "Wrocław", venue: "Firlej", ticketUrl: TICKET_URL, status: "upcoming" as const },
-  { date: "2026-05-24", city: "Gdańsk", venue: "Drizzly Grizzly", ticketUrl: TICKET_URL, status: "upcoming" as const },
-  { date: "2026-06-14", city: "Rzeszów", venue: "Vinyl Music Club", ticketUrl: TICKET_URL, status: "upcoming" as const },
-  { date: "2026-06-28", city: "Poznań", venue: "Blue Note", ticketUrl: TICKET_URL, status: "upcoming" as const },
+  { date: "2025-05-23", city: "Kraków", venue: "Garage Pub", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-05-24", city: "Sanok", venue: "Piknik charytatywny", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-05-30", city: "Krosno", venue: "Stadion przy Legionów 1", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-06-07", city: "Toruń", venue: "Festiwal Rocka Progresywnego", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-06-21", city: "Przegaliny Duże", venue: "Zlot motocyklowy", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-07-05", city: "Polańczyk", venue: "Tawerna u Michała", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-07-26", city: "Wólka Podleśna", venue: "Impreza", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-07-27", city: "Polańczyk", venue: "Tawerna u Michała", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-08-14", city: "Chorkówka", venue: "Biesiada Karpacka", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-08-22", city: "Kolbuszowa", venue: "Festiwal Muzyczny Spinacz", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-08-23", city: "Tyniec", venue: "Przystań Pod Lutym Turem", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-08-29", city: "Leżajsk", venue: "Podkarpacki Festiwal Tatuażu", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-08-30", city: "Brzesko", venue: "Rynek - Beczka Rym", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-09-05", city: "Warszawa", venue: "VooDoo Club - SCREAMFEST", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-09-13", city: "Jarosław", venue: "Decybel Music Club", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-09-19", city: "Bytom", venue: "Klub Gotyk", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-10-10", city: "Wrocław", venue: "Klub Liverpool + Totentanz", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-12-27", city: "Krosno", venue: "RCKP - Finał 25-lecia", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
 ];
 
 type ArchivalConcert = { num: number; date: string; city: string; venue: string; note?: string };

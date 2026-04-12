@@ -1,17 +1,14 @@
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Youtube, Video } from "lucide-react";
+import { Instagram, Facebook, Youtube } from "lucide-react";
 
-const VimeoIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.5 7.5c-.1 2.1-1.6 5-4.4 8.7-2.9 3.8-5.4 5.8-7.4 5.8-1.2 0-2.3-1.2-3.2-3.5l-1.7-6.5c-.6-2.3-1.3-3.5-2-3.5-.2 0-.7.3-1.5.9L.5 8.3c1-.8 1.9-1.7 2.8-2.5 1.3-1.1 2.2-1.7 2.9-1.8 1.5-.1 2.4 0.9 2.8 3.1.4 2.4.7 3.8.9 4.4.5 2.2 1 3.3 1.7 3.3.5 0 1.2-.7 2.1-2.2.9-1.5 1.4-2.6 1.5-3.3.1-1.2-.3-1.8-1.4-1.8-.5 0-1 .1-1.5.3 1-3.3 2.9-4.9 5.7-4.8 2.1 0 3.1 1.4 3 4.3z"/></svg>
-);
-import ciryamLogo from "@/assets/ciryam-logo.webp";
-import { useLang } from "@/contexts/LangContext";
-
-const SpotifyIcon = () => (
+const TikTokIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13.2a8.16 8.16 0 005.58 2.18V12a4.83 4.83 0 01-3.77-1.55V6.69h3.77z" />
   </svg>
 );
+
+import ciryamLogo from "@/assets/ciryam-logo.webp";
+import { useLang } from "@/contexts/LangContext";
 
 const SoundCloudIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -33,8 +30,7 @@ const Footer = () => {
               <a href="https://www.facebook.com/CIRYAM/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Facebook"><Facebook size={20} /></a>
               <a href="https://www.instagram.com/ciryam__official/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Instagram"><Instagram size={20} /></a>
               <a href="https://www.youtube.com/user/Ciryam/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="YouTube"><Youtube size={20} /></a>
-              <a href="https://vimeo.com/ciryam" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Vimeo"><VimeoIcon /></a>
-              
+              <a href="https://www.tiktok.com/@ciryam" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="TikTok"><TikTokIcon /></a>
               <a href="https://soundcloud.com/ciryam" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="SoundCloud"><SoundCloudIcon /></a>
             </div>
           </div>
@@ -61,11 +57,10 @@ const Footer = () => {
             <div className="flex flex-col gap-3 text-foreground/60 font-body text-sm">
               <div>
                 <p className="text-foreground/80 font-semibold mb-0.5">Booking & koncerty</p>
-                <a href="mailto:booking@ciryam.pl" className="hover:text-accent transition-colors">booking@ciryam.pl</a>
-              </div>
-              <div>
-                <p className="text-foreground/80 font-semibold mb-0.5">Kontakt ogólny & media</p>
-                <a href="mailto:kontakt@ciryam.pl" className="hover:text-accent transition-colors">kontakt@ciryam.pl</a>
+                <p className="text-foreground/60 mb-0.5">Robert Węgrzyn</p>
+                <a href="mailto:okoartmanagement@gmail.com" className="hover:text-accent transition-colors">okoartmanagement@gmail.com</a>
+                <br />
+                <a href="tel:+48605103072" className="hover:text-accent transition-colors">+48 605 103 072</a>
               </div>
             </div>
           </div>

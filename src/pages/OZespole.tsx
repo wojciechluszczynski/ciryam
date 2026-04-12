@@ -3,6 +3,7 @@ import { Instagram, Facebook, Youtube, Camera, X, ChevronLeft, ChevronRight } fr
 import FadeIn from "@/components/FadeIn";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import ciryamBand from "@/assets/ciryam-band.jpg";
+import ciryamBand2 from "@/assets/ciryam-band-2.jpg";
 
 // Gallery imports — Promo 2024
 import promo2024_1 from "@/assets/gallery-promo2024-1.jpg";
@@ -28,9 +29,6 @@ import liveZascianek1 from "@/assets/gallery-live-zascianek-1.jpg";
 import livePrzeworsk1 from "@/assets/gallery-live-przeworsk-1.jpg";
 import liveSanok1 from "@/assets/gallery-live-sanok-1.jpg";
 
-const VimeoIcon = ({ size = 28 }: { size?: number }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.5 7.5c-.1 2.1-1.6 5-4.4 8.7-2.9 3.8-5.4 5.8-7.4 5.8-1.2 0-2.3-1.2-3.2-3.5l-1.7-6.5c-.6-2.3-1.3-3.5-2-3.5-.2 0-.7.3-1.5.9L.5 8.3c1-.8 1.9-1.7 2.8-2.5 1.3-1.1 2.2-1.7 2.9-1.8 1.5-.1 2.4 0.9 2.8 3.1.4 2.4.7 3.8.9 4.4.5 2.2 1 3.3 1.7 3.3.5 0 1.2-.7 2.1-2.2.9-1.5 1.4-2.6 1.5-3.3.1-1.2-.3-1.8-1.4-1.8-.5 0-1 .1-1.5.3 1-3.3 2.9-4.9 5.7-4.8 2.1 0 3.1 1.4 3 4.3z"/></svg>
-);
 
 type Album = {
   id: string;
@@ -102,7 +100,7 @@ const members = [
   { name: "Monika Węgrzyn", role: "wokal, autorka tekstów", bio: "Wokalistka o niepowtarzalnej barwie głosu i charyzmie scenicznej. W tekstach łączy emocję, doświadczenie i subtelną obserwację świata." },
   { name: "Robert Węgrzyn", role: "gitary, lider, autor tekstów", bio: "Założyciel CIRYAM. Z pasji twórca muzyki, gitarzysta i menedżer zespołu. Aktywny recenzent sceny muzycznej." },
   { name: "Kuba Czubik", role: "gitara solowa, elektronika", bio: "Gitarzysta solowy łączący technikę, ekspresję i nowoczesne brzmienie. Pasjonat montażu teledysków oraz budowy elektroniki muzycznej." },
-  { name: "Jacek Rola", role: "bas", bio: "Basista odpowiadający za fundament i puls zespołu. Pasjonat fotografii i długich wypraw rowerowych." },
+  { name: "Jacek Rola", role: "bas", bio: "Basista odpowiadający za puls zespołu. Pasjonat fotografii i długich wypraw rowerowych." },
 ];
 
 const OZespole = () => {
@@ -124,7 +122,7 @@ const OZespole = () => {
         {/* Hero + story — compact */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 mb-16">
           <FadeIn>
-            <img src={ciryamBand} alt="CIRYAM zespół" className="w-full aspect-[4/5] md:aspect-[3/4] object-cover object-[center_15%] md:object-[center_20%] rounded-xl" />
+            <img src={ciryamBand2} alt="CIRYAM zespół" className="w-full aspect-[4/5] md:aspect-[3/4] object-cover object-[center_15%] md:object-[center_20%] rounded-xl" />
           </FadeIn>
           <FadeIn delay={150}>
             <div className="flex flex-col justify-center">
@@ -279,7 +277,9 @@ const OZespole = () => {
               <a href="https://www.facebook.com/CIRYAM/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Facebook"><Facebook size={28} /></a>
               <a href="https://www.instagram.com/ciryam__official/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Instagram"><Instagram size={28} /></a>
               <a href="https://www.youtube.com/user/Ciryam/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="YouTube"><Youtube size={28} /></a>
-              <a href="https://vimeo.com/ciryam" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Vimeo"><VimeoIcon size={28} /></a>
+              <a href="https://www.tiktok.com/@ciryam" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13.2a8.16 8.16 0 005.58 2.18V12a4.83 4.83 0 01-3.77-1.55V6.69h3.77z" /></svg>
+              </a>
             </div>
           </div>
         </FadeIn>
