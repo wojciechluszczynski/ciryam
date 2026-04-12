@@ -49,7 +49,7 @@ const PressKit = () => {
                 {[
                   { value: "1999", label: t("press.bio.founded") },
                   { value: "5", label: t("press.bio.albums") },
-                  { value: "65", label: t("press.bio.concertsYear") },
+                  { value: "65", label: "Nagranych utworów" },
                   { value: "400+", label: t("press.bio.totalConcerts") },
                 ].map((stat) => (
                   <div key={stat.label} className="text-center">
