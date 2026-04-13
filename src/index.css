@@ -153,3 +153,25 @@ button:hover {
 .glow-accent {
   box-shadow: 0 0 30px hsl(0 0% 100% / 0.15), 0 0 60px hsl(0 0% 100% / 0.05);
 }
+
+/* EmbedSocial widget overrides — hide extras, keep only slider */
+.embedsocial-hashtag .es-widget-branding,
+.embedsocial-hashtag .es-header,
+.embedsocial-hashtag .es-profile,
+.embedsocial-hashtag .es-follow-btn,
+.embedsocial-hashtag .es-load-more,
+.embedsocial-hashtag .es-pagination,
+.embedsocial-hashtag .es-page-dots,
+.embedsocial-hashtag .es-footer,
+.embedsocial-hashtag .es-powered-by,
+.embedsocial-hashtag .feed-powered-by-es,
+.embedsocial-hashtag .es-widget-footer,
+.embedsocial-hashtag .es-header-title,
+.embedsocial-hashtag .es-header-subtitle,
+.embedsocial-hashtag [class*="follow"],
+.embedsocial-hashtag [class*="powered-by"],
+.embedsocial-hashtag [class*="branding"],
+.embedsocial-hashtag [class*="load-more"],
+.embedsocial-hashtag [class*="pagination"] {
+  display: none !important;
+}
