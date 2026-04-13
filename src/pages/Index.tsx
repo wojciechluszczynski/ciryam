@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Play, Calendar, MapPin, ExternalLink, ShoppingBag, Music, Mic2, Sparkles, Loader2, Instagram } from "lucide-react";
+import { ArrowRight, Play, Calendar, MapPin, ExternalLink, ShoppingBag, Music, Mic2, Sparkles, Loader2, Instagram, Images } from "lucide-react";
 import LazyIframe from "@/components/LazyIframe";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
@@ -286,63 +286,7 @@ const Index = () => {
       </section>
 
       {/* INSTAGRAM FEED */}
-      <section className="bg-background section-padding" id="instagram">
-        <div className="max-w-[1100px] mx-auto">
-          <FadeIn>
-            <div className="text-center mb-10">
-              <p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4 flex items-center justify-center gap-2">
-                <Instagram size={14} /> Instagram
-              </p>
-              <h2 className="font-heading text-4xl md:text-6xl text-foreground mb-4">Śledź nas na Instagramie</h2>
-              <p className="text-muted-foreground font-body text-sm max-w-lg mx-auto">
-                Backstage, studio, trasa — codzienność CIRYAM bez filtrów.
-              </p>
-            </div>
-          </FadeIn>
-          <FadeIn delay={100}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {[
-                { url: "https://www.instagram.com/ciryam__official/p/DWw3TIqjEtA/", id: "DWw3TIqjEtA" },
-                { url: "https://www.instagram.com/ciryam__official/reel/DWuA_ZtCqRu/", id: "DWuA_ZtCqRu" },
-                { url: "https://www.instagram.com/ciryam__official/p/DVp70pVDBAn/", id: "DVp70pVDBAn" },
-                { url: "https://www.instagram.com/ciryam__official/p/DU40OrvDCBD/", id: "DU40OrvDCBD" },
-                { url: "https://www.instagram.com/ciryam__official/p/DUiGBTaDHGH/", id: "DUiGBTaDHGH" },
-                { url: "https://www.instagram.com/ciryam__official/p/DUIPA6SDL-g/", id: "DUIPA6SDL-g" },
-                { url: "https://www.instagram.com/ciryam__official/p/DUAVj_mjOw_/", id: "DUAVj_mjOw_" },
-                { url: "https://www.instagram.com/ciryam__official/p/DTXohAVjO6g/", id: "DTXohAVjO6g" },
-              ].map((post, i) => (
-                <a
-                  key={post.id}
-                  href={post.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative overflow-hidden rounded-xl aspect-square bg-card"
-                >
-                  <iframe
-                    src={`https://www.instagram.com/p/${post.id}/embed/captioned/`}
-                    className="w-[300%] h-[300%] origin-top-left scale-[0.3334] pointer-events-none border-0"
-                    loading="lazy"
-                    title={`CIRYAM Instagram post ${i + 1}`}
-                  />
-                  <div className="absolute inset-0 bg-transparent group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center cursor-pointer">
-                    <Instagram size={28} className="text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                </a>
-              ))}
-            </div>
-            <div className="text-center mt-8">
-              <a
-                href="https://www.instagram.com/ciryam__official/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-accent text-accent font-heading text-sm tracking-[0.1em] uppercase hover:bg-accent hover:text-accent-foreground transition-colors"
-              >
-                <Instagram size={16} /> @ciryam__official
-              </a>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+      <InstagramFeed />
 
       {/* GALLERY */}
       <section className="section-padding bg-secondary" id="galeria">
