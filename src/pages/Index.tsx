@@ -116,6 +116,15 @@ const Index = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // EmbedSocial script loader
+  useEffect(() => {
+    if (document.getElementById("EmbedSocialHashtagScript")) return;
+    const js = document.createElement("script");
+    js.id = "EmbedSocialHashtagScript";
+    js.src = "https://embedsocial.com/cdn/ht.js";
+    document.head.appendChild(js);
+  }, []);
+
   return (
     <main>
       {/* HERO */}
