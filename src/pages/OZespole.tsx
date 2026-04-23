@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Instagram, Facebook, Youtube, Camera, X, ChevronLeft, ChevronRight } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import AnimatedCounter from "@/components/AnimatedCounter";
-import ciryamBand from "@/assets/ciryam-band.jpg";
 import ciryamBand2 from "@/assets/ciryam-band-2.jpg";
 
 // Gallery photos hotlinked from ciryam.pl/photos/ — keeps bundle small
