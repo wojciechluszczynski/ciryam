@@ -1,43 +1,95 @@
 
 
-## Rozszerzenie galerii — wszystkie albumy z ciryam.pl (hotlink)
+## Domknięcie feedbacku Roberta - 13 punktów
 
-### Cel
-Dorzucić pozostałe albumy z `ciryam.pl/photos/` do galerii w `src/pages/OZespole.tsx` na tej samej zasadzie co teraz: zero plików w repo, URL-e bezpośrednio z `https://ciryam.pl/wp-content/uploads/...`. Bundle nie rośnie.
+Cel: dopiąć dokładnie listę Roberta. Bez nadinterpretacji, bez nowych feature'ów. Punkt po punkcie.
 
-### Co zrobię (w trybie edycji)
+### Co konkretnie robię
 
-1. **Inwentaryzacja albumów** — `fetch_website` na `https://ciryam.pl/photos/` (index) i wejście w każdy podalbum, którego jeszcze nie mamy. Obecnie w kodzie jest 6 albumów (Pełczyce 2023, Krosno 2023, Brzozów 2022, Sesja 2022, Sanok 2018, Przeworsk 2018). Dorzucę wszystkie pozostałe które znajdę w `/photos/`.
+**1. Nav / Logo (`Navbar.tsx`)**
+Obecnie: sygnet na górze, fade do **pełnego logo** po scrollu. Robert: ZAWSZE sygnet. Usuwam swap - sygnet (`ciryam-sign-white.png`) w obu stanach, lekko większy (h-9 / md:h-11) żeby nie ginął. Mobile menu też tylko sygnet.
 
-2. **Wybór zdjęć per album**
-   - Domyślnie **6 zdjęć / album** (spójnie z resztą), z preferencją dla najlepszych ujęć (większe rozdzielczości, ostre, reprezentatywne).
-   - Jeśli album ma <6 zdjęć — biorę wszystkie.
-   - Jeśli album ma dużo materiału (>20) — mogę zwiększyć do 8-10 dla najmocniejszych eventów (np. duże koncerty). Powiem Ci które przed wstawieniem.
+**2. Hero / Slider (`Index.tsx`)**
+Przejście po 4 slajdach (`ciryam-band-2/3/4/5`), korekta `objectPosition` per slide tam gdzie ucina głowy. Słabe jakościowo - eliminuję z rotacji (lepsze 3 niż 4 średnie).
 
-3. **Aktualizacja `src/pages/OZespole.tsx`**
-   - Rozszerzenie tablicy `albums` o nowe wpisy (cover + photos[] z URL stringami z `CDN`).
-   - Kolejność: chronologicznie od najnowszych do najstarszych.
-   - Każdy wpis: `id`, `title`, `subtitle` (data + fotograf jeśli znany), `cover`, `photos[]`.
+**3. Em-dash globalny cleanup**
+265 wystąpień `—` w 20 plikach - sprzątam tylko CIRYAM (pomijam Ebook/Realizacje z innych projektów):
+`OZespole`, `Index`, `Kontakt`, `PressKit`, `Muzyka`, `Koncerty`, `Aktualnosci`, `LangContext` (PL+EN), `Footer`, `StickyPlayer`, `Chatbot`, `InstagramFeed`.
+Reguła: `—` → `-` lub przecinek/kropka zależnie od kontekstu (nie mechaniczny sed).
 
-4. **Sortowanie + UI**
-   - Zachowanie obecnej siatki 2-4 kolumn okładek + lightbox.
-   - Bez zmian w komponencie — tylko dane.
+**4. O Zespole - tekst (`OZespole.tsx`)**
+Pierwsze zdanie bez "w Krośnie":
+*Rok 1999. Robert Węgrzyn zakłada CIRYAM. Od początku grają autorski rock - taki, którego chce się słuchać głośno.*
+Drugi akapit przepisuję bez em-dasha i bez AI-fraz ("subtelna elektronika" wylatuje).
+Bio członków - krócej i faktycznie. Jeśli nie znam faktów, zostaje tylko instrument + rok dołączenia, bez wymyślania hobby ("pasjonat fotografii i długich wypraw rowerowych" - typowe AI).
 
-5. **Fallback na 403/404** — dodam `onError` na `<img>` w tile'ach galerii: jeśli serwer zwróci błąd, podmiana na `/placeholder.svg`. Galeria nie pokaże pustych kafli.
+**5. Galeria O Zespole**
+12 albumów hotlinkowanych zostaje. Sprawdzam czy URL-e dalej zwracają 200 (te z 2022/03 są ryzykowne - WordPress potrafi przemielać paths). Martwe podmieniam na inne z tego samego folderu.
 
-### Koszt
-Najdroższe są `fetch_website` na każdy podalbum (1 call/album). Spodziewam się ~8-15 albumów do dociągnięcia ⇒ ~10-15 calli + 1 edycja pliku. Mieści się w rozsądnym budżecie (znacznie poniżej tego co wcześniej).
+**6. Klipy - kolejność (`Muzyka.tsx` + `Index.tsx`)**
+Robert chce featured w kolejności: **1. Wataha, 2. Na niby, 3. Ślad**. Obecnie: Na niby, Ślad, Zabierz mnie. Przebudowuję:
+```text
+Featured: Wataha, Na niby, Ślad
+Reszta chronologicznie: Zabierz mnie, Migotanie, W biegu, Noc, Alone, Venus EN, W Ciszy
+```
+Opisy klipów - przepisuję krócej, bez zmyślonych lokalizacji (np. "kręcony w opuszczonej fabryce" - bez potwierdzenia od Roberta to wycinam).
 
-### Ryzyka
-- **Hotlink protection** — już zweryfikowane (200 OK), działa.
-- **Stary serwer padnie** — galeria znika. Migracja do Lovable Cloud Storage to potem 1 skrypt (upload bucketem `gallery`, podmiana `CDN` const).
-- **Wolny serwer ciryam.pl** — lazy-load + thumbnaile w siatce ograniczają jednoczesne requesty.
+**7. Muzyka - 5 albumów (`Muzyka.tsx`)**
+Pełna lista (potwierdzona z polskirock.eu + ciryam.pl/media/):
+```text
+1. Szepty dusz       (2004)
+2. W sercu kamienia  (2006, Metal Mind Productions)
+3. Człowiek motyl    (2008)
+4. Desires           (2015, Lynx Music)
+5. Zamyślony zapach  (2023, Lynx Music) - najnowszy
+```
+Tracklisty dla 2 brakujących pobiorę z `ciryam.pl/media/` w trakcie edycji.
+Nagłówek "Trzy albumy, ponad 20 lat na scenie" → "Pięć albumów, 25 lat na scenie."
+Globalny grep "3 albumy"/"trzy płyty" - jeśli gdziekolwiek, podmieniam na 5.
 
-### Pytanie do rozstrzygnięcia W TRAKCIE edycji
-Po pobraniu listy z `/photos/` pokażę Ci ile albumów znalazłem i czy któryś chcesz pominąć (np. bardzo stare, słaba jakość fotek). Domyślnie biorę wszystko co znajdę.
+**8. Koncerty - grupowanie po latach (`Koncerty.tsx`)**
+Sekcje per rok z headerem `<h3>` + badge liczby koncertów. Wewnątrz roku zostaje desc (od najnowszego w danym roku). Lata <2020 zwijalne (collapse), żeby strona nie ciągnęła się w nieskończoność.
+
+**9. Press Kit (`PressKit.tsx`)**
+- Usuwam `bandPhoto2` (`ciryam-band-2.jpg`). Zostaje tylko `bandPhoto1` (`ciryam-band-press-2025.jpg`) wycentrowane w `max-w-2xl mx-auto`.
+- Piktogramy 24/32 → 32/40 + accent ring w tle (`p-3 rounded-full bg-accent/10`).
+- Sekcja rider - lepszy alignment kolumn label/value.
+
+**10. Kontakt / Booking (`Kontakt.tsx` + `PressKit.tsx`)**
+Zgodnie z Twoją odpowiedzią:
+```text
+Management
+Robert Węgrzyn
+okoartmanagement@gmail.com
++48 605 103 072
+
+Booking Manager
+[TWOJE IMIĘ - placeholder]
+[TWÓJ EMAIL - placeholder]
+[TWÓJ TELEFON - placeholder]
+```
+Placeholdery z komentarzem `// TODO: uzupełnij dane Booking Manager` - wpiszesz mi je w kolejnej wiadomości i podstawiam. Dodaję klucze tłumaczeń `contact.management` / `contact.booking` w PL i EN.
+
+**11. Typografia - ujednolicenie**
+Wszystkie sekcje używają tego samego patternu: `<p className="font-heading text-xs tracking-[0.3em] uppercase text-accent mb-4">LABEL</p>` + `<h2 className="font-heading text-3xl md:text-4xl text-foreground">`. Sprawdzam każdą sekcję, dorabiam gdzie brak.
+
+**12. Cache / publish**
+Po wdrożeniu informuję Cię, że trzeba kliknąć **Publish → Update** w Lovable (frontend zmiany nie deployują się auto), a Robert musi zrobić hard refresh (Ctrl+Shift+R) na ciryam.eu.
+
+**13. Checklista + screenshoty**
+Po wszystkim wracam ze screenshotami kluczowych miejsc: Navbar (top + scrolled), Hero, O Zespole tekst, Press Kit, Kontakt, Muzyka (top klipy + 5 albumów), Koncerty grupowanie. Żebyś jeden-do-jednego skonfrontował z Robertem.
 
 ### Pliki do edycji
-- `src/pages/OZespole.tsx` — rozszerzenie tablicy `albums` + dodanie `onError` fallback na `<img>` w siatkach.
+- `src/components/Navbar.tsx`
+- `src/pages/Index.tsx`, `OZespole.tsx`, `Muzyka.tsx`, `Koncerty.tsx`, `Kontakt.tsx`, `PressKit.tsx`
+- `src/contexts/LangContext.tsx`
+- `src/components/Footer.tsx`, `StickyPlayer.tsx`, `Chatbot.tsx`, `InstagramFeed.tsx`
 
-Brak nowych plików w `src/assets/`.
+### Czego NIE robię
+- Nie buduję "arkusza kontaktów dla Roberta" (Robert: "nie wdrażać bez decyzji")
+- Nie dodaję nowych zdjęć do bundle, nowych sekcji, nowych feature'ów
+- Nie ruszam Aktualności / Sklep / Admin / Ebook (Robert ich nie wymienił)
+
+### Szacunek
+1 dłuższa iteracja, max 2 jeśli Robert zwróci kolejne korekty po weryfikacji.
 
