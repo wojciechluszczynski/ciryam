@@ -22,11 +22,11 @@ const Footer = () => {
   return (
     <footer className="bg-secondary border-t border-border">
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start">
             <img src={ciryamLogo} alt="CIRYAM" className="h-10 w-auto mb-4" style={{ filter: "invert(1)" }} width={247} height={100} />
             <p className="text-muted-foreground font-body text-sm mb-6 leading-relaxed">{t("footer.desc")}</p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center md:justify-start">
               <a href="https://www.facebook.com/CIRYAM/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Facebook"><Facebook size={20} /></a>
               <a href="https://www.instagram.com/ciryam__official/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Instagram"><Instagram size={20} /></a>
               <a href="https://www.youtube.com/user/Ciryam/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="YouTube"><Youtube size={20} /></a>
@@ -37,7 +37,7 @@ const Footer = () => {
 
           <div>
             <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-5 text-muted-foreground">{t("footer.nav")}</h4>
-            <nav className="flex flex-col gap-2.5">
+            <nav className="flex flex-col gap-2.5 items-center md:items-start">
               {[
                 { href: "/aktualnosci", labelKey: "nav.news" },
                 { href: "/muzyka", labelKey: "nav.music" },
