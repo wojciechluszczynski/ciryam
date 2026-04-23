@@ -6,7 +6,7 @@ import { useLang } from "@/contexts/LangContext";
 
 // Featured w kolejności wskazanej przez zespół: Wataha, Na niby, Ślad.
 const musicVideos = [
-  { title: "Wataha", album: "Singiel (2020) · hymn Wilków Krosno", youtubeId: "4Rr3xrg18sw", featured: true, desc: "Hymn drużyny Wilki Krosno. Najczęściej oglądany teledysk zespołu." },
+  { title: "Wataha", album: "Singiel (2020) · hymn Wilków Krosno", youtubeId: "4Rr3xrg18sw", featured: true, desc: "Hymn drużyny Wilki Krosno. Najczęściej oglądany teledysk zespołu.", noEmbed: true },
   { title: "Na niby", album: "Singiel (2025)", youtubeId: "mTPAc0ICZRw", featured: true, desc: "Najnowszy singiel CIRYAM. Oficjalny teledysk." },
   { title: "Ślad", album: "Zamyślony zapach (2023)", youtubeId: "CtL2mcYmLBM", featured: true, desc: "Singiel z albumu Zamyślony zapach." },
   { title: "W biegu", album: "Singiel (2025)", youtubeId: "gJNSR8-y74A", desc: "Oficjalny teledysk." },
