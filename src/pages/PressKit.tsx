@@ -2,7 +2,6 @@ import { useLang } from "@/contexts/LangContext";
 import { Download, Mail, Music, Users, Calendar, MapPin } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import bandPhoto1 from "@/assets/ciryam-band-press-2025.jpg";
-import bandPhoto2 from "@/assets/ciryam-band-2.jpg";
 
 const PressKit = () => {
   const { t } = useLang();
@@ -39,7 +38,9 @@ const PressKit = () => {
         <FadeIn delay={0.1}>
           <section className="mb-16">
             <div className="flex flex-col items-center text-center mb-6">
-              <Users size={24} className="text-accent mb-3" />
+              <div className="p-3 rounded-full bg-accent/10 mb-3">
+                <Users size={32} className="text-accent" />
+              </div>
               <h2 className="text-2xl font-heading font-bold">{t("press.bio.title")}</h2>
             </div>
             <div className="bg-card border border-border rounded-2xl p-6 md:p-8 space-y-4 text-muted-foreground leading-relaxed">
@@ -66,32 +67,29 @@ const PressKit = () => {
         <FadeIn delay={0.2}>
           <section className="mb-16">
             <div className="flex flex-col items-center text-center mb-6">
-              <Download size={24} className="text-accent mb-3" />
+              <div className="p-3 rounded-full bg-accent/10 mb-3">
+                <Download size={32} className="text-accent" />
+              </div>
               <h2 className="text-2xl font-heading font-bold">{t("press.photos.title")}</h2>
               <p className="text-muted-foreground mt-3 max-w-2xl">{t("press.photos.desc")}</p>
             </div>
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                { src: bandPhoto1, alt: "CIRYAM – zdjęcie promocyjne 1" },
-                { src: bandPhoto2, alt: "CIRYAM – zdjęcie promocyjne 2" },
-              ].map((photo) => (
-                <div key={photo.alt} className="group relative overflow-hidden rounded-2xl border border-border">
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    className="w-full aspect-[3/2] object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <a
-                    href={photo.src}
-                    download
-                    className="absolute bottom-4 right-4 bg-accent text-accent-foreground px-4 py-2 rounded-full text-xs font-heading uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2"
-                  >
-                    <Download size={14} />
-                    {t("press.photos.download")}
-                  </a>
-                </div>
-              ))}
+            <div className="max-w-2xl mx-auto">
+              <div className="group relative overflow-hidden rounded-2xl border border-border">
+                <img
+                  src={bandPhoto1}
+                  alt="CIRYAM - zdjęcie promocyjne 2025"
+                  className="w-full aspect-[3/2] object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <a
+                  href={bandPhoto1}
+                  download
+                  className="absolute bottom-4 right-4 bg-accent text-accent-foreground px-4 py-2 rounded-full text-xs font-heading uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2"
+                >
+                  <Download size={14} />
+                  {t("press.photos.download")}
+                </a>
+              </div>
             </div>
           </section>
         </FadeIn>
@@ -100,7 +98,9 @@ const PressKit = () => {
         <FadeIn delay={0.3}>
           <section className="mb-16">
             <div className="flex flex-col items-center text-center mb-6">
-              <Music size={24} className="text-accent mb-3" />
+              <div className="p-3 rounded-full bg-accent/10 mb-3">
+                <Music size={32} className="text-accent" />
+              </div>
               <h2 className="text-2xl font-heading font-bold">{t("press.rider.title")}</h2>
             </div>
             <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
@@ -139,20 +139,26 @@ const PressKit = () => {
         <FadeIn delay={0.4}>
           <section className="text-center">
             <div className="bg-card border border-border rounded-2xl p-8 md:p-12">
-              <Mail size={32} className="text-accent mx-auto mb-4" />
-              <h2 className="text-2xl font-heading font-bold mb-3">{t("press.contact.title")}</h2>
-              <p className="text-muted-foreground mb-6 max-w-lg mx-auto">{t("press.contact.desc")}</p>
-              <div className="flex flex-col items-center gap-2 mb-4">
-                <span className="text-foreground font-heading text-sm">Robert Węgrzyn</span>
-                <span className="text-muted-foreground text-sm">+48 605 103 072</span>
+              <div className="inline-flex p-3 rounded-full bg-accent/10 mb-4">
+                <Mail size={36} className="text-accent" />
               </div>
-              <a
-                href="mailto:okoartmanagement@gmail.com"
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-colors"
-              >
-                <Mail size={16} />
-                okoartmanagement@gmail.com
-              </a>
+              <h2 className="text-2xl font-heading font-bold mb-3">{t("press.contact.title")}</h2>
+              <p className="text-muted-foreground mb-8 max-w-lg mx-auto">{t("press.contact.desc")}</p>
+              <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto text-left">
+                <div className="border border-border rounded-xl p-5">
+                  <p className="font-heading text-[10px] tracking-[0.2em] uppercase text-accent mb-2">Management</p>
+                  <p className="text-foreground font-heading text-base">Robert Węgrzyn</p>
+                  <a href="mailto:okoartmanagement@gmail.com" className="block text-muted-foreground text-sm hover:text-accent transition-colors mt-1">okoartmanagement@gmail.com</a>
+                  <a href="tel:+48605103072" className="block text-muted-foreground text-sm hover:text-accent transition-colors">+48 605 103 072</a>
+                </div>
+                <div className="border border-border rounded-xl p-5">
+                  <p className="font-heading text-[10px] tracking-[0.2em] uppercase text-accent mb-2">Booking Manager</p>
+                  {/* TODO: uzupełnij dane Booking Manager - obecnie placeholder */}
+                  <p className="text-foreground font-heading text-base">[Twoje imię]</p>
+                  <p className="text-muted-foreground text-sm">[email do uzupełnienia]</p>
+                  <p className="text-muted-foreground text-sm">[telefon do uzupełnienia]</p>
+                </div>
+              </div>
             </div>
           </section>
         </FadeIn>

@@ -51,11 +51,20 @@ const Kontakt = () => {
               <h1 className="font-heading text-4xl md:text-6xl text-foreground mb-4">{t("contact.title")}</h1>
               <p className="text-muted-foreground font-body text-sm mb-10">{t("contact.desc")}</p>
 
-              <div className="flex flex-col gap-2 text-foreground/60 font-body text-sm mb-8">
-                <span className="text-foreground font-medium text-base">{t("contact.management")}</span>
-                <span className="text-foreground/80">Robert Węgrzyn</span>
-                <a href="mailto:okoartmanagement@gmail.com" className="hover:text-accent transition-colors">okoartmanagement@gmail.com</a>
-                <a href="tel:+48605103072" className="hover:text-accent transition-colors">+48 605 103 072</a>
+              <div className="flex flex-col gap-6 mb-8">
+                <div>
+                  <p className="font-heading text-[10px] tracking-[0.2em] uppercase text-accent mb-2">Management</p>
+                  <p className="text-foreground font-medium">Robert Węgrzyn</p>
+                  <a href="mailto:okoartmanagement@gmail.com" className="block text-foreground/70 hover:text-accent transition-colors text-sm">okoartmanagement@gmail.com</a>
+                  <a href="tel:+48605103072" className="block text-foreground/70 hover:text-accent transition-colors text-sm">+48 605 103 072</a>
+                </div>
+                <div>
+                  <p className="font-heading text-[10px] tracking-[0.2em] uppercase text-accent mb-2">Booking Manager</p>
+                  {/* TODO: uzupełnij dane Booking Manager */}
+                  <p className="text-foreground font-medium">[Twoje imię]</p>
+                  <p className="text-foreground/70 text-sm">[email do uzupełnienia]</p>
+                  <p className="text-foreground/70 text-sm">[telefon do uzupełnienia]</p>
+                </div>
               </div>
 
               <div className="flex gap-4 mb-10">

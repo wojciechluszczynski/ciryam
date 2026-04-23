@@ -85,7 +85,7 @@ const archivalConcerts: ArchivalConcert[] = [
   { num: 204, date: "25 listopad 2022", city: "Jarosław", venue: "Decybel Music Pub" },
   { num: 203, date: "27 sierpień 2022", city: "Brzozów", venue: "Dni Miasta" },
   { num: 202, date: "15 lipiec 2022", city: "Radawa", venue: "Zlot Motocyklowy" },
-  // 2021 — COVID
+  // 2021 - COVID
   // 2020
   { num: 201, date: "26 wrzesień 2020", city: "Kraków", venue: "Zaścianek" },
   { num: 200, date: "05 wrzesień 2020", city: "Warszawa", venue: "VooDoo Club" },
@@ -319,10 +319,10 @@ archivalConcerts.forEach((c) => {
   groupedByYear[year].push(c);
 });
 
-// Archiwum: chronologicznie od najstarszych do najnowszych (lata rosnąco, koncerty wewnątrz roku też rosnąco wg numeru).
-const sortedYears = Object.keys(groupedByYear).sort((a, b) => Number(a) - Number(b));
+// Archiwum: lata od najnowszych (2026, 2025, 2024...), wewnątrz roku też desc (najnowszy koncert najpierw).
+const sortedYears = Object.keys(groupedByYear).sort((a, b) => Number(b) - Number(a));
 Object.keys(groupedByYear).forEach((year) => {
-  groupedByYear[year].sort((a, b) => a.num - b.num);
+  groupedByYear[year].sort((a, b) => b.num - a.num);
 });
 
 const formatDate = (dateStr: string) => {
@@ -338,7 +338,12 @@ const upcoming = concerts;
 
 const Koncerty = () => {
   const { t } = useLang();
-  const [openYears, setOpenYears] = useState<Record<string, boolean>>({});
+  // Domyślnie otwarte lata: 2 najnowsze (2026, 2025). Reszta zwinięta.
+  const [openYears, setOpenYears] = useState<Record<string, boolean>>(() => {
+    const initial: Record<string, boolean> = {};
+    sortedYears.slice(0, 2).forEach((y) => (initial[y] = true));
+    return initial;
+  });
 
   const toggleYear = (year: string) => {
     setOpenYears((prev) => ({ ...prev, [year]: !prev[year] }));
@@ -390,7 +395,7 @@ const Koncerty = () => {
             <Calendar size={14} className="text-accent" /> {t("concerts.archive")}
           </h2>
           <p className="text-muted-foreground font-body text-sm mb-6 italic">
-            Około 250 koncertów za nami — każdy z nich to kawałek naszej historii.
+            Ponad 250 koncertów za nami. Każdy to kawałek naszej historii.
           </p>
 
           <div className="space-y-0">
@@ -428,7 +433,7 @@ const Koncerty = () => {
                           <div className="flex-1 min-w-0">
                             <p className="font-body text-sm text-foreground/80">
                               <span className="text-muted-foreground">{concert.date}</span>
-                              {" — "}
+                              {" · "}
                               <span className="font-semibold">{concert.city}</span>
                               {concert.venue && <span className="text-foreground/60">, {concert.venue}</span>}
                             </p>
