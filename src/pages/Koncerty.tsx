@@ -85,7 +85,7 @@ const archivalConcerts: ArchivalConcert[] = [
   { num: 204, date: "25 listopad 2022", city: "Jarosław", venue: "Decybel Music Pub" },
   { num: 203, date: "27 sierpień 2022", city: "Brzozów", venue: "Dni Miasta" },
   { num: 202, date: "15 lipiec 2022", city: "Radawa", venue: "Zlot Motocyklowy" },
-  // 2021 — COVID
+  // 2021 - COVID
   // 2020
   { num: 201, date: "26 wrzesień 2020", city: "Kraków", venue: "Zaścianek" },
   { num: 200, date: "05 wrzesień 2020", city: "Warszawa", venue: "VooDoo Club" },
