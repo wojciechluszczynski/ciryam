@@ -60,10 +60,8 @@ const Kontakt = () => {
                 </div>
                 <div>
                   <p className="font-heading text-[10px] tracking-[0.2em] uppercase text-accent mb-2">Booking Manager</p>
-                  {/* TODO: uzupełnij dane Booking Manager */}
-                  <p className="text-foreground font-medium">[Twoje imię]</p>
-                  <p className="text-foreground/70 text-sm">[email do uzupełnienia]</p>
-                  <p className="text-foreground/70 text-sm">[telefon do uzupełnienia]</p>
+                  <p className="text-foreground font-medium">Wojciech Łuszczyński</p>
+                  <a href="mailto:booking@ciryam.pl" className="block text-foreground/70 hover:text-accent transition-colors text-sm">booking@ciryam.pl</a>
                 </div>
               </div>
 
