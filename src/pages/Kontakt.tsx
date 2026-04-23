@@ -15,7 +15,7 @@ const Kontakt = () => {
   ];
 
   const [form, setForm] = useState({
-    name: "", email: "", phone: "", inquiryType: "", message: "", consent: false, honeypot: "",
+    recipient: "booking", name: "", email: "", phone: "", inquiryType: "", message: "", consent: false, honeypot: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
@@ -32,7 +32,13 @@ const Kontakt = () => {
       return;
     }
     setSending(true);
-    await new Promise((r) => setTimeout(r, 800));
+    const to = form.recipient === "management" ? "okoartmanagement@gmail.com" : "booking@ciryam.pl";
+    const subject = encodeURIComponent(`[${form.recipient === "management" ? "Management" : "Booking"}] ${form.inquiryType || "Zapytanie"} - ${form.name}`);
+    const body = encodeURIComponent(
+      `Imię / Firma: ${form.name}\nEmail: ${form.email}\nTelefon: ${form.phone}\nTyp zapytania: ${form.inquiryType}\n\n${form.message}`
+    );
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    await new Promise((r) => setTimeout(r, 600));
     setSending(false);
     setSubmitted(true);
     toast.success(t("contact.form.success"));
@@ -91,6 +97,28 @@ const Kontakt = () => {
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                   <input type="text" name="website" value={form.honeypot} onChange={(e) => set("honeypot", e.target.value)} className="hidden" tabIndex={-1} autoComplete="off" />
+                  <div>
+                    <p className="font-heading text-[10px] tracking-[0.2em] uppercase text-muted-foreground mb-3">Do kogo piszesz?</p>
+                    <div className="grid grid-cols-2 gap-3">
+                      {[
+                        { id: "booking", label: "Booking", who: "Wojciech Łuszczyński" },
+                        { id: "management", label: "Management", who: "Robert Węgrzyn" },
+                      ].map((opt) => {
+                        const active = form.recipient === opt.id;
+                        return (
+                          <button
+                            key={opt.id}
+                            type="button"
+                            onClick={() => set("recipient", opt.id)}
+                            className={`text-left rounded-xl border px-4 py-3 transition-all ${active ? "border-accent bg-accent/10" : "border-border hover:border-foreground/40"}`}
+                          >
+                            <p className={`font-heading text-sm tracking-wider uppercase ${active ? "text-accent" : "text-foreground"}`}>{opt.label}</p>
+                            <p className="text-muted-foreground text-xs mt-0.5">{opt.who}</p>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
                   <input type="text" placeholder={t("contact.form.name")} value={form.name} onChange={(e) => set("name", e.target.value)} className={inputClass} maxLength={100} />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <input type="email" placeholder={t("contact.form.email")} value={form.email} onChange={(e) => set("email", e.target.value)} className={inputClass} maxLength={255} />
