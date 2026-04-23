@@ -2,33 +2,10 @@ import { useState } from "react";
 import { Instagram, Facebook, Youtube, Camera, X, ChevronLeft, ChevronRight } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import AnimatedCounter from "@/components/AnimatedCounter";
-import ciryamBand from "@/assets/ciryam-band.jpg";
 import ciryamBand2 from "@/assets/ciryam-band-2.jpg";
 
-// Gallery imports — Promo 2024
-import promo2024_1 from "@/assets/gallery-promo2024-1.jpg";
-import promo2024_2 from "@/assets/gallery-promo2024-2.jpg";
-
-// Gallery imports — Promo 2022
-import promo2022_1 from "@/assets/gallery-promo2022-1.jpg";
-import promo2022_2 from "@/assets/gallery-promo2022-2.jpg";
-import promo2022_3 from "@/assets/gallery-promo2022-3.jpg";
-import promo2022_4 from "@/assets/gallery-promo2022-4.jpg";
-
-// Gallery imports — Promo 2017
-import promo2017_1 from "@/assets/gallery-promo2017-1.jpg";
-import promo2017_2 from "@/assets/gallery-promo2017-2.jpg";
-import promo2017_3 from "@/assets/gallery-promo2017-3.jpg";
-import promo2017_4 from "@/assets/gallery-promo2017-4.jpg";
-
-// Gallery imports — Live
-import livePelczyce1 from "@/assets/gallery-live-pelczyce-1.jpg";
-import livePelczyce2 from "@/assets/gallery-live-pelczyce-2.jpg";
-import livePelczyce3 from "@/assets/gallery-live-pelczyce-3.jpg";
-import liveZascianek1 from "@/assets/gallery-live-zascianek-1.jpg";
-import livePrzeworsk1 from "@/assets/gallery-live-przeworsk-1.jpg";
-import liveSanok1 from "@/assets/gallery-live-sanok-1.jpg";
-
+// Gallery photos hotlinked from ciryam.pl/photos/ — keeps bundle small
+const CDN = "https://ciryam.pl/wp-content/uploads";
 
 type Album = {
   id: string;
@@ -40,51 +17,87 @@ type Album = {
 
 const albums: Album[] = [
   {
-    id: "promo2024",
-    title: "Sesja 2024",
-    subtitle: "Najnowsze zdjęcia promocyjne",
-    cover: promo2024_1,
+    id: "pelczyce-2023",
+    title: "Pełczyce LIVE",
+    subtitle: "08.07.2023 · fot. Anna Gołąwska",
+    cover: `${CDN}/2023/07/CIRYAM-PELCZYCE-live-2023-fot.-Anna-Golawska-1-1024x681.jpg`,
     photos: [
-      { src: promo2024_1, alt: "CIRYAM sesja 2024" },
-      { src: promo2024_2, alt: "CIRYAM sesja 2024" },
+      { src: `${CDN}/2023/07/CIRYAM-PELCZYCE-live-2023-fot.-Anna-Golawska-1-1024x681.jpg`, alt: "Pełczyce 2023", credit: "fot. Anna Gołąwska" },
+      { src: `${CDN}/2023/07/CIRYAM-PELCZYCE-live-2023-fot.-Anna-Golawska-10-1024x681.jpg`, alt: "Pełczyce 2023", credit: "fot. Anna Gołąwska" },
+      { src: `${CDN}/2023/07/CIRYAM-PELCZYCE-live-2023-fot.-Anna-Golawska-12-1024x681.jpg`, alt: "Pełczyce 2023", credit: "fot. Anna Gołąwska" },
+      { src: `${CDN}/2023/07/CIRYAM-PELCZYCE-live-2023-fot.-Anna-Golawska-14-1024x681.jpg`, alt: "Pełczyce 2023", credit: "fot. Anna Gołąwska" },
+      { src: `${CDN}/2023/07/CIRYAM-PELCZYCE-live-2023-fot.-Anna-Golawska-16-1024x681.jpg`, alt: "Pełczyce 2023", credit: "fot. Anna Gołąwska" },
+      { src: `${CDN}/2023/07/CIRYAM-PELCZYCE-live-2023-fot.-Anna-Golawska-28-1024x681.jpg`, alt: "Pełczyce 2023", credit: "fot. Anna Gołąwska" },
     ],
   },
   {
-    id: "promo2022",
-    title: "Sesja 2022",
+    id: "krosno-2023",
+    title: "Krosno Rynek LIVE",
+    subtitle: "29.04.2023",
+    cover: `${CDN}/2023/05/344350890_201867759278138_578596957207410017_n-1024x683.jpg`,
+    photos: [
+      { src: `${CDN}/2023/05/342360773_6095073090568926_2438339978019560464_n.jpg`, alt: "Krosno Rynek 2023" },
+      { src: `${CDN}/2023/05/344350890_201867759278138_578596957207410017_n-1024x683.jpg`, alt: "Krosno Rynek 2023" },
+      { src: `${CDN}/2023/05/344425171_565243625642811_5489452231673568715_n.jpg`, alt: "Krosno Rynek 2023" },
+      { src: `${CDN}/2023/05/344534727_6294098423981304_7486265852815097774_n.jpg`, alt: "Krosno Rynek 2023" },
+      { src: `${CDN}/2023/05/344535840_753221593212278_7501286721120741963_n.jpg`, alt: "Krosno Rynek 2023" },
+      { src: `${CDN}/2023/05/344561430_255338100394617_4280723588358049895_n.jpg`, alt: "Krosno Rynek 2023" },
+    ],
+  },
+  {
+    id: "brzozow-2022",
+    title: "Brzozów LIVE",
+    subtitle: "27.08.2022",
+    cover: `${CDN}/2022/09/DSC8225-1024x683.jpeg`,
+    photos: [
+      { src: `${CDN}/2022/09/DSC8199.jpeg`, alt: "Brzozów 2022" },
+      { src: `${CDN}/2022/09/DSC8225.jpeg`, alt: "Brzozów 2022" },
+      { src: `${CDN}/2022/09/DSC8235.jpeg`, alt: "Brzozów 2022" },
+      { src: `${CDN}/2022/09/DSC8248.jpeg`, alt: "Brzozów 2022" },
+      { src: `${CDN}/2022/09/DSC8287.jpeg`, alt: "Brzozów 2022" },
+      { src: `${CDN}/2022/09/DSC8307.jpeg`, alt: "Brzozów 2022" },
+    ],
+  },
+  {
+    id: "zespol-2022",
+    title: "Sesja zespołu 2022",
     subtitle: "fot. Janusz Rechziegel",
-    cover: promo2022_1,
+    cover: `${CDN}/2022/03/C09_ppa-720x1024.jpg`,
     photos: [
-      { src: promo2022_1, alt: "CIRYAM sesja 2022", credit: "fot. Janusz Rechziegel" },
-      { src: promo2022_2, alt: "CIRYAM sesja 2022", credit: "fot. Janusz Rechziegel" },
-      { src: promo2022_3, alt: "CIRYAM sesja 2022", credit: "fot. Janusz Rechziegel" },
-      { src: promo2022_4, alt: "CIRYAM sesja 2022", credit: "fot. Janusz Rechziegel" },
+      { src: `${CDN}/2022/03/C03_ppa-683x1024.jpg`, alt: "CIRYAM sesja 2022", credit: "fot. Janusz Rechziegel" },
+      { src: `${CDN}/2022/03/C04_ppa-683x1024.jpg`, alt: "CIRYAM sesja 2022", credit: "fot. Janusz Rechziegel" },
+      { src: `${CDN}/2022/03/C06_ppa-683x1024.jpg`, alt: "CIRYAM sesja 2022", credit: "fot. Janusz Rechziegel" },
+      { src: `${CDN}/2022/03/C07_ppa-653x1024.jpg`, alt: "CIRYAM sesja 2022", credit: "fot. Janusz Rechziegel" },
+      { src: `${CDN}/2022/03/C08_ppa-2-720x1024.jpg`, alt: "CIRYAM sesja 2022", credit: "fot. Janusz Rechziegel" },
+      { src: `${CDN}/2022/03/C09_ppa-720x1024.jpg`, alt: "CIRYAM sesja 2022", credit: "fot. Janusz Rechziegel" },
     ],
   },
   {
-    id: "promo2017",
-    title: "Sesja 2017",
-    subtitle: "fot. Zawada Film",
-    cover: promo2017_1,
+    id: "sanok-2018",
+    title: "Radio Biwak Sanok",
+    subtitle: "01.09.2018 · fot. Tomasz Sowa",
+    cover: `${CDN}/2022/03/fot-tomasz-sowa-16.jpg`,
     photos: [
-      { src: promo2017_1, alt: "CIRYAM sesja 2017", credit: "fot. Zawada Film" },
-      { src: promo2017_2, alt: "CIRYAM sesja 2017", credit: "fot. Zawada Film" },
-      { src: promo2017_3, alt: "CIRYAM sesja 2017", credit: "fot. Zawada Film" },
-      { src: promo2017_4, alt: "CIRYAM sesja 2017", credit: "fot. Zawada Film" },
+      { src: `${CDN}/2022/03/fot-tomasz-sowa-1.jpg`, alt: "Sanok Radio Biwak 2018", credit: "fot. Tomasz Sowa" },
+      { src: `${CDN}/2022/03/fot-tomasz-sowa-10.jpg`, alt: "Sanok Radio Biwak 2018", credit: "fot. Tomasz Sowa" },
+      { src: `${CDN}/2022/03/fot-tomasz-sowa-15.jpg`, alt: "Sanok Radio Biwak 2018", credit: "fot. Tomasz Sowa" },
+      { src: `${CDN}/2022/03/fot-tomasz-sowa-16.jpg`, alt: "Sanok Radio Biwak 2018", credit: "fot. Tomasz Sowa" },
+      { src: `${CDN}/2022/03/fot-tomasz-sowa-18.jpg`, alt: "Sanok Radio Biwak 2018", credit: "fot. Tomasz Sowa" },
+      { src: `${CDN}/2022/03/fot-tomasz-sowa-22.jpg`, alt: "Sanok Radio Biwak 2018", credit: "fot. Tomasz Sowa" },
     ],
   },
   {
-    id: "live",
-    title: "Na żywo",
-    subtitle: "Koncerty i festiwale",
-    cover: livePelczyce1,
+    id: "przeworsk-2018",
+    title: "Dni Przeworska",
+    subtitle: "07.07.2018 · 625-lecie nadania praw miejskich",
+    cover: `${CDN}/2022/03/ciryam-live-dni-przeworska-2018-001.jpg`,
     photos: [
-      { src: livePelczyce1, alt: "Pełczyce 2023", credit: "fot. Anna Gołąwska" },
-      { src: livePelczyce2, alt: "Pełczyce 2023", credit: "fot. Anna Gołąwska" },
-      { src: livePelczyce3, alt: "Pełczyce 2023", credit: "fot. Anna Gołąwska" },
-      { src: liveZascianek1, alt: "Zaścianek Kraków 2024", credit: "fot. MusicAlert" },
-      { src: livePrzeworsk1, alt: "Dni Przeworska 2018" },
-      { src: liveSanok1, alt: "Sanok – Radio Biwak 2018", credit: "fot. Tomasz Sowa" },
+      { src: `${CDN}/2022/03/ciryam-live-dni-przeworska-2018-001.jpg`, alt: "Dni Przeworska 2018" },
+      { src: `${CDN}/2022/03/ciryam-live-dni-przeworska-2018-003.jpg`, alt: "Dni Przeworska 2018" },
+      { src: `${CDN}/2022/03/ciryam-live-dni-przeworska-2018-005.jpg`, alt: "Dni Przeworska 2018" },
+      { src: `${CDN}/2022/03/ciryam-live-dni-przeworska-2018-008.jpg`, alt: "Dni Przeworska 2018" },
+      { src: `${CDN}/2022/03/ciryam-live-dni-przeworska-2018-011.jpg`, alt: "Dni Przeworska 2018" },
+      { src: `${CDN}/2022/03/ciryam-live-dni-przeworska-2018-014.jpg`, alt: "Dni Przeworska 2018" },
     ],
   },
 ];
