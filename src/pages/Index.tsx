@@ -19,7 +19,30 @@ import ciryamBand8 from "@/assets/ciryam-band-8.jpg";
 import ciryamLive from "@/assets/ciryam-live.jpg";
 import ciryamLogotype from "@/assets/ciryam-logotype-white.png";
 
-const heroSlides = [ciryamBand2, ciryamBand3, ciryamBand4, ciryamBand5];
+// Każdy slajd ma własny object-position, żeby twarze nie były obcinane.
+const heroSlides: { src: string; position: string }[] = [
+  { src: ciryamBand2, position: "center 22%" },
+  { src: ciryamBand3, position: "center 35%" },
+  { src: ciryamBand4, position: "center 25%" },
+  { src: ciryamBand5, position: "center 28%" },
+];
+
+const youtubeClips = [
+  { youtubeId: "mTPAc0ICZRw", title: 'CIRYAM – „Na niby" (official video)', date: "2025-12-06" },
+  { youtubeId: "JlcNXPUGs3A", title: 'CIRYAM – „Na niby" (zwiastun)', date: "2025-11-25" },
+  { youtubeId: "CtL2mcYmLBM", title: 'CIRYAM – „Ślad" (official video)', date: "2025-08-15" },
+  { youtubeId: "sv3P6c9efxI", title: 'CIRYAM – „Ślad" (zwiastun)', date: "2025-08-15" },
+  { youtubeId: "gJNSR8-y74A", title: 'CIRYAM – „W biegu" (official video)', date: "2025-06-19" },
+  { youtubeId: "8meXBOSE9R8", title: 'CIRYAM – „Migotanie" (za kulisami)', date: "2024-04-03" },
+  { youtubeId: "FM6Gaqo-wFY", title: 'CIRYAM – „Migotanie" (official video)', date: "2023-02-14" },
+  { youtubeId: "vFlQGt3oAiY", title: 'CIRYAM – „Migotanie" (zwiastun)', date: "2023-02-08" },
+  { youtubeId: "kSrmh6aW_vI", title: 'CIRYAM – „Zabierz mnie" (za kulisami)', date: "2023-01-08" },
+  { youtubeId: "ZlyVuxGuC4g", title: 'CIRYAM – „Zabierz mnie" (official video)', date: "2022-08-12" },
+  { youtubeId: "_fyVwJOtCwY", title: 'CIRYAM – „Zabierz mnie" (zwiastun)', date: "2022-08-05" },
+  { youtubeId: "iyTQo9v-xNs", title: 'CIRYAM – „Noc" (official video)', date: "2020-07-09" },
+  { youtubeId: "4Rr3xrg18sw", title: 'CIRYAM – „Wataha" (official video)', date: "2020-05-12" },
+  { youtubeId: "9dMwSF9Q2jA", title: "CIRYAM – „Wataha" / Wilki Krosno SA (sezon 2020)", date: "2019-12-28" },
+];
 
 const upcomingConcerts = [
   { date: "2025-05-23", city: "Kraków", venue: "Garage Pub", event: "Ciryam – trasa 25-lecia" },
@@ -123,7 +146,17 @@ const Index = () => {
       <section className="relative h-screen w-full overflow-hidden">
         {heroSlides.map((slide, i) => (
           <div key={i} className={`absolute inset-0 transition-all duration-1000 ease-in-out ${i === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}>
-            <img src={slide} alt={`CIRYAM rock band live ${i + 1}`} className="w-full h-full object-cover object-[center_25%]" loading={i === 0 ? "eager" : "lazy"} width={1400} height={940} fetchPriority={i === 0 ? "high" : "auto"} decoding={i === 0 ? "sync" : "async"} />
+            <img
+              src={slide.src}
+              alt={`CIRYAM rock band live ${i + 1}`}
+              className="w-full h-full object-cover"
+              style={{ objectPosition: slide.position }}
+              loading={i === 0 ? "eager" : "lazy"}
+              width={1400}
+              height={940}
+              fetchPriority={i === 0 ? "high" : "auto"}
+              decoding={i === 0 ? "sync" : "async"}
+            />
           </div>
         ))}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/40" />
