@@ -37,7 +37,7 @@ const Footer = () => {
 
           <div>
             <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-5 text-muted-foreground">{t("footer.nav")}</h4>
-            <nav className="flex flex-col gap-2.5">
+            <nav className="flex flex-col gap-2.5 items-center md:items-start">
               {[
                 { href: "/aktualnosci", labelKey: "nav.news" },
                 { href: "/muzyka", labelKey: "nav.music" },
