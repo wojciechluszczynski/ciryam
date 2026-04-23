@@ -153,10 +153,8 @@ const PressKit = () => {
                 </div>
                 <div className="border border-border rounded-xl p-5">
                   <p className="font-heading text-[10px] tracking-[0.2em] uppercase text-accent mb-2">Booking Manager</p>
-                  {/* TODO: uzupełnij dane Booking Manager - obecnie placeholder */}
-                  <p className="text-foreground font-heading text-base">[Twoje imię]</p>
-                  <p className="text-muted-foreground text-sm">[email do uzupełnienia]</p>
-                  <p className="text-muted-foreground text-sm">[telefon do uzupełnienia]</p>
+                  <p className="text-foreground font-heading text-base">Wojciech Łuszczyński</p>
+                  <a href="mailto:booking@ciryam.pl" className="block text-muted-foreground text-sm hover:text-accent transition-colors mt-1">booking@ciryam.pl</a>
                 </div>
               </div>
             </div>
