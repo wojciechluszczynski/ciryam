@@ -100,6 +100,90 @@ const albums: Album[] = [
       { src: `${CDN}/2022/03/ciryam-live-dni-przeworska-2018-014.jpg`, alt: "Dni Przeworska 2018" },
     ],
   },
+  {
+    id: "sesja-2017",
+    title: "Sesja zespołu 2017",
+    subtitle: "12.2017 · fot. Zawada Film",
+    cover: `${CDN}/2022/03/ciryam-2017-fot-zawada_film-1.jpg`,
+    photos: [
+      { src: `${CDN}/2022/03/ciryam-2017-fot-zawada_film-1.jpg`, alt: "CIRYAM sesja 2017", credit: "fot. Zawada Film" },
+      { src: `${CDN}/2022/03/ciryam-2017-fot-zawada_film-3.jpg`, alt: "CIRYAM sesja 2017", credit: "fot. Zawada Film" },
+      { src: `${CDN}/2022/03/ciryam-2017-fot-zawada_film-5.jpg`, alt: "CIRYAM sesja 2017", credit: "fot. Zawada Film" },
+      { src: `${CDN}/2022/03/ciryam-2017-fot-zawada_film-8.jpg`, alt: "CIRYAM sesja 2017", credit: "fot. Zawada Film" },
+      { src: `${CDN}/2022/03/ciryam-2017-fot-zawada_film-13.jpg`, alt: "CIRYAM sesja 2017", credit: "fot. Zawada Film" },
+      { src: `${CDN}/2022/03/ciryam-2017-fot-zawada_film-19.jpg`, alt: "CIRYAM sesja 2017", credit: "fot. Zawada Film" },
+    ],
+  },
+  {
+    id: "chorzow-2017",
+    title: "Chorzów LIVE — klub Leśniczówka",
+    subtitle: "03.11.2017 · fot. Marwa & Grzegorz Galuba",
+    cover: `${CDN}/2022/03/ciryam-lesniczowka_2017_fot_25.jpg`,
+    photos: [
+      { src: `${CDN}/2022/03/ciryam-lesniczowka_2017_fot_05.jpg`, alt: "Chorzów Leśniczówka 2017", credit: "fot. Marwa & Grzegorz Galuba" },
+      { src: `${CDN}/2022/03/ciryam-lesniczowka_2017_fot_10.jpg`, alt: "Chorzów Leśniczówka 2017", credit: "fot. Marwa & Grzegorz Galuba" },
+      { src: `${CDN}/2022/03/ciryam-lesniczowka_2017_fot_15.jpg`, alt: "Chorzów Leśniczówka 2017", credit: "fot. Marwa & Grzegorz Galuba" },
+      { src: `${CDN}/2022/03/ciryam-lesniczowka_2017_fot_20.jpg`, alt: "Chorzów Leśniczówka 2017", credit: "fot. Marwa & Grzegorz Galuba" },
+      { src: `${CDN}/2022/03/ciryam-lesniczowka_2017_fot_25.jpg`, alt: "Chorzów Leśniczówka 2017", credit: "fot. Marwa & Grzegorz Galuba" },
+      { src: `${CDN}/2022/03/ciryam-lesniczowka_2017_fot_30.jpg`, alt: "Chorzów Leśniczówka 2017", credit: "fot. Marwa & Grzegorz Galuba" },
+    ],
+  },
+  {
+    id: "krakow-ira-2017",
+    title: "Kraków klub Studio — XXX-lecie IRA",
+    subtitle: "22.10.2017 · fot. Katarzyna Koncewicz",
+    cover: `${CDN}/2022/03/ciryam-klub-studio-22-10-2017fot-k-koncewicz-xxx-lecie-ira-29.jpg`,
+    photos: [
+      { src: `${CDN}/2022/03/ciryam-klub-studio-22-10-2017fot-k-koncewicz-xxx-lecie-ira-1.jpg`, alt: "Kraków IRA 2017", credit: "fot. Katarzyna Koncewicz" },
+      { src: `${CDN}/2022/03/ciryam-klub-studio-22-10-2017fot-k-koncewicz-xxx-lecie-ira-17.jpg`, alt: "Kraków IRA 2017", credit: "fot. Katarzyna Koncewicz" },
+      { src: `${CDN}/2022/03/ciryam-klub-studio-22-10-2017fot-k-koncewicz-xxx-lecie-ira-19.jpg`, alt: "Kraków IRA 2017", credit: "fot. Katarzyna Koncewicz" },
+      { src: `${CDN}/2022/03/ciryam-klub-studio-22-10-2017fot-k-koncewicz-xxx-lecie-ira-22.jpg`, alt: "Kraków IRA 2017", credit: "fot. Katarzyna Koncewicz" },
+      { src: `${CDN}/2022/03/ciryam-klub-studio-22-10-2017fot-k-koncewicz-xxx-lecie-ira-25.jpg`, alt: "Kraków IRA 2017", credit: "fot. Katarzyna Koncewicz" },
+      { src: `${CDN}/2022/03/ciryam-klub-studio-22-10-2017fot-k-koncewicz-xxx-lecie-ira-29.jpg`, alt: "Kraków IRA 2017", credit: "fot. Katarzyna Koncewicz" },
+    ],
+  },
+  {
+    id: "krosno-matelowski-2017",
+    title: "Dni Krosna — Rynek",
+    subtitle: "03.06.2017 · fot. Paweł Matelowski",
+    cover: `${CDN}/2022/03/ciryam_dni_krosna_pawel_matelowski_31.jpg`,
+    photos: [
+      { src: `${CDN}/2022/03/ciryam_dni_krosna_pawel_matelowski_05.jpg`, alt: "Dni Krosna 2017", credit: "fot. Paweł Matelowski" },
+      { src: `${CDN}/2022/03/ciryam_dni_krosna_pawel_matelowski_10.jpg`, alt: "Dni Krosna 2017", credit: "fot. Paweł Matelowski" },
+      { src: `${CDN}/2022/03/ciryam_dni_krosna_pawel_matelowski_15.jpg`, alt: "Dni Krosna 2017", credit: "fot. Paweł Matelowski" },
+      { src: `${CDN}/2022/03/ciryam_dni_krosna_pawel_matelowski_20.jpg`, alt: "Dni Krosna 2017", credit: "fot. Paweł Matelowski" },
+      { src: `${CDN}/2022/03/ciryam_dni_krosna_pawel_matelowski_25.jpg`, alt: "Dni Krosna 2017", credit: "fot. Paweł Matelowski" },
+      { src: `${CDN}/2022/03/ciryam_dni_krosna_pawel_matelowski_31.jpg`, alt: "Dni Krosna 2017", credit: "fot. Paweł Matelowski" },
+    ],
+  },
+  {
+    id: "krosno-sokolowska-2017",
+    title: "Dni Krosna — publiczność",
+    subtitle: "03.06.2017 · fot. Martyna Sokołowska",
+    cover: `${CDN}/2022/03/ciryam_dni_krosna_martyna_sokolowska_99.jpg`,
+    photos: [
+      { src: `${CDN}/2022/03/ciryam_dni_krosna_martyna_sokolowska_10.jpg`, alt: "Dni Krosna 2017", credit: "fot. Martyna Sokołowska" },
+      { src: `${CDN}/2022/03/ciryam_dni_krosna_martyna_sokolowska_25.jpg`, alt: "Dni Krosna 2017", credit: "fot. Martyna Sokołowska" },
+      { src: `${CDN}/2022/03/ciryam_dni_krosna_martyna_sokolowska_40.jpg`, alt: "Dni Krosna 2017", credit: "fot. Martyna Sokołowska" },
+      { src: `${CDN}/2022/03/ciryam_dni_krosna_martyna_sokolowska_55.jpg`, alt: "Dni Krosna 2017", credit: "fot. Martyna Sokołowska" },
+      { src: `${CDN}/2022/03/ciryam_dni_krosna_martyna_sokolowska_75.jpg`, alt: "Dni Krosna 2017", credit: "fot. Martyna Sokołowska" },
+      { src: `${CDN}/2022/03/ciryam_dni_krosna_martyna_sokolowska_99.jpg`, alt: "Dni Krosna 2017", credit: "fot. Martyna Sokołowska" },
+    ],
+  },
+  {
+    id: "sanok-2017",
+    title: "Sanocki Weekend Muzyczny — Rynek",
+    subtitle: "30.04.2017 · fot. Tomasz Sowa",
+    cover: `${CDN}/2022/03/ciryam_sanok_tomasz_sowa_17.jpg`,
+    photos: [
+      { src: `${CDN}/2022/03/ciryam_sanok_tomasz_sowa_03.jpg`, alt: "Sanok 2017", credit: "fot. Tomasz Sowa" },
+      { src: `${CDN}/2022/03/ciryam_sanok_tomasz_sowa_07.jpg`, alt: "Sanok 2017", credit: "fot. Tomasz Sowa" },
+      { src: `${CDN}/2022/03/ciryam_sanok_tomasz_sowa_11.jpg`, alt: "Sanok 2017", credit: "fot. Tomasz Sowa" },
+      { src: `${CDN}/2022/03/ciryam_sanok_tomasz_sowa_14.jpg`, alt: "Sanok 2017", credit: "fot. Tomasz Sowa" },
+      { src: `${CDN}/2022/03/ciryam_sanok_tomasz_sowa_17.jpg`, alt: "Sanok 2017", credit: "fot. Tomasz Sowa" },
+      { src: `${CDN}/2022/03/ciryam_sanok_tomasz_sowa_21.jpg`, alt: "Sanok 2017", credit: "fot. Tomasz Sowa" },
+    ],
+  },
 ];
 
 const milestones = [
@@ -178,6 +262,8 @@ const OZespole = () => {
                       alt={album.title}
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       loading="lazy"
+                      referrerPolicy="no-referrer"
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).src = "/placeholder.svg"; }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -213,6 +299,8 @@ const OZespole = () => {
                         alt={photo.alt}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                         loading="lazy"
+                        referrerPolicy="no-referrer"
+                        onError={(e) => { (e.currentTarget as HTMLImageElement).src = "/placeholder.svg"; }}
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-200" />
                     </button>
