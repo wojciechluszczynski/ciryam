@@ -48,7 +48,7 @@ const AppContent = () => {
       {!isAdmin && <AnnouncementBanner />}
       <ScrollRestoration />
       {!isAdmin && <Navbar />}
-      <Suspense fallback={null}>
+      <Suspense fallback={<div className="min-h-screen" />}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/kontakt" element={<Kontakt />} />
