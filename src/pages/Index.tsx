@@ -242,16 +242,13 @@ const Index = () => {
             </div>
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            {[
-              { src: "https://www.youtube.com/embed/eEBIo2nJUsM", title: "CIRYAM – Wataha (Wilki Krosno)", youtubeId: "eEBIo2nJUsM" },
-              { src: "https://www.youtube.com/embed/iyTQo9v-xNs", title: 'CIRYAM – "Noc" (official video)', youtubeId: "iyTQo9v-xNs" },
-            ].map((video, i) => (
+            {youtubeClips.map((video, i) => (
               <FadeIn key={i} delay={100 + i * 100}>
                 <div className="bg-card border border-border rounded-xl overflow-hidden">
                   <div className="aspect-video">
                     <LazyIframe
                       width="100%" height="100%"
-                      src={video.src}
+                      src={`https://www.youtube.com/embed/${video.youtubeId}`}
                       title={video.title}
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -260,8 +257,13 @@ const Index = () => {
                       fallbackHeight="100%"
                     />
                   </div>
-                  <div className="flex items-center justify-between px-4 py-3">
-                    <span className="font-heading text-sm text-foreground truncate">{video.title}</span>
+                  <div className="flex items-center justify-between px-4 py-3 gap-3">
+                    <div className="min-w-0">
+                      <span className="font-heading text-sm text-foreground block truncate">{video.title}</span>
+                      <span className="font-body text-[10px] text-muted-foreground/70 tracking-wider">
+                        {new Date(video.date).toLocaleDateString("pl-PL", { year: "numeric", month: "short" })}
+                      </span>
+                    </div>
                     <a
                       href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
                       target="_blank"
