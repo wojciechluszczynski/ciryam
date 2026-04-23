@@ -194,10 +194,11 @@ const milestones = [
 ];
 
 const members = [
-  { name: "Monika Węgrzyn", role: "wokal, autorka tekstów", bio: "Wokalistka o niepowtarzalnej barwie głosu i charyzmie scenicznej. W tekstach łączy emocję, doświadczenie i subtelną obserwację świata." },
-  { name: "Robert Węgrzyn", role: "gitary, lider, autor tekstów", bio: "Założyciel CIRYAM. Z pasji twórca muzyki, gitarzysta i menedżer zespołu. Aktywny recenzent sceny muzycznej." },
-  { name: "Kuba Czubik", role: "gitara solowa, elektronika", bio: "Gitarzysta solowy łączący technikę, ekspresję i nowoczesne brzmienie. Pasjonat montażu teledysków oraz budowy elektroniki muzycznej." },
-  { name: "Jacek Rola", role: "bas", bio: "Basista odpowiadający za puls zespołu. Pasjonat fotografii i długich wypraw rowerowych." },
+  { name: "Monika Węgrzyn", role: "wokal, teksty", bio: "Wokalistka i autorka tekstów. Głos zespołu od pierwszego albumu." },
+  { name: "Robert Węgrzyn", role: "gitary, lider", bio: "Założyciel zespołu. Gitarzysta, kompozytor, menedżer." },
+  { name: "Kuba Czubik", role: "gitara solowa, elektronika", bio: "Gitarzysta i realizator elektroniki." },
+  { name: "Jacek Rola", role: "bas", bio: "Basista zespołu." },
+  { name: "Damian Jurek", role: "perkusja", bio: "Perkusista. Gra w składzie od albumu Człowiek motyl (2008)." },
 ];
 
 const OZespole = () => {
@@ -225,10 +226,10 @@ const OZespole = () => {
             <div className="flex flex-col justify-center">
               <h2 className="font-heading text-3xl text-foreground mb-6">Gdzie wszystko się zaczęło</h2>
               <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4">
-                Rok 1999. Robert Węgrzyn powołuje do życia CIRYAM w Krośnie. Z pasji, determinacji i potrzeby tworzenia muzyki, która porusza i zostawia ślad.
+                Rok 1999. Robert Węgrzyn zakłada CIRYAM. Od początku grają autorski rock - taki, którego chce się słuchać głośno.
               </p>
               <p className="text-muted-foreground font-body text-sm leading-relaxed">
-                5 albumów, setki koncertów i 25 lat na scenie — zespół łączy rock, pop, alternatywę i subtelną elektronikę.
+                Pięć albumów, ponad 250 koncertów i 25 lat na scenie. Mocne riffy, melodyjne refreny, polski tekst.
               </p>
               {/* Inline stats */}
               <div className="grid grid-cols-2 gap-3 mt-6">

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Globe } from "lucide-react";
-import ciryamLogo from "@/assets/ciryam-logo.webp";
 import ciryamSign from "@/assets/ciryam-sign-white.png";
 import { useLang } from "@/contexts/LangContext";
 
@@ -54,19 +53,11 @@ const Navbar = () => {
             ? "bg-background/80 backdrop-blur-xl shadow-lg shadow-background/20"
             : "bg-transparent"
         }`}>
-          <Link to="/" className="z-50 shrink-0 relative flex items-center">
+          <Link to="/" className="z-50 shrink-0 flex items-center" aria-label="CIRYAM - strona główna">
             <img
               src={ciryamSign}
               alt="CIRYAM"
-              className={`h-8 md:h-10 w-auto invert transition-all duration-500 absolute ${scrolled ? "opacity-0 scale-90" : "opacity-100 scale-100"}`}
-            />
-            <img
-              src={ciryamLogo}
-              alt="CIRYAM"
-              className={`h-8 md:h-10 w-auto transition-all duration-500 ${scrolled ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}
-              style={{ filter: "invert(1)" }}
-              width={247}
-              height={100}
+              className="h-9 md:h-11 w-auto invert transition-transform duration-500"
             />
           </Link>
 
@@ -137,12 +128,9 @@ const Navbar = () => {
           }`}
         >
           <img
-            src={ciryamLogo}
+            src={ciryamSign}
             alt="CIRYAM"
-            className="h-12 w-auto mb-10"
-            style={{ filter: "invert(1)" }}
-            width={297}
-            height={120}
+            className="h-14 w-auto mb-10 invert"
           />
 
           <div className="flex flex-col items-center gap-6 mb-10">
