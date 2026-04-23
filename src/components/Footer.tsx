@@ -21,37 +21,22 @@ const Footer = () => {
 
   return (
     <footer className="bg-secondary border-t border-border">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 py-14 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 text-center md:text-left">
-          {/* Brand */}
-          <div className="md:col-span-5 flex flex-col items-center md:items-start">
-            <img src={ciryamLogo} alt="CIRYAM" className="h-12 w-auto mb-5" style={{ filter: "invert(1)" }} width={247} height={100} />
-            <p className="text-muted-foreground font-body text-sm leading-relaxed max-w-xs mb-7">{t("footer.desc")}</p>
-            <div className="flex gap-2.5 justify-center md:justify-start">
-              {[
-                { href: "https://www.facebook.com/CIRYAM/", label: "Facebook", Icon: Facebook },
-                { href: "https://www.instagram.com/ciryam__official/", label: "Instagram", Icon: Instagram },
-                { href: "https://www.youtube.com/user/Ciryam/", label: "YouTube", Icon: Youtube },
-                { href: "https://www.tiktok.com/@ciryam", label: "TikTok", Icon: TikTokIcon },
-                { href: "https://soundcloud.com/ciryam", label: "SoundCloud", Icon: SoundCloudIcon },
-              ].map(({ href, label, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-10 h-10 rounded-full border border-border/70 flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent transition-all duration-300"
-                >
-                  <Icon size={18} />
-                </a>
-              ))}
+      <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start">
+            <img src={ciryamLogo} alt="CIRYAM" className="h-10 w-auto mb-4" style={{ filter: "invert(1)" }} width={247} height={100} />
+            <p className="text-muted-foreground font-body text-sm mb-6 leading-relaxed">{t("footer.desc")}</p>
+            <div className="flex gap-4 justify-center md:justify-start">
+              <a href="https://www.facebook.com/CIRYAM/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Facebook"><Facebook size={20} /></a>
+              <a href="https://www.instagram.com/ciryam__official/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Instagram"><Instagram size={20} /></a>
+              <a href="https://www.youtube.com/user/Ciryam/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="YouTube"><Youtube size={20} /></a>
+              <a href="https://www.tiktok.com/@ciryam" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="TikTok"><TikTokIcon /></a>
+              <a href="https://soundcloud.com/ciryam" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="SoundCloud"><SoundCloudIcon /></a>
             </div>
           </div>
 
-          {/* Nav */}
-          <div className="md:col-span-3">
-            <h4 className="font-heading text-[11px] tracking-[0.25em] uppercase mb-5 text-accent">{t("footer.nav")}</h4>
+          <div>
+            <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-5 text-muted-foreground">{t("footer.nav")}</h4>
             <nav className="flex flex-col gap-2.5 items-center md:items-start">
               {[
                 { href: "/aktualnosci", labelKey: "nav.news" },
@@ -60,29 +45,27 @@ const Footer = () => {
                 { href: "/o-zespole", labelKey: "nav.about" },
                 { href: "/kontakt", labelKey: "nav.contact" },
               ].map((link) => (
-                <Link key={link.href} to={link.href} className="text-foreground/70 hover:text-accent transition-colors font-body text-sm">
+                <Link key={link.href} to={link.href} className="text-foreground/60 hover:text-accent transition-colors font-body text-sm">
                   {t(link.labelKey)}
                 </Link>
               ))}
             </nav>
           </div>
 
-          {/* Management */}
-          <div className="md:col-span-2">
-            <h4 className="font-heading text-[11px] tracking-[0.25em] uppercase mb-5 text-accent">Management</h4>
-            <div className="flex flex-col gap-1.5 font-body text-sm">
-              <p className="text-foreground font-medium">Robert Węgrzyn</p>
-              <a href="mailto:okoartmanagement@gmail.com" className="text-foreground/60 hover:text-accent transition-colors whitespace-nowrap text-[12.5px]">okoartmanagement@gmail.com</a>
-              <a href="tel:+48605103072" className="text-foreground/60 hover:text-accent transition-colors">+48 605 103 072</a>
+          <div>
+            <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-5 text-muted-foreground">Management</h4>
+            <div className="flex flex-col gap-1 text-foreground/60 font-body text-sm">
+              <p className="text-foreground/60">Robert Węgrzyn</p>
+              <a href="mailto:okoartmanagement@gmail.com" className="hover:text-accent transition-colors whitespace-nowrap text-[13px]">okoartmanagement@gmail.com</a>
+              <a href="tel:+48605103072" className="hover:text-accent transition-colors">+48 605 103 072</a>
             </div>
           </div>
 
-          {/* Booking */}
-          <div className="md:col-span-2">
-            <h4 className="font-heading text-[11px] tracking-[0.25em] uppercase mb-5 text-accent">Booking</h4>
-            <div className="flex flex-col gap-1.5 font-body text-sm">
-              <p className="text-foreground font-medium">Wojciech Łuszczyński</p>
-              <a href="mailto:booking@ciryam.pl" className="text-foreground/60 hover:text-accent transition-colors whitespace-nowrap">booking@ciryam.pl</a>
+          <div>
+            <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-5 text-muted-foreground">Booking Manager</h4>
+            <div className="flex flex-col gap-1 text-foreground/60 font-body text-sm">
+              <p className="text-foreground/60">Wojciech Łuszczyński</p>
+              <a href="mailto:booking@ciryam.pl" className="hover:text-accent transition-colors whitespace-nowrap">booking@ciryam.pl</a>
             </div>
           </div>
         </div>

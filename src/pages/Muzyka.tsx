@@ -6,7 +6,7 @@ import { useLang } from "@/contexts/LangContext";
 
 // Featured w kolejności wskazanej przez zespół: Wataha, Na niby, Ślad.
 const musicVideos = [
-  { title: "Wataha", album: "Singiel (2020) · hymn Wilków Krosno", youtubeId: "4Rr3xrg18sw", featured: true, desc: "Hymn drużyny Wilki Krosno. Najczęściej oglądany teledysk zespołu.", noEmbed: true },
+  { title: "Wataha", album: "Singiel (2020) · hymn Wilków Krosno", youtubeId: "4Rr3xrg18sw", featured: true, desc: "Hymn drużyny Wilki Krosno. Najczęściej oglądany teledysk zespołu." },
   { title: "Na niby", album: "Singiel (2025)", youtubeId: "mTPAc0ICZRw", featured: true, desc: "Najnowszy singiel CIRYAM. Oficjalny teledysk." },
   { title: "Ślad", album: "Zamyślony zapach (2023)", youtubeId: "CtL2mcYmLBM", featured: true, desc: "Singiel z albumu Zamyślony zapach." },
   { title: "W biegu", album: "Singiel (2025)", youtubeId: "gJNSR8-y74A", desc: "Oficjalny teledysk." },
@@ -50,41 +50,16 @@ const Muzyka = () => {
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-4 mb-6">
             {/* Main player */}
             <div>
-              <div className="aspect-video rounded-xl overflow-hidden border border-border bg-card relative">
-                {currentVideo.noEmbed ? (
-                  <a
-                    href={`https://www.youtube.com/watch?v=${activeVideo}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group block w-full h-full relative"
-                    aria-label={`Obejrzyj ${currentVideo.title} na YouTube`}
-                  >
-                    <img
-                      src={`https://img.youtube.com/vi/${activeVideo}/maxresdefault.jpg`}
-                      onError={(e) => { (e.currentTarget as HTMLImageElement).src = `https://img.youtube.com/vi/${activeVideo}/hqdefault.jpg`; }}
-                      alt={currentVideo.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/30 to-background/40 flex flex-col items-center justify-center gap-4">
-                      <div className="w-20 h-20 rounded-full bg-accent/90 group-hover:bg-accent flex items-center justify-center transition-all duration-300 group-hover:scale-110 shadow-2xl">
-                        <Play size={32} className="text-accent-foreground fill-accent-foreground ml-1" />
-                      </div>
-                      <span className="font-heading text-xs tracking-[0.25em] uppercase text-foreground/90 inline-flex items-center gap-2 bg-background/60 backdrop-blur-sm px-4 py-2 rounded-full">
-                        Obejrzyj na YouTube <ExternalLink size={12} />
-                      </span>
-                    </div>
-                  </a>
-                ) : (
-                  <LazyIframe
-                    width="100%"
-                    height="100%"
-                    src={`https://www.youtube.com/embed/${activeVideo}?autoplay=0`}
-                    title={`CIRYAM – ${currentVideo.title}`}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    fallbackHeight="100%"
-                  />
-                )}
+              <div className="aspect-video rounded-xl overflow-hidden border border-border bg-card">
+                <LazyIframe
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/${activeVideo}?autoplay=0`}
+                  title={`CIRYAM – ${currentVideo.title}`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  fallbackHeight="100%"
+                />
               </div>
               <div className="mt-4">
                 <h2 className="font-heading text-2xl text-foreground">{currentVideo.title}</h2>
