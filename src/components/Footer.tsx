@@ -22,7 +22,7 @@ const Footer = () => {
   return (
     <footer className="bg-secondary border-t border-border">
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div>
             <img src={ciryamLogo} alt="CIRYAM" className="h-10 w-auto mb-4" style={{ filter: "invert(1)" }} width={247} height={100} />
             <p className="text-muted-foreground font-body text-sm mb-6 leading-relaxed">{t("footer.desc")}</p>
@@ -53,20 +53,19 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-5 text-muted-foreground">{t("footer.booking")}</h4>
-            <div className="flex flex-col gap-3 text-foreground/60 font-body text-sm">
-              <div>
-                <p className="text-foreground/80 font-semibold mb-0.5">Management</p>
-                <p className="text-foreground/60 mb-0.5">Robert Węgrzyn</p>
-                <a href="mailto:okoartmanagement@gmail.com" className="hover:text-accent transition-colors">okoartmanagement@gmail.com</a>
-                <br />
-                <a href="tel:+48605103072" className="hover:text-accent transition-colors">+48 605 103 072</a>
-              </div>
-              <div>
-                <p className="text-foreground/80 font-semibold mb-0.5">Booking Manager</p>
-                <p className="text-foreground/60 mb-0.5">Wojciech Łuszczyński</p>
-                <a href="mailto:booking@ciryam.pl" className="hover:text-accent transition-colors">booking@ciryam.pl</a>
-              </div>
+            <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-5 text-muted-foreground">Management</h4>
+            <div className="flex flex-col gap-1 text-foreground/60 font-body text-sm">
+              <p className="text-foreground/60">Robert Węgrzyn</p>
+              <a href="mailto:okoartmanagement@gmail.com" className="hover:text-accent transition-colors break-all">okoartmanagement@gmail.com</a>
+              <a href="tel:+48605103072" className="hover:text-accent transition-colors">+48 605 103 072</a>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-5 text-muted-foreground">Booking Manager</h4>
+            <div className="flex flex-col gap-1 text-foreground/60 font-body text-sm">
+              <p className="text-foreground/60">Wojciech Łuszczyński</p>
+              <a href="mailto:booking@ciryam.pl" className="hover:text-accent transition-colors break-all">booking@ciryam.pl</a>
             </div>
           </div>
         </div>
