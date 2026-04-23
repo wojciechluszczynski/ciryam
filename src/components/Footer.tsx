@@ -56,7 +56,7 @@ const Footer = () => {
             <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-5 text-muted-foreground">Management</h4>
             <div className="flex flex-col gap-1 text-foreground/60 font-body text-sm">
               <p className="text-foreground/60">Robert Węgrzyn</p>
-              <a href="mailto:okoartmanagement@gmail.com" className="hover:text-accent transition-colors break-all">okoartmanagement@gmail.com</a>
+              <a href="mailto:okoartmanagement@gmail.com" className="hover:text-accent transition-colors whitespace-nowrap text-[13px]">okoartmanagement@gmail.com</a>
               <a href="tel:+48605103072" className="hover:text-accent transition-colors">+48 605 103 072</a>
             </div>
           </div>
@@ -65,7 +65,7 @@ const Footer = () => {
             <h4 className="font-heading text-xs tracking-[0.2em] uppercase mb-5 text-muted-foreground">Booking Manager</h4>
             <div className="flex flex-col gap-1 text-foreground/60 font-body text-sm">
               <p className="text-foreground/60">Wojciech Łuszczyński</p>
-              <a href="mailto:booking@ciryam.pl" className="hover:text-accent transition-colors break-all">booking@ciryam.pl</a>
+              <a href="mailto:booking@ciryam.pl" className="hover:text-accent transition-colors whitespace-nowrap">booking@ciryam.pl</a>
             </div>
           </div>
         </div>
