@@ -1,7 +1,7 @@
 import { useLang } from "@/contexts/LangContext";
 import { Download, Mail, Music, Users, Calendar, MapPin } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
-import bandPhoto1 from "@/assets/ciryam-band.jpg";
+import bandPhoto1 from "@/assets/ciryam-band-press-2025.jpg";
 import bandPhoto2 from "@/assets/ciryam-band-2.jpg";
 
 const PressKit = () => {
@@ -38,10 +38,10 @@ const PressKit = () => {
         {/* Short Bio */}
         <FadeIn delay={0.1}>
           <section className="mb-16">
-            <h2 className="text-2xl font-heading font-bold mb-6 flex items-center gap-3">
-              <Users size={24} className="text-accent" />
-              {t("press.bio.title")}
-            </h2>
+            <div className="flex flex-col items-center text-center mb-6">
+              <Users size={24} className="text-accent mb-3" />
+              <h2 className="text-2xl font-heading font-bold">{t("press.bio.title")}</h2>
+            </div>
             <div className="bg-card border border-border rounded-2xl p-6 md:p-8 space-y-4 text-muted-foreground leading-relaxed">
               <p>{t("press.bio.p1")}</p>
               <p>{t("press.bio.p2")}</p>
@@ -65,11 +65,11 @@ const PressKit = () => {
         {/* Photos */}
         <FadeIn delay={0.2}>
           <section className="mb-16">
-            <h2 className="text-2xl font-heading font-bold mb-6 flex items-center gap-3">
-              <Download size={24} className="text-accent" />
-              {t("press.photos.title")}
-            </h2>
-            <p className="text-muted-foreground mb-6">{t("press.photos.desc")}</p>
+            <div className="flex flex-col items-center text-center mb-6">
+              <Download size={24} className="text-accent mb-3" />
+              <h2 className="text-2xl font-heading font-bold">{t("press.photos.title")}</h2>
+              <p className="text-muted-foreground mt-3 max-w-2xl">{t("press.photos.desc")}</p>
+            </div>
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 { src: bandPhoto1, alt: "CIRYAM – zdjęcie promocyjne 1" },
@@ -99,10 +99,10 @@ const PressKit = () => {
         {/* Technical Rider */}
         <FadeIn delay={0.3}>
           <section className="mb-16">
-            <h2 className="text-2xl font-heading font-bold mb-6 flex items-center gap-3">
-              <Music size={24} className="text-accent" />
-              {t("press.rider.title")}
-            </h2>
+            <div className="flex flex-col items-center text-center mb-6">
+              <Music size={24} className="text-accent mb-3" />
+              <h2 className="text-2xl font-heading font-bold">{t("press.rider.title")}</h2>
+            </div>
             <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
               <p className="text-muted-foreground mb-6">{t("press.rider.intro")}</p>
               <div className="space-y-4">
