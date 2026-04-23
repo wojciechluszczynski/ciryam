@@ -78,7 +78,7 @@ const PressKit = () => {
                 <img
                   src={bandPhoto1}
                   alt="CIRYAM - zdjęcie promocyjne 2025"
-                  className="w-full aspect-[3/2] object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
                 <a
