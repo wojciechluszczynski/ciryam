@@ -1,51 +1,37 @@
 
 
-## Poprawki tekstów + Press Kit + Galeria
+## Galeria w O Zespole - hotlink z ciryam.pl
 
-### 1. Tekst „Gdzie wszystko się zaczęło" (OZespole / About) — nowa wersja PL/EN
-W `src/contexts/LangContext.tsx` zaktualizujemy klucze `about.page.p1`-`p4` (PL i EN). Pierwsze zdanie BEZ „w Krośnie" — Krosno wspominamy dopiero w kontekście założenia.
+### Strategia
+Zero plików w repo. W `src/pages/OZespole.tsx` w tablicy `albums` zamiast importów lokalnych asetów wpisujemy bezpośrednie URL-e do zdjęć na `https://ciryam.pl/photos/...` (lub `/wp-content/uploads/...` - zależy co znajdę). Przeglądarka pobiera je z ich serwera, nasz bundle nie rośnie.
 
-PL — dwa akapity zamiast czterech, naturalny ton:
-- **p1**: „CIRYAM to polski zespół rockowy założony w 1999 roku w Krośnie. Gramy autorski materiał - ciężkie riffy, melodyjne refreny i sceniczna energia, która nie zostawia słuchacza obojętnym, a do tego wszystkiego charyzmatyczna wokalistka."
-- **p2**: „Na koncie mamy ponad 400 koncertów w całej Polsce - od kameralnych klubów po wielotysięczne festiwale."
-- **p3**: „W dyskografii zespołu znajduje się pięć albumów studyjnych, w tym najnowszy »Zamyślony zapach«."
-- **p4**: „CIRYAM to sprawdzony zespół na każdą scenę - gramy na festiwalach, w klubach, na eventach firmowych i prywatnych. Skład: Monika Węgrzyn (wokal), Robert Węgrzyn (gitary, lider), Kuba Czubik (gitara solowa), Jacek Rola (bas)."
+### Plan działania (w trybie edycji)
 
-EN — odpowiedniki 1:1, też naturalne.
+1. **Pobranie listy galerii i zdjęć z ciryam.pl/photos/**
+   - `fetch_website` na stronę indeksu galerii + na każdy podalbum
+   - Wyciągnięcie URL-i zdjęć (najczęściej `https://ciryam.pl/wp-content/uploads/YYYY/MM/...jpg`) i nazwiska fotografa
+   - Wybór 6 najnowszych albumów × po 6 zdjęć
 
-Te same teksty zasilą również **Press Kit** (`press.bio.p1`/`p2`) — przepisujemy w spójnej wersji.
+2. **Aktualizacja `src/pages/OZespole.tsx`**
+   - Usunięcie obecnych importów `gallery-*` (te 12 lokalnych assetów zostawiamy w `src/assets/` na razie - nie kasujemy, bo Promo 2024/2022/2017 to dobre studyjne; możemy je też zhotlinkować jeśli wolisz pełnej spójności)
+   - Rozszerzenie tablicy `albums` o 6 nowych sekcji historycznych z `cover` i `photos[]` jako stringi URL z ciryam.pl
+   - Dla każdego zdjęcia: `loading="lazy"` (już jest) + `referrerPolicy="no-referrer"` na wypadek hotlink-protection
+   - Zachowanie `credit` (np. "fot. Tomasz Sowa", "fot. Janusz Rechziegel")
 
-### 2. Press Kit — wymiana zdjęcia (10.jpeg → 11.jpeg)
-- Zapisujemy `user-uploads://11.jpeg` jako `src/assets/ciryam-band-press-2025.jpg`.
-- W `src/pages/PressKit.tsx` (linie 74-76) podmieniamy `bandPhoto1` na nowy import. `bandPhoto2` zostaje (drugie zdjęcie, którego część widać na 10.jpeg po prawej stronie).
+3. **Fallback na błąd ładowania**
+   - `onError` na `<img>`: w razie 403/404 ze starego serwera podmiana na placeholder (`/placeholder.svg`), żeby galeria nie pokazywała pustych kafli
 
-### 3. Press Kit — symetria nagłówków (9.jpeg)
-Aktualnie `press.title` i `press.subtitle` są wycentrowane (`text-center`). Pozostałe nagłówki sekcji (`Zdjęcia promocyjne`, `Rider techniczny`, `O zespole`) są wyrównane do lewej z ikoną obok tekstu. Plan: przebudować nagłówki **„Zdjęcia promocyjne"** i **„Rider techniczny"** tak, by były:
-- wyśrodkowane (`text-center`, `justify-center`)
-- ikona w nowej linii **nad** tekstem (`flex-col items-center gap-3`)
-- opis pod nagłówkiem również wyśrodkowany
+### Ryzyka i jak je adresujemy
 
-Dla spójności zrobimy to samo z „O zespole" i „Kontakt" — wszystkie nagłówki sekcji w Press Kit będą miały tę samą strukturę: ikona u góry, tytuł pod nią, opis wycentrowany.
+- **Hotlink protection / referer block** - sprawdzę nagłówkiem `Referer` czy ciryam.pl blokuje hotlinking. Jeśli tak, dam znać i wybierzemy inny wariant (najpewniej Lovable Cloud Storage).
+- **Stary serwer padnie / migracja** - galeria zniknie. Akceptujesz świadomie.
+- **Wolne ładowanie** - serwer ciryam.pl bez CDN może być wolny; lazy-load + thumbnaile w siatce 3-5 kolumn ograniczają to do ~6 jednoczesnych requestów.
 
-### 4. Galeria w O Zespole (12.jpeg) — pobranie zdjęć z ciryam.pl/photos/
-W trybie edycji pobierzemy publiczne galerie ze starej strony (https://ciryam.pl/photos/). Plan:
-- pobrać listę albumów + zdjęcia z każdego (Pełczyce 2023, Krosno Rynek 2023, Brzozów 2022, Sesja 2022, Sanok Biwak 2018, Dni Przeworska 2018 itd.)
-- zapisać do `src/assets/gallery-archive-*.jpg`
-- rozszerzyć tablicę `albums` w `src/pages/OZespole.tsx` o nowe sekcje historyczne
-
-Uwaga: zdjęcia z ciryam.pl mogą być chronione prawami autorskimi (np. „fot. Tomasz Sowa", „fot. Janusz Rechziegel") — zachowamy podpisy `credit` w danych.
-
-**Pytanie**: czy mam pobrać **wszystkie** dostępne galerie ze starej strony (~12 albumów, kilkaset zdjęć), czy ograniczyć do np. 5-6 najciekawszych? Większa ilość = większy bundle. Domyślnie zaproponuję **6 albumów** (po ~6 zdjęć), z opcją rozszerzenia.
-
-### 5. Globalna spójność
-- Sprawdzimy `Muzyka.tsx` (opisy „Klimatyczny klip kręcony w opuszczonej fabryce" itp. — typowy AI-styl) i przepiszemy na bardziej naturalne, krótkie zdania.
-- Skrót `desc` przy każdym wideo: 1 zdanie, bez „od X po Y".
+### Pytanie do rozstrzygnięcia W TRAKCIE edycji
+Po pobraniu listy z ciryam.pl/photos/ pokażę Ci, które 6 albumów wybrałem (z datami), żebyś potwierdził przed wstawieniem URL-i. Albumy promo (2024/2022/2017) zostawiamy lokalnie jak są, czy też hotlinkujemy?
 
 ### Pliki do edycji
-- `src/contexts/LangContext.tsx` — `about.page.p1-p4`, `press.bio.p1-p2` (PL+EN)
-- `src/pages/PressKit.tsx` — nowy import zdjęcia + przebudowa nagłówków sekcji (centrowanie + ikona w osobnej linii)
-- `src/assets/ciryam-band-press-2025.jpg` — nowe zdjęcie z `user-uploads://11.jpeg`
-- `src/pages/OZespole.tsx` — rozszerzenie tablicy `albums` o galerie z ciryam.pl
-- `src/assets/gallery-archive-*.jpg` — nowe zdjęcia z archiwum
-- `src/pages/Muzyka.tsx` — przepisanie pól `desc` na naturalny ton
+- `src/pages/OZespole.tsx` - rozszerzenie tablicy `albums` o sekcje hotlinkowane (URL stringi zamiast importów)
+
+Brak nowych plików w `src/assets/`.
 
