@@ -15,7 +15,7 @@ const Kontakt = () => {
   ];
 
   const [form, setForm] = useState({
-    name: "", email: "", phone: "", inquiryType: "", message: "", consent: false, honeypot: "",
+    recipient: "booking", name: "", email: "", phone: "", inquiryType: "", message: "", consent: false, honeypot: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
@@ -32,7 +32,13 @@ const Kontakt = () => {
       return;
     }
     setSending(true);
-    await new Promise((r) => setTimeout(r, 800));
+    const to = form.recipient === "management" ? "okoartmanagement@gmail.com" : "booking@ciryam.pl";
+    const subject = encodeURIComponent(`[${form.recipient === "management" ? "Management" : "Booking"}] ${form.inquiryType || "Zapytanie"} - ${form.name}`);
+    const body = encodeURIComponent(
+      `Imię / Firma: ${form.name}\nEmail: ${form.email}\nTelefon: ${form.phone}\nTyp zapytania: ${form.inquiryType}\n\n${form.message}`
+    );
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    await new Promise((r) => setTimeout(r, 600));
     setSending(false);
     setSubmitted(true);
     toast.success(t("contact.form.success"));
