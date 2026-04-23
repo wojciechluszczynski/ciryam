@@ -319,7 +319,11 @@ archivalConcerts.forEach((c) => {
   groupedByYear[year].push(c);
 });
 
-const sortedYears = Object.keys(groupedByYear).sort((a, b) => Number(b) - Number(a));
+// Archiwum: chronologicznie od najstarszych do najnowszych (lata rosnąco, koncerty wewnątrz roku też rosnąco wg numeru).
+const sortedYears = Object.keys(groupedByYear).sort((a, b) => Number(a) - Number(b));
+Object.keys(groupedByYear).forEach((year) => {
+  groupedByYear[year].sort((a, b) => a.num - b.num);
+});
 
 const formatDate = (dateStr: string) => {
   const d = new Date(dateStr);

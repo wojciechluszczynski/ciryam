@@ -19,27 +19,50 @@ import ciryamBand8 from "@/assets/ciryam-band-8.jpg";
 import ciryamLive from "@/assets/ciryam-live.jpg";
 import ciryamLogotype from "@/assets/ciryam-logotype-white.png";
 
-const heroSlides = [ciryamBand2, ciryamBand3, ciryamBand4, ciryamBand5];
+// Każdy slajd ma własny object-position, żeby twarze nie były obcinane.
+const heroSlides: { src: string; position: string }[] = [
+  { src: ciryamBand2, position: "center 22%" },
+  { src: ciryamBand3, position: "center 35%" },
+  { src: ciryamBand4, position: "center 25%" },
+  { src: ciryamBand5, position: "center 28%" },
+];
+
+const youtubeClips = [
+  { youtubeId: "mTPAc0ICZRw", title: 'CIRYAM – „Na niby" (official video)', date: "2025-12-06" },
+  { youtubeId: "JlcNXPUGs3A", title: 'CIRYAM – „Na niby" (zwiastun)', date: "2025-11-25" },
+  { youtubeId: "CtL2mcYmLBM", title: 'CIRYAM – „Ślad" (official video)', date: "2025-08-15" },
+  { youtubeId: "sv3P6c9efxI", title: 'CIRYAM – „Ślad" (zwiastun)', date: "2025-08-15" },
+  { youtubeId: "gJNSR8-y74A", title: 'CIRYAM – „W biegu" (official video)', date: "2025-06-19" },
+  { youtubeId: "8meXBOSE9R8", title: 'CIRYAM – „Migotanie" (za kulisami)', date: "2024-04-03" },
+  { youtubeId: "FM6Gaqo-wFY", title: 'CIRYAM – „Migotanie" (official video)', date: "2023-02-14" },
+  { youtubeId: "vFlQGt3oAiY", title: 'CIRYAM – „Migotanie" (zwiastun)', date: "2023-02-08" },
+  { youtubeId: "kSrmh6aW_vI", title: 'CIRYAM – „Zabierz mnie" (za kulisami)', date: "2023-01-08" },
+  { youtubeId: "ZlyVuxGuC4g", title: 'CIRYAM – „Zabierz mnie" (official video)', date: "2022-08-12" },
+  { youtubeId: "_fyVwJOtCwY", title: 'CIRYAM – „Zabierz mnie" (zwiastun)', date: "2022-08-05" },
+  { youtubeId: "iyTQo9v-xNs", title: 'CIRYAM – „Noc" (official video)', date: "2020-07-09" },
+  { youtubeId: "4Rr3xrg18sw", title: 'CIRYAM – „Wataha" (official video)', date: "2020-05-12" },
+  { youtubeId: "9dMwSF9Q2jA", title: 'CIRYAM – „Wataha" / Wilki Krosno SA (sezon 2020)', date: "2019-12-28" },
+];
 
 const upcomingConcerts = [
-  { date: "2025-05-23", city: "Kraków", venue: "Garage Pub", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-05-24", city: "Sanok", venue: "Piknik charytatywny", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-05-30", city: "Krosno", venue: "Stadion przy Legionów 1", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-06-07", city: "Toruń", venue: "Festiwal Rocka Progresywnego", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-06-21", city: "Przegaliny Duże", venue: "Zlot motocyklowy", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-07-05", city: "Polańczyk", venue: "Tawerna u Michała", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-07-26", city: "Wólka Podleśna", venue: "Impreza", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-07-27", city: "Polańczyk", venue: "Tawerna u Michała", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-08-14", city: "Chorkówka", venue: "Biesiada Karpacka", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-08-22", city: "Kolbuszowa", venue: "Festiwal Muzyczny Spinacz", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-08-23", city: "Tyniec", venue: "Przystań Pod Lutym Turem", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-08-29", city: "Leżajsk", venue: "Podkarpacki Festiwal Tatuażu", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-08-30", city: "Brzesko", venue: "Rynek – Beczka Rym", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-09-05", city: "Warszawa", venue: "VooDoo Club – SCREAMFEST", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-09-13", city: "Jarosław", venue: "Decybel Music Club", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-09-19", city: "Bytom", venue: "Klub Gotyk", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-10-10", city: "Wrocław", venue: "Klub Liverpool + Totentanz", event: "Ciryam – trasa 25-lecia" },
-  { date: "2025-12-27", city: "Krosno", venue: "RCKP – Finał 25-lecia", event: "Ciryam – trasa 25-lecia" },
+  { date: "2025-05-23", city: "Kraków", venue: "Garage Pub", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-05-24", city: "Sanok", venue: "Piknik charytatywny", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-05-30", city: "Krosno", venue: "Stadion przy Legionów 1", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-06-07", city: "Toruń", venue: "Festiwal Rocka Progresywnego", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-06-21", city: "Przegaliny Duże", venue: "Zlot motocyklowy", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-07-05", city: "Polańczyk", venue: "Tawerna u Michała", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-07-26", city: "Wólka Podleśna", venue: "Impreza", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-07-27", city: "Polańczyk", venue: "Tawerna u Michała", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-08-14", city: "Chorkówka", venue: "Biesiada Karpacka", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-08-22", city: "Kolbuszowa", venue: "Festiwal Muzyczny Spinacz", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-08-23", city: "Tyniec", venue: "Przystań Pod Lutym Turem", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-08-29", city: "Leżajsk", venue: "Podkarpacki Festiwal Tatuażu", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-08-30", city: "Brzesko", venue: "Rynek - Beczka Rym", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-09-05", city: "Warszawa", venue: "VooDoo Club - SCREAMFEST", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-09-13", city: "Jarosław", venue: "Decybel Music Club", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-09-19", city: "Bytom", venue: "Klub Gotyk", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-10-10", city: "Wrocław", venue: "Klub Liverpool + Totentanz", event: "CIRYAM - trasa 25-lecia" },
+  { date: "2025-12-27", city: "Krosno", venue: "RCKP - Finał 25-lecia", event: "CIRYAM - trasa 25-lecia" },
 ];
 
 const formatDate = (dateStr: string) => {
@@ -123,7 +146,17 @@ const Index = () => {
       <section className="relative h-screen w-full overflow-hidden">
         {heroSlides.map((slide, i) => (
           <div key={i} className={`absolute inset-0 transition-all duration-1000 ease-in-out ${i === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}>
-            <img src={slide} alt={`CIRYAM rock band live ${i + 1}`} className="w-full h-full object-cover object-[center_25%]" loading={i === 0 ? "eager" : "lazy"} width={1400} height={940} fetchPriority={i === 0 ? "high" : "auto"} decoding={i === 0 ? "sync" : "async"} />
+            <img
+              src={slide.src}
+              alt={`CIRYAM rock band live ${i + 1}`}
+              className="w-full h-full object-cover"
+              style={{ objectPosition: slide.position }}
+              loading={i === 0 ? "eager" : "lazy"}
+              width={1400}
+              height={940}
+              fetchPriority={i === 0 ? "high" : "auto"}
+              decoding={i === 0 ? "sync" : "async"}
+            />
           </div>
         ))}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/40" />
@@ -209,16 +242,13 @@ const Index = () => {
             </div>
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            {[
-              { src: "https://www.youtube.com/embed/eEBIo2nJUsM", title: "CIRYAM – Wataha (Wilki Krosno)", youtubeId: "eEBIo2nJUsM" },
-              { src: "https://www.youtube.com/embed/iyTQo9v-xNs", title: 'CIRYAM – "Noc" (official video)', youtubeId: "iyTQo9v-xNs" },
-            ].map((video, i) => (
+            {youtubeClips.map((video, i) => (
               <FadeIn key={i} delay={100 + i * 100}>
                 <div className="bg-card border border-border rounded-xl overflow-hidden">
                   <div className="aspect-video">
                     <LazyIframe
                       width="100%" height="100%"
-                      src={video.src}
+                      src={`https://www.youtube.com/embed/${video.youtubeId}`}
                       title={video.title}
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -227,8 +257,13 @@ const Index = () => {
                       fallbackHeight="100%"
                     />
                   </div>
-                  <div className="flex items-center justify-between px-4 py-3">
-                    <span className="font-heading text-sm text-foreground truncate">{video.title}</span>
+                  <div className="flex items-center justify-between px-4 py-3 gap-3">
+                    <div className="min-w-0">
+                      <span className="font-heading text-sm text-foreground block truncate">{video.title}</span>
+                      <span className="font-body text-[10px] text-muted-foreground/70 tracking-wider">
+                        {new Date(video.date).toLocaleDateString("pl-PL", { year: "numeric", month: "short" })}
+                      </span>
+                    </div>
                     <a
                       href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
                       target="_blank"

@@ -31,7 +31,7 @@ const translations: Record<Lang, Record<string, string>> = {
 
     // Hero
     "hero.subtitle": "Polski zespół rockowy",
-    "hero.desc": "Autorski rock. Ciężkie riffy, melodyjne refreny\ni energia, która nie zostawia obojętnym.\nGramy w całej Polsce.",
+    "hero.desc": "Autorski rock.\nCiężkie riffy, mocne refreny.\nEnergia, którą czuć od pierwszego dźwięku.\nGramy w całej Polsce.",
     "hero.listen": "Posłuchaj",
     "hero.concerts": "Koncerty",
 
@@ -46,12 +46,12 @@ const translations: Record<Lang, Record<string, string>> = {
     // Music section
     "music.label": "Dyskografia",
     "music.title": "Posłuchaj naszej muzyki",
-    "music.desc": "CIRYAM łączy energię klasycznego hard rocka z nowoczesną produkcją.\nNasze utwory to mieszanka ciężkich riffów gitarowych, dynamicznych rytmów i melodii, które zostają w głowie.\nOd debiutanckiego albumu po najnowszy materiał – każda płyta to krok do przodu w naszej muzycznej podróży.",
+    "music.desc": "CIRYAM łączy energię hard rocka z nowoczesną produkcją.\nGitarowe riffy, mocny rytm, melodie, które zostają w głowie.\nMamy na koncie pięć albumów. Najnowszy to „Zamyślony zapach\".",
 
     // Concerts section
     "concerts.label": "Na żywo",
     "concerts.title": "Najbliższe koncerty",
-    "concerts.desc": "Każdy koncert CIRYAM to pełne emocji przeżycie. Sprawdź, kiedy gramy w Twoim mieście i zdobądź bilet, zanim się wyprzedadzą.",
+    "concerts.desc": "Każdy koncert CIRYAM to porcja mocnych emocji.\nSprawdź, kiedy gramy u Ciebie i zdobądź bilet, zanim wszystko się rozejdzie.",
     "concerts.tickets": "Bilety",
     "concerts.all": "Wszystkie koncerty",
     "concerts.buyTicket": "Kup bilet",
@@ -66,9 +66,9 @@ const translations: Record<Lang, Record<string, string>> = {
     // About section
     "about.label": "O zespole",
     "about.title": "Poznaj CIRYAM",
-    "about.p1": "CIRYAM to polski zespół rockowy, który od ponad 25 lat zaznacza swoją obecność na scenie muzycznej w Polsce.\nŁączymy energię klasycznego hard rocka z nowoczesnym brzmieniem — od ciężkich riffów gitarowych po emocjonalne, wpadające w pamięć refreny.",
-    "about.p2": "Na naszym koncie jest ponad 400 koncertów, pięć wydanych albumów i tysiące fanów w całym kraju.\nKażdy występ to dla nas coś więcej niż koncert — to wydarzenie, podczas którego na scenie zostawiamy wszystko.",
-    "about.p3": "Gramy na festiwalach, w klubach muzycznych i na imprezach prywatnych.\nNasze teksty to historie pisane bez filtrów — o emocjach, marzeniach i codziennych zmaganiach.",
+    "about.p1": "CIRYAM gra na polskiej scenie rockowej od 1999 roku.\nW naszym brzmieniu słychać klasyczny hard rock, ale dorzucamy do niego nowoczesną produkcję i melodyjne refreny.",
+    "about.p2": "Mamy za sobą ponad 400 koncertów i pięć wydanych albumów.\nNajnowszy to „Zamyślony zapach\". Na scenie zostawiamy wszystko - inaczej nie potrafimy.",
+    "about.p3": "Gramy festiwale, kluby, eventy prywatne i firmowe.\nW tekstach piszemy o tym, co naprawdę nas dotyka: emocjach, marzeniach, codzienności.",
     "about.cta": "Poznaj nas bliżej",
 
     // Why section
@@ -113,20 +113,20 @@ const translations: Record<Lang, Record<string, string>> = {
     // Music page
     "music.page.title": "Muzyka CIRYAM",
     "music.page.desc1": "Autorski rock – od ciężkich riffów po melodyjne refreny. Posłuchaj naszych nagrań na wszystkich platformach streamingowych.",
-    "music.page.desc2": 'CIRYAM ma na koncie trzy albumy studyjne i dziesi\u0105tki singli. Nasz najnowszy materia\u0142 "Dices" to najbardziej dojrza\u0142y album w naszej dyskografii \u2013 po\u0142\u0105czenie hard rockowej energii z emocjonalnymi tekstami i nowoczesn\u0105 produkcj\u0105.',
+    "music.page.desc2": 'CIRYAM ma na koncie pi\u0119\u0107 album\u00f3w studyjnych i dziesi\u0105tki singli. Najnowszy to „Zamy\u015blony zapach\" - p\u0142yta, na kt\u00f3rej hard rockowa energia spotyka si\u0119 z emocjonalnymi tekstami i wsp\u00f3\u0142czesnym brzmieniem.',
     "music.platforms": "Słuchaj na platformach",
     "music.seo.title": "O muzyce CIRYAM",
     "music.seo.p1": "CIRYAM to polski zespół rockowy, który od pierwszych akordów stawia na autentyczność. Nasze brzmienie czerpie z klasycznego hard rocka lat 70. i 80., ale nie boimy się nowoczesnych rozwiązań produkcyjnych. Efekt? Muzyka, która jest jednocześnie surowa i przystępna.",
-    "music.seo.p2": 'Album "Dices" \u2013 nasz najnowszy materia\u0142 \u2013 to 10 utwor\u00f3w, kt\u00f3re opowiadaj\u0105 o ryzyku, emocjach i \u017cyciowych wyborach. Od mocnego otwieracza po akustyczn\u0105 ballad\u0119 na zako\u0144czenie \u2013 p\u0142yta zabiera s\u0142uchacza w rockow\u0105 podr\u00f3\u017c.',
+    "music.seo.p2": 'Najnowszy album „Zamy\u015blony zapach\" to nasz najbardziej osobisty materia\u0142. Mocne riffy, ballady, teksty o tym, co siedzi w \u015brodku. P\u0142yta wci\u0105ga od pierwszego utworu i zostaje w g\u0142owie na d\u0142ugo.',
     "music.seo.p3": "Wszystkie nasze płyty dostępne są w formatach cyfrowych (Spotify, Apple Music, SoundCloud) oraz fizycznych (CD, winyl) w oficjalnym sklepie CIRYAM.",
 
     // About page
     "about.page.title": "CIRYAM – polski zespół rockowy",
     "about.who": "Kim jesteśmy",
-    "about.page.p1": "CIRYAM to polski zespół rockowy założony przez grupę muzyków połączonych pasją do gitarowego grania i scenicznej energii. Od początku stawiamy na autorski materiał – każdy riff, tekst i melodia to nasze dzieło.",
-    "about.page.p2": "Łączymy energię klasycznego hard rocka z nowoczesnym brzmieniem. Nasze inspiracje to zarówno legendy gatunku – Led Zeppelin, AC/DC, Deep Purple – jak i współcześni artyści rockowej sceny. Efektem jest brzmienie, które jest jednocześnie klasyczne i świeże.",
-    "about.page.p3": "Na scenie dajemy z siebie absolutnie wszystko. Ponad 50 koncertów rocznie – od kameralnych klubów po wielotysięczne festiwale – to nasza codzienna rzeczywistość. Każdy występ traktujemy jako niepowtarzalne wydarzenie.",
-    "about.page.p4": "Mamy na koncie trzy albumy studyjne, dziesiątki singli i setki godzin spędzonych na scenie. CIRYAM to nie tylko zespół – to styl życia oparty na rocku, autentyczności i pasji do muzyki.",
+    "about.page.p1": "CIRYAM zaczął się w 1999 roku w Krośnie. Od początku gramy własną muzykę - każdy riff, tekst i melodia to nasza robota.",
+    "about.page.p2": "W naszym brzmieniu słychać legendy hard rocka, ale produkcja i refreny pchają nas w stronę współczesnego rocka. Klasyka spotyka świeżość.",
+    "about.page.p3": "Na scenie nie ściemniamy. Kluby, festiwale, koncerty prywatne - dla nas każdy występ to to samo: dać z siebie wszystko.",
+    "about.page.p4": "Pięć albumów studyjnych, dziesiątki singli i setki godzin na scenie. Najnowszy krążek to „Zamyślony zapach\". CIRYAM to nie tylko muzyka - to sposób na życie.",
     "about.founded": "Rok założenia",
     "about.studioAlbums": "Albumy studyjne",
     "about.concertsYear": "Koncertów rocznie",
@@ -182,8 +182,8 @@ const translations: Record<Lang, Record<string, string>> = {
     "press.title": "CIRYAM – Press Kit",
     "press.subtitle": "Materiały dla organizatorów koncertów, mediów i promotorów. Zdjęcia, rider techniczny i informacje o zespole.",
     "press.bio.title": "O zespole",
-    "press.bio.p1": "CIRYAM to polski zespół rockowy założony w 1999 roku w Krośnie. Gramy autorski rock – ciężkie riffy, melodyjne refreny i sceniczną energię, która nie zostawia obojętnym. Na koncie mamy ponad 400 koncertów w całej Polsce – od kameralnych klubów po wielotysięczne festiwale.",
-    "press.bio.p2": "W dyskografii zespołu znajduje się pięć albumów studyjnych, w tym najnowszy \"Dices\". CIRYAM to sprawdzony zespół na każdą scenę – gramy na festiwalach, w klubach, na eventach firmowych i prywatnych. Skład: Monika Węgrzyn (wokal), Robert Węgrzyn (gitary, lider), Kuba Czubik (gitara solowa), Jacek Rola (bas).",
+    "press.bio.p1": "CIRYAM powstał w 1999 roku w Krośnie. Gramy autorski rock - ciężkie riffy, mocne refreny, sceniczna energia, której nie da się przeoczyć. Mamy za sobą ponad 400 koncertów w całej Polsce, od małych klubów po duże festiwale.",
+    "press.bio.p2": "W naszej dyskografii jest pięć albumów studyjnych. Najnowszy to „Zamyślony zapach\". CIRYAM sprawdza się na każdej scenie - festiwale, kluby, eventy firmowe i prywatne. Skład: Monika Węgrzyn (wokal), Robert Węgrzyn (gitary, lider), Kuba Czubik (gitara solowa), Jacek Rola (bas).",
     "press.bio.founded": "Rok założenia",
     "press.bio.albums": "Albumy",
     "press.bio.concertsYear": "Koncertów/rok",
@@ -263,9 +263,9 @@ const translations: Record<Lang, Record<string, string>> = {
     // About section
     "about.label": "About",
     "about.title": "Meet CIRYAM",
-    "about.p1": "CIRYAM is a Polish rock band that has been conquering the music scene for over 6 years. We combine the energy of classic hard rock with a modern sound – from heavy guitar riffs to emotional, memorable choruses.",
-    "about.p2": "With over 50 concerts per year, three studio albums and thousands of fans across Poland, every performance is treated as an unforgettable event – we leave everything on stage.",
-    "about.p3": "We play at festivals, music clubs and private events. Our lyrics tell stories about life without filters – about emotions, dreams and everyday struggles.",
+    "about.p1": "CIRYAM has been on the Polish rock scene since 1999. We mix the energy of classic hard rock with modern production and melodic choruses.",
+    "about.p2": "We have over 400 concerts and five studio albums behind us. The latest one is „Zamyślony zapach\". On stage we leave everything - that's the only way we know.",
+    "about.p3": "We play festivals, clubs and private events. Our lyrics talk about what really matters: emotions, dreams, everyday life.",
     "about.cta": "Get to know us",
 
     // Why section
@@ -305,20 +305,20 @@ const translations: Record<Lang, Record<string, string>> = {
     // Music page
     "music.page.title": "CIRYAM Music",
     "music.page.desc1": "Original rock – from heavy riffs to melodic choruses. Listen to our recordings on all streaming platforms.",
-    "music.page.desc2": "CIRYAM has three studio albums and dozens of singles. Our latest release 'Dices' is the most mature album in our discography – combining hard rock energy with emotional lyrics and modern production.",
+    "music.page.desc2": "CIRYAM has five studio albums and dozens of singles. The latest one, „Zamyślony zapach\", is our most personal record - hard rock energy meets emotional lyrics and contemporary sound.",
     "music.platforms": "Listen on platforms",
     "music.seo.title": "About CIRYAM's music",
     "music.seo.p1": "CIRYAM is a Polish rock band that prioritizes authenticity from the first chord. Our sound draws from classic hard rock of the 70s and 80s, but we're not afraid of modern production techniques. The result? Music that's both raw and accessible.",
-    "music.seo.p2": "'Dices' – our latest album – features 10 tracks about risk, emotions and life choices. From the powerful opener to the acoustic closing ballad – the album takes the listener on a rock journey.",
+    "music.seo.p2": "Our latest album „Zamyślony zapach\" is our most personal release. Heavy riffs, ballads, lyrics about what's really inside. The record pulls you in from the first track and stays with you.",
     "music.seo.p3": "All our albums are available in digital formats (Spotify, Apple Music, SoundCloud) and physical formats (CD, vinyl) at the official CIRYAM shop.",
 
     // About page
     "about.page.title": "CIRYAM – Polish rock band",
     "about.who": "Who we are",
-    "about.page.p1": "CIRYAM is a Polish rock band founded by a group of musicians united by their passion for guitar-driven music and stage energy. From the very beginning, we've focused on original material – every riff, lyric and melody is our own.",
-    "about.page.p2": "We combine the energy of classic hard rock with a modern sound. Our inspirations range from genre legends – Led Zeppelin, AC/DC, Deep Purple – to contemporary rock artists. The result is a sound that's both classic and fresh.",
-    "about.page.p3": "On stage, we give absolutely everything. Over 50 concerts per year – from intimate clubs to large festivals – is our daily reality. Every performance is treated as a unique event.",
-    "about.page.p4": "We have three studio albums, dozens of singles and hundreds of hours spent on stage. CIRYAM is not just a band – it's a lifestyle built on rock, authenticity and passion for music.",
+    "about.page.p1": "CIRYAM started in 1999 in Krosno. From day one we've played our own music - every riff, lyric and melody is ours.",
+    "about.page.p2": "Hard rock legends are in our DNA, but the production and choruses push us toward modern rock. Classic meets fresh.",
+    "about.page.p3": "On stage we don't fake it. Clubs, festivals, private shows - every gig is the same: give everything.",
+    "about.page.p4": "Five studio albums, dozens of singles and hundreds of hours on stage. The latest record is „Zamyślony zapach\". CIRYAM isn't just music - it's a way of life.",
     "about.founded": "Year founded",
     "about.studioAlbums": "Studio albums",
     "about.concertsYear": "Concerts per year",
@@ -374,8 +374,8 @@ const translations: Record<Lang, Record<string, string>> = {
     "press.title": "CIRYAM – Press Kit",
     "press.subtitle": "Materials for concert organizers, media and promoters. Photos, technical rider and band information.",
     "press.bio.title": "About the band",
-    "press.bio.p1": "CIRYAM is a Polish rock band founded in 2001. We play original rock – heavy riffs, melodic choruses and stage energy that leaves no one indifferent. We have over 250 concerts across Poland – from intimate clubs to large festivals.",
-    "press.bio.p2": "The band's discography includes five studio albums, including the latest \"Dices\". CIRYAM is a proven band for any stage – we play festivals, clubs, corporate and private events.",
+    "press.bio.p1": "CIRYAM was founded in 1999 in Krosno. We play original rock - heavy riffs, strong choruses and stage energy that's impossible to miss. We have over 400 concerts across Poland behind us, from small clubs to large festivals.",
+    "press.bio.p2": "Our discography includes five studio albums. The latest one is „Zamyślony zapach\". CIRYAM works on every stage - festivals, clubs, corporate and private events.",
     "press.bio.founded": "Founded",
     "press.bio.albums": "Albums",
     "press.bio.concertsYear": "Concerts/year",

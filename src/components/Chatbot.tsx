@@ -5,7 +5,7 @@ import { useLang } from "@/contexts/LangContext";
 
 const bandKnowledgePl = {
   general: "CIRYAM to polski zespół rockowy, łączący energię hard rocka z nowoczesnym brzmieniem. Zespół znany jest z intensywnych koncertów na żywo i autorskich kompozycji.",
-  music: 'Najnowszy materiał CIRYAM znajdziesz na Spotify, SoundCloud i YouTube. Zespół wydał płytę "Dices" dostępną w formacie CD i winylowym w naszym sklepie. Posłuchaj na: soundcloud.com/ciryam',
+  music: 'CIRYAM ma na koncie pięć albumów. Najnowszy to „Zamyślony zapach". Posłuchaj na Spotify, SoundCloud i YouTube. CD i winyl dostępne w naszym sklepie. soundcloud.com/ciryam',
   concerts: "Najbliższe koncerty CIRYAM:\n\u2022 12 kwietnia \u2013 Krak\u00f3w, Za\u015bcianek\n\u2022 26 kwietnia \u2013 Warszawa, Hydrozagadka\n\u2022 10 maja \u2013 Wroc\u0142aw, Firlej\n\u2022 24 maja \u2013 Gda\u0144sk, Drizzly Grizzly\n\u2022 14 czerwca \u2013 Rzesz\u00f3w, Vinyl Music Club\n\u2022 28 czerwca \u2013 Pozna\u0144, Blue Note\n\nBilety dost\u0119pne online lub w dniu koncertu!",
   shop: "W sklepie CIRYAM znajdziesz: koszulki (89 z\u0142), bluzy hoodie (149 z\u0142), p\u0142yty CD (49 z\u0142), winyle LP (119 z\u0142), plakaty (39 z\u0142) i czapki beanie (59 z\u0142). Zam\u00f3wienia przez: sklep@ciryam.pl",
   booking: "Booking koncert\u00f3w i wsp\u00f3\u0142praca: booking@ciryam.pl. Gramy na festiwalach, w klubach i na eventach prywatnych. Napisz \u2013 wr\u00f3cimy z ofert\u0105!",
@@ -15,7 +15,7 @@ const bandKnowledgePl = {
 
 const bandKnowledgeEn = {
   general: "CIRYAM is a Polish rock band combining hard rock energy with a modern sound. The band is known for intense live concerts and original compositions.",
-  music: 'Find the latest CIRYAM material on Spotify, SoundCloud and YouTube. The band released the album "Dices" available on CD and vinyl in our shop. Listen at: soundcloud.com/ciryam',
+  music: 'CIRYAM has five studio albums. The latest one is „Zamyślony zapach". Listen on Spotify, SoundCloud and YouTube. CD and vinyl available in our shop. soundcloud.com/ciryam',
   concerts: "Upcoming CIRYAM concerts:\n\u2022 April 12 \u2013 Krak\u00f3w, Za\u015bcianek\n\u2022 April 26 \u2013 Warsaw, Hydrozagadka\n\u2022 May 10 \u2013 Wroc\u0142aw, Firlej\n\u2022 May 24 \u2013 Gda\u0144sk, Drizzly Grizzly\n\u2022 June 14 \u2013 Rzesz\u00f3w, Vinyl Music Club\n\u2022 June 28 \u2013 Pozna\u0144, Blue Note\n\nTickets available online or at the door!",
   shop: "In the CIRYAM shop you'll find: t-shirts (89 PLN), hoodies (149 PLN), CDs (49 PLN), vinyl LPs (119 PLN), posters (39 PLN) and beanies (59 PLN). Orders via: sklep@ciryam.pl",
   booking: "Concert booking & collaboration: booking@ciryam.pl. We play at festivals, clubs and private events. Write to us \u2013 we'll get back with an offer!",

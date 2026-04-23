@@ -122,13 +122,13 @@ const AktualnosciPost = () => {
           {/* Author */}
           <div className="flex items-center gap-3 mb-6">
             <div className="w-9 h-9 rounded-full overflow-hidden bg-secondary flex items-center justify-center shrink-0">
-              {(post as any).author_name === "Ciryam" || !(post as any).author_name ? (
-                <img src={ciryamLogo} alt="Ciryam" className="w-full h-full object-cover" />
+              {(post as any).author_name === "Ciryam" || (post as any).author_name === "CIRYAM" || !(post as any).author_name ? (
+                <img src={ciryamLogo} alt="CIRYAM" className="w-full h-full object-cover" />
               ) : (
                 <User size={16} className="text-muted-foreground" />
               )}
             </div>
-            <span className="font-body text-sm text-foreground">{(post as any).author_name || "Ciryam"}</span>
+            <span className="font-body text-sm text-foreground">{((post as any).author_name === "Ciryam" ? "CIRYAM" : (post as any).author_name) || "CIRYAM"}</span>
           </div>
 
           {post.cover_image_url && (
