@@ -80,12 +80,7 @@ const AnimatedCounter = ({ value, label, delay = 0 }: AnimatedCounterProps) => {
         >
           {started ? displayed : "0"}{suffix}
         </span>
-        <div 
-          className={`w-8 h-0.5 bg-accent/30 mx-auto my-3 rounded-full transition-all duration-700 ${
-            started ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
-          }`} 
-          style={{ transitionDelay: `${delay + 300}ms` }}
-        />
+        <div className="my-2" />
         <span
           className={`font-body text-xs text-muted-foreground uppercase tracking-[0.15em] transition-all duration-700 ${
             started ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
