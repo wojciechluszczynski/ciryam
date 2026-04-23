@@ -41,7 +41,7 @@ const youtubeClips = [
   { youtubeId: "_fyVwJOtCwY", title: 'CIRYAM – „Zabierz mnie" (zwiastun)', date: "2022-08-05" },
   { youtubeId: "iyTQo9v-xNs", title: 'CIRYAM – „Noc" (official video)', date: "2020-07-09" },
   { youtubeId: "4Rr3xrg18sw", title: 'CIRYAM – „Wataha" (official video)', date: "2020-05-12" },
-  { youtubeId: "9dMwSF9Q2jA", title: "CIRYAM – „Wataha" / Wilki Krosno SA (sezon 2020)", date: "2019-12-28" },
+  { youtubeId: "9dMwSF9Q2jA", title: 'CIRYAM – „Wataha" / Wilki Krosno SA (sezon 2020)', date: "2019-12-28" },
 ];
 
 const upcomingConcerts = [
