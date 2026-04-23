@@ -19,12 +19,10 @@ import ciryamBand8 from "@/assets/ciryam-band-8.jpg";
 import ciryamLive from "@/assets/ciryam-live.jpg";
 import ciryamLogotype from "@/assets/ciryam-logotype-white.png";
 
-// Każdy slajd ma własny object-position, żeby twarze nie były obcinane.
+// Tylko slajdy gdzie twarze są wysoko, nad logo i napisami w hero.
 const heroSlides: { src: string; position: string }[] = [
-  { src: ciryamBand2, position: "center 18%" },
-  { src: ciryamBand3, position: "center 25%" },
-  { src: ciryamBand4, position: "center 20%" },
-  { src: ciryamBand5, position: "center 22%" },
+  { src: ciryamBand4, position: "center 15%" },
+  { src: ciryamBand5, position: "center 18%" },
 ];
 
 // Kolejność klipów ustawiona przez zespół: Wataha, Na niby, Ślad jako mocne otwarcie.
