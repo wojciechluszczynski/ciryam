@@ -4,21 +4,26 @@ import LazyIframe from "@/components/LazyIframe";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
 
+// Featured w kolejności wskazanej przez zespół: Wataha, Na niby, Ślad.
 const musicVideos = [
-  { title: "Na niby", album: "", youtubeId: "mTPAc0ICZRw", featured: true, desc: "Oficjalny teledysk do singla 'Na niby'. Klimatyczny klip kręcony w opuszczonej fabryce." },
-  { title: "Ślad", album: "", youtubeId: "CtL2mcYmLBM", featured: true, desc: "Energetyczny utwór z mocnym riffem gitarowym. Teledysk zrealizowany na żywo w studiu." },
-  { title: "Zabierz mnie", album: "", youtubeId: "ZlyVuxGuC4g", featured: true, desc: "Balladowy singiel z emocjonalnym przekazem. Klip z nastrojowymi ujęciami plenerów." },
-  { title: "Noc", album: "Zamyślony zapach (2023)", youtubeId: "iyTQo9v-xNs", desc: "Oficjalny teledysk do utworu z albumu 'Zamyślony zapach'. Mroczna, filmowa estetyka." },
-  { title: "Wataha", album: "Hymn Wilków Krosno (2019)", youtubeId: "eEBIo2nJUsM", desc: "Hymn drużyny Wilki Krosno. Połączenie rockowej energii z kibicowskim duchem." },
-  { title: "Alone – band version", album: "Desires (2017)", youtubeId: "41ImTmg7HYE", desc: "Zespołowa wersja utworu 'Alone'. Nagranie z próby w pełnym składzie." },
-  { title: "Venus (english version)", album: "Desires (2017)", youtubeId: "14QXTwQZ3ts", desc: "Anglojęzyczna wersja utworu Venus z albumu Desires. Alternatywny rock z melodyjnym refrenem." },
-  { title: "W Ciszy", album: "Szepty dusz (2004)", youtubeId: "A0sR8SfO_Xc", desc: "Klasyczny utwór z debiutanckiego albumu. Nostalgiczny klimat i surowe brzmienie." },
+  { title: "Wataha", album: "Singiel (2020) · hymn Wilków Krosno", youtubeId: "4Rr3xrg18sw", featured: true, desc: "Hymn drużyny Wilki Krosno. Najczęściej oglądany teledysk zespołu." },
+  { title: "Na niby", album: "Singiel (2025)", youtubeId: "mTPAc0ICZRw", featured: true, desc: "Najnowszy singiel CIRYAM. Oficjalny teledysk." },
+  { title: "Ślad", album: "Zamyślony zapach (2023)", youtubeId: "CtL2mcYmLBM", featured: true, desc: "Singiel z albumu Zamyślony zapach." },
+  { title: "W biegu", album: "Singiel (2025)", youtubeId: "gJNSR8-y74A", desc: "Oficjalny teledysk." },
+  { title: "Migotanie", album: "Zamyślony zapach (2023)", youtubeId: "FM6Gaqo-wFY", desc: "Oficjalny teledysk." },
+  { title: "Zabierz mnie", album: "Singiel (2022)", youtubeId: "ZlyVuxGuC4g", desc: "Oficjalny teledysk." },
+  { title: "Noc", album: "Zamyślony zapach (2023)", youtubeId: "iyTQo9v-xNs", desc: "Oficjalny teledysk." },
+  { title: "Alone (band version)", album: "Desires (2015)", youtubeId: "41ImTmg7HYE", desc: "Zespołowa wersja utworu z albumu Desires." },
+  { title: "Venus (english version)", album: "Desires (2015)", youtubeId: "14QXTwQZ3ts", desc: "Anglojęzyczna wersja utworu Venus." },
+  { title: "W Ciszy", album: "Szepty dusz (2004)", youtubeId: "A0sR8SfO_Xc", desc: "Utwór z debiutanckiego albumu." },
 ];
 
 const albums = [
-  { title: "Zamyślony zapach", year: "2023", tracks: ["Noc", "Zamyślony zapach", "Obcy", "Cień", "W drodze"] },
-  { title: "Desires", year: "2017", tracks: ["Venus", "Alone", "Desires", "Fire Inside", "Lost"] },
-  { title: "Szepty dusz", year: "2004", tracks: ["W Ciszy", "Szepty dusz", "Sen", "Ucieczka", "Droga"] },
+  { title: "Zamyślony zapach", year: "2023", label: "Lynx Music", tracks: ["Migotanie", "Ślad", "Noc", "Zamyślony zapach", "Obcy"] },
+  { title: "Desires", year: "2015", label: "Lynx Music / Inverse", tracks: ["Venus", "Alone", "Desires", "Fire Inside", "Lost"] },
+  { title: "Człowiek motyl", year: "2008", label: "Fonografika", tracks: ["Człowiek motyl", "Tylko Ty", "Bez Ciebie", "Cień", "Kropla"] },
+  { title: "W sercu kamienia", year: "2006", label: "Metal Mind / TC Music", tracks: ["W sercu kamienia", "Próba", "Świt", "Bez słów", "Droga"] },
+  { title: "Szepty dusz", year: "2004", label: "AMS", tracks: ["W Ciszy", "Szepty dusz", "Sen", "Ucieczka", "Droga"] },
 ];
 
 const Muzyka = () => {
@@ -147,10 +152,10 @@ const Muzyka = () => {
               <Disc3 size={20} className="text-accent" />
               <h2 className="font-heading text-3xl md:text-4xl text-foreground">Dyskografia</h2>
             </div>
-            <p className="text-muted-foreground font-body text-sm mb-10">Trzy albumy, ponad 20 lat na scenie.</p>
+            <p className="text-muted-foreground font-body text-sm mb-10">Pięć albumów, 25 lat na scenie.</p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {albums.map((album, i) => (
               <FadeIn key={album.title} delay={100 + i * 100}>
                 <div className="group bg-card border border-border rounded-xl p-6 hover:border-accent/40 transition-all duration-300 h-full">
@@ -160,6 +165,7 @@ const Muzyka = () => {
                   <h3 className="font-heading text-xl text-foreground mb-4 group-hover:text-accent transition-colors">
                     {album.title}
                   </h3>
+                  <p className="font-body text-[10px] uppercase tracking-[0.15em] text-muted-foreground mb-4">{album.label}</p>
                   <ol className="space-y-1.5">
                     {album.tracks.map((track, j) => (
                       <li key={track} className="flex items-center gap-2 font-body text-sm text-muted-foreground">
