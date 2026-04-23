@@ -262,6 +262,8 @@ const OZespole = () => {
                       alt={album.title}
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       loading="lazy"
+                      referrerPolicy="no-referrer"
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).src = "/placeholder.svg"; }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -297,6 +299,8 @@ const OZespole = () => {
                         alt={photo.alt}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                         loading="lazy"
+                        referrerPolicy="no-referrer"
+                        onError={(e) => { (e.currentTarget as HTMLImageElement).src = "/placeholder.svg"; }}
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-200" />
                     </button>
