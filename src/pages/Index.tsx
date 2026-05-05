@@ -239,16 +239,41 @@ const Index = () => {
               <FadeIn key={i} delay={100 + i * 100}>
                 <div className="bg-card border border-border rounded-xl overflow-hidden">
                   <div className="aspect-video">
-                    <LazyIframe
-                      width="100%" height="100%"
-                      src={`https://www.youtube.com/embed/${video.youtubeId}`}
-                      title={video.title}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="w-full h-full"
-                      fallbackHeight="100%"
-                    />
+                    {video.embedDisabled ? (
+                      <a
+                        href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative block w-full h-full group"
+                        aria-label={`${t("video.unavailable.cta")} – ${video.title}`}
+                      >
+                        <img
+                          src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
+                          alt={video.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                          onError={(e) => {
+                            (e.currentTarget as HTMLImageElement).src = `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-background/50 flex items-center justify-center transition-colors group-hover:bg-background/35">
+                          <div className="w-14 h-14 rounded-full bg-accent flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
+                            <Play size={22} className="text-accent-foreground fill-accent-foreground ml-0.5" />
+                          </div>
+                        </div>
+                      </a>
+                    ) : (
+                      <LazyIframe
+                        width="100%" height="100%"
+                        src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                        title={video.title}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="w-full h-full"
+                        fallbackHeight="100%"
+                      />
+                    )}
                   </div>
                   <div className="flex items-center justify-between px-4 py-3 gap-3">
                     <div className="min-w-0">
