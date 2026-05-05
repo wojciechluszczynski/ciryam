@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Calendar, MapPin, ChevronDown } from "lucide-react";
+import { Calendar, MapPin, ChevronDown, Mail, Facebook } from "lucide-react";
+import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
 
@@ -334,7 +335,13 @@ const formatDate = (dateStr: string) => {
   };
 };
 
-const upcoming = concerts;
+// Filtr: tylko koncerty z datą >= dziś (reset godziny do 00:00 lokalnego czasu).
+const todayStart = (() => {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  return d;
+})();
+const upcoming = concerts.filter((c) => new Date(c.date) >= todayStart);
 
 const Koncerty = () => {
   const { t } = useLang();
@@ -364,6 +371,30 @@ const Koncerty = () => {
           <h2 className="font-heading text-sm tracking-[0.2em] uppercase text-muted-foreground mb-6 flex items-center gap-2">
             <Calendar size={14} className="text-accent" /> {t("concerts.upcoming")}
           </h2>
+          {upcoming.length === 0 ? (
+            <div className="border-t border-b border-border py-12 px-4 text-center">
+              <h3 className="font-heading text-3xl text-foreground mb-3">{t("concerts.empty.title")}</h3>
+              <p className="text-muted-foreground font-body text-sm max-w-md mx-auto leading-relaxed mb-6">
+                {t("concerts.empty.desc")}
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <Link
+                  to="/kontakt"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-accent text-accent-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors"
+                >
+                  <Mail size={14} /> {t("concerts.empty.contact")}
+                </Link>
+                <a
+                  href="https://www.facebook.com/ciryamband"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-border text-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-secondary transition-colors"
+                >
+                  <Facebook size={14} /> {t("concerts.empty.facebook")}
+                </a>
+              </div>
+            </div>
+          ) : (
           <div className="space-y-0">
             {upcoming.map((concert, i) => {
               const { day, month } = formatDate(concert.date);
@@ -387,6 +418,7 @@ const Koncerty = () => {
             })}
             <div className="border-t border-border" />
           </div>
+          )}
         </div>
 
         {/* Archival concerts */}

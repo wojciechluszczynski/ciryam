@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { ExternalLink, Play, Disc3, Music, Tv } from "lucide-react";
+import { ExternalLink, Play, Disc3, Music, Tv, AlertCircle } from "lucide-react";
 import LazyIframe from "@/components/LazyIframe";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
 
 // Featured w kolejności wskazanej przez zespół: Wataha, Na niby, Ślad.
 const musicVideos = [
-  { title: "Wataha", album: "Singiel (2020) · hymn Wilków Krosno", youtubeId: "4Rr3xrg18sw", featured: true, desc: "Hymn drużyny Wilki Krosno. Najczęściej oglądany teledysk zespołu." },
+  { title: "Wataha", album: "Singiel (2020) · hymn Wilków Krosno", youtubeId: "4Rr3xrg18sw", featured: true, embedDisabled: true, desc: "Hymn drużyny Wilki Krosno. Najczęściej oglądany teledysk zespołu." },
   { title: "Na niby", album: "Singiel (2025)", youtubeId: "mTPAc0ICZRw", featured: true, desc: "Najnowszy singiel CIRYAM. Oficjalny teledysk." },
   { title: "Ślad", album: "Zamyślony zapach (2023)", youtubeId: "CtL2mcYmLBM", featured: true, desc: "Singiel z albumu Zamyślony zapach." },
   { title: "W biegu", album: "Singiel (2025)", youtubeId: "gJNSR8-y74A", desc: "Oficjalny teledysk." },
@@ -51,15 +51,42 @@ const Muzyka = () => {
             {/* Main player */}
             <div>
               <div className="aspect-video rounded-xl overflow-hidden border border-border bg-card">
-                <LazyIframe
-                  width="100%"
-                  height="100%"
-                  src={`https://www.youtube.com/embed/${activeVideo}?autoplay=0`}
-                  title={`CIRYAM – ${currentVideo.title}`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  fallbackHeight="100%"
-                />
+                {currentVideo.embedDisabled ? (
+                  <a
+                    href={`https://www.youtube.com/watch?v=${activeVideo}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative block w-full h-full group"
+                    aria-label={`${t("video.unavailable.cta")} – ${currentVideo.title}`}
+                  >
+                    <img
+                      src={`https://img.youtube.com/vi/${activeVideo}/maxresdefault.jpg`}
+                      alt={currentVideo.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src = `https://img.youtube.com/vi/${activeVideo}/hqdefault.jpg`;
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-background/50 flex flex-col items-center justify-center gap-3 transition-colors group-hover:bg-background/40">
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-accent flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
+                        <Play size={28} className="text-accent-foreground fill-accent-foreground ml-1" />
+                      </div>
+                      <span className="font-heading text-xs md:text-sm tracking-[0.15em] uppercase text-foreground">
+                        {t("video.unavailable.cta")}
+                      </span>
+                    </div>
+                  </a>
+                ) : (
+                  <LazyIframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.youtube.com/embed/${activeVideo}?autoplay=0`}
+                    title={`CIRYAM – ${currentVideo.title}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    fallbackHeight="100%"
+                  />
+                )}
               </div>
               <div className="mt-4">
                 <h2 className="font-heading text-2xl text-foreground">{currentVideo.title}</h2>
@@ -67,6 +94,11 @@ const Muzyka = () => {
                   <span className="font-body text-xs text-muted-foreground">{currentVideo.album}</span>
                 )}
                 <p className="font-body text-sm text-muted-foreground mt-2 leading-relaxed max-w-2xl">{currentVideo.desc}</p>
+                {currentVideo.embedDisabled && (
+                  <p className="flex items-center gap-1.5 mt-2 font-body text-xs text-accent/80">
+                    <AlertCircle size={12} /> {t("video.unavailable.note")}
+                  </p>
+                )}
               </div>
             </div>
 

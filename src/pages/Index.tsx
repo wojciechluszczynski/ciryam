@@ -27,7 +27,7 @@ const heroSlides: { src: string; position: string }[] = [
 
 // Kolejność klipów ustawiona przez zespół: Wataha, Na niby, Ślad jako mocne otwarcie.
 const youtubeClips = [
-  { youtubeId: "4Rr3xrg18sw", title: 'CIRYAM - „Wataha" (official video)', date: "2020-05-12" },
+  { youtubeId: "4Rr3xrg18sw", title: 'CIRYAM - „Wataha" (official video)', date: "2020-05-12", embedDisabled: true },
   { youtubeId: "mTPAc0ICZRw", title: 'CIRYAM - „Na niby" (official video)', date: "2025-12-06" },
   { youtubeId: "CtL2mcYmLBM", title: 'CIRYAM - „Ślad" (official video)', date: "2025-08-15" },
   { youtubeId: "gJNSR8-y74A", title: 'CIRYAM - „W biegu" (official video)', date: "2025-06-19" },
@@ -239,16 +239,41 @@ const Index = () => {
               <FadeIn key={i} delay={100 + i * 100}>
                 <div className="bg-card border border-border rounded-xl overflow-hidden">
                   <div className="aspect-video">
-                    <LazyIframe
-                      width="100%" height="100%"
-                      src={`https://www.youtube.com/embed/${video.youtubeId}`}
-                      title={video.title}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="w-full h-full"
-                      fallbackHeight="100%"
-                    />
+                    {video.embedDisabled ? (
+                      <a
+                        href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative block w-full h-full group"
+                        aria-label={`${t("video.unavailable.cta")} – ${video.title}`}
+                      >
+                        <img
+                          src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
+                          alt={video.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                          onError={(e) => {
+                            (e.currentTarget as HTMLImageElement).src = `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-background/50 flex items-center justify-center transition-colors group-hover:bg-background/35">
+                          <div className="w-14 h-14 rounded-full bg-accent flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
+                            <Play size={22} className="text-accent-foreground fill-accent-foreground ml-0.5" />
+                          </div>
+                        </div>
+                      </a>
+                    ) : (
+                      <LazyIframe
+                        width="100%" height="100%"
+                        src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                        title={video.title}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="w-full h-full"
+                        fallbackHeight="100%"
+                      />
+                    )}
                   </div>
                   <div className="flex items-center justify-between px-4 py-3 gap-3">
                     <div className="min-w-0">
@@ -283,8 +308,39 @@ const Index = () => {
               <p className="text-muted-foreground font-body text-sm max-w-lg mx-auto leading-relaxed whitespace-pre-line">{t("concerts.desc")}</p>
             </div>
           </FadeIn>
-          <div className="space-y-0">
-            {upcomingConcerts.slice(0, 6).map((concert, i) => {
+          {(() => {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const futureConcerts = upcomingConcerts.filter((c) => new Date(c.date) >= today).slice(0, 6);
+            if (futureConcerts.length === 0) {
+              return (
+                <div className="border-t border-b border-border py-12 px-4 text-center">
+                  <h3 className="font-heading text-2xl md:text-3xl text-foreground mb-3">{t("concerts.empty.title")}</h3>
+                  <p className="text-muted-foreground font-body text-sm max-w-md mx-auto leading-relaxed mb-6">
+                    {t("concerts.empty.desc")}
+                  </p>
+                  <div className="flex flex-wrap items-center justify-center gap-3">
+                    <Link
+                      to="/kontakt"
+                      className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-accent text-accent-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors"
+                    >
+                      {t("concerts.empty.contact")}
+                    </Link>
+                    <a
+                      href="https://www.facebook.com/ciryamband"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-border text-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-background/50 transition-colors"
+                    >
+                      {t("concerts.empty.facebook")}
+                    </a>
+                  </div>
+                </div>
+              );
+            }
+            return (
+              <div className="space-y-0">
+                {futureConcerts.map((concert, i) => {
               const { day, month } = formatDate(concert.date);
               return (
                 <FadeIn key={i} delay={i * 60}>
@@ -304,6 +360,8 @@ const Index = () => {
             })}
             <div className="border-t border-border" />
           </div>
+            );
+          })()}
           <FadeIn delay={300}>
             <div className="text-center mt-10">
               <Link to="/koncerty" className="inline-flex items-center gap-2 font-heading text-sm tracking-[0.1em] uppercase text-foreground border-b border-foreground/30 pb-1 hover:border-accent hover:text-accent transition-colors">
