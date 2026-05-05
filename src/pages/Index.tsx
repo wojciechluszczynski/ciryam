@@ -27,7 +27,7 @@ const heroSlides: { src: string; position: string }[] = [
 
 // Kolejność klipów ustawiona przez zespół: Wataha, Na niby, Ślad jako mocne otwarcie.
 const youtubeClips = [
-  { youtubeId: "4Rr3xrg18sw", title: 'CIRYAM - „Wataha" (official video)', date: "2020-05-12" },
+  { youtubeId: "4Rr3xrg18sw", title: 'CIRYAM - „Wataha" (official video)', date: "2020-05-12", embedDisabled: true },
   { youtubeId: "mTPAc0ICZRw", title: 'CIRYAM - „Na niby" (official video)', date: "2025-12-06" },
   { youtubeId: "CtL2mcYmLBM", title: 'CIRYAM - „Ślad" (official video)', date: "2025-08-15" },
   { youtubeId: "gJNSR8-y74A", title: 'CIRYAM - „W biegu" (official video)', date: "2025-06-19" },
