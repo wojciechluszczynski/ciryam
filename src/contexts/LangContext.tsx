@@ -31,7 +31,7 @@ const translations: Record<Lang, Record<string, string>> = {
 
     // Hero
     "hero.subtitle": "Polski zespół rockowy",
-    "hero.desc": "Autorski rock.\nCiężkie riffy, mocne refreny.\nEnergia, którą czuć od pierwszego dźwięku.\nGramy w całej Polsce.",
+    "hero.desc": "Autorski rock.\nCiężkie riffy, melodyjne refreny i energia, która nie zostawia obojętnym.\nGramy w całej Polsce.",
     "hero.listen": "Posłuchaj",
     "hero.concerts": "Koncerty",
 
@@ -223,7 +223,7 @@ const translations: Record<Lang, Record<string, string>> = {
 
     // Hero
     "hero.subtitle": "Polish rock band",
-    "hero.desc": "Original rock music. Heavy riffs, melodic choruses and a stage presence that leaves no one indifferent. Touring across Poland.",
+    "hero.desc": "Original rock music.\nHeavy riffs, melodic choruses and energy that leaves no one indifferent.\nTouring across Poland.",
     "hero.listen": "Listen",
     "hero.concerts": "Concerts",
 
