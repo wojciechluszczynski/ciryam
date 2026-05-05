@@ -57,6 +57,12 @@ const translations: Record<Lang, Record<string, string>> = {
     "concerts.buyTicket": "Kup bilet",
     "concerts.upcoming": "Nadchodzące koncerty",
     "concerts.archive": "Archiwum koncertów",
+    "concerts.empty.title": "Nowe daty wkrótce",
+    "concerts.empty.desc": "Pracujemy nad terminami kolejnej trasy. Śledź nas na Facebooku i Instagramie albo napisz bezpośrednio.",
+    "concerts.empty.contact": "Napisz do nas",
+    "concerts.empty.facebook": "Facebook",
+    "video.unavailable.cta": "Obejrzyj na YouTube",
+    "video.unavailable.note": "Odtwarzanie tego klipu jest dostępne tylko na YouTube.",
 
     // Gallery
     "gallery.label": "Galeria",
@@ -249,6 +255,12 @@ const translations: Record<Lang, Record<string, string>> = {
     "concerts.buyTicket": "Buy ticket",
     "concerts.upcoming": "Upcoming concerts",
     "concerts.archive": "Concert archive",
+    "concerts.empty.title": "New dates coming soon",
+    "concerts.empty.desc": "We are working on the next tour dates. Follow us on Facebook and Instagram or get in touch directly.",
+    "concerts.empty.contact": "Contact us",
+    "concerts.empty.facebook": "Facebook",
+    "video.unavailable.cta": "Watch on YouTube",
+    "video.unavailable.note": "This clip can only be played on YouTube.",
 
     // Video
     "video.label": "Video",
