@@ -308,8 +308,39 @@ const Index = () => {
               <p className="text-muted-foreground font-body text-sm max-w-lg mx-auto leading-relaxed whitespace-pre-line">{t("concerts.desc")}</p>
             </div>
           </FadeIn>
-          <div className="space-y-0">
-            {upcomingConcerts.slice(0, 6).map((concert, i) => {
+          {(() => {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const futureConcerts = upcomingConcerts.filter((c) => new Date(c.date) >= today).slice(0, 6);
+            if (futureConcerts.length === 0) {
+              return (
+                <div className="border-t border-b border-border py-12 px-4 text-center">
+                  <h3 className="font-heading text-2xl md:text-3xl text-foreground mb-3">{t("concerts.empty.title")}</h3>
+                  <p className="text-muted-foreground font-body text-sm max-w-md mx-auto leading-relaxed mb-6">
+                    {t("concerts.empty.desc")}
+                  </p>
+                  <div className="flex flex-wrap items-center justify-center gap-3">
+                    <Link
+                      to="/kontakt"
+                      className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-accent text-accent-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors"
+                    >
+                      {t("concerts.empty.contact")}
+                    </Link>
+                    <a
+                      href="https://www.facebook.com/ciryamband"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-border text-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-background/50 transition-colors"
+                    >
+                      {t("concerts.empty.facebook")}
+                    </a>
+                  </div>
+                </div>
+              );
+            }
+            return (
+              <div className="space-y-0">
+                {futureConcerts.map((concert, i) => {
               const { day, month } = formatDate(concert.date);
               return (
                 <FadeIn key={i} delay={i * 60}>
@@ -329,6 +360,8 @@ const Index = () => {
             })}
             <div className="border-t border-border" />
           </div>
+            );
+          })()}
           <FadeIn delay={300}>
             <div className="text-center mt-10">
               <Link to="/koncerty" className="inline-flex items-center gap-2 font-heading text-sm tracking-[0.1em] uppercase text-foreground border-b border-foreground/30 pb-1 hover:border-accent hover:text-accent transition-colors">
