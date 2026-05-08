@@ -229,7 +229,7 @@ const translations: Record<Lang, Record<string, string>> = {
 
     // Hero
     "hero.subtitle": "Polish rock band",
-    "hero.desc": "Original rock music.\nHeavy riffs, melodic choruses and energy that leaves no one indifferent.\nTouring across Poland.",
+    "hero.desc": "Original rock music. Heavy riffs, melodic choruses\nand energy that leaves no one indifferent.\nTouring across Poland.",
     "hero.listen": "Listen",
     "hero.concerts": "Concerts",
 
