@@ -1,35 +1,45 @@
-## Co zmieniam
+## Cel
+Zsynchronizować tablicę `concerts` w `src/pages/Koncerty.tsx` (sekcja "upcoming") z oficjalnym archiwum z ciryam.pl. Po fixie wszystkie daty będą zgodne z prawdą historyczną — i tak są przeszłe (dziś 8.05.2026), więc UI pokaże empty state "Nowe daty wkrótce", ale kod nie będzie kłamał.
 
-### 1. Koncerty – auto-filtr przyszłych dat (`src/pages/Koncerty.tsx`)
-- Filtruję `concerts` po `new Date(date) >= dzisiaj` (z resetem godziny do 00:00).
-- Jeśli lista pusta → komunikat w sekcji "Nadchodzące koncerty":
-  - PL: "Nowe daty wkrótce. Śledź nas na Facebooku i Instagramie, lub napisz do nas bezpośrednio przez formularz kontaktowy."
-  - EN: analogicznie
-  - + 2 CTA: link do Kontakt + link do FB/IG
-- Archiwum (`archivalConcerts`) zostaje bez zmian – ono i tak działa per rok.
-- Klucze tłumaczeń: `concerts.empty.title`, `concerts.empty.desc`, `concerts.empty.cta` w `LangContext.tsx` (PL+EN).
+## Zmiany
 
-### 2. Wataha – fallback z miniaturką YouTube
-Problem: właściciel kanału YT wyłączył embed dla tego klipu. Iframe pokazuje "Film niedostępny".
+### `src/pages/Koncerty.tsx` — tablica `concerts` (linie 9-28)
+Zastępuję 18 błędnych wpisów dokładnymi danymi z ciryam.pl/archiwalne (pozycje 234–252):
 
-Rozwiązanie ogólne (bo dotyczy potencjalnie też przyszłych klipów):
-- Dodaję pole `embedDisabled: true` do obiektu klipu `Wataha` w obu listach (`src/pages/Index.tsx` linia 30 oraz `src/pages/Muzyka.tsx` linia 9).
-- W komponencie odtwarzacza (`src/pages/Muzyka.tsx` ~linia 50-60 oraz `src/pages/Index.tsx` ~linia 240-250):
-  - Jeśli `embedDisabled` → zamiast `<iframe>` renderuję klikalną miniaturkę: `https://img.youtube.com/vi/{id}/maxresdefault.jpg` z dużym przyciskiem play (akcent gold) i napisem "Obejrzyj na YouTube" / "Watch on YouTube".
-  - Klik → otwiera `https://www.youtube.com/watch?v={id}` w nowej karcie (`target="_blank" rel="noopener"`).
-  - Zachowuję `aspect-video` żeby layout się nie ruszał.
-- Klucze tłumaczeń: `video.unavailable.cta` (PL: "Obejrzyj na YouTube" / EN: "Watch on YouTube").
+```ts
+const concerts = [
+  { date: "2025-04-30", city: "Krosno", venue: "Stadion przy Legionów 1", ... },
+  { date: "2025-05-24", city: "Sanok", venue: "Koncert charytatywny ZSM", ... },
+  { date: "2025-05-30", city: "Kraków", venue: "Garage Pub", ... },
+  { date: "2025-06-28", city: "Toruń", venue: "Festiwal Rocka Progresywnego", ... },
+  { date: "2025-07-05", city: "Przegaliny Duże", venue: "Zlot Motocyklowy", ... },
+  { date: "2025-07-19", city: "Polańczyk", venue: "Tawerna u Michała", ... },
+  { date: "2025-07-27", city: "Wólka Podleśna", venue: "Imprezalia", ... },
+  { date: "2025-08-01", city: "Polańczyk", venue: "Tawerna u Michała", ... },
+  { date: "2025-08-02", city: "Gdów", venue: "Dni Ziemi Gdowskiej", ... },
+  { date: "2025-08-10", city: "Chorkówka", venue: "Biesiada Karpacka", ... },
+  { date: "2025-08-14", city: "Kolbuszowa", venue: "Spinacz Festival", ... },
+  { date: "2025-08-16", city: "Biała Niżna", venue: "Urodziny", ... },
+  { date: "2025-08-22", city: "Tyniec", venue: "Przystań pod Lutym Turem", ... },
+  { date: "2025-08-23", city: "Leżajsk", venue: "Podkarpacki Festiwal Tatuażu", ... },
+  { date: "2025-09-06", city: "Warszawa", venue: "Scream Fest", ... },
+  { date: "2025-10-04", city: "Bytom", venue: "Klub Gotyk", ... },
+  { date: "2025-11-09", city: "Bielsko-Biała", venue: "Klub Rude Boy", ... },
+  { date: "2025-12-27", city: "Krosno", venue: "RCKP — Finał 25-lecia", ... },
+  { date: "2026-02-15", city: "Przemyśl", venue: "Pub Niedźwiadek — Rockowe Love", ... },
+];
+```
 
-### 3. Hero – bez zmian
-W pliku jest już poprawna wersja. Cache po stronie przeglądarki – wymagam Ctrl+Shift+R po deploy.
+Wpisy które wykasuję (nie istnieją w oficjalnym archiwum): Brzesko 30.08, Jarosław 13.09, Wrocław Liverpool 10.10.
+
+### Co zostaje bez zmian
+- `archivalConcerts` (linie 32+) — porównane z ciryam.pl/archiwalne, zgadza się.
+- Logika filtra po dacie — nadal odsiewa przeszłe → strona pokaże empty state.
+- `Index.tsx`, `LangContext.tsx` — bez zmian.
 
 ## Pliki
-- `src/pages/Koncerty.tsx` – filtr + fallback empty state
-- `src/pages/Muzyka.tsx` – flaga `embedDisabled` + warunkowy render miniaturki
-- `src/pages/Index.tsx` – to samo dla sekcji "Zobacz nas w akcji"
-- `src/contexts/LangContext.tsx` – 4 nowe klucze tłumaczeń (PL+EN)
+- `src/pages/Koncerty.tsx` (jeden patch na tablicę `concerts`)
 
 ## Czego nie robię
-- Nie ruszam hero (już jest poprawne).
-- Nie tworzę osobnego komponentu `<YouTubePlayer />` – wstawiam fallback inline (mniej zmian, łatwiej przejrzeć). Jeśli okaże się że trzeba będzie więcej takich przypadków, zrefaktoruję w kolejnej iteracji.
-- Nie usuwam Watahy z listy – tylko zmieniam sposób renderowania.
+- Nie wymyślam nadchodzących koncertów na 2026 — ciryam.pl też nie ma żadnych ogłoszonych ("Nothing Found" na /events/upcoming-events).
+- Nie ruszam archiwum — jest poprawne.
