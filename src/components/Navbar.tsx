@@ -4,6 +4,20 @@ import { Menu, X } from "lucide-react";
 import ciryamSign from "@/assets/ciryam-sign-white.png";
 import { useLang } from "@/contexts/LangContext";
 
+const FlagPL = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 20 14" className={className} aria-hidden="true">
+    <rect width="20" height="7" fill="currentColor" opacity="0.35" />
+    <rect y="7" width="20" height="7" fill="currentColor" />
+  </svg>
+);
+
+const FlagEN = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 20 14" className={className} aria-hidden="true">
+    <rect width="20" height="14" fill="currentColor" opacity="0.25" />
+    <path d="M0 0 L20 14 M20 0 L0 14" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M10 0 V14 M0 7 H20" stroke="currentColor" strokeWidth="2.5" />
+  </svg>
+);
 
 const navLinks = [
   { href: "/", labelKey: "nav.start" },
@@ -85,7 +99,7 @@ const Navbar = () => {
                 className={`flex items-center gap-1 transition-colors duration-300 hover:text-accent ${lang === "pl" ? "text-accent" : "text-muted-foreground"}`}
                 aria-label="Polski"
               >
-                <span aria-hidden="true">🇵🇱</span>
+                <FlagPL className="w-4 h-[10px]" />
                 <span>PL</span>
               </button>
               <span className="text-border">/</span>
@@ -94,7 +108,7 @@ const Navbar = () => {
                 className={`flex items-center gap-1 transition-colors duration-300 hover:text-accent ${lang === "en" ? "text-accent" : "text-muted-foreground"}`}
                 aria-label="English"
               >
-                <span aria-hidden="true">🇬🇧</span>
+                <FlagEN className="w-4 h-[10px]" />
                 <span>EN</span>
               </button>
             </div>
@@ -117,7 +131,7 @@ const Navbar = () => {
               className="flex items-center gap-1 text-xs font-heading text-muted-foreground"
               aria-label="Change language"
             >
-              <span aria-hidden="true">{lang === "pl" ? "🇵🇱" : "🇬🇧"}</span>
+              {lang === "pl" ? <FlagPL className="w-4 h-[10px]" /> : <FlagEN className="w-4 h-[10px]" />}
               <span className="text-accent">{lang.toUpperCase()}</span>
             </button>
             <button
@@ -162,7 +176,7 @@ const Navbar = () => {
               onClick={() => setLang("pl")}
               className={`flex items-center gap-1.5 transition-colors ${lang === "pl" ? "text-accent" : ""}`}
             >
-              <span aria-hidden="true">🇵🇱</span>
+              <FlagPL className="w-5 h-[12px]" />
               <span>PL</span>
             </button>
             <span>/</span>
@@ -170,7 +184,7 @@ const Navbar = () => {
               onClick={() => setLang("en")}
               className={`flex items-center gap-1.5 transition-colors ${lang === "en" ? "text-accent" : ""}`}
             >
-              <span aria-hidden="true">🇬🇧</span>
+              <FlagEN className="w-5 h-[12px]" />
               <span>EN</span>
             </button>
           </div>
