@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import ciryamSign from "@/assets/ciryam-sign-white.png";
 import { useLang } from "@/contexts/LangContext";
 
@@ -79,16 +79,25 @@ const Navbar = () => {
             ))}
 
             {/* Language selector */}
-            <button
-              onClick={toggleLang}
-              className="flex items-center gap-1.5 text-xs tracking-[0.1em] uppercase font-heading text-muted-foreground hover:text-accent transition-colors duration-300"
-              aria-label="Change language"
-            >
-              <Globe size={14} />
-              <span className={lang === "pl" ? "text-accent" : ""}>PL</span>
+            <div className="flex items-center gap-1.5 text-xs tracking-[0.1em] uppercase font-heading" aria-label="Change language">
+              <button
+                onClick={() => setLang("pl")}
+                className={`flex items-center gap-1 transition-colors duration-300 hover:text-accent ${lang === "pl" ? "text-accent" : "text-muted-foreground"}`}
+                aria-label="Polski"
+              >
+                <span aria-hidden="true">🇵🇱</span>
+                <span>PL</span>
+              </button>
               <span className="text-border">/</span>
-              <span className={lang === "en" ? "text-accent" : ""}>EN</span>
-            </button>
+              <button
+                onClick={() => setLang("en")}
+                className={`flex items-center gap-1 transition-colors duration-300 hover:text-accent ${lang === "en" ? "text-accent" : "text-muted-foreground"}`}
+                aria-label="English"
+              >
+                <span aria-hidden="true">🇬🇧</span>
+                <span>EN</span>
+              </button>
+            </div>
 
 
             <a
@@ -108,7 +117,7 @@ const Navbar = () => {
               className="flex items-center gap-1 text-xs font-heading text-muted-foreground"
               aria-label="Change language"
             >
-              <Globe size={14} />
+              <span aria-hidden="true">{lang === "pl" ? "🇵🇱" : "🇬🇧"}</span>
               <span className="text-accent">{lang.toUpperCase()}</span>
             </button>
             <button
@@ -148,15 +157,23 @@ const Navbar = () => {
           </div>
 
           {/* Mobile language toggle */}
-          <button
-            onClick={toggleLang}
-            className="flex items-center gap-2 mb-8 text-sm font-heading text-muted-foreground tracking-[0.15em]"
-          >
-            <Globe size={16} />
-            <span className={lang === "pl" ? "text-accent" : ""}>POLSKI</span>
+          <div className="flex items-center gap-2 mb-8 text-sm font-heading text-muted-foreground tracking-[0.15em]">
+            <button
+              onClick={() => setLang("pl")}
+              className={`flex items-center gap-1.5 transition-colors ${lang === "pl" ? "text-accent" : ""}`}
+            >
+              <span aria-hidden="true">🇵🇱</span>
+              <span>PL</span>
+            </button>
             <span>/</span>
-            <span className={lang === "en" ? "text-accent" : ""}>ENGLISH</span>
-          </button>
+            <button
+              onClick={() => setLang("en")}
+              className={`flex items-center gap-1.5 transition-colors ${lang === "en" ? "text-accent" : ""}`}
+            >
+              <span aria-hidden="true">🇬🇧</span>
+              <span>EN</span>
+            </button>
+          </div>
 
           
 
