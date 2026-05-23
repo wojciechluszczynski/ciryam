@@ -99,7 +99,7 @@ const Navbar = () => {
                 className={`flex items-center gap-1 transition-colors duration-300 hover:text-accent ${lang === "pl" ? "text-accent" : "text-muted-foreground"}`}
                 aria-label="Polski"
               >
-                <span aria-hidden="true">🇵🇱</span>
+                <FlagPL className="w-4 h-[10px]" />
                 <span>PL</span>
               </button>
               <span className="text-border">/</span>
@@ -108,7 +108,7 @@ const Navbar = () => {
                 className={`flex items-center gap-1 transition-colors duration-300 hover:text-accent ${lang === "en" ? "text-accent" : "text-muted-foreground"}`}
                 aria-label="English"
               >
-                <span aria-hidden="true">🇬🇧</span>
+                <FlagEN className="w-4 h-[10px]" />
                 <span>EN</span>
               </button>
             </div>
@@ -131,7 +131,7 @@ const Navbar = () => {
               className="flex items-center gap-1 text-xs font-heading text-muted-foreground"
               aria-label="Change language"
             >
-              <span aria-hidden="true">{lang === "pl" ? "🇵🇱" : "🇬🇧"}</span>
+              {lang === "pl" ? <FlagPL className="w-4 h-[10px]" /> : <FlagEN className="w-4 h-[10px]" />}
               <span className="text-accent">{lang.toUpperCase()}</span>
             </button>
             <button
@@ -176,7 +176,7 @@ const Navbar = () => {
               onClick={() => setLang("pl")}
               className={`flex items-center gap-1.5 transition-colors ${lang === "pl" ? "text-accent" : ""}`}
             >
-              <span aria-hidden="true">🇵🇱</span>
+              <FlagPL className="w-5 h-[12px]" />
               <span>PL</span>
             </button>
             <span>/</span>
@@ -184,7 +184,7 @@ const Navbar = () => {
               onClick={() => setLang("en")}
               className={`flex items-center gap-1.5 transition-colors ${lang === "en" ? "text-accent" : ""}`}
             >
-              <span aria-hidden="true">🇬🇧</span>
+              <FlagEN className="w-5 h-[12px]" />
               <span>EN</span>
             </button>
           </div>
