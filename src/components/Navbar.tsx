@@ -4,6 +4,20 @@ import { Menu, X } from "lucide-react";
 import ciryamSign from "@/assets/ciryam-sign-white.png";
 import { useLang } from "@/contexts/LangContext";
 
+const FlagPL = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 20 14" className={className} aria-hidden="true">
+    <rect width="20" height="7" fill="currentColor" opacity="0.35" />
+    <rect y="7" width="20" height="7" fill="currentColor" />
+  </svg>
+);
+
+const FlagEN = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 20 14" className={className} aria-hidden="true">
+    <rect width="20" height="14" fill="currentColor" opacity="0.25" />
+    <path d="M0 0 L20 14 M20 0 L0 14" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M10 0 V14 M0 7 H20" stroke="currentColor" strokeWidth="2.5" />
+  </svg>
+);
 
 const navLinks = [
   { href: "/", labelKey: "nav.start" },
