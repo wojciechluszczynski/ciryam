@@ -114,14 +114,6 @@ const Navbar = () => {
             </div>
 
 
-            <a
-              href="https://www.kupbilecik.pl/baza/17722/CIryam/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs tracking-[0.15em] uppercase font-heading px-5 py-2 rounded-full bg-accent text-accent-foreground hover:bg-accent/80 transition-all duration-300"
-            >
-              {t("nav.tickets")}
-            </a>
           </nav>
 
           <div className="flex items-center gap-3 lg:hidden z-50">
@@ -191,14 +183,6 @@ const Navbar = () => {
 
           
 
-          <a
-            href="https://www.kupbilecik.pl/baza/17722/CIryam/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-3 rounded-full bg-accent text-accent-foreground font-heading text-sm tracking-[0.15em] uppercase hover:bg-accent/80 transition-colors"
-          >
-            {t("nav.tickets")}
-          </a>
         </div>
       </header>
     </>

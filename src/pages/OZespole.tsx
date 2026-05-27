@@ -198,7 +198,6 @@ const members = [
   { name: "Robert Węgrzyn", role: "gitary, lider", bio: "Założyciel zespołu. Gitarzysta, kompozytor, menedżer." },
   { name: "Kuba Czubik", role: "gitara solowa, elektronika", bio: "Gitarzysta i realizator elektroniki." },
   { name: "Jacek Rola", role: "bas", bio: "Basista zespołu." },
-  { name: "Damian Jurek", role: "perkusja", bio: "Perkusista. Gra w składzie od albumu Człowiek motyl (2008)." },
 ];
 
 const OZespole = () => {

@@ -123,12 +123,12 @@ const PressKit = () => {
               </p>
               <div className="mt-6">
                 <a
-                  href="/CIRYAM-RIDER-2024.pdf"
+                  href="/CIRYAM-RIDER-2026.pdf"
                   download
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-accent text-accent-foreground font-heading text-xs tracking-[0.15em] uppercase hover:bg-accent/80 transition-colors"
                 >
                   <Download size={14} />
-                  Pobierz pełny rider (PDF)
+                  {t("press.rider.download")}
                 </a>
               </div>
             </div>

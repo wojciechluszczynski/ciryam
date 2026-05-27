@@ -4,28 +4,26 @@ import { Link } from "react-router-dom";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
 
-const TICKET_URL = "https://www.kupbilecik.pl/baza/17722/CIryam/";
-
 const concerts = [
-  { date: "2025-04-30", city: "Krosno", venue: "Stadion przy Legionów 1", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-05-24", city: "Sanok", venue: "Koncert charytatywny ZSM", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-05-30", city: "Kraków", venue: "Garage Pub", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-06-28", city: "Toruń", venue: "Festiwal Rocka Progresywnego", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-07-05", city: "Przegaliny Duże", venue: "Zlot Motocyklowy", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-07-19", city: "Polańczyk", venue: "Tawerna u Michała", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-07-27", city: "Wólka Podleśna", venue: "Imprezalia", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-08-01", city: "Polańczyk", venue: "Tawerna u Michała", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-08-02", city: "Gdów", venue: "Dni Ziemi Gdowskiej", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-08-10", city: "Chorkówka", venue: "Biesiada Karpacka", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-08-14", city: "Kolbuszowa", venue: "Spinacz Festival", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-08-16", city: "Biała Niżna", venue: "Urodziny", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-08-22", city: "Tyniec", venue: "Przystań pod Lutym Turem", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-08-23", city: "Leżajsk", venue: "Podkarpacki Festiwal Tatuażu", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-09-06", city: "Warszawa", venue: "Scream Fest", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-10-04", city: "Bytom", venue: "Klub Gotyk", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-11-09", city: "Bielsko-Biała", venue: "Klub Rude Boy", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2025-12-27", city: "Krosno", venue: "RCKP — Finał 25-lecia", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
-  { date: "2026-02-15", city: "Przemyśl", venue: "Pub Niedźwiadek — Rockowe Love", ticketUrl: TICKET_URL, status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-04-30", city: "Krosno", venue: "Stadion przy Legionów 1", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-05-24", city: "Sanok", venue: "Koncert charytatywny ZSM", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-05-30", city: "Kraków", venue: "Garage Pub", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-06-28", city: "Toruń", venue: "Festiwal Rocka Progresywnego", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-07-05", city: "Przegaliny Duże", venue: "Zlot Motocyklowy", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-07-19", city: "Polańczyk", venue: "Tawerna u Michała", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-07-27", city: "Wólka Podleśna", venue: "Imprezalia", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-08-01", city: "Polańczyk", venue: "Tawerna u Michała", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-08-02", city: "Gdów", venue: "Dni Ziemi Gdowskiej", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-08-10", city: "Chorkówka", venue: "Biesiada Karpacka", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-08-14", city: "Kolbuszowa", venue: "Spinacz Festival", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-08-16", city: "Biała Niżna", venue: "Urodziny", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-08-22", city: "Tyniec", venue: "Przystań pod Lutym Turem", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-08-23", city: "Leżajsk", venue: "Podkarpacki Festiwal Tatuażu", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-09-06", city: "Warszawa", venue: "Scream Fest", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-10-04", city: "Bytom", venue: "Klub Gotyk", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-11-09", city: "Bielsko-Biała", venue: "Klub Rude Boy", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2025-12-27", city: "Krosno", venue: "RCKP — Finał 25-lecia", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
+  { date: "2026-02-15", city: "Przemyśl", venue: "Pub Niedźwiadek — Rockowe Love", status: "upcoming" as const, event: "Ciryam - trasa 25-lecia" },
 ];
 
 type ArchivalConcert = { num: number; date: string; city: string; venue: string; note?: string };
@@ -386,7 +384,7 @@ const Koncerty = () => {
                   <Mail size={14} /> {t("concerts.empty.contact")}
                 </Link>
                 <a
-                  href="https://www.facebook.com/ciryamband"
+                  href="https://www.facebook.com/CIRYAM/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-border text-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-secondary transition-colors"
@@ -409,10 +407,8 @@ const Koncerty = () => {
                     <div className="flex-1 min-w-0">
                       <h3 className="font-heading text-2xl text-foreground">{concert.city}</h3>
                       <p className="flex items-center gap-1.5 text-muted-foreground font-body text-sm"><MapPin size={12} /> {concert.venue}</p>
+                      {concert.event && <p className="text-accent font-body text-xs mt-1">{concert.event}</p>}
                     </div>
-                    <a href={concert.ticketUrl} target="_blank" rel="noopener noreferrer" className="shrink-0 px-6 py-2.5 rounded-full bg-accent text-accent-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-accent/80 transition-colors">
-                      {t("concerts.buyTicket")}
-                    </a>
                   </div>
                 </FadeIn>
               );
@@ -428,7 +424,7 @@ const Koncerty = () => {
             <Calendar size={14} className="text-accent" /> {t("concerts.archive")}
           </h2>
           <p className="text-muted-foreground font-body text-sm mb-6 italic">
-            Ponad 250 koncertów za nami. Każdy to kawałek naszej historii.
+            {t("concerts.archive.note")}
           </p>
 
           <div className="space-y-0">
