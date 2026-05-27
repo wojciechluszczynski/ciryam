@@ -1,45 +1,69 @@
-## Cel
-Zsynchronizować tablicę `concerts` w `src/pages/Koncerty.tsx` (sekcja "upcoming") z oficjalnym archiwum z ciryam.pl. Po fixie wszystkie daty będą zgodne z prawdą historyczną — i tak są przeszłe (dziś 8.05.2026), więc UI pokaże empty state "Nowe daty wkrótce", ale kod nie będzie kłamał.
 
-## Zmiany
+# Plan: aktualizacja treści CIRYAM wg decyzji Roberta
 
-### `src/pages/Koncerty.tsx` — tablica `concerts` (linie 9-28)
-Zastępuję 18 błędnych wpisów dokładnymi danymi z ciryam.pl/archiwalne (pozycje 234–252):
+Wprowadzam wyłącznie zmiany wynikające z odpowiedzi Roberta i niejednoznaczności z kolumny "Uwagi". Reszta tekstów zatwierdzona = bez ruszania. Wersja EN ujednolicona 1:1 z PL.
 
-```ts
-const concerts = [
-  { date: "2025-04-30", city: "Krosno", venue: "Stadion przy Legionów 1", ... },
-  { date: "2025-05-24", city: "Sanok", venue: "Koncert charytatywny ZSM", ... },
-  { date: "2025-05-30", city: "Kraków", venue: "Garage Pub", ... },
-  { date: "2025-06-28", city: "Toruń", venue: "Festiwal Rocka Progresywnego", ... },
-  { date: "2025-07-05", city: "Przegaliny Duże", venue: "Zlot Motocyklowy", ... },
-  { date: "2025-07-19", city: "Polańczyk", venue: "Tawerna u Michała", ... },
-  { date: "2025-07-27", city: "Wólka Podleśna", venue: "Imprezalia", ... },
-  { date: "2025-08-01", city: "Polańczyk", venue: "Tawerna u Michała", ... },
-  { date: "2025-08-02", city: "Gdów", venue: "Dni Ziemi Gdowskiej", ... },
-  { date: "2025-08-10", city: "Chorkówka", venue: "Biesiada Karpacka", ... },
-  { date: "2025-08-14", city: "Kolbuszowa", venue: "Spinacz Festival", ... },
-  { date: "2025-08-16", city: "Biała Niżna", venue: "Urodziny", ... },
-  { date: "2025-08-22", city: "Tyniec", venue: "Przystań pod Lutym Turem", ... },
-  { date: "2025-08-23", city: "Leżajsk", venue: "Podkarpacki Festiwal Tatuażu", ... },
-  { date: "2025-09-06", city: "Warszawa", venue: "Scream Fest", ... },
-  { date: "2025-10-04", city: "Bytom", venue: "Klub Gotyk", ... },
-  { date: "2025-11-09", city: "Bielsko-Biała", venue: "Klub Rude Boy", ... },
-  { date: "2025-12-27", city: "Krosno", venue: "RCKP — Finał 25-lecia", ... },
-  { date: "2026-02-15", city: "Przemyśl", venue: "Pub Niedźwiadek — Rockowe Love", ... },
-];
-```
+## 1. Skład zespołu (4 osoby, bez perkusisty)
+Pliki: `src/pages/OZespole.tsx`, `src/pages/PressKit.tsx`, sekcja składu na stronie głównej (jeśli jest w `Index.tsx`).
+- Usunąć Damiana Jurka z listy członków.
+- Dodać krótką notę: "perkusja — sample / sekwencer (in-ear, laptop)" przy opisie zespołu lub w riderze.
+- Zaktualizować EN bio (Press Kit) — 4 osoby.
 
-Wpisy które wykasuję (nie istnieją w oficjalnym archiwum): Brzesko 30.08, Jarosław 13.09, Wrocław Liverpool 10.10.
+## 2. Facebook — ujednolicić na `/CIRYAM`
+Wyszukać i podmienić wszystkie `facebook.com/ciryamband` i `facebook.com/ciryam_official` (te są tylko na stronie Kontakt wg CSV wiersz 174) → `https://www.facebook.com/CIRYAM/?locale=pl_PL`.
+Pliki kandydaci: `src/pages/Kontakt.tsx`, `src/components/Footer.tsx`, `src/pages/Muzyka.tsx`. Skan globalny przed edycją.
 
-### Co zostaje bez zmian
-- `archivalConcerts` (linie 32+) — porównane z ciryam.pl/archiwalne, zgadza się.
-- Logika filtra po dacie — nadal odsiewa przeszłe → strona pokaże empty state.
-- `Index.tsx`, `LangContext.tsx` — bez zmian.
+## 3. Instagram — ujednolicić na `/ciryam__official` (dwa podkreślniki)
+Strona Kontakt ma `/ciryam_official` (jedno) — wg CSV poprawne jest `/ciryam__official`. Podmienić w `Kontakt.tsx`.
 
-## Pliki
-- `src/pages/Koncerty.tsx` (jeden patch na tablicę `concerts`)
+## 4. Usunąć CTA "Kup bilety" + linki kupbilecik
+- Navbar (`src/components/Navbar.tsx`): usunąć przycisk "Kup bilety / Buy tickets" desktop + mobile (PL+EN).
+- Strona Koncerty (`src/pages/Koncerty.tsx`): usunąć sekcję / przyciski linkujące do `kupbilecik.pl/baza/17722/CIryam/`. CTA "kup bilet" zamienić na ogólne "Skontaktuj się / Booking" prowadzące do `/kontakt`, albo usunąć.
+- Tekst SEO koncertów: usunąć zdanie "Bilety na koncerty CIRYAM dostepne sa online…" — zostawić zaproszenie do kontaktu.
+- EN ekwiwalent również.
 
-## Czego nie robię
-- Nie wymyślam nadchodzących koncertów na 2026 — ciryam.pl też nie ma żadnych ogłoszonych ("Nothing Found" na /events/upcoming-events).
-- Nie ruszam archiwum — jest poprawne.
+## 5. Rider techniczny — zastąpić plik i zaktualizować datę
+- Skopiować załączony `CIRYAM-RIDER_2026.pdf` do `public/CIRYAM-RIDER-2026.pdf`.
+- W `src/pages/PressKit.tsx` zmienić link `href="/CIRYAM-RIDER-2024.pdf"` → `/CIRYAM-RIDER-2026.pdf` oraz etykietę "Pobierz pełny rider (PDF)" zostaje (PL+EN).
+- Dane techniczne w UI (skrócony rider) są zgodne z PDF 2026 — bez zmian merytorycznych.
+- Dopisać w sekcji "Multimedia" osobę kontaktową: "Wizualizacje: Kuba Czubik — +48 693 223 230" (z PDF, brakuje na stronie).
+- Stary plik `public/CIRYAM-RIDER-2024.pdf` — usunąć, jeśli istnieje.
+
+## 6. Statystyka 400 koncertów — pozostawić + doprecyzować
+W miejscach gdzie pojawia się "400 koncertów" dodać podtytuł/tooltip: "łącznie z eventami i występami solowymi". Konkretnie: `Index.tsx` stat 3, `OZespole.tsx` stat 3, `PressKit.tsx` stat 4 (PL+EN przez `LangContext`).
+
+## 7. Dyskografia
+Bez zmian — zostaje po 5 utworów na album (potwierdzenie Roberta). Tylko usunąć z `Muzyka.tsx`/uwag wszelkie placeholdery sugerujące "uzupełnić".
+
+## 8. Ujednolicenie EN
+W `src/contexts/LangContext.tsx`:
+- Wszystkie powyższe zmiany odzwierciedlone w kluczach `en.*`.
+- Skład członków (jeżeli tłumaczone) — bez Damiana.
+- Usunięcie kluczy CTA "Buy tickets" / "Tickets" tam, gdzie były dla kupbilecik.
+- Komunikaty riderowe spójne PL/EN.
+
+## 9. Drobiazgi z CSV (do potwierdzenia/zostawienia bez zmian)
+Nie ruszam (brak decyzji Roberta lub kosmetyka):
+- Slider hero (band 1–8), 25 lat, 65 utworów, 88 000 km, 101% — Robert nie zgłosił zmian.
+- Vimeo — zostaje (brak decyzji o usunięciu).
+- TikTok `@ciryam` w stopce — zostaje.
+- Polityka prywatności — strona już istnieje (`PolitykaPrywatnosci.tsx`).
+- Slogan "około 400 koncertów…" w hero/sekcji — pozostaje wg cytatu Roberta.
+
+## 10. Raport końcowy
+Po wdrożeniu wypiszę w odpowiedzi chat zwięzłą listę: plik → zmiana (PL/EN), aby Robert mógł zatwierdzić.
+
+## Pliki do edycji (przewidywane)
+- `src/components/Navbar.tsx`
+- `src/components/Footer.tsx`
+- `src/pages/Index.tsx`
+- `src/pages/OZespole.tsx`
+- `src/pages/PressKit.tsx`
+- `src/pages/Koncerty.tsx`
+- `src/pages/Muzyka.tsx`
+- `src/pages/Kontakt.tsx`
+- `src/contexts/LangContext.tsx`
+- `public/CIRYAM-RIDER-2026.pdf` (nowy)
+- (usunięcie) `public/CIRYAM-RIDER-2024.pdf` jeśli istnieje
+
+Minimalna liczba edycji, maksymalne wykorzystanie wyszukiwania `rg` aby nie pominąć żadnego wystąpienia. Tokeny oszczędzane przez batchowanie odczytów i punktowe patche zamiast przepisywania plików.
