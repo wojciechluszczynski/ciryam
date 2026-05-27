@@ -327,7 +327,7 @@ const Index = () => {
                       {t("concerts.empty.contact")}
                     </Link>
                     <a
-                      href="https://www.facebook.com/ciryamband"
+                      href="https://www.facebook.com/CIRYAM/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-border text-foreground font-heading text-xs tracking-[0.1em] uppercase hover:bg-background/50 transition-colors"

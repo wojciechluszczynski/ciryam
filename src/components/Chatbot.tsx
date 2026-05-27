@@ -9,7 +9,7 @@ const bandKnowledgePl = {
   concerts: "Najbliższe koncerty CIRYAM:\n\u2022 12 kwietnia \u2013 Krak\u00f3w, Za\u015bcianek\n\u2022 26 kwietnia \u2013 Warszawa, Hydrozagadka\n\u2022 10 maja \u2013 Wroc\u0142aw, Firlej\n\u2022 24 maja \u2013 Gda\u0144sk, Drizzly Grizzly\n\u2022 14 czerwca \u2013 Rzesz\u00f3w, Vinyl Music Club\n\u2022 28 czerwca \u2013 Pozna\u0144, Blue Note\n\nBilety dost\u0119pne online lub w dniu koncertu!",
   shop: "W sklepie CIRYAM znajdziesz: koszulki (89 z\u0142), bluzy hoodie (149 z\u0142), p\u0142yty CD (49 z\u0142), winyle LP (119 z\u0142), plakaty (39 z\u0142) i czapki beanie (59 z\u0142). Zam\u00f3wienia przez: sklep@ciryam.pl",
   booking: "Booking koncert\u00f3w i wsp\u00f3\u0142praca: booking@ciryam.pl. Gramy na festiwalach, w klubach i na eventach prywatnych. Napisz \u2013 wr\u00f3cimy z ofert\u0105!",
-  contact: "Kontakt: booking@ciryam.pl (koncerty), kontakt@ciryam.pl (og\u00f3lny). Social media: Facebook /ciryamband, Instagram @ciryam_official, YouTube @ciryam",
+  contact: "Kontakt: booking@ciryam.pl (koncerty), kontakt@ciryam.pl (og\u00f3lny). Social media: Facebook /CIRYAM, Instagram @ciryam__official, YouTube @ciryam",
   members: "CIRYAM to grupa muzyk\u00f3w, kt\u00f3rzy \u017cyj\u0105 rockiem. Wi\u0119cej o zespole dowiesz si\u0119 na stronie /o-zespole.",
 };
 
@@ -19,7 +19,7 @@ const bandKnowledgeEn = {
   concerts: "Upcoming CIRYAM concerts:\n\u2022 April 12 \u2013 Krak\u00f3w, Za\u015bcianek\n\u2022 April 26 \u2013 Warsaw, Hydrozagadka\n\u2022 May 10 \u2013 Wroc\u0142aw, Firlej\n\u2022 May 24 \u2013 Gda\u0144sk, Drizzly Grizzly\n\u2022 June 14 \u2013 Rzesz\u00f3w, Vinyl Music Club\n\u2022 June 28 \u2013 Pozna\u0144, Blue Note\n\nTickets available online or at the door!",
   shop: "In the CIRYAM shop you'll find: t-shirts (89 PLN), hoodies (149 PLN), CDs (49 PLN), vinyl LPs (119 PLN), posters (39 PLN) and beanies (59 PLN). Orders via: sklep@ciryam.pl",
   booking: "Concert booking & collaboration: booking@ciryam.pl. We play at festivals, clubs and private events. Write to us \u2013 we'll get back with an offer!",
-  contact: "Contact: booking@ciryam.pl (concerts), kontakt@ciryam.pl (general). Social media: Facebook /ciryamband, Instagram @ciryam_official, YouTube @ciryam",
+  contact: "Contact: booking@ciryam.pl (concerts), kontakt@ciryam.pl (general). Social media: Facebook /CIRYAM, Instagram @ciryam__official, YouTube @ciryam",
   members: "CIRYAM is a group of musicians who live and breathe rock. Learn more about the band at /o-zespole.",
 };
 
