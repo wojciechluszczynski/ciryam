@@ -3,6 +3,7 @@ import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
 import LinkExt from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
+import DOMPurify from "dompurify";
 import { Calendar, Tag, X, User } from "lucide-react";
 import ciryamLogo from "@/assets/ciryam-logo.png";
 
@@ -35,6 +36,11 @@ const PostPreview = ({
       } else if (typeof content === "string") {
         htmlContent = `<p>${content}</p>`;
       }
+      htmlContent = DOMPurify.sanitize(htmlContent, {
+        ADD_TAGS: ["iframe"],
+        ADD_ATTR: ["allow", "allowfullscreen", "frameborder", "scrolling", "target", "rel"],
+        FORCE_BODY: true,
+      });
     }
   } catch (e) {
     console.error("PostPreview generateHTML error:", e);
