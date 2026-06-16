@@ -6,6 +6,7 @@ import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
 import LinkExt from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
+import DOMPurify from "dompurify";
 import { Calendar, Tag, ArrowLeft, User } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import { useLang } from "@/contexts/LangContext";
@@ -91,6 +92,11 @@ const AktualnosciPost = () => {
         LinkExt.configure({ openOnClick: true }),
         Youtube,
       ]);
+      htmlContent = DOMPurify.sanitize(htmlContent, {
+        ADD_TAGS: ["iframe"],
+        ADD_ATTR: ["allow", "allowfullscreen", "frameborder", "scrolling", "target", "rel"],
+        FORCE_BODY: true,
+      });
     }
   } catch {
     htmlContent = "<p>Błąd wyświetlania treści</p>";
